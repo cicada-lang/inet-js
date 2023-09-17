@@ -1,4 +1,4 @@
-type Nat { -- @Type }
+type Nat: @Type
 
 node zero {
   ------
@@ -19,109 +19,120 @@ node add {
 }
 
 rule zero add {
-  @connect(^add->addend, ^add->return)
+  @connect(^add.addend, ^add.return)
 }
 
 rule add1 add {
-  @connect(
-    add1(add(^add1->prev, ^add->addend)),
-    ^add->return,
-  )
+  // @connect(
+  //   add1(add(^add1.prev, ^add.addend)),
+  //   ^add.return,
+  // )
+
+  add1(add(^add1.prev, ^add.addend), ^add.return)
 }
 
-claim one { -- Nat }
+declare one(): Nat
+function one() {
+  return add1(zero())
+}
 
-define one { add1(zero) }
+declare two(): Nat
+function two() {
+  return add(one(), one())
+}
 
-claim two -- Nat end
-define two one one add end
+declare three(): Nat
+function three() {
+  return add(two(), one())
+}
 
-claim three -- Nat end
-define three two one add end
-
-claim four -- Nat end
-define four two two add end
+declare four(): Nat
+function four() {
+  return add(two(), two())
+}
 
 // To define `mul`, we first need `natErase` and `natDup`.
 
-node natErase
-  Nat :target!
+node natErase {
+  target!: Nat
   --------
-end
-
-rule zero natErase end
-
-rule add1 natErase
-  (add1)-prev natErase
-end
-
-node natDup
-  Nat :target!
-  --------
-  Nat :second
-  Nat :first
-end
-
-rule zero natDup
-  zero first-(natDup)
-  zero second-(natDup)
-end
-
-rule add1 natDup {
-  let first, second = natDup(^add1->prev)
-  @connect(add1(first), ^natDup->first)
-  @connect(add1(second), ^natDup->second)
 }
 
-node mul
-  Nat :target!
-  Nat :mulend
+rule zero natErase {}
+
+rule add1 natErase {
+  natErase(^add1.prev)
+}
+
+node natDup {
+  target!: Nat
   --------
-  Nat :return
-end
+  second: Nat
+  first: Nat
+}
 
-rule zero mul
-  (mul)-mulend natErase
-  zero return-(mul)
-end
+rule zero natDup {
+  // @connect(zero(), ^natDup.first)
+  // @connect(zero(), ^natDup.second)
 
-rule add1 mul
-  (mul)-mulend natDup $first $second
-  (add1)-prev first mul second add
-  return-(mul)
-end
+  zero(^natDup.first)
+  zero(^natDup.second)
+}
+
+rule add1 natDup {
+  let first, second = natDup(^add1.prev)
+  @connect(add1(first), ^natDup.first)
+  @connect(add1(second), ^natDup.second)
+}
+
+node mul {
+  target!: Nat
+  mulend: Nat
+  --------
+  return: Nat
+}
+
+rule zero mul {
+  natErase(^mul.mulend)
+  zero(^mul.return)
+}
+
+rule add1 mul {
+  let first, second = natDup(^mul.mulend)
+  add(second, mul(first, ^add1.prev), ^mul.return)
+}
 
 // To define `max`, we need `maxAux`.
 
-node maxAux
-  Nat :first
-  Nat :second!
+node maxAux {
+  first: Nat
+  second!: Nat
   --------
-  Nat :return
-end
+  return: Nat
+}
 
-node max
-  Nat :first!
-  Nat :second
+node max {
+  first!: Nat
+  second: Nat
   ----------
-  Nat :return
-end
+  return: Nat
+}
 
-rule zero max
-  (max)-second return-(max)
-end
+rule zero max {
+  @connect(^max.second, ^max.return)
+}
 
-rule add1 max
-  (max)-second (add1)-prev maxAux
-  return-(max)
-end
+rule add1 max {
+  maxAux(^add1.prev, ^max.second, ^max.return)
+}
 
-rule zero maxAux
-  (maxAux)-first add1
-  return-(maxAux)
-end
+rule zero maxAux {
+  add1(^maxAux.first, ^maxAux.return)
+}
 
-rule add1 maxAux
-  (add1)-prev (maxAux)-first max
-  add1 return-(maxAux)
-end
+rule add1 maxAux {
+  add1(
+    max(^maxAux.first, ^add1.prev),
+    ^maxAux.return
+  )
+}

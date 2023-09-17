@@ -1,4 +1,14 @@
-move new syntax examples
+# new-syntax
+
+[new-syntax] List.i
+[new-syntax] DiffList.i
+[new-syntax] Bin.i
+
+[new-syntax] `builtin/`
+[new-syntax] `checking/`
+[new-syntax] `module/`
+[new-syntax] `statement/`
+[new-syntax] `value/`
 
 # half-edge
 

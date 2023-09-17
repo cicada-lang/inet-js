@@ -2,25 +2,26 @@ require "Nat.i"
 require "Nat.i"
 require "Nat.i" // Multiple `require` is fine.
 
-zero zero add @inspect @run @inspect
-two @inspect @run @inspect
-four @inspect @run @inspect
-zero one add @inspect @run @inspect
 
+@inspect(@run(@inspect(add(zero(), zero()))))
+@inspect(@run(@inspect(two())))
+@inspect(@run(@inspect(four())))
+@inspect(@run(@inspect(add(one(), zero()))))
 
-claim addadd Nat Nat Nat -- Nat end
-define addadd add add end
+declare addadd(Nat, Nat, Nat): Nat
+function addadd(x, y, z) {
+  return add(add(x, y), z)
+}
 
-one one one addadd @run @inspect
+@inspect(@run(addadd(one(), one(), one())))
 
+@inspect(@run(@inspect(natErase(two()))))
+@inspect(@run(@inspect(natDup(two())))))
 
-two natErase zero @inspect @run @inspect
-two natDup @inspect @run @inspect
+@inspect(@run(@inspect(mul(two(), two()))))
+@inspect(@run(@inspect(mul(three(), three()))))
 
-two two mul @inspect @run @inspect
-three three mul @inspect @run @inspect
-
-
-zero two max @run @inspect
-one two max @run @inspect
-three two max @run @inspect
+@inspect(@run(max(two(), zero())))
+@inspect(@run(max(two(), zero())))
+@inspect(@run(max(two(), one())))
+@inspect(@run(max(two(), three())))

@@ -1,6 +1,6 @@
-type Trivial -- @Type end
+type Trivial: @Type
 
-node sole
+node sole {
   --------
-  Trivial :value!
-end
+  value!: Trivial
+}
