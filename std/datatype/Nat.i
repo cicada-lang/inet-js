@@ -67,7 +67,7 @@ rule add1 natErase {
 node natDup {
   target!: Nat
   --------
-  second: Nat
+  second: Nat,
   first: Nat
 }
 
@@ -86,7 +86,7 @@ rule add1 natDup {
 }
 
 node mul {
-  target!: Nat
+  target!: Nat,
   mulend: Nat
   --------
   return: Nat
@@ -105,14 +105,14 @@ rule add1 mul {
 // To define `max`, we need `maxAux`.
 
 node maxAux {
-  first: Nat
+  first: Nat,
   second!: Nat
   --------
   return: Nat
 }
 
 node max {
-  first!: Nat
+  first!: Nat,
   second: Nat
   ----------
   return: Nat
