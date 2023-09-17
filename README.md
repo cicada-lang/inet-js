@@ -2,7 +2,10 @@
 
 [ [Website](https://inet.run) ]
 
-Programming with [interaction nets](https://en.wikipedia.org/wiki/Interaction_nets).
+This is an implementation of [interaction nets](https://en.wikipedia.org/wiki/Interaction_nets).
+
+It introduces you to the bizarre world of graph-based computation and linear logic,
+using a familiar JavaScript-like syntax :)
 
 ## Usage
 
