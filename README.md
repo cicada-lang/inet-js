@@ -14,78 +14,82 @@ Install it by the following command:
 npm -g i @cicada-lang/inet
 ```
 
-The command line program is called `inet`.
+The command line program is called `inet.js`.
 
 ```sh
-inet repl         # Open an interactive REPL
-inet run [path]   # Run an inet program
-inet help [name]  # Display help for a command
+inet.js repl         # Open an interactive REPL
+inet.js run [path]   # Run an inet program
+inet.js help [name]  # Display help for a command
 ```
-
-### Online Playground
-
-We have an online playground.
-
-Source code of the playground is at
-[github.com/cicada-lang/inet-website](https://github.com/cicada-lang/inet-website).
-
-Please see [tests/](./tests) for some example code.
 
 #### Nat
 
-[ [Goto The Playground](https://inet.run/playground/dHlwZSBOYXQgLS0gQFR5cGUgZW5kCgpub2RlIHplcm8KICAtLS0tLS0tLS0tLS0KICBOYXQgOnZhbHVlIQplbmQKCm5vZGUgYWRkMQogIE5hdCA6cHJldgogIC0tLS0tLS0tLS0tLQogIE5hdCA6dmFsdWUhCmVuZAoKbm9kZSBhZGQKICBOYXQgOnRhcmdldCEKICBOYXQgOmFkZGVuZAogIC0tLS0tLS0tLS0tLQogIE5hdCA6cmV0dXJuCmVuZAoKcnVsZSB6ZXJvIGFkZAogIChhZGQpLWFkZGVuZAogIHJldHVybi0oYWRkKQplbmQKCnJ1bGUgYWRkMSBhZGQKICAoYWRkKS1hZGRlbmQKICAoYWRkMSktcHJldiBhZGQKICBhZGQxIHJldHVybi0oYWRkKQplbmQKCmNsYWltIG9uZSAtLSBOYXQgZW5kCmRlZmluZSBvbmUgemVybyBhZGQxIGVuZAoKY2xhaW0gdHdvIC0tIE5hdCBlbmQKZGVmaW5lIHR3byBvbmUgb25lIGFkZCBlbmQKCmNsYWltIHRocmVlIC0tIE5hdCBlbmQKZGVmaW5lIHRocmVlIHR3byBvbmUgYWRkIGVuZAoKY2xhaW0gZm91ciAtLSBOYXQgZW5kCmRlZmluZSBmb3VyIHR3byB0d28gYWRkIGVuZAoKdHdvIHR3byBhZGQKdHdvIHR3byBhZGQgQHJ1biAkcmVzdWx0) ]
+TODO add playground link
 
 ```inet
-type Nat -- @Type end
+type Nat: @Type
 
-node zero
-  ------------
-  Nat :value!
-end
+node zero {
+  ------
+  value!: Nat
+}
 
-node add1
-  Nat :prev
-  ------------
-  Nat :value!
-end
+node add1 {
+  prev: Nat
+  ----------
+  value!: Nat
+}
 
-node add
-  Nat :target!
-  Nat :addend
-  ------------
-  Nat :return
-end
+node add {
+  target!: Nat,
+  addend: Nat
+  --------
+  return: Nat
+}
 
-rule zero add
-  (add)-addend
-  return-(add)
-end
+rule zero add {
+  @connect(^add.addend, ^add.return)
+}
 
-rule add1 add
-  (add)-addend
-  (add1)-prev add
-  add1 return-(add)
-end
+rule add1 add {
+  add1(add(^add1.prev, ^add.addend), ^add.return)
 
-claim one -- Nat end
-define one zero add1 end
+  // The same as:
+  // @connect(
+  //   add1(add(^add1.prev, ^add.addend)),
+  //   ^add.return,
+  // )
+}
 
-claim two -- Nat end
-define two one one add end
+declare one(): Nat
+function one() {
+  return add1(zero())
+}
 
-claim three -- Nat end
-define three two one add end
+declare two(): Nat
+function two() {
+  return add(one(), one())
+}
 
-claim four -- Nat end
-define four two two add end
+declare three(): Nat
+function three() {
+  return add(two(), one())
+}
 
-two two add
-two two add @run $result
+declare four(): Nat
+function four() {
+  return add(two(), two())
+}
+
+add(two(), two())
+@run(add(two(), two()))
 ```
 
 #### List
 
-[ [Goto The Playground](https://inet.run/playground/dHlwZSBMaXN0IEBUeXBlIC0tIEBUeXBlIGVuZAoKbm9kZSBudWxsCiAgLS0tLS0tLS0KICAnQSBMaXN0IDp2YWx1ZSEKZW5kCgpub2RlIGNvbnMKICAnQSA6aGVhZAogICdBIExpc3QgOnRhaWwKICAtLS0tLS0tLQogICdBIExpc3QgOnZhbHVlIQplbmQKCm5vZGUgYXBwZW5kCiAgJ0EgTGlzdCA6dGFyZ2V0IQogICdBIExpc3QgOnJlc3QKICAtLS0tLS0tLQogICdBIExpc3QgOnJldHVybgplbmQKCnJ1bGUgbnVsbCBhcHBlbmQKICAoYXBwZW5kKS1yZXN0CiAgcmV0dXJuLShhcHBlbmQpCmVuZAoKcnVsZSBjb25zIGFwcGVuZAogIChhcHBlbmQpLXJlc3QgKGNvbnMpLXRhaWwgYXBwZW5kCiAgKGNvbnMpLWhlYWQgY29ucwogIHJldHVybi0oYXBwZW5kKQplbmQKCmltcG9ydCB6ZXJvIGZyb20gImh0dHBzOi8vY2RuLmluZXQucnVuL3Rlc3RzL2RhdGF0eXBlL05hdC5pIgoKbnVsbCB6ZXJvIGNvbnMgemVybyBjb25zCm51bGwgemVybyBjb25zIHplcm8gY29ucwphcHBlbmQKCm51bGwgemVybyBjb25zIHplcm8gY29ucwpudWxsIHplcm8gY29ucyB6ZXJvIGNvbnMKYXBwZW5kIEBydW4gJHJlc3VsdA) ]
+TODO new syntax
+
+TODO add playground link
 
 ```inet
 type List @Type -- @Type end
@@ -133,7 +137,9 @@ append @run $result
 
 #### DiffList
 
-[ [Goto The Playground](https://inet.run/playground/aW1wb3J0IExpc3QgZnJvbSAiaHR0cHM6Ly9jb2RlLW9mLWluZXQuZmlkYi5hcHAvdGVzdHMvZGF0YXR5cGUvTGlzdC5pIgoKLy8gQ29uY2F0ZW5hdGlvbiBvZiBsaXN0cyBpcyBwZXJmb3JtZWQgaW4gbGluZWFyIHRpbWUKLy8gd2l0aCByZXNwZWN0IHRvIGl0cyBmaXJzdCBhcmd1bWVudC4KLy8gQ29uc3RhbnQgdGltZSBjb25jYXRlbmF0aW9uIGlzIHBvc3NpYmxlCi8vIHdpdGggZGlmZmVyZW5jZS1saXN0czogdGhlIGlkZWEgY29uc2lzdHMgaW4KLy8gcGx1Z2dpbmcgdGhlIGZyb250IG9mIHRoZSBzZWNvbmQgYXJndW1lbnQKLy8gYXQgdGhlIGJhY2sgb2YgdGhlIGZpcnN0IG9uZS4KCnR5cGUgRGlmZkxpc3QgQFR5cGUgLS0gQFR5cGUgZW5kCgpub2RlIGRpZmYKICAnQSBMaXN0IDpmcm9udAogIC0tLS0tLS0KICAnQSBMaXN0IDpiYWNrCiAgJ0EgRGlmZkxpc3QgOnZhbHVlIQplbmQKCm5vZGUgZGlmZkFwcGVuZAogICdBIERpZmZMaXN0IDp0YXJnZXQhCiAgJ0EgRGlmZkxpc3QgOnJlc3QKICAtLS0tLS0tLQogICdBIERpZmZMaXN0IDpyZXR1cm4KZW5kCgpub2RlIGRpZmZPcGVuCiAgJ0EgRGlmZkxpc3QgOnRhcmdldCEKICAnQSBMaXN0IDpsaXN0CiAgLS0tLS0tLS0tLQogICdBIExpc3QgOnJldHVybgplbmQKCnJ1bGUgZGlmZiBkaWZmQXBwZW5kCiAgKGRpZmYpLWZyb250IGRpZmYgcmV0dXJuLShkaWZmQXBwZW5kKQogIChkaWZmQXBwZW5kKS1yZXN0IGRpZmZPcGVuIGJhY2stKGRpZmYpCmVuZAoKcnVsZSBkaWZmIGRpZmZPcGVuCiAgKGRpZmYpLWJhY2sgbGlzdC0oZGlmZk9wZW4pCiAgKGRpZmYpLWZyb250IHJldHVybi0oZGlmZk9wZW4pCmVuZAoKaW1wb3J0IHplcm8gZnJvbSAiaHR0cHM6Ly9jb2RlLW9mLWluZXQuZmlkYi5hcHAvdGVzdHMvZGF0YXR5cGUvTmF0LmkiCmltcG9ydCBjb25zIGZyb20gImh0dHBzOi8vY29kZS1vZi1pbmV0LmZpZGIuYXBwL3Rlc3RzL2RhdGF0eXBlL0xpc3QuaSIKCihkaWZmKSBAc3ByZWFkICRmcm9udCAkYmFjayAkdmFsdWUKYmFjayB6ZXJvIGNvbnMgemVybyBjb25zIGZyb250IEBjb25uZWN0IHZhbHVlCihkaWZmKSBAc3ByZWFkICRmcm9udCAkYmFjayAkdmFsdWUKYmFjayB6ZXJvIGNvbnMgemVybyBjb25zIGZyb250IEBjb25uZWN0IHZhbHVlCmRpZmZBcHBlbmQKCi8vIEJ5IHVzaW5nIG9uZSBsZXNzIGxvY2FsIHZhcmlhYmxlIGAkdmFsdWVgLAovLyB3ZSBjYW4gc2ltcGxpZnkgdGhlIGFib3ZlIGNvZGU6CgooZGlmZikgQHNwcmVhZCAkZnJvbnQgJGJhY2sKYmFjayB6ZXJvIGNvbnMgemVybyBjb25zIGZyb250IEBjb25uZWN0CihkaWZmKSBAc3ByZWFkICRmcm9udCAkYmFjawpiYWNrIHplcm8gY29ucyB6ZXJvIGNvbnMgZnJvbnQgQGNvbm5lY3QKZGlmZkFwcGVuZAoKLy8gQnkgdXNpbmcgb25lIGxlc3MgbG9jYWwgdmFyaWFibGUgYCRiYWNrYCwKLy8gd2UgY2FuIGZ1cnRoZXIgc2ltcGxpZnkgdGhlIGFib3ZlIGNvZGU6CgooZGlmZikgQHNwcmVhZCAkZnJvbnQgemVybyBjb25zIHplcm8gY29ucyBmcm9udCBAY29ubmVjdAooZGlmZikgQHNwcmVhZCAkZnJvbnQgemVybyBjb25zIHplcm8gY29ucyBmcm9udCBAY29ubmVjdApkaWZmQXBwZW5kCgpAcnVuICRyZXN1bHQ) ]
+TODO new syntax
+
+TODO add playground link
 
 ```inet
 import List from "https://code-of-inet.fidb.app/tests/datatype/List.i"
