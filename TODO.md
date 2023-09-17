@@ -1,3 +1,5 @@
+move new syntax examples
+
 # half-edge
 
 [half-edge] `Edge` has two `HalfEdge`s

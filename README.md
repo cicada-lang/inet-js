@@ -1,4 +1,4 @@
-# iNet
+# iNet.js
 
 [ [Website](https://inet.run) ]
 
