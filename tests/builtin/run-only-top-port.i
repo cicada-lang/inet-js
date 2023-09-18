@@ -4,4 +4,5 @@ one one add
 one one add
 @run @inspect
 @swap @inspect
-@run @inspect
+// also test run twice
+@run @run @inspect

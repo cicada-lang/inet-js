@@ -1,7 +1,7 @@
+import { HalfEdge } from "../half-edge"
 import { Node } from "../node"
-import { Port } from "../port"
 
-export type Value = Port | Node | Type | Symbol | TypeTerm | Labeled
+export type Value = HalfEdge | Node | Type | Symbol | TypeTerm | Labeled
 
 export type Type = {
   "@type": "Value"

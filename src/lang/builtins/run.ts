@@ -1,22 +1,22 @@
 import { Env } from "../env"
-import { runPort } from "../run/runPort"
+import { runHalfEdge } from "../run/runHalfEdge"
 import { formatValue } from "../value/formatValue"
 
 export function compose(env: Env): void {
-  const port = env.stack.pop()
-  if (port === undefined) {
+  const value = env.stack[env.stack.length - 1]
+  if (value === undefined) {
     throw new Error(`[@run] I expect a top value on the stack.`)
   }
 
-  if (port["@kind"] !== "Port") {
+  if (value["@kind"] !== "HalfEdge") {
     throw new Error(
       [
-        `[@run] I expect the top value on the stack to be a Port.`,
+        `[@run] I expect the top value on the stack to be a HalfEdge.`,
         ``,
-        `  value: ${formatValue(env, port)}`,
+        `  value: ${formatValue(env, value)}`,
       ].join("\n"),
     )
   }
 
-  env.stack.push(runPort(env.mod, env.net, port))
+  runHalfEdge(env.mod, env.net, value)
 }

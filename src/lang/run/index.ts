@@ -1,4 +1,2 @@
-export * from "./closeAllFreePorts"
-export * from "./releaseCapPorts"
+export * from "./runHalfEdge"
 export * from "./runNet"
-export * from "./runPort"

@@ -28,4 +28,16 @@ export function connectHalfEdges(
 
   deleteHalfEdgeEntry(net, firstHalfEdge)
   deleteHalfEdgeEntry(net, secondHalfEdge)
+
+  const firstPort = firstOtherHalfEdgeEntry.port
+  const secondPort = secondOtherHalfEdgeEntry.port
+
+  if (firstPort !== undefined && secondPort !== undefined) {
+    if (firstPort.isPrincipal && secondPort.isPrincipal) {
+      net.activeEdges.push({
+        first: firstOtherHalfEdge,
+        second: secondOtherHalfEdge,
+      })
+    }
+  }
 }

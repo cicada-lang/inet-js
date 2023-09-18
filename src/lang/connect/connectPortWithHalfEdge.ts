@@ -2,6 +2,7 @@ import { edgeEqual } from "../edge"
 import { HalfEdge } from "../half-edge"
 import { Net } from "../net"
 import { findHalfEdgeEntryOrFail } from "../net/findHalfEdgeEntryOrFail"
+import { findHalfEdgePort } from "../net/findHalfEdgePort"
 import { findPortRecordOrFail } from "../net/findPortRecordOrFail"
 import { Port } from "../port"
 
@@ -22,16 +23,14 @@ export function connectPortWithHalfEdge(
 
   halfEdgeEntry.port = port
 
-  const otherHalfEdgeEntry = findHalfEdgeEntryOrFail(
-    net,
-    halfEdgeEntry.otherHalfEdge,
-  )
+  const otherHalfEdge = halfEdgeEntry.otherHalfEdge
+  const otherPort = findHalfEdgePort(net, otherHalfEdge)
 
-  if (otherHalfEdgeEntry.port !== undefined) {
-    if (port.isPrincipal && otherHalfEdgeEntry.port.isPrincipal) {
+  if (otherPort !== undefined) {
+    if (port.isPrincipal && otherPort.isPrincipal) {
       const edge = {
         first: halfEdge,
-        second: halfEdgeEntry.otherHalfEdge,
+        second: otherHalfEdge,
       }
 
       if (!net.activeEdges.find((activeEdge) => edgeEqual(activeEdge, edge))) {

@@ -1,37 +1,27 @@
-[unifyTypes] I find the left type variable occurs in the right type.
+[findDefinitionOrFail] I meet undefined name.
 
-  left type variable: 'A₂
-  right type: 'A₂ List List
-
-[unifyTypes] I fail to unify types.
-
-  left: 'A₂
-  right: 'A₂ List List
+  name: TODO
 
 [compose] I fail compose word.
 
-  word: cons
-
- 27 |rule cons append
- 28 |  (cons)-head
- 29 |  (append)-rest (cons)-tail append
- 30 |  cons
- 31 |  return-(append)
- 32 |end
-
-[DefineRule.execute] I fail to define rule.
-
-  rule nodes: cons append
+  word: TODO
 
  23 |  (append)-rest
  24 |  return-(append)
  25 |end
  26 |
- 27 |rule cons append
- 28 |  (cons)-head
- 29 |  (append)-rest (cons)-tail append
- 30 |  cons
- 31 |  return-(append)
- 32 |end
- 33 |
- 34 |// The correct definition is:
+ 27 |TODO
+ 28 |
+ 29 |rule cons append
+
+[Compose.execute] I fail to compose word.
+
+  word: TODO
+
+ 23 |  (append)-rest
+ 24 |  return-(append)
+ 25 |end
+ 26 |
+ 27 |TODO
+ 28 |
+ 29 |rule cons append

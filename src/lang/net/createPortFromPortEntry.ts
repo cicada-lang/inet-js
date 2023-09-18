@@ -7,8 +7,6 @@ export function createPortFromPortEntry(
   portEntry: PortEntry,
 ): Port {
   return {
-    "@type": "Value",
-    "@kind": "Port",
     node,
     name: portEntry.name,
     sign: portEntry.sign,

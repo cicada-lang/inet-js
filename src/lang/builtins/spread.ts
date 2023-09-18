@@ -1,5 +1,7 @@
 import { ComposeOptions } from "../compose/compose"
+import { connectPortWithHalfEdge } from "../connect/connectPortWithHalfEdge"
 import { Env } from "../env"
+import { addEdge } from "../net/addEdge"
 import { findInputPorts } from "../net/findInputPorts"
 import { findOutputPorts } from "../net/findOutputPorts"
 import { formatValue } from "../value"
@@ -26,6 +28,8 @@ export function compose(env: Env, options: ComposeOptions): void {
   ]
 
   for (const port of ports.reverse()) {
-    env.stack.push(port)
+    const edge = addEdge(env.net)
+    connectPortWithHalfEdge(env.net, port, edge.first)
+    env.stack.push(edge.second)
   }
 }

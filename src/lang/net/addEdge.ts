@@ -1,19 +1,35 @@
+import { Edge } from "../edge"
 import { HalfEdge } from "../half-edge"
 import { createHalfEdgeId } from "../half-edge/createHalfEdgeId"
 import { HalfEdgeEntry, Net } from "../net"
 
-export function addEdge(net: Net): { first: HalfEdge; second: HalfEdge } {
+export function addEdge(net: Net): Edge {
   const firstId = createHalfEdgeId()
-  const first = { id: firstId } as HalfEdgeEntry
+  const firstHalfEdgeEntry = { id: firstId } as HalfEdgeEntry
 
   const secondId = createHalfEdgeId()
-  const second = { id: secondId } as HalfEdgeEntry
+  const secondHalfEdgeEntry = { id: secondId } as HalfEdgeEntry
 
-  first.otherHalfEdge = { id: second.id }
-  second.otherHalfEdge = { id: first.id }
+  const firstHalfEdge: HalfEdge = {
+    "@type": "Value",
+    "@kind": "HalfEdge",
+    id: firstId,
+  }
 
-  net.halfEdgeEntries.set(firstId, first)
-  net.halfEdgeEntries.set(secondId, second)
+  const secondHalfEdge: HalfEdge = {
+    "@type": "Value",
+    "@kind": "HalfEdge",
+    id: secondId,
+  }
 
-  return { first, second }
+  firstHalfEdgeEntry.otherHalfEdge = secondHalfEdge
+  secondHalfEdgeEntry.otherHalfEdge = firstHalfEdge
+
+  net.halfEdgeEntries.set(firstId, firstHalfEdgeEntry)
+  net.halfEdgeEntries.set(secondId, secondHalfEdgeEntry)
+
+  return {
+    first: firstHalfEdge,
+    second: secondHalfEdge,
+  }
 }

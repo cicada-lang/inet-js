@@ -1,18 +1,19 @@
 import { Checking } from "../checking"
-import { connectPorts } from "../connect/connectPorts"
+import { connectHalfEdges } from "../connect/connectHalfEdges"
 import { Env } from "../env"
 import { appendReport } from "../errors/appendReport"
 import { Mod } from "../mod"
 import { findDefinitionOrFail } from "../mod/findDefinitionOrFail"
-import { disconnectPort } from "../net/disconnectPort"
-import { findPortEntry } from "../net/findPortEntry"
+import { disconnectHalfEdge } from "../net/disconnectHalfEdge"
+import { findHalfEdgeEntryOrFail } from "../net/findHalfEdgeEntryOrFail"
+import { findHalfEdgePortOrFail } from "../net/findHalfEdgePortOrFail"
 import { Node } from "../node"
 import { createNodeFromDefinition } from "../node/createNodeFromDefinition"
 import { unifyTypes } from "../unify/unifyTypes"
 import { Word } from "../word"
 import { formatWord } from "../word/formatWord"
 import { composeDefinition } from "./composeDefinition"
-import { findCurrentPortOrFail } from "./findCurrentPortOrFail"
+import { findExposedHalfEdgeOrFail } from "./findExposedHalfEdgeOrFail"
 
 export interface ComposeOptions {
   current?: { first: Node; second: Node }
@@ -76,54 +77,27 @@ export function compose(
       }
 
       case "PortPush": {
-        const currentPort = findCurrentPortOrFail(
+        const exposedHalfEdge = findExposedHalfEdgeOrFail(
           env.net,
           word.nodeName,
           word.portName,
           options,
         )
 
-        const portEntry = findPortEntry(env.net, currentPort)
-
-        if (portEntry?.connection === undefined) {
-          throw new Error(
-            [
-              `[compose / PortPush] I expect the found port to have connection.`,
-              ``,
-              `  node name: ${word.nodeName}`,
-              `  port name: ${word.portName}`,
-            ].join("\n"),
-          )
-        }
-
-        disconnectPort(env.net, currentPort)
-
-        env.stack.push(currentPort)
+        disconnectHalfEdge(env.net, exposedHalfEdge)
+        env.stack.push(exposedHalfEdge)
         return null
       }
 
       case "PortReconnect": {
-        const currentPort = findCurrentPortOrFail(
+        const exposedHalfEdge = findExposedHalfEdgeOrFail(
           env.net,
           word.nodeName,
           word.portName,
           options,
         )
 
-        const portEntry = findPortEntry(env.net, currentPort)
-
-        if (portEntry?.connection === undefined) {
-          throw new Error(
-            [
-              `[compose / PortReconnect] I expect the found port to have connection.`,
-              ``,
-              `  node name: ${word.nodeName}`,
-              `  port name: ${word.portName}`,
-            ].join("\n"),
-          )
-        }
-
-        disconnectPort(env.net, currentPort)
+        const exposedPort = findHalfEdgePortOrFail(env.net, exposedHalfEdge)
 
         const value = env.stack.pop()
         if (value === undefined) {
@@ -132,20 +106,33 @@ export function compose(
           )
         }
 
-        if (value["@kind"] !== "Port") {
+        if (value["@kind"] !== "HalfEdge") {
           throw new Error(
             [
-              `[compose / PortReconnect] I expect the top value to be a Port.`,
+              `[compose / PortReconnect] I expect the top value to be a HalfEdge.`,
               ``,
               `  value['@kind']: ${value["@kind"]}`,
             ].join("\n"),
           )
         }
 
-        connectPorts(env.net, value, currentPort)
+        const valueHalfEdgeEntry = findHalfEdgeEntryOrFail(env.net, value)
+        const otherPort = findHalfEdgePortOrFail(
+          env.net,
+          valueHalfEdgeEntry.otherHalfEdge,
+        )
+
         if (options.checking) {
-          unifyTypes(env, options.checking.substitution, value.t, currentPort.t)
+          unifyTypes(
+            env,
+            options.checking.substitution,
+            otherPort.t,
+            exposedPort.t,
+          )
         }
+
+        disconnectHalfEdge(env.net, exposedHalfEdge)
+        connectHalfEdges(env.net, value, exposedHalfEdge)
 
         return null
       }

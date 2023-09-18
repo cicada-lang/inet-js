@@ -1,7 +1,10 @@
 import { indent } from "../../utils/indent"
 import { Env } from "../env"
 import { findConnectedComponent } from "../net/findConnectedComponent"
+import { findHalfEdgeEntryOrFail } from "../net/findHalfEdgeEntryOrFail"
+import { findHalfEdgePortOrFail } from "../net/findHalfEdgePortOrFail"
 import { formatNet } from "../net/formatNet"
+import { formatPort } from "../port/formatPort"
 import { formatValue } from "../value/formatValue"
 
 export function compose(env: Env): void {
@@ -10,13 +13,20 @@ export function compose(env: Env): void {
     throw new Error(`[@inspect] I expect a value on the stack.`)
   }
 
-  if (value["@kind"] === "Port") {
-    const connectedcomponent = findConnectedComponent(env.net, value.node)
+  if (value["@kind"] === "HalfEdge") {
+    const valueHalfEdgeEntry = findHalfEdgeEntryOrFail(env.net, value)
+    const otherPort = findHalfEdgePortOrFail(
+      env.net,
+      valueHalfEdgeEntry.otherHalfEdge,
+    )
+    const connectedcomponent = findConnectedComponent(env.net, otherPort.node)
     const netText = formatNet(connectedcomponent)
     if (netText.length === 0) {
-      env.mod.loader.onOutput(`netFromPort ${formatValue(env, value)} end`)
+      env.mod.loader.onOutput(
+        `netFromPort ${formatPort(env.net, otherPort)} end`,
+      )
     } else {
-      env.mod.loader.onOutput(`netFromPort ${formatValue(env, value)}`)
+      env.mod.loader.onOutput(`netFromPort ${formatPort(env.net, otherPort)}`)
       env.mod.loader.onOutput(indent(netText))
       env.mod.loader.onOutput("end")
     }

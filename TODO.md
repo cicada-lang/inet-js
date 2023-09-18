@@ -1,7 +1,14 @@
-# half-edge
+[refactor] check during `connect*` instead of before `connect*`
 
-[half-edge] `HalfEdge` should be a kind of `Value` -- `Port` should quit being a `Value`
-[half-edge] avoid using `closeAllFreePorts`
+[bug] fix tests
+
+- tests/checking/begin-sign.error.i
+- tests/checking/begin-type-nested.error.i
+- tests/checking/begin-type.error.i
+- tests/checking/check-input-type.error.i
+- tests/checking/claim-input-type.error.i
+- tests/checking/rule-type-occur-check.error.i
+- tests/checking/rule-type.error.i
 
 # new-syntax
 

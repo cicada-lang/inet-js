@@ -1,6 +1,6 @@
 [checkTypeTermArgs] I expect all args of a TypeTerm to be Symbol or TypeTerm.
 
-  args: [(sole₀)-value!]
+  args: [-- ]
 
 [compose] I fail compose word.
 

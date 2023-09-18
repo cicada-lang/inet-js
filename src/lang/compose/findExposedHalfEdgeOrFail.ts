@@ -1,5 +1,5 @@
+import { HalfEdge } from "../half-edge"
 import { Net } from "../net"
-import { findHalfEdgeEntry } from "../net/findHalfEdgeEntry"
 import { findInputPorts } from "../net/findInputPorts"
 import { findOutputPorts } from "../net/findOutputPorts"
 import { findPortEntry } from "../net/findPortEntry"
@@ -7,12 +7,12 @@ import { Node } from "../node"
 import { Port } from "../port"
 import { ComposeOptions } from "./compose"
 
-export function findCurrentPortOrFail(
+export function findExposedHalfEdgeOrFail(
   net: Net,
   nodeName: string,
   portName: string,
   options?: ComposeOptions,
-): Port {
+): HalfEdge {
   const who = "findCurrentPortOrFail"
 
   const { current } = options || {}
@@ -28,7 +28,7 @@ export function findCurrentPortOrFail(
     )
   }
 
-  const found = findPortInNodes(net, nodeName, portName, [
+  const found = findHalfEdgeInNodes(net, nodeName, portName, [
     current.first,
     current.second,
   ])
@@ -47,51 +47,42 @@ export function findCurrentPortOrFail(
   return found
 }
 
-function findPortInNodes(
+function findHalfEdgeInNodes(
   net: Net,
   nodeName: string,
   portName: string,
   nodes: Array<Node>,
-): Port | undefined {
+): HalfEdge | undefined {
   for (const node of nodes) {
     if (nodeName === node.name) {
-      return findPortInNode(net, portName, node)
+      return findHalfEdgeInNode(net, portName, node)
     }
   }
 }
 
-function findPortInNode(
+function findHalfEdgeInNode(
   net: Net,
   portName: string,
   node: Node,
-): Port | undefined {
+): HalfEdge | undefined {
   for (const port of findInputPorts(net, node)) {
     if (port.name === portName) {
-      return findCorrespondingPort(net, port)
+      return findHalfEdgeOfPort(net, port)
     }
   }
 
   for (const port of findOutputPorts(net, node)) {
     if (port.name === portName) {
-      return findCorrespondingPort(net, port)
+      return findHalfEdgeOfPort(net, port)
     }
   }
 }
 
-function findCorrespondingPort(net: Net, port: Port): Port | undefined {
+function findHalfEdgeOfPort(net: Net, port: Port): HalfEdge | undefined {
   const portEntry = findPortEntry(net, port)
 
   if (portEntry === undefined) return
   if (portEntry.connection === undefined) return
 
-  const halfEdge = portEntry.connection.halfEdge
-  const halfEdgeEntry = findHalfEdgeEntry(net, halfEdge)
-
-  if (halfEdgeEntry === undefined) return
-
-  const ohterHalfEdgeEntry = findHalfEdgeEntry(net, halfEdgeEntry.otherHalfEdge)
-
-  if (ohterHalfEdgeEntry === undefined) return
-
-  return ohterHalfEdgeEntry.port
+  return portEntry.connection.halfEdge
 }

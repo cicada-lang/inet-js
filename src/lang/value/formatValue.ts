@@ -1,12 +1,12 @@
 import { Env } from "../env"
+import { formatHalfEdge } from "../half-edge/formatHalfEdge"
 import { formatNode } from "../node/formatNode"
-import { formatPort } from "../port/formatPort"
 import { Value } from "./Value"
 
 export function formatValue(env: Env, value: Value): string {
   switch (value["@kind"]) {
-    case "Port": {
-      return formatPort(env.net, value)
+    case "HalfEdge": {
+      return formatHalfEdge(env.net, value)
     }
 
     case "Node": {

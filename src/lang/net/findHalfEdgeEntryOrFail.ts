@@ -8,6 +8,7 @@ export function findHalfEdgeEntryOrFail(
 ): HalfEdgeEntry {
   const halfEdgeEntry = findHalfEdgeEntry(net, halfEdge)
   if (halfEdgeEntry === undefined) {
+    console.trace()
     throw new Error(`[findHalfEdgeEntryOrFail] Undefined halfEdgeEntry`)
   }
 

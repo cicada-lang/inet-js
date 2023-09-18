@@ -64,7 +64,7 @@ define addadd add add end
         (add1₆)-value!target-(add₆)
       end
       stack
-        (add₆)-return
+        -- 
       end
       locals end
     end"
@@ -79,7 +79,7 @@ define addadd add add end
         (add₇)-return target-(add₈)
       end
       stack
-        (add₈)-return
+        -- 
       end
       locals end
     end"

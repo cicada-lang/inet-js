@@ -1,6 +1,8 @@
 import { ComposeOptions } from "../compose/compose"
-import { connectPorts } from "../connect/connectPorts"
+import { connectHalfEdges } from "../connect/connectHalfEdges"
 import { Env } from "../env"
+import { findHalfEdgeEntryOrFail } from "../net/findHalfEdgeEntryOrFail"
+import { findHalfEdgePortOrFail } from "../net/findHalfEdgePortOrFail"
 import { unifyTypes } from "../unify/unifyTypes"
 import { formatValue } from "../value/formatValue"
 
@@ -13,10 +15,10 @@ export function compose(env: Env, options: ComposeOptions): void {
     )
   }
 
-  if (first["@kind"] !== "Port") {
+  if (first["@kind"] !== "HalfEdge") {
     throw new Error(
       [
-        `[@connect] I expect the first value on the stack to be a Port.`,
+        `[@connect] I expect the first value on the stack to be a HalfEdge.`,
         ``,
         `  first: ${formatValue(env, first)}`,
       ].join("\n"),
@@ -35,10 +37,10 @@ export function compose(env: Env, options: ComposeOptions): void {
     )
   }
 
-  if (second["@kind"] !== "Port") {
+  if (second["@kind"] !== "HalfEdge") {
     throw new Error(
       [
-        `[@connect] I expect the second value on the stack to be a Port.`,
+        `[@connect] I expect the second value on the stack to be a HalfEdge.`,
         ``,
         `  first: ${formatValue(env, first)}`,
         `  second: ${formatValue(env, first)}`,
@@ -46,8 +48,26 @@ export function compose(env: Env, options: ComposeOptions): void {
     )
   }
 
-  connectPorts(env.net, first, second)
+  const firstHalfEdgeEntry = findHalfEdgeEntryOrFail(env.net, first)
+  const secondHalfEdgeEntry = findHalfEdgeEntryOrFail(env.net, second)
+
+  const firstOtherPort = findHalfEdgePortOrFail(
+    env.net,
+    firstHalfEdgeEntry.otherHalfEdge,
+  )
+  const secondOtherPort = findHalfEdgePortOrFail(
+    env.net,
+    secondHalfEdgeEntry.otherHalfEdge,
+  )
+
+  connectHalfEdges(env.net, first, second)
+
   if (options.checking) {
-    unifyTypes(env, options.checking.substitution, first.t, second.t)
+    unifyTypes(
+      env,
+      options.checking.substitution,
+      firstOtherPort.t,
+      secondOtherPort.t,
+    )
   }
 }

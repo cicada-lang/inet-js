@@ -8,11 +8,11 @@ import { connectPortWithHalfEdge } from "./connectPortWithHalfEdge"
 
 export function connectPorts(net: Net, first: Port, second: Port): void {
   const firstPortEntry = findPortEntry(net, first)
-
   if (firstPortEntry?.connection !== undefined) {
+    console.trace()
     throw new Error(
       [
-        `[connect] The first port is already connected.`,
+        `[connectPorts] The first port is already connected.`,
         ``,
         `  first port: ${formatPort(net, first)}`,
         `  second port: ${formatPort(net, second)}`,
@@ -21,11 +21,11 @@ export function connectPorts(net: Net, first: Port, second: Port): void {
   }
 
   const secondPortEntry = findPortEntry(net, second)
-
   if (secondPortEntry?.connection !== undefined) {
+    console.trace()
     throw new Error(
       [
-        `[connect] The second port is already connected.`,
+        `[connectPorts] The second port is already connected.`,
         ``,
         `  first port: ${formatPort(net, first)}`,
         `  second port: ${formatPort(net, second)}`,
@@ -35,8 +35,8 @@ export function connectPorts(net: Net, first: Port, second: Port): void {
 
   checkPortSigns(net, first, second)
 
-  const halfEdges = addEdge(net)
+  const edge = addEdge(net)
 
-  connectPortWithHalfEdge(net, first, halfEdges.first)
-  connectPortWithHalfEdge(net, second, halfEdges.second)
+  connectPortWithHalfEdge(net, first, edge.first)
+  connectPortWithHalfEdge(net, second, edge.second)
 }

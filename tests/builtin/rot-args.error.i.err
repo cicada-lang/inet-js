@@ -1,7 +1,7 @@
 [@rot] I expect a third value on the stack.
 
-  first: (sole₁)-value!
-  second: (sole₀)-value!
+  first: -- 
+  second: --
 
 [compose] I fail compose word.
 
