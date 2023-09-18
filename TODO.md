@@ -1,5 +1,3 @@
-rename `return` to `result` in readme
-
 # new-syntax
 
 [new-syntax] `Exp` -- `Block` has `body` and `ret`

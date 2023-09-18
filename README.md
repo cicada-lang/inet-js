@@ -46,20 +46,20 @@ node add {
   target!: Nat,
   addend: Nat
   --------
-  return: Nat
+  result: Nat
 }
 
 rule zero add {
-  @connect(^add.addend, ^add.return)
+  @connect(^add.addend, ^add.result)
 }
 
 rule add1 add {
-  add1(add(^add1.prev, ^add.addend), ^add.return)
+  add1(add(^add1.prev, ^add.addend), ^add.result)
 
   // The same as:
   // @connect(
   //   add1(add(^add1.prev, ^add.addend)),
-  //   ^add.return,
+  //   ^add.result,
   // )
 }
 
@@ -109,18 +109,18 @@ node append {
   target!: List('A),
   rest: List('A)
   --------
-  return: List('A)
+  result: List('A)
 }
 
 rule null append {
-  @connect(^append.rest, ^append.return)
+  @connect(^append.rest, ^append.result)
 }
 
 rule cons append {
   cons(
     ^cons.head,
     append(^cons.tail, ^append.rest),
-    ^append.return
+    ^append.result
   )
 }
 
@@ -159,29 +159,29 @@ node diffAppend {
   target!: DiffList('A),
   rest: DiffList('A)
   --------
-  return: DiffList('A)
+  result: DiffList('A)
 }
 
 node diffOpen {
   target!: DiffList('A),
   list: List('A)
   ----------
-  return: List('A)
+  result: List('A)
 }
 
 rule diff diffAppend {
-  let back = diff(^diff.front, value: ^diffAppend.return)
+  let back = diff(^diff.front, value: ^diffAppend.result)
 
   // The same as:
   // let back, value = diff(^diff.front)
-  // @connect(value, ^diffAppend.return)
+  // @connect(value, ^diffAppend.result)
 
   diffOpen(^diffAppend.rest, back, ^diff.back)
 }
 
 rule diff diffOpen {
   @connect(^diff.back, ^diffOpen.list)
-  @connect(^diff.front, ^diffOpen.return)
+  @connect(^diff.front, ^diffOpen.result)
 }
 
 import { zero } from "https://code-of-inet.fidb.app/tests/datatype/Nat.i"
