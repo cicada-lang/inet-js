@@ -7,7 +7,7 @@ require "List.i"
 // plugging the front of the second argument
 // at the back of the first one.
 
-type DiffList @Type -- @Type end
+type DiffList(@Type): @Type
 
 node diff {
   front: List('A),
@@ -16,27 +16,31 @@ node diff {
   value!: DiffList('A),
 }
 
-
-node diffAppend
-  'A DiffList :target!
-  'A DiffList :rest
+node diffAppend {
+  target!: DiffList('A),
+  rest: DiffList('A)
   --------
-  'A DiffList :return
-end
+  return: DiffList('A)
+}
 
-node diffOpen
-  'A DiffList :target!
-  'A List :list
+node diffOpen {
+  target!: DiffList('A),
+  list: List('A)
   ----------
-  'A List :return
-end
+  return: List('A)
+}
 
-rule diff diffAppend
-  (diff)-front diff return-(diffAppend)
-  (diffAppend)-rest diffOpen back-(diff)
-end
+rule diff diffAppend {
+  let back = diff(^diff.front, value: ^diffAppend.return)
 
-rule diff diffOpen
-  (diff)-back list-(diffOpen)
-  (diff)-front return-(diffOpen)
-end
+  // The same as:
+  // let back, value = diff(^diff.front)
+  // @connect(value, ^diffAppend.return)
+
+  diffOpen(^diffAppend.rest, back, ^diff.back)
+}
+
+rule diff diffOpen {
+  @connect(^diff.back, ^diffOpen.list)
+  @connect(^diff.front, ^diffOpen.return)
+}

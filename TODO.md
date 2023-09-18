@@ -1,6 +1,5 @@
 # new-syntax
 
-[new-syntax] DiffList.i
 [new-syntax] Bin.i
 
 [new-syntax] `builtin/`
