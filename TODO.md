@@ -1,5 +1,9 @@
 # new-syntax
 
+[new-syntax] no need `declare`
+[new-syntax] `@inspect` should not consume value -- so that it can be inserted anywhere
+[new-syntax] use round () instead of {} for node
+
 [new-syntax] `Exp` -- `Block` has `body` and `ret`
 
 - `return` is not a statement
@@ -10,8 +14,7 @@
 [new-syntax] `exp/block/Evaluate`
 
 [new-syntax] use `Exp` instead of `Word`
-[new-syntax] use round () instead of {} for node
-[new-syntax] no need `declare`
+
 
 `connectPortWithHalfEdge` should call `checkPortSigns`
 

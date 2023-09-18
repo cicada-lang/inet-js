@@ -13,7 +13,7 @@ using a familiar JavaScript-like syntax :)
 Install it by the following command:
 
 ```sh
-npm -g i @cicada-lang/inet
+npm install --global @cicada-lang/inet
 ```
 
 The command line program is called `inet.js`.
@@ -24,175 +24,19 @@ inet.js run [path]   # Run an inet program
 inet.js help [name]  # Display help for a command
 ```
 
+## Examples
+
 #### Nat
 
-TODO add playground link
-
-```inet
-type Nat: @Type
-
-node zero {
-  ------
-  value!: Nat
-}
-
-node add1(
-  prev: Nat
-  ----------
-  value!: Nat
-)
-
-node add {
-  target!: Nat,
-  addend: Nat
-  --------
-  result: Nat
-}
-
-rule zero add {
-  @connect(^add.addend, ^add.result)
-}
-
-rule add1 add {
-  add1(add(^add1.prev, ^add.addend), ^add.result)
-
-  // The same as:
-  // @connect(
-  //   add1(add(^add1.prev, ^add.addend)),
-  //   ^add.result,
-  // )
-}
-
-declare one(): Nat
-function one() {
-  return add1(zero())
-}
-
-declare two(): Nat
-function two() {
-  return add(one(), one())
-}
-
-declare three(): Nat
-function three() {
-  return add(two(), one())
-}
-
-declare four(): Nat
-function four() {
-  return add(two(), two())
-}
-
-add(two(), two())
-```
+TODO
 
 #### List
 
-TODO add playground link
-
-```inet
-type List: @Type
-
-node null {
-  --------
-  value!: List('A)
-}
-
-node cons {
-  head: 'A,
-  tail: List('A)
-  --------
-  value!: List('A)
-}
-
-node append {
-  target!: List('A),
-  rest: List('A)
-  --------
-  result: List('A)
-}
-
-rule null append {
-  @connect(^append.rest, ^append.result)
-}
-
-rule cons append {
-  cons(
-    ^cons.head,
-    append(^cons.tail, ^append.rest),
-    ^append.result
-  )
-}
-
-import { zero } from "https://code-of-inet.fidb.app/tests/datatype/Nat.i"
-
-append(
-  cons(zero(), cons(zero(), null())),
-  cons(zero(), cons(zero(), null())),
-)
-```
+TODO
 
 #### DiffList
 
-TODO add playground link
-
-```inet
-import { List } from "https://code-of-inet.fidb.app/tests/datatype/List.i"
-
-// Concatenation of lists is performed in linear time
-// with respect to its first argument.
-// Constant time concatenation is possible
-// with difference-lists: the idea consists in
-// plugging the front of the second argument
-// at the back of the first one.
-
-type DiffList(@Type): @Type
-
-node diff {
-  front: List('A),
-  -------
-  back: List('A),
-  value!: DiffList('A),
-}
-
-node diffAppend {
-  target!: DiffList('A),
-  rest: DiffList('A)
-  --------
-  result: DiffList('A)
-}
-
-node diffOpen {
-  target!: DiffList('A),
-  list: List('A)
-  ----------
-  result: List('A)
-}
-
-rule diff diffAppend {
-  let back = diff(^diff.front, value: ^diffAppend.result)
-
-  // The same as:
-  // let back, value = diff(^diff.front)
-  // @connect(value, ^diffAppend.result)
-
-  diffOpen(^diffAppend.rest, back, ^diff.back)
-}
-
-rule diff diffOpen {
-  @connect(^diff.back, ^diffOpen.list)
-  @connect(^diff.front, ^diffOpen.result)
-}
-
-import { zero } from "https://code-of-inet.fidb.app/tests/datatype/Nat.i"
-import { cons } from "https://code-of-inet.fidb.app/tests/datatype/List.i"
-
-let front, back, value1 = diff()
-@connect(front, cons(zero(), cons(zero(), back)))
-let front, back, value2 = diff()
-@connect(front, cons(zero(), cons(zero(), back)))
-diffAppend(value1, value2)
-```
+TODO
 
 ## Development
 
