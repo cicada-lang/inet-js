@@ -84,67 +84,60 @@ function four() {
 }
 
 add(two(), two())
-@run(add(two(), two()))
 ```
 
 #### List
 
-TODO new syntax
-
 TODO add playground link
 
 ```inet
-type List @Type -- @Type end
+type List: @Type
 
-node null
+node null {
   --------
-  'A List :value!
-end
+  value!: List('A)
+}
 
-node cons
-  'A :head
-  'A List :tail
+node cons {
+  head: 'A,
+  tail: List('A)
   --------
-  'A List :value!
-end
+  value!: List('A)
+}
 
-node append
-  'A List :target!
-  'A List :rest
+node append {
+  target!: List('A),
+  rest: List('A)
   --------
-  'A List :return
-end
+  return: List('A)
+}
 
-rule null append
-  (append)-rest
-  return-(append)
-end
+rule null append {
+  @connect(^append.rest, ^append.return)
+}
 
-rule cons append
-  (append)-rest (cons)-tail append
-  (cons)-head cons
-  return-(append)
-end
+rule cons append {
+  cons(
+    ^cons.head,
+    append(^cons.tail, ^append.rest),
+    ^append.return
+  )
+}
 
-import zero from "https://code-of-inet.fidb.app/tests/datatype/Nat.i"
+import { zero } from "https://code-of-inet.fidb.app/tests/datatype/Nat.i"
 
-null zero cons zero cons
-null zero cons zero cons
-append
-
-null zero cons zero cons
-null zero cons zero cons
-append @run $result
+append(
+  cons(zero(), cons(zero(), null())),
+  cons(zero(), cons(zero(), null())),
+)
 ```
 
 #### DiffList
 
-TODO new syntax
-
 TODO add playground link
 
 ```inet
-import List from "https://code-of-inet.fidb.app/tests/datatype/List.i"
+import { List } from "https://code-of-inet.fidb.app/tests/datatype/List.i"
 
 // Concatenation of lists is performed in linear time
 // with respect to its first argument.
@@ -153,65 +146,52 @@ import List from "https://code-of-inet.fidb.app/tests/datatype/List.i"
 // plugging the front of the second argument
 // at the back of the first one.
 
-type DiffList @Type -- @Type end
+type DiffList(@Type): @Type
 
-node diff
-  'A List :front
+node diff {
+  front: List('A),
   -------
-  'A List :back
-  'A DiffList :value!
-end
+  back: List('A),
+  value!: DiffList('A),
+}
 
-node diffAppend
-  'A DiffList :target!
-  'A DiffList :rest
+node diffAppend {
+  target!: DiffList('A),
+  rest: DiffList('A)
   --------
-  'A DiffList :return
-end
+  return: DiffList('A)
+}
 
-node diffOpen
-  'A DiffList :target!
-  'A List :list
+node diffOpen {
+  target!: DiffList('A),
+  list: List('A)
   ----------
-  'A List :return
-end
+  return: List('A)
+}
 
-rule diff diffAppend
-  (diff)-front diff return-(diffAppend)
-  (diffAppend)-rest diffOpen back-(diff)
-end
+rule diff diffAppend {
+  let back = diff(^diff.front, value: ^diffAppend.return)
 
-rule diff diffOpen
-  (diff)-back list-(diffOpen)
-  (diff)-front return-(diffOpen)
-end
+  // The same as:
+  // let back, value = diff(^diff.front)
+  // @connect(value, ^diffAppend.return)
 
-import zero from "https://code-of-inet.fidb.app/tests/datatype/Nat.i"
-import cons from "https://code-of-inet.fidb.app/tests/datatype/List.i"
+  diffOpen(^diffAppend.rest, back, ^diff.back)
+}
 
-(diff) @spread $front $back $value
-back zero cons zero cons front @connect value
-(diff) @spread $front $back $value
-back zero cons zero cons front @connect value
-diffAppend
+rule diff diffOpen {
+  @connect(^diff.back, ^diffOpen.list)
+  @connect(^diff.front, ^diffOpen.return)
+}
 
-// By using one less local variable `$value`,
-// we can simplify the above code:
+import { zero } from "https://code-of-inet.fidb.app/tests/datatype/Nat.i"
+import { cons } from "https://code-of-inet.fidb.app/tests/datatype/List.i"
 
-(diff) @spread $front $back
-back zero cons zero cons front @connect
-(diff) @spread $front $back
-back zero cons zero cons front @connect
-diffAppend
-
-// By using one less local variable `$back`,
-// we can further simplify the above code:
-
-(diff) @spread $front zero cons zero cons front @connect
-(diff) @spread $front zero cons zero cons front @connect
-diffAppend
-
-@run $result
+let front, back, value1 = diff()
+@connect(front, cons(zero(), cons(zero(), back)))
+let front, back, value2 = diff()
+@connect(front, cons(zero(), cons(zero(), back)))
+diffAppend(value1, value2)
 ```
 
 ## Development

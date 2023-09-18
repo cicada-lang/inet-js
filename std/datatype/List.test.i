@@ -9,4 +9,5 @@ function sixSoles() {
   )
 }
 
-@inspect(@run(@inspect(sixSoles())))
+@inspect(sixSoles())
+@inspect(@run(sixSoles()))

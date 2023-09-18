@@ -10,7 +10,8 @@ function oneTwoSoles() {
   return diffAppend(value1, value2)
 }
 
-@inspect(@run(@inspect(oneTwoSoles())))
+@inspect(oneTwoSoles())
+@inspect(@run(oneTwoSoles()))
 
 declare twoTwoSoles(): DiffList(Trivial)
 function twoTwoSoles {
@@ -21,4 +22,5 @@ function twoTwoSoles {
   return diffAppend(value1, value2)
 }
 
-@inspect(@run(@inspect(twoTwoSoles())))
+@inspect(twoTwoSoles())
+@inspect(@run(twoTwoSoles()))
