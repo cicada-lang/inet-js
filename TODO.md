@@ -1,6 +1,5 @@
 # new-syntax
 
-[new-syntax] List.i
 [new-syntax] DiffList.i
 [new-syntax] Bin.i
 

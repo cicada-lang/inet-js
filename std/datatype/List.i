@@ -19,16 +19,14 @@ node append {
   return: List('A)
 }
 
-
 rule null append {
-  (append)-rest
-  return-(append)
+  @connect(^append.rest, ^append.return)
 }
 
-
-
-rule cons append
-  (append)-rest (cons)-tail append
-  (cons)-head cons
-  return-(append)
-end
+rule cons append {
+  cons(
+    ^cons.head,
+    append(^cons.tail, ^append.rest),
+    ^append.return
+  )
+}
