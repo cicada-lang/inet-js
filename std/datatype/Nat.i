@@ -15,20 +15,20 @@ node add {
   target!: Nat,
   addend: Nat
   --------
-  return: Nat
+  result: Nat
 }
 
 rule zero add {
-  @connect(^add.addend, ^add.return)
+  @connect(^add.addend, ^add.result)
 }
 
 rule add1 add {
   // @connect(
   //   add1(add(^add1.prev, ^add.addend)),
-  //   ^add.return,
+  //   ^add.result,
   // )
 
-  add1(add(^add1.prev, ^add.addend), ^add.return)
+  add1(add(^add1.prev, ^add.addend), ^add.result)
 }
 
 declare one(): Nat
@@ -89,17 +89,17 @@ node mul {
   target!: Nat,
   mulend: Nat
   --------
-  return: Nat
+  result: Nat
 }
 
 rule zero mul {
   natErase(^mul.mulend)
-  zero(^mul.return)
+  zero(^mul.result)
 }
 
 rule add1 mul {
   let first, second = natDup(^mul.mulend)
-  add(second, mul(first, ^add1.prev), ^mul.return)
+  add(second, mul(first, ^add1.prev), ^mul.result)
 }
 
 // To define `max`, we need `maxAux`.
@@ -108,31 +108,31 @@ node maxAux {
   first: Nat,
   second!: Nat
   --------
-  return: Nat
+  result: Nat
 }
 
 node max {
   first!: Nat,
   second: Nat
   ----------
-  return: Nat
+  result: Nat
 }
 
 rule zero max {
-  @connect(^max.second, ^max.return)
+  @connect(^max.second, ^max.result)
 }
 
 rule add1 max {
-  maxAux(^add1.prev, ^max.second, ^max.return)
+  maxAux(^add1.prev, ^max.second, ^max.result)
 }
 
 rule zero maxAux {
-  add1(^maxAux.first, ^maxAux.return)
+  add1(^maxAux.first, ^maxAux.result)
 }
 
 rule add1 maxAux {
   add1(
     max(^maxAux.first, ^add1.prev),
-    ^maxAux.return
+    ^maxAux.result
   )
 }

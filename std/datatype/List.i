@@ -16,17 +16,17 @@ node append {
   target!: List('A)
   rest: List('A)
   --------
-  return: List('A)
+  result: List('A)
 }
 
 rule null append {
-  @connect(^append.rest, ^append.return)
+  @connect(^append.rest, ^append.result)
 }
 
 rule cons append {
   cons(
     ^cons.head,
     append(^cons.tail, ^append.rest),
-    ^append.return
+    ^append.result
   )
 }

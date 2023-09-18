@@ -20,27 +20,27 @@ node diffAppend {
   target!: DiffList('A),
   rest: DiffList('A)
   --------
-  return: DiffList('A)
+  result: DiffList('A)
 }
 
 node diffOpen {
   target!: DiffList('A),
   list: List('A)
   ----------
-  return: List('A)
+  result: List('A)
 }
 
 rule diff diffAppend {
-  let back = diff(^diff.front, value: ^diffAppend.return)
+  let back = diff(^diff.front, value: ^diffAppend.result)
 
   // The same as:
   // let back, value = diff(^diff.front)
-  // @connect(value, ^diffAppend.return)
+  // @connect(value, ^diffAppend.result)
 
   diffOpen(^diffAppend.rest, back, ^diff.back)
 }
 
 rule diff diffOpen {
   @connect(^diff.back, ^diffOpen.list)
-  @connect(^diff.front, ^diffOpen.return)
+  @connect(^diff.front, ^diffOpen.result)
 }
