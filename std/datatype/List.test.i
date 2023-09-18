@@ -8,5 +8,5 @@ function sixSoles(): List(Trivial) {
   )
 }
 
-@inspect(sixSoles())
-@inspect(@run(sixSoles()))
+
+@inspect(@run(@inspect(sixSoles())))

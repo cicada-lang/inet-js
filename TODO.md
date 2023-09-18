@@ -1,6 +1,5 @@
 # new-syntax
 
-[new-syntax] `std/` -- `@inspect` should not consume value -- so that it can be inserted anywhere
 [new-syntax] `std/` -- use round () instead of {} for node
 
 [new-syntax] `Exp` -- `Block` has `body` and `ret`
