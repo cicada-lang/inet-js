@@ -1,28 +1,31 @@
-type List @Type -- @Type end
+type List: @Type
 
-node null
+node null {
   --------
-  'A List :value!
-end
+  value!: List('A)
+}
 
-node cons
-  'A :head
-  'A List :tail
+node cons {
+  head: 'A,
+  tail: List('A)
   --------
-  'A List :value!
-end
+  value!: List('A)
+}
 
-node append
-  'A List :target!
-  'A List :rest
+node append {
+  target!: List('A)
+  rest: List('A)
   --------
-  'A List :return
-end
+  return: List('A)
+}
 
-rule null append
+
+rule null append {
   (append)-rest
   return-(append)
-end
+}
+
+
 
 rule cons append
   (append)-rest (cons)-tail append
