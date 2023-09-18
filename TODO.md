@@ -1,9 +1,3 @@
-[refactor] check during `connect*` instead of before `connect*`
-
-[bug] fix test
-
-- tests/checking/begin-sign.error.i
-
 # new-syntax
 
 [new-syntax] use `Exp` instead of `Word`
@@ -14,6 +8,8 @@
 [new-syntax] `module/`
 [new-syntax] `statement/`
 [new-syntax] `value/`
+
+[refactor] check during `connect*` instead of before `connect*`
 
 # half-edge
 

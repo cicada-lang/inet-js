@@ -1,25 +1,25 @@
-[findDefinitionOrFail] I meet undefined name.
+[checkPortSigns] I expect the two ports to have opposite signs,
+  but they all have positive sign.
 
-  name: TODO
+  first port: (sole₁)-value!
+  second port: (sole₀)-value!
 
 [compose] I fail compose word.
 
-  word: TODO
+  word: @connect
 
+ 1 |type Trivial -- @Type end
  2 |node sole -- Trivial :value! end
  3 |
  4 |sole sole @connect
  5 |
- 6 |TODO
- 7 |
 
 [Compose.execute] I fail to compose word.
 
-  word: TODO
+  word: @connect
 
+ 1 |type Trivial -- @Type end
  2 |node sole -- Trivial :value! end
  3 |
  4 |sole sole @connect
  5 |
- 6 |TODO
- 7 |

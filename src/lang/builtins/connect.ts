@@ -1,3 +1,4 @@
+import { checkPortSigns } from "../check/checkPortSigns"
 import { ComposeOptions } from "../compose/compose"
 import { connectHalfEdges } from "../connect/connectHalfEdges"
 import { Env } from "../env"
@@ -60,9 +61,8 @@ export function compose(env: Env, options: ComposeOptions): void {
     secondHalfEdgeEntry.otherHalfEdge,
   )
 
-  connectHalfEdges(env.net, first, second)
-
   if (options.checking) {
+    checkPortSigns(env.net, firstOtherPort, secondOtherPort)
     unifyTypes(
       env,
       options.checking.substitution,
@@ -70,4 +70,6 @@ export function compose(env: Env, options: ComposeOptions): void {
       secondOtherPort.t,
     )
   }
+
+  connectHalfEdges(env.net, first, second)
 }
