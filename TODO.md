@@ -1,14 +1,8 @@
 [refactor] check during `connect*` instead of before `connect*`
 
-[bug] fix tests
+[bug] fix test
 
 - tests/checking/begin-sign.error.i
-- tests/checking/begin-type-nested.error.i
-- tests/checking/begin-type.error.i
-- tests/checking/check-input-type.error.i
-- tests/checking/claim-input-type.error.i
-- tests/checking/rule-type-occur-check.error.i
-- tests/checking/rule-type.error.i
 
 # new-syntax
 

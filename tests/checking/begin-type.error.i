@@ -5,6 +5,4 @@ node add1 Nat :prev -- Nat :value! end
 type Trivial -- @Type end
 node sole -- Trivial :value! end
 
-TODO
-
 sole add1

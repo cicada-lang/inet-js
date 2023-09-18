@@ -24,8 +24,6 @@ rule null append
   return-(append)
 end
 
-TODO
-
 rule cons append
   (cons)-head
   (append)-rest (cons)-tail append

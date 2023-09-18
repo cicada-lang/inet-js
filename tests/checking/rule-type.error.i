@@ -21,5 +21,3 @@ rule add1 add
   (add)-addend (add1)-prev add sole add1
   return-(add)
 end
-
-TODO

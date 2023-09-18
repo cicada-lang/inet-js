@@ -2,6 +2,7 @@ import { connectPortWithHalfEdge } from "../connect/connectPortWithHalfEdge"
 import { Env } from "../env"
 import { refreshNode } from "../freshen/refreshNode"
 import { addEdge } from "../net/addEdge"
+import { findHalfEdgeEntryOrFail } from "../net/findHalfEdgeEntryOrFail"
 import { findHalfEdgePortOrFail } from "../net/findHalfEdgePortOrFail"
 import { findInputPorts } from "../net/findInputPorts"
 import { findOutputPorts } from "../net/findOutputPorts"
@@ -42,9 +43,13 @@ export function composeNode(
     }
 
     connectPortWithHalfEdge(env.net, port, value)
-    const valuePort = findHalfEdgePortOrFail(env.net, value)
+    const valueHalfEdgeEntry = findHalfEdgeEntryOrFail(env.net, value)
+    const otherPort = findHalfEdgePortOrFail(
+      env.net,
+      valueHalfEdgeEntry.otherHalfEdge,
+    )
     if (options.checking) {
-      unifyTypes(env, options.checking.substitution, valuePort.t, port.t)
+      unifyTypes(env, options.checking.substitution, otherPort.t, port.t)
     }
   }
 

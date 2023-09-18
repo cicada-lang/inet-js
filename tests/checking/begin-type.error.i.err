@@ -1,27 +1,24 @@
-[findDefinitionOrFail] I meet undefined name.
+[unifyTypes] I fail to unify types.
 
-  name: TODO
+  left: Trivial
+  right: Nat
 
 [compose] I fail compose word.
 
-  word: TODO
+  word: add1
 
-  4 |
   5 |type Trivial -- @Type end
   6 |node sole -- Trivial :value! end
   7 |
-  8 |TODO
+  8 |sole add1
   9 |
- 10 |sole add1
 
 [Compose.execute] I fail to compose word.
 
-  word: TODO
+  word: add1
 
-  4 |
   5 |type Trivial -- @Type end
   6 |node sole -- Trivial :value! end
   7 |
-  8 |TODO
+  8 |sole add1
   9 |
- 10 |sole add1
