@@ -1,7 +1,8 @@
-import { edgeEqual } from "../edge/edgeEqual"
+import { edgeEqual } from "../edge"
 import { Node, nodeKey } from "../node"
 import { Net } from "./Net"
 import { cloneNodeEntry } from "./cloneNodeEntry"
+import { findHalfEdgeEntry } from "./findHalfEdgeEntry"
 import { findHalfEdgeEntryOrFail } from "./findHalfEdgeEntryOrFail"
 import { findNodeEntryOrFail } from "./findNodeEntryOrFail"
 import { findPortRecordOrFail } from "./findPortRecordOrFail"
@@ -12,6 +13,11 @@ export function copyConnectedComponent(
   component: Net,
   node: Node,
 ): void {
+  copyNodeEntries(net, component, node)
+  copyActiveEdges(net, component)
+}
+
+export function copyNodeEntries(net: Net, component: Net, node: Node): void {
   if (hasNode(component, node)) {
     return
   }
@@ -42,15 +48,29 @@ export function copyConnectedComponent(
       })
 
       if (otherHalfEdgeEntry.port) {
-        copyConnectedComponent(net, component, otherHalfEdgeEntry.port.node)
+        copyNodeEntries(net, component, otherHalfEdgeEntry.port.node)
       }
     }
   }
+}
 
+export function copyActiveEdges(net: Net, component: Net): void {
   for (const activeEdge of net.activeEdges) {
+    const firstHalfEdgeEntry = findHalfEdgeEntry(component, activeEdge.first)
+    if (firstHalfEdgeEntry === undefined) continue
+
+    const secondHalfEdgeEntry = findHalfEdgeEntry(component, activeEdge.second)
+    if (secondHalfEdgeEntry === undefined) continue
+
+    const firstPort = firstHalfEdgeEntry.port
+    if (firstPort === undefined) continue
+
+    const secondPort = secondHalfEdgeEntry.port
+    if (secondPort === undefined) continue
+
     if (
-      hasNode(component, activeEdge.first.node) &&
-      hasNode(component, activeEdge.second.node) &&
+      hasNode(component, firstPort.node) &&
+      hasNode(component, secondPort.node) &&
       !component.activeEdges.find((edge) => edgeEqual(edge, activeEdge))
     ) {
       component.activeEdges.push(activeEdge)

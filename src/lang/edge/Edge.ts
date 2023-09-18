@@ -1,6 +1,6 @@
-import { Port } from "../port"
+import { HalfEdge } from "../half-edge"
 
 export type Edge = {
-  first: Port
-  second: Port
+  first: HalfEdge
+  second: HalfEdge
 }

@@ -30,8 +30,8 @@ export function connectPortWithHalfEdge(
   if (otherHalfEdgeEntry.port !== undefined) {
     if (port.isPrincipal && otherHalfEdgeEntry.port.isPrincipal) {
       const edge = {
-        first: port,
-        second: otherHalfEdgeEntry.port,
+        first: halfEdge,
+        second: halfEdgeEntry.otherHalfEdge,
       }
 
       if (!net.activeEdges.find((activeEdge) => edgeEqual(activeEdge, edge))) {

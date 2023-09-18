@@ -2,7 +2,6 @@ import { Edge } from "../edge"
 import { nodeKey } from "../node/nodeKey"
 import { Net } from "./Net"
 import { createNodeFromNodeEntry } from "./createNodeFromNodeEntry"
-import { createPortFromPortEntry } from "./createPortFromPortEntry"
 import { findHalfEdgeEntryOrFail } from "./findHalfEdgeEntryOrFail"
 
 export function allEdges(net: Net): Array<Edge> {
@@ -14,33 +13,27 @@ export function allEdges(net: Net): Array<Edge> {
 
     for (const portEntry of Object.values(nodeEntry.ports)) {
       if (portEntry.connection) {
-        const first = createPortFromPortEntry(node, portEntry)
+        const firstHalfEdge = portEntry.connection.halfEdge
+        const firstHalfEdgeEntry = findHalfEdgeEntryOrFail(net, firstHalfEdge)
 
-        const halfEdgeEntry = findHalfEdgeEntryOrFail(
-          net,
-          portEntry.connection.halfEdge,
-        )
+        const secondHalfEdge = firstHalfEdgeEntry.otherHalfEdge
+        const secondHalfEdgeEntry = findHalfEdgeEntryOrFail(net, secondHalfEdge)
 
-        const otherHalfEdgeEntry = findHalfEdgeEntryOrFail(
-          net,
-          halfEdgeEntry.otherHalfEdge,
-        )
+        const firstPort = firstHalfEdgeEntry.port
+        const secondPort = secondHalfEdgeEntry.port
 
-        const second = otherHalfEdgeEntry.port
-        if (second === undefined) {
-          continue
-        }
+        if (firstPort !== undefined && secondPort !== undefined) {
+          const firstOccur = `${nodeKey(node)}-${portEntry.name}`
+          const secondOccur = `${nodeKey(secondPort.node)}-${secondPort.name}`
 
-        const firstOccur = `${nodeKey(node)}-${portEntry.name}`
-        const secondOccur = `${nodeKey(second.node)}-${second.name}`
-
-        if (
-          !occurred.has(firstOccur + secondOccur) &&
-          !occurred.has(secondOccur + firstOccur)
-        ) {
-          occurred.add(firstOccur + secondOccur)
-          occurred.add(secondOccur + firstOccur)
-          edges.push({ first, second })
+          if (
+            !occurred.has(firstOccur + secondOccur) &&
+            !occurred.has(secondOccur + firstOccur)
+          ) {
+            occurred.add(firstOccur + secondOccur)
+            occurred.add(secondOccur + firstOccur)
+            edges.push({ first: firstHalfEdge, second: secondHalfEdge })
+          }
         }
       }
     }

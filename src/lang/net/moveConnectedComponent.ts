@@ -1,6 +1,7 @@
 import { Edge, edgeEqual } from "../edge"
 import { Node, nodeKey } from "../node"
 import { Net } from "./Net"
+import { findHalfEdgeEntry } from "./findHalfEdgeEntry"
 import { findHalfEdgeEntryOrFail } from "./findHalfEdgeEntryOrFail"
 import { findNodeEntryOrFail } from "./findNodeEntryOrFail"
 import { findPortRecordOrFail } from "./findPortRecordOrFail"
@@ -59,9 +60,33 @@ export function moveActiveEdges(net: Net, component: Net): void {
   const remainingActiveEdges: Array<Edge> = []
 
   for (const activeEdge of net.activeEdges) {
+    const firstHalfEdgeEntry = findHalfEdgeEntry(component, activeEdge.first)
+    if (firstHalfEdgeEntry === undefined) {
+      remainingActiveEdges.push(activeEdge)
+      continue
+    }
+
+    const secondHalfEdgeEntry = findHalfEdgeEntry(component, activeEdge.second)
+    if (secondHalfEdgeEntry === undefined) {
+      remainingActiveEdges.push(activeEdge)
+      continue
+    }
+
+    const firstPort = firstHalfEdgeEntry.port
+    if (firstPort === undefined) {
+      remainingActiveEdges.push(activeEdge)
+      continue
+    }
+
+    const secondPort = secondHalfEdgeEntry.port
+    if (secondPort === undefined) {
+      remainingActiveEdges.push(activeEdge)
+      continue
+    }
+
     if (
-      hasNode(component, activeEdge.first.node) &&
-      hasNode(component, activeEdge.second.node) &&
+      hasNode(component, firstPort.node) &&
+      hasNode(component, secondPort.node) &&
       !component.activeEdges.find((edge) => edgeEqual(edge, activeEdge))
     ) {
       component.activeEdges.push(activeEdge)
