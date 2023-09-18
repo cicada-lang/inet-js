@@ -1,8 +1,7 @@
 require "DiffList.i"
 require "Trivial.i"
 
-declare oneTwoSoles(): DiffList(Trivial)
-function oneTwoSoles() {
+function oneTwoSoles(): DiffList(Trivial) {
   let front, back, value1 = diff()
   @connect(front, cons(sole(), back))
   let front, back, value2 = diff()
@@ -13,8 +12,7 @@ function oneTwoSoles() {
 @inspect(oneTwoSoles())
 @inspect(@run(oneTwoSoles()))
 
-declare twoTwoSoles(): DiffList(Trivial)
-function twoTwoSoles {
+function twoTwoSoles(): DiffList(Trivial) {
   let front, back, value1 = diff()
   @connect(front, cons(sole(), cons(sole(), back)))
   let front, back, value2 = diff()

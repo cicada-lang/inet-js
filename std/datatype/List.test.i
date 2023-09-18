@@ -1,8 +1,7 @@
 require "List.i"
 require "Trivial.i"
 
-declare sixSoles(): List(Trivial)
-function sixSoles() {
+function sixSoles(): List(Trivial) {
   return append(
     cons(sole(), cons(sole(), cons(sole(), null()))),
     cons(sole(), cons(sole(), cons(sole(), null()))),

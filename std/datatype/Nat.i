@@ -31,23 +31,19 @@ rule add1 add {
   add1(add(^add1.prev, ^add.addend), ^add.result)
 }
 
-declare one(): Nat
-function one() {
+function one(): Nat {
   return add1(zero())
 }
 
-declare two(): Nat
-function two() {
+function two(): Nat {
   return add(one(), one())
 }
 
-declare three(): Nat
-function three() {
+function three(): Nat {
   return add(two(), one())
 }
 
-declare four(): Nat
-function four() {
+function four(): Nat {
   return add(two(), two())
 }
 
