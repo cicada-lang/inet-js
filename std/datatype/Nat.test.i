@@ -14,8 +14,7 @@ require "Nat.i" // Multiple `require` is fine.
 @inspect(add(one(), zero()))
 @inspect(@run(add(one(), zero())))
 
-declare addadd(Nat, Nat, Nat): Nat
-function addadd(x, y, z) {
+function addadd(x: Nat, y: Nat, z:Nat): Nat {
   return add(add(x, y), z)
 }
 

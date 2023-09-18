@@ -1,6 +1,17 @@
 # new-syntax
 
+[new-syntax] `Exp` -- `Block` has `body` and `ret`
+
+- `return` is not a statement
+- a block always has a `return` at the end
+
+[new-syntax] `exp/block/BlockStmt`
+[new-syntax] `exp/block/Let`
+[new-syntax] `exp/block/Evaluate`
+
 [new-syntax] use `Exp` instead of `Word`
+[new-syntax] use round () instead of {} for node
+[new-syntax] no need `declare`
 
 `connectPortWithHalfEdge` should call `checkPortSigns`
 
