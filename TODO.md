@@ -1,4 +1,3 @@
-remove `docs/articles/`
 rename `return` to `result` in readme
 
 # new-syntax
