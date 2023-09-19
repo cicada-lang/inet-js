@@ -1,14 +1,8 @@
 import { appendReport } from "../errors/appendReport"
-import { Exp } from "../exp"
 import { Mod } from "../mod"
 import { Span } from "../span"
 import { Stmt } from "../stmt-next"
-
-export type Parameter = {
-  name: string
-  t: Exp
-  isPrincipal?: boolean
-}
+import { Parameter } from "./Parameter"
 
 export class DefineNode implements Stmt {
   constructor(

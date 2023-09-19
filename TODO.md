@@ -1,6 +1,5 @@
 # new-syntax
 
-extract `Parameter`
 [new-syntax] `stmts-next/` -- `DefineRule`
 [new-syntax] `stmts-next/` -- `DefineFunction`
 [new-syntax] `stmts-next/` -- `TopLevelEvaluate`

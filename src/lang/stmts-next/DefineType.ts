@@ -1,19 +1,14 @@
 import { appendReport } from "../errors/appendReport"
-import { Exp } from "../exp"
 import { Mod } from "../mod"
 import { Span } from "../span"
 import { Stmt } from "../stmt-next"
-
-export type TypeParameter = {
-  name: string
-  t: Exp
-}
+import { Parameter } from "./Parameter"
 
 export class DefineType implements Stmt {
   constructor(
     public name: string,
-    public input: Array<TypeParameter>,
-    public output: Array<TypeParameter>,
+    public input: Array<Parameter>,
+    public output: Array<Parameter>,
     public span: Span,
   ) {}
 
