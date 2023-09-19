@@ -1,10 +1,23 @@
 # new-syntax
 
-[new-syntax] `stmts-next/`
-[new-syntax] `definition-next/`
+[new-syntax] `stmts-next/` -- `DefineRule`
+[new-syntax] `stmts-next/` -- `DefineType`
+[new-syntax] `stmts-next/` -- `DefineFunction`
+[new-syntax] `stmts-next/` -- `TopLevelEvaluate`
+[new-syntax] `stmts-next/` -- `TopLevelLet`
+
 [new-syntax] `Exp` -- `syntax-next/`
+
+[new-syntax] `definition-next/`
+
+[new-syntax] `stmts-next/` -- `DefineNode` -- `execute`
+[new-syntax] `stmts-next/` -- `DefineRule` -- `execute`
+[new-syntax] `stmts-next/` -- `DefineType` -- `execute`
+[new-syntax] `stmts-next/` -- `DefineFunction` -- `execute`
+[new-syntax] `stmts-next/` -- `TopLevelEvaluate` -- `execute`
+[new-syntax] `stmts-next/` -- `TopLevelLet` -- `execute`
+
 [new-syntax] `evaluate/`
-[new-syntax] `execute/`
 
 [new-syntax] use `Exp` instead of `Word`
 
