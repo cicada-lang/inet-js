@@ -1,7 +1,7 @@
 import { Span } from "../span"
 import { BlockStmt } from "./BlockStmt"
 
-export type Exp = Var | Ap | Block
+export type Exp = Var | Ap | Symbol | Builtin | Block
 
 export type Var = {
   "@type": "Exp"
@@ -15,6 +15,20 @@ export type Ap = {
   "@kind": "Ap"
   target: Exp
   args: Array<Exp>
+  span: Span
+}
+
+export type Symbol = {
+  "@type": "Exp"
+  "@kind": "Ap"
+  name: string
+  span: Span
+}
+
+export type Builtin = {
+  "@type": "Exp"
+  "@kind": "Ap"
+  name: string
   span: Span
 }
 

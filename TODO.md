@@ -1,7 +1,5 @@
 # new-syntax
 
-[new-syntax] `Symbol` as `Exp`
-
 [new-syntax] new `stmt/`
 
 [new-syntax] use `Exp` instead of `Word`
