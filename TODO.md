@@ -1,6 +1,9 @@
 # new-syntax
 
-[new-syntax] `stmts-next/` -- `TopLevelEvaluate`
+`formatExp`
+
+[new-syntax] `stmts-next/` -- fix `TopLevelEvaluate` by `formatExp`
+
 [new-syntax] `stmts-next/` -- `TopLevelLet`
 
 [new-syntax] `Exp` -- `syntax-next/`

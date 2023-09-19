@@ -20,7 +20,7 @@ export class DefineFunction implements Stmt {
     } catch (error) {
       throw appendReport(error, {
         message: [
-          `[Define.execute] I fail to define word.`,
+          `[DefineFunction.execute] I fail to define word.`,
           ``,
           `  word: ${this.name}`,
         ].join("\n"),

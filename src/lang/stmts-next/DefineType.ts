@@ -18,7 +18,7 @@ export class DefineType implements Stmt {
     } catch (error) {
       throw appendReport(error, {
         message: [
-          `[DefineNode.execute] I fail to define node.`,
+          `[DefineType.execute] I fail to define node.`,
           ``,
           `  node name: ${this.name}`,
         ].join("\n"),
