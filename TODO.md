@@ -1,6 +1,6 @@
 # new-syntax
 
-[new-syntax] `Exp` has `span`
+[new-syntax] `Symbol` as `Exp`
 
 [new-syntax] new `stmt/`
 
