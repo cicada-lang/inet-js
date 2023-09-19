@@ -4,17 +4,16 @@ import { Mod } from "../mod"
 import { Span } from "../span"
 import { Stmt } from "../stmt-next"
 
-export type Parameter = {
+export type TypeParameter = {
   name: string
   t: Exp
-  isPrincipal?: boolean
 }
 
-export class DefineNode implements Stmt {
+export class DefineType implements Stmt {
   constructor(
     public name: string,
-    public input: Array<Parameter>,
-    public output: Array<Parameter>,
+    public input: Array<TypeParameter>,
+    public output: Array<TypeParameter>,
     public span: Span,
   ) {}
 
