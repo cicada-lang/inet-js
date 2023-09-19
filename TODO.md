@@ -1,8 +1,5 @@
 # new-syntax
 
-[new-syntax] `Exp` -- `Block` has `stmts: Array<BlockStmt>`
-
-[new-syntax] `exp/block/BlockStmt`
 [new-syntax] `exp/block/Let`
 [new-syntax] `exp/block/Evaluate`
 [new-syntax] `exp/block/Return`

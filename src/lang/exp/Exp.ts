@@ -1,4 +1,6 @@
-export type Exp = Var | Ap
+import { BlockStmt } from "./block/BlockStmt"
+
+export type Exp = Var | Ap | Block
 
 export type Var = {
   "@type": "Exp"
@@ -11,4 +13,10 @@ export type Ap = {
   "@kind": "Ap"
   target: Exp
   args: Array<Exp>
+}
+
+export type Block = {
+  "@type": "Exp"
+  "@kind": "Block"
+  stmts: Array<BlockStmt>
 }
