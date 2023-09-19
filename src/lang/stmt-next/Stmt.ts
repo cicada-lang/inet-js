@@ -1,8 +1,7 @@
 import { Exp } from "../exp"
 import { BlockStmt } from "../exp/BlockStmt"
-import { Mod } from "../mod"
 import { Span } from "../span"
-import { Parameter, ParameterWithoutType } from "../stmts-next"
+import { Parameter, ParameterWithoutType } from "./Parameter"
 
 export type Stmt =
   | DefineNode
@@ -15,7 +14,6 @@ export type Stmt =
 export type DefineNode = {
   "@type": "Stmt"
   "@kind": "DefineNode"
-  mod: Mod
   name: string
   input: Array<Parameter>
   output: Array<Parameter>
@@ -25,7 +23,6 @@ export type DefineNode = {
 export type DefineType = {
   "@type": "Stmt"
   "@kind": "DefineType"
-  mod: Mod
   name: string
   input: Array<Parameter>
   output: Array<Parameter>
@@ -40,7 +37,6 @@ export type RuleTarget = {
 export type DefineRule = {
   "@type": "Stmt"
   "@kind": "DefineRule"
-  mod: Mod
   first: RuleTarget
   second: RuleTarget
   body: Array<BlockStmt>
@@ -50,7 +46,6 @@ export type DefineRule = {
 export type DefineFunction = {
   "@type": "Stmt"
   "@kind": "DefineFunction"
-  mod: Mod
   name: string
   input: Array<Parameter>
   ret: Parameter
@@ -60,7 +55,6 @@ export type DefineFunction = {
 export type TopLevelEvaluate = {
   "@type": "Stmt"
   "@kind": "TopLevelEvaluate"
-  mod: Mod
   exp: Exp
   span: Span
 }
@@ -68,7 +62,6 @@ export type TopLevelEvaluate = {
 export type TopLevelLet = {
   "@type": "Stmt"
   "@kind": "TTopLevelLet"
-  mod: Mod
   names: Array<string>
   exp: Exp
   span: Span

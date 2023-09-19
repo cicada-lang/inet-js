@@ -1,14 +1,14 @@
 # new-syntax
 
-[new-syntax] `execute`
-
 [new-syntax] `Exp` -- `syntax-next/`
 [new-syntax] `Stmt` -- `syntax-next/`
+
+[new-syntax] `execute`
 
 [new-syntax] test parse by `inet.js parse`
 
 `formatExp`
-`formatStmt`
+`formatStmt` -- fix `execute` error report
 
 [new-syntax] test parse by `inet.js format`
 
