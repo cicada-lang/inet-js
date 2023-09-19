@@ -1,6 +1,5 @@
 # new-syntax
 
-[new-syntax] `stmts-next/` -- `DefineFunction`
 [new-syntax] `stmts-next/` -- `TopLevelEvaluate`
 [new-syntax] `stmts-next/` -- `TopLevelLet`
 
