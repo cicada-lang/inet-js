@@ -5,3 +5,8 @@ export type Parameter = {
   t: Exp
   isPrincipal?: boolean
 }
+
+export type ParameterWithoutType = {
+  name: string
+  isPrincipal?: boolean
+}

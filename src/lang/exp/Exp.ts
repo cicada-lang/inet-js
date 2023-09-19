@@ -35,6 +35,6 @@ export type Builtin = {
 export type Block = {
   "@type": "Exp"
   "@kind": "Block"
-  stmts: Array<BlockStmt>
+  body: Array<BlockStmt>
   span: Span
 }
