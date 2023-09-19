@@ -1,11 +1,19 @@
 # new-syntax
 
+[new-syntax] `Stmt` should be closed type instead of class
+[new-syntax] `execute`
+
 [new-syntax] `Exp` -- `syntax-next/`
 [new-syntax] `Stmt` -- `syntax-next/`
 
-[new-syntax] `definition-next/`
+[new-syntax] test parse by `inet.js parse`
 
 `formatExp`
+`formatStmt`
+
+[new-syntax] test parse by `inet.js format`
+
+[new-syntax] `definition-next/`
 
 [new-syntax] `stmts-next/` -- `DefineNode` -- `execute`
 [new-syntax] `stmts-next/` -- `DefineRule` -- `execute`

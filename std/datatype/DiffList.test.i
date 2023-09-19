@@ -19,4 +19,4 @@ function twoTwoSoles(): DiffList(Trivial) {
   return diffAppend(value1, value2)
 }
 
-@inspect(twoTwoSoles())))
+@inspect(@run(@inspect(twoTwoSoles())))
