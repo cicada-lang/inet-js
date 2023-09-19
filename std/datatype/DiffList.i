@@ -7,7 +7,7 @@ require "List.i"
 // plugging the front of the second argument
 // at the back of the first one.
 
-type DiffList(@Type): @Type
+type DiffList(Element: @Type)
 
 node diff(
   front: List('A),

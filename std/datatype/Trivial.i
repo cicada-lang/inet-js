@@ -1,4 +1,4 @@
-type Trivial: @Type
+type Trivial
 
 node sole(
   --------

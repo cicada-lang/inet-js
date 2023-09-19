@@ -1,4 +1,4 @@
-type List: @Type
+type List(Element: @Type)
 
 node null(
   --------

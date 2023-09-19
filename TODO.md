@@ -1,6 +1,5 @@
 # new-syntax
 
-[new-syntax] `std/` -- `type` no need `: @Type`
 [new-syntax] `std/` -- `rule` use pattern matching
 
 [new-syntax] `Exp` -- `Block` has `body` and `ret`
