@@ -1,15 +1,11 @@
 # new-syntax
 
-[new-syntax] `std/` -- `rule` use pattern matching
-
-[new-syntax] `Exp` -- `Block` has `body` and `ret`
-
-- `return` is not a statement
-- a block always has a `return` at the end
+[new-syntax] `Exp` -- `Block` has `stmts: Array<BlockStmt>`
 
 [new-syntax] `exp/block/BlockStmt`
 [new-syntax] `exp/block/Let`
 [new-syntax] `exp/block/Evaluate`
+[new-syntax] `exp/block/Return`
 
 [new-syntax] use `Exp` instead of `Word`
 

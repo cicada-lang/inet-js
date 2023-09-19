@@ -18,17 +18,15 @@ node add(
   result: Nat
 )
 
-rule zero(value!) add(target!, addend, result) {
+rule add(target!, addend, result) zero(value!) {
   @connect(addend, result)
 }
 
-rule add1 add {
-  // @connect(
-  //   add1(add(^add1.prev, ^add.addend)),
-  //   ^add.result,
-  // )
+rule add(target!, addend, result) add1(prev, value!) {
+  add1(add(prev, addend), result)
 
-  add1(add(^add1.prev, ^add.addend), ^add.result)
+  // Same as:
+  // @connect(add1(add(prev, addend)), result)
 }
 
 function one(): Nat {
@@ -54,10 +52,10 @@ node natErase(
   --------
 )
 
-rule zero natErase {}
+rule natErase(target!) zero(value!) {}
 
-rule add1 natErase {
-  natErase(^add1.prev)
+rule natErase(target!) add1(prev, value!)  {
+  natErase(prev)
 }
 
 node natDup(
@@ -67,18 +65,19 @@ node natDup(
   first: Nat
 )
 
-rule zero natDup {
-  // @connect(zero(), ^natDup.first)
-  // @connect(zero(), ^natDup.second)
+rule natDup(target!, second, first) zero(value!) {
+  zero(first)
+  zero(second)
 
-  zero(^natDup.first)
-  zero(^natDup.second)
+  // Same as:
+  // @connect(zero(), first)
+  // @connect(zero(), second)
 }
 
-rule add1 natDup {
-  let first, second = natDup(^add1.prev)
-  @connect(add1(first), ^natDup.first)
-  @connect(add1(second), ^natDup.second)
+rule natDup(target!, second, first) add1(prev, value1) {
+  let prevFirst, prevSecond = natDup(prev)
+  @connect(add1(prevFirst), first)
+  @connect(add1(prevSecond), second)
 }
 
 node mul(
@@ -88,14 +87,14 @@ node mul(
   result: Nat
 )
 
-rule zero mul {
-  natErase(^mul.mulend)
-  zero(^mul.result)
+rule mul(target!, mulend, result) zero(value!) {
+  natErase(mulend)
+  zero(result)
 }
 
-rule add1 mul {
-  let first, second = natDup(^mul.mulend)
-  add(second, mul(first, ^add1.prev), ^mul.result)
+rule mul(target!, mulend, result) add1(prev, value!) {
+  let first, second = natDup(mulend)
+  add(second, mul(first, prev), result)
 }
 
 // To define `max`, we need `maxAux`.
@@ -114,21 +113,18 @@ node max(
   result: Nat
 )
 
-rule zero max {
-  @connect(^max.second, ^max.result)
+rule max(first!, second, result) zero(value!) {
+  @connect(second, result)
 }
 
-rule add1 max {
-  maxAux(^add1.prev, ^max.second, ^max.result)
+rule max(first!, second, result) add1(prev, value!) {
+  maxAux(prev, second, result)
 }
 
-rule zero maxAux {
-  add1(^maxAux.first, ^maxAux.result)
+rule maxAux(first, second!, result) zero(value!) {
+  add1(first, result)
 }
 
-rule add1 maxAux {
-  add1(
-    max(^maxAux.first, ^add1.prev),
-    ^maxAux.result
-  )
+rule maxAux(first, second!, result) add1(prev, value!) {
+  add1(max(first, prev), result)
 }

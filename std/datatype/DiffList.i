@@ -25,18 +25,18 @@ node diffAppend(
 
 node diffOpen(
   target!: DiffList('A),
-  list: List('A)
+  newBack: List('A)
   ----------
-  result: List('A)
+  oldBack: List('A)
 )
 
-rule diff diffAppend {
-  let back, value = diff(^diff.front)
-  @connect(value, ^diffAppend.result)
-  diffOpen(^diffAppend.rest, back, ^diff.back)
+rule diffAppend(target!, rest, result) diff(front, back, value!) {
+  let newBack, value = diff(front)
+  @connect(value, result)
+  diffOpen(rest, newBack, back)
 }
 
-rule diff diffOpen {
-  @connect(^diff.back, ^diffOpen.list)
-  @connect(^diff.front, ^diffOpen.result)
+rule diffOpen(target!, newBack, oldBack) diff(front, back, value!)  {
+  @connect(back, newBack)
+  @connect(front, oldBack)
 }

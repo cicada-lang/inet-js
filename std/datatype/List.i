@@ -19,14 +19,10 @@ node append(
   result: List('A)
 )
 
-rule null append {
-  @connect(^append.rest, ^append.result)
+rule append(target!, rest, result) null(value!)  {
+  @connect(rest, result)
 }
 
-rule cons append {
-  cons(
-    ^cons.head,
-    append(^cons.tail, ^append.rest),
-    ^append.result
-  )
+rule append(target!, rest, result) cons(head, tail, value!) {
+  cons(head, append(tail, rest), result)
 }
