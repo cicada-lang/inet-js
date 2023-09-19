@@ -9,34 +9,30 @@ require "List.i"
 
 type DiffList(@Type): @Type
 
-node diff {
+node diff(
   front: List('A),
   -------
   back: List('A),
   value!: DiffList('A),
-}
+)
 
-node diffAppend {
+node diffAppend(
   target!: DiffList('A),
   rest: DiffList('A)
   --------
   result: DiffList('A)
-}
+)
 
-node diffOpen {
+node diffOpen(
   target!: DiffList('A),
   list: List('A)
   ----------
   result: List('A)
-}
+)
 
 rule diff diffAppend {
-  let back = diff(^diff.front, value: ^diffAppend.result)
-
-  // The same as:
-  // let back, value = diff(^diff.front)
-  // @connect(value, ^diffAppend.result)
-
+  let back, value = diff(^diff.front)
+  @connect(value, ^diffAppend.result)
   diffOpen(^diffAppend.rest, back, ^diff.back)
 }
 

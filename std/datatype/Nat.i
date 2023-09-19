@@ -1,25 +1,25 @@
 type Nat: @Type
 
-node zero {
+node zero(
   ------
   value!: Nat
-}
+)
 
-node add1 {
+node add1(
   prev: Nat
   ----------
   value!: Nat
-}
+)
 
-node add {
+node add(
   target!: Nat,
   addend: Nat
   --------
   result: Nat
-}
+)
 
-rule zero add {
-  @connect(^add.addend, ^add.result)
+rule zero(value!) add(target!, addend, result) {
+  @connect(addend, result)
 }
 
 rule add1 add {
@@ -49,10 +49,10 @@ function four(): Nat {
 
 // To define `mul`, we first need `natErase` and `natDup`.
 
-node natErase {
+node natErase(
   target!: Nat
   --------
-}
+)
 
 rule zero natErase {}
 
@@ -60,12 +60,12 @@ rule add1 natErase {
   natErase(^add1.prev)
 }
 
-node natDup {
+node natDup(
   target!: Nat
   --------
   second: Nat,
   first: Nat
-}
+)
 
 rule zero natDup {
   // @connect(zero(), ^natDup.first)
@@ -81,12 +81,12 @@ rule add1 natDup {
   @connect(add1(second), ^natDup.second)
 }
 
-node mul {
+node mul(
   target!: Nat,
   mulend: Nat
   --------
   result: Nat
-}
+)
 
 rule zero mul {
   natErase(^mul.mulend)
@@ -100,19 +100,19 @@ rule add1 mul {
 
 // To define `max`, we need `maxAux`.
 
-node maxAux {
+node maxAux(
   first: Nat,
   second!: Nat
   --------
   result: Nat
-}
+)
 
-node max {
+node max(
   first!: Nat,
   second: Nat
   ----------
   result: Nat
-}
+)
 
 rule zero max {
   @connect(^max.second, ^max.result)

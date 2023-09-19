@@ -1,23 +1,23 @@
 type List: @Type
 
-node null {
+node null(
   --------
   value!: List('A)
-}
+)
 
-node cons {
+node cons(
   head: 'A,
   tail: List('A)
   --------
   value!: List('A)
-}
+)
 
-node append {
+node append(
   target!: List('A)
   rest: List('A)
   --------
   result: List('A)
-}
+)
 
 rule null append {
   @connect(^append.rest, ^append.result)

@@ -1,6 +1,6 @@
 type Trivial: @Type
 
-node sole {
+node sole(
   --------
   value!: Trivial
-}
+)
