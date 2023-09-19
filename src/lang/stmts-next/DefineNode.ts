@@ -1,10 +1,9 @@
 import { appendReport } from "../errors/appendReport"
 import { Mod } from "../mod"
 import { Span } from "../span"
-import { Stmt } from "../stmt-next"
 import { Parameter } from "./Parameter"
 
-export class DefineNode implements Stmt {
+export class DefineNode {
   constructor(
     public name: string,
     public input: Array<Parameter>,

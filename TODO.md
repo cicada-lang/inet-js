@@ -1,6 +1,5 @@
 # new-syntax
 
-[new-syntax] `Stmt` should be closed type instead of class
 [new-syntax] `execute`
 
 [new-syntax] `Exp` -- `syntax-next/`

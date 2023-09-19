@@ -2,7 +2,6 @@ import { appendReport } from "../errors/appendReport"
 import { BlockStmt } from "../exp/BlockStmt"
 import { Mod } from "../mod"
 import { Span } from "../span"
-import { Stmt } from "../stmt"
 import { ParameterWithoutType } from "./Parameter"
 
 export type RuleTarget = {
@@ -10,7 +9,7 @@ export type RuleTarget = {
   parameters: Array<ParameterWithoutType>
 }
 
-export class DefineRule implements Stmt {
+export class DefineRule {
   constructor(
     public first: RuleTarget,
     public second: RuleTarget,

@@ -3,9 +3,8 @@ import { Exp } from "../exp/Exp.js"
 import { formatExp } from "../exp/formatExp.js"
 import { Mod } from "../mod/index.js"
 import { Span } from "../span/index.js"
-import { Stmt } from "../stmt/index.js"
 
-export class TopLevelEvaluate implements Stmt {
+export class TopLevelEvaluate {
   constructor(
     public exp: Exp,
     public span: Span,

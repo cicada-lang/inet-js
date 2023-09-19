@@ -3,9 +3,8 @@ import { Exp } from "../exp/Exp.js"
 import { formatExp } from "../exp/formatExp.js"
 import { Mod } from "../mod/index.js"
 import { Span } from "../span/index.js"
-import { Stmt } from "../stmt/index.js"
 
-export class TopLevelLet implements Stmt {
+export class TopLevelLet {
   constructor(
     public names: Array<string>,
     public exp: Exp,

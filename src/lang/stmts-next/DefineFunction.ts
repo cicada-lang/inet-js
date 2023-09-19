@@ -1,10 +1,9 @@
 import { appendReport } from "../errors/appendReport"
 import { Mod } from "../mod"
 import { Span } from "../span"
-import { Stmt } from "../stmt"
 import { Parameter } from "./Parameter"
 
-export class DefineFunction implements Stmt {
+export class DefineFunction {
   constructor(
     public name: string,
     public input: Array<Parameter>,

@@ -1,10 +1,9 @@
 import { appendReport } from "../errors/appendReport"
 import { Mod } from "../mod"
 import { Span } from "../span"
-import { Stmt } from "../stmt-next"
 import { Parameter } from "./Parameter"
 
-export class DefineType implements Stmt {
+export class DefineType {
   constructor(
     public name: string,
     public input: Array<Parameter>,
