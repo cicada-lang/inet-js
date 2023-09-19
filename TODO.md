@@ -1,7 +1,8 @@
 # new-syntax
 
-[new-syntax] `stmts-next/` -- `TopLevelLet`
 [new-syntax] `Exp` -- `syntax-next/`
+[new-syntax] `Stmt` -- `syntax-next/`
+
 [new-syntax] `definition-next/`
 
 `formatExp`
