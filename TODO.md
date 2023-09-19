@@ -1,16 +1,15 @@
 # new-syntax
 
-[new-syntax] new `stmt/`
+[new-syntax] `stmts-next/`
+[new-syntax] `definition-next/`
+[new-syntax] `Exp` -- `syntax-next/`
+[new-syntax] `evaluate/`
+[new-syntax] `execute/`
 
 [new-syntax] use `Exp` instead of `Word`
 
-`connectPortWithHalfEdge` should call `checkPortSigns`
-
-- `@connect` -- should not call `checkPortSigns`
-
-[refactor] check during `connect*` instead of before `connect*`
-
 [new-syntax] Bin.i
+
 [new-syntax] `builtin/`
 [new-syntax] `checking/`
 [new-syntax] `module/`
@@ -20,4 +19,13 @@
 # half-edge
 
 [half-edge] `@edge` as a builtin to create two `HalfEdge`s
+
 [half-edge] refactor
+
+# later
+
+[bug] `connectPortWithHalfEdge` should call `checkPortSigns`
+
+- `@connect` -- should not call `checkPortSigns`
+
+[refactor] check during `connect*` instead of before `connect*`
