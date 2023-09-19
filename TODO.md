@@ -1,11 +1,10 @@
 # new-syntax
 
-[new-syntax] `exp/block/Let`
-[new-syntax] `exp/block/Evaluate`
-[new-syntax] `exp/block/Return`
+[new-syntax] `Exp` has `span`
+
+[new-syntax] new `stmt/`
 
 [new-syntax] use `Exp` instead of `Word`
-
 
 `connectPortWithHalfEdge` should call `checkPortSigns`
 

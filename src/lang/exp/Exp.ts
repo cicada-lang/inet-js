@@ -1,4 +1,4 @@
-import { BlockStmt } from "./block/BlockStmt"
+import { BlockStmt } from "./BlockStmt"
 
 export type Exp = Var | Ap | Block
 
