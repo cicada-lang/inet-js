@@ -19,7 +19,7 @@ node append(
   result: List('A)
 )
 
-rule append(target!, rest, result) null(value!)  {
+rule append(target!, rest, result) null(value!) {
   @connect(rest, result)
 }
 

@@ -30,13 +30,15 @@ node diffOpen(
   oldBack: List('A)
 )
 
-rule diffAppend(target!, rest, result) diff(front, back, value!) {
+rule diffAppend(target!, rest, result)
+     diff(front, back, value!) {
   let newBack, value = diff(front)
   @connect(value, result)
   diffOpen(rest, newBack, back)
 }
 
-rule diffOpen(target!, newBack, oldBack) diff(front, back, value!)  {
+rule diffOpen(target!, newBack, oldBack)
+     diff(front, back, value!) {
   @connect(back, newBack)
   @connect(front, oldBack)
 }
