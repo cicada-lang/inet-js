@@ -1,8 +1,8 @@
 import { Loader } from "../../loader"
 import { defineBuiltinOperators } from "../builtins/defineBuiltinOperators"
 import { createChecking } from "../checking/createChecking"
-import { createEnv } from "../env/createEnv.js"
-import { Stmt } from "../stmt/Stmt.js"
+import { createEnv } from "../env/createEnv"
+import { Stmt } from "../stmt"
 import { Mod } from "./Mod"
 
 export function createMod(options: {

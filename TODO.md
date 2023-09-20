@@ -1,6 +1,10 @@
 # new-syntax
 
-[new-syntax] `definition-next/`
+[new-syntax] use `Exp` instead of `Word`
+
+[new-syntax] `mod/`
+[new-syntax] `evaluate/`
+[new-syntax] `definition/`
 
 [new-syntax] `execute` -- `DefineNode`
 [new-syntax] `execute` -- `DefineRule`
@@ -8,10 +12,6 @@
 [new-syntax] `execute` -- `DefineFunction`
 [new-syntax] `execute` -- `TopLevelEvaluate`
 [new-syntax] `execute` -- `TopLevelLet`
-
-[new-syntax] `evaluate/`
-
-[new-syntax] use `Exp` instead of `Word`
 
 # test new syntax
 

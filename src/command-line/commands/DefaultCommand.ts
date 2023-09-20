@@ -1,6 +1,6 @@
 import { Command, CommandRunner } from "@xieyuheng/command-line"
 import ty from "@xieyuheng/ty"
-import { app } from "../../app/index.js"
+import { app } from "../../app/index"
 import * as Commands from "../commands"
 
 type Args = { path?: string }

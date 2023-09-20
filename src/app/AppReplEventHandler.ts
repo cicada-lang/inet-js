@@ -4,9 +4,9 @@ import fs from "fs"
 import { relative } from "node:path"
 import process from "process"
 import { app } from "../app"
-import { Fetcher } from "../fetcher/Fetcher.js"
-import { Report } from "../lang/errors/Report.js"
-import { parseStmts } from "../lang/syntax/index.js"
+import { Fetcher } from "../fetcher/Fetcher"
+import { Report } from "../lang/errors/Report"
+import { parseStmts } from "../lang/syntax/index"
 import { Loader } from "../loader"
 
 const fetcher = new Fetcher()

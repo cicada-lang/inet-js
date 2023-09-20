@@ -1,10 +1,10 @@
-import { compose } from "../compose/compose.js"
-import { appendReport } from "../errors/appendReport.js"
-import { Mod } from "../mod/index.js"
-import { Span } from "../span/index.js"
-import { Stmt } from "../stmt/index.js"
-import { formatWord } from "../word/formatWord.js"
-import { Word } from "../word/index.js"
+import { compose } from "../compose/compose"
+import { appendReport } from "../errors/appendReport"
+import { Mod } from "../mod/index"
+import { Span } from "../span/index"
+import { Stmt } from "../stmt/index"
+import { formatWord } from "../word/formatWord"
+import { Word } from "../word/index"
 
 export class Compose implements Stmt {
   constructor(
