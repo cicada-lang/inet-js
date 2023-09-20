@@ -1,4 +1,5 @@
 import { Fetcher } from "../fetcher"
+import { execute } from "../lang/execute"
 import { Mod } from "../lang/mod"
 import { createMod } from "../lang/mod/createMod"
 import { parseStmts } from "../lang/syntax"
@@ -35,7 +36,7 @@ export class Loader {
     this.loading.add(url.href)
 
     for (const stmt of stmts) {
-      await stmt.execute(mod)
+      await execute(mod, stmt)
     }
 
     this.loading.delete(url.href)

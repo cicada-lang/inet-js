@@ -1,7 +1,7 @@
 import { appendReport } from "../errors"
 import { Mod } from "../mod"
-import { Stmt } from "../stmt-next"
-import { formatStmt } from "../stmt-next/formatStmt"
+import { Stmt } from "../stmt"
+import { formatStmt } from "../stmt/formatStmt"
 
 export async function execute(mod: Mod, stmt: Stmt): Promise<void> {
   try {

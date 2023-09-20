@@ -1,7 +1,7 @@
 import { Checking } from "../checking"
-import { compose } from "../compose/compose"
 import { Edge } from "../edge"
 import { Env } from "../env"
+import { evaluateBlockStmt } from "../evaluate"
 import { findRuleByPorts } from "../mod/findRuleByPorts"
 import { deleteHalfEdgeEntry } from "../net/deleteHalfEdgeEntry"
 import { deleteNodeEntry } from "../net/deleteNodeEntry"
@@ -38,8 +38,8 @@ export function interact(
 
   if (rule === undefined) return
 
-  for (const word of rule.words) {
-    compose(rule.mod, env, word, {
+  for (const stmt of rule.body) {
+    evaluateBlockStmt(rule.mod, env, stmt, {
       current: {
         first: firstPort.node,
         second: secondPort.node,

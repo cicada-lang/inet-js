@@ -6,7 +6,7 @@ import { relative } from "node:path"
 import process from "node:process"
 import { Fetcher } from "../../fetcher"
 import { Report } from "../../lang/errors/Report"
-import { parseStmts } from "../../lang/syntax-next"
+import { parseStmts } from "../../lang/syntax"
 import { createURL } from "../../utils/createURL"
 
 type Args = { path: string }

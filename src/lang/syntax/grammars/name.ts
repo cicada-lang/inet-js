@@ -1,12 +1,6 @@
 // NOTE Preserve keywords for JSON.
 
-const preserved = [
-  ...["define", "claim"],
-  ...["type", "node", "rule"],
-  ...["check"],
-  ...["import", "require"],
-  ...["then", "end"],
-]
+const preserved: Array<string> = ["return"]
 
 export const variable_name = {
   $pattern: [

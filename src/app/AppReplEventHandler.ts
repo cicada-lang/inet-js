@@ -6,6 +6,7 @@ import process from "process"
 import { app } from "../app"
 import { Fetcher } from "../fetcher/Fetcher"
 import { Report } from "../lang/errors/Report"
+import { execute } from "../lang/execute"
 import { parseStmts } from "../lang/syntax/index"
 import { Loader } from "../loader"
 
@@ -60,7 +61,7 @@ export class AppReplEventHandler extends ReplEventHandler {
       mod.stmts = parseStmts(mod.text)
 
       for (const stmt of mod.stmts.slice(length)) {
-        await stmt.execute(mod)
+        await execute(mod, stmt)
       }
     } catch (error) {
       if (error instanceof ParsingError) {

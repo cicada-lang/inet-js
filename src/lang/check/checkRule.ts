@@ -1,44 +1,45 @@
 import { capNodeNonPrinciplePorts } from "../cap/capNodeNonPrinciplePorts"
 import { createChecking } from "../checking/createChecking"
-import { compose } from "../compose/compose"
 import { createEnv } from "../env/createEnv"
+import { evaluateBlockStmt } from "../evaluate"
+import { BlockStmt } from "../exp/BlockStmt"
 import { refreshNode } from "../freshen/refreshNode"
 import { Mod } from "../mod"
 import { findDefinitionOrFail } from "../mod/findDefinitionOrFail"
 import { createNodeFromDefinition } from "../node/createNodeFromDefinition"
-import { Word } from "../word"
+import { RuleTarget } from "../stmt"
 import { checkAllLocalsAreUsed } from "./checkAllLocalsAreUsed"
 
 export function checkRule(
   mod: Mod,
-  firstName: string,
-  secondName: string,
-  words: Array<Word>,
+  first: RuleTarget,
+  second: RuleTarget,
+  body: Array<BlockStmt>,
 ): void {
   const checking = createChecking()
 
   const env = createEnv(mod)
 
-  const first = createNodeFromDefinition(
+  const firstNode = createNodeFromDefinition(
     env.net,
-    findDefinitionOrFail(mod, firstName),
+    findDefinitionOrFail(mod, first.name),
   )
 
-  refreshNode(env.net, checking.typeVarCounters, first)
+  refreshNode(env.net, checking.typeVarCounters, firstNode)
 
-  const second = createNodeFromDefinition(
+  const secondNode = createNodeFromDefinition(
     env.net,
-    findDefinitionOrFail(mod, secondName),
+    findDefinitionOrFail(mod, second.name),
   )
 
-  refreshNode(env.net, checking.typeVarCounters, second)
+  refreshNode(env.net, checking.typeVarCounters, secondNode)
 
-  capNodeNonPrinciplePorts(mod, env.net, first)
-  capNodeNonPrinciplePorts(mod, env.net, second)
+  capNodeNonPrinciplePorts(mod, env.net, firstNode)
+  capNodeNonPrinciplePorts(mod, env.net, secondNode)
 
-  for (const word of words) {
-    compose(mod, env, word, {
-      current: { first, second },
+  for (const stmt of body) {
+    evaluateBlockStmt(mod, env, stmt, {
+      current: { first: firstNode, second: secondNode },
       checking,
     })
   }

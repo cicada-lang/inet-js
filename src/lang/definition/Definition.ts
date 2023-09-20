@@ -1,9 +1,7 @@
-import { ComposeOptions } from "../compose/compose"
 import { Env } from "../env"
+import { EvaluateOptions } from "../evaluate"
 import { Mod } from "../mod"
-import { PortExp } from "../port/PortExp"
 import { Span } from "../span"
-import { Word } from "../word"
 
 export type Definition =
   | NodeDefinition
@@ -17,8 +15,6 @@ export type NodeDefinition = {
   mod: Mod
   span: Span
   name: string
-  input: Array<PortExp>
-  output: Array<PortExp>
 }
 
 export type WordDefinition = {
@@ -27,9 +23,6 @@ export type WordDefinition = {
   mod: Mod
   span: Span
   name: string
-  input: Array<Word>
-  output: Array<Word>
-  words?: Array<Word>
 }
 
 export type OperatorDefinition = {
@@ -37,7 +30,7 @@ export type OperatorDefinition = {
   "@kind": "OperatorDefinition"
   mod: Mod
   name: string
-  compose: (env: Env, options: ComposeOptions) => void
+  compose: (env: Env, options: EvaluateOptions) => void
 }
 
 export type TypeDefinition = {
@@ -46,7 +39,4 @@ export type TypeDefinition = {
   mod: Mod
   span: Span
   name: string
-  input: Array<Word>
-  output: Array<Word>
-  inputArity: number
 }

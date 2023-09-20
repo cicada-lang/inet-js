@@ -2,6 +2,7 @@ import { Checking } from "../checking"
 import { Env } from "../env"
 import { Exp } from "../exp"
 import { Mod } from "../mod"
+import { Node } from "../node"
 import { Value } from "../value"
 
 export interface EvaluateOptions {

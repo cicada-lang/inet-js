@@ -1,12 +1,12 @@
-import { ComposeOptions } from "../compose/compose"
 import { Env } from "../env"
+import { EvaluateOptions } from "../evaluate"
 import { Mod } from "../mod"
 
 export function defineBuiltinOperator(
   mod: Mod,
   name: string,
   options: {
-    compose: (env: Env, options: ComposeOptions) => void
+    compose: (env: Env, options: EvaluateOptions) => void
   },
 ): void {
   mod.builtins.set(name, {

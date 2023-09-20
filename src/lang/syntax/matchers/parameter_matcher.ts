@@ -1,5 +1,5 @@
 import * as pt from "@cicada-lang/partech"
-import { Parameter, ParameterWithoutType } from "../../stmt-next/Parameter"
+import { Parameter, ParameterWithoutType } from "../../stmt/Parameter"
 import * as matchers from "../matchers"
 
 export function parameter_matcher(tree: pt.Tree): Parameter {

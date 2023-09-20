@@ -1,15 +1,5 @@
 # new-syntax
 
-[new-syntax] use `Exp` instead of `Word` -- disable tests for now
-
-[new-syntax] `evaluateBlockStmt/`
-
-[new-syntax] `evaluate/` -- `Var`
-[new-syntax] `evaluate/` -- `Ap`
-[new-syntax] `evaluate/` -- `Symbol`
-[new-syntax] `evaluate/` -- `Builtin`
-[new-syntax] `evaluate/` -- `Block`
-
 [new-syntax] `mod/`
 
 [new-syntax] `definition/`
@@ -20,6 +10,25 @@
 [new-syntax] `execute` -- `DefineFunction`
 [new-syntax] `execute` -- `TopLevelEvaluate`
 [new-syntax] `execute` -- `TopLevelLet`
+
+fix `createNodeFromDefinition`
+
+fix `RuleEntry`
+fix `findRuleByNodes`
+
+[new-syntax] `evaluate/` -- `Var`
+[new-syntax] `evaluate/` -- `Ap`
+[new-syntax] `evaluate/` -- `Symbol`
+[new-syntax] `evaluate/` -- `Builtin`
+[new-syntax] `evaluate/` -- `Block`
+
+[new-syntax] `evaluateBlockStmt/`
+
+# present
+
+restore `present/`
+
+restore `npm run test:ts`
 
 # test new syntax
 

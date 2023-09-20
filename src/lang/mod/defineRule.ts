@@ -1,5 +1,4 @@
 import { nodeKeyWithoutId } from "../node/nodeKeyWithoutId"
-import { Word } from "../word"
 import { Mod } from "./Mod"
 import { findDefinitionOrFail } from "./findDefinitionOrFail"
 
@@ -7,7 +6,6 @@ export function defineRule(
   mod: Mod,
   firstName: string,
   secondName: string,
-  words: Array<Word>,
 ): void {
   const firstDefinition = findDefinitionOrFail(mod, firstName)
   const secondDefinition = findDefinitionOrFail(mod, secondName)
@@ -27,15 +25,14 @@ export function defineRule(
 
   mod.ruleEntries.set(key, {
     name,
-    first: {
+    firstNode: {
       url: firstDefinition.mod.url,
       name: firstDefinition.name,
     },
-    second: {
+    secondNode: {
       url: secondDefinition.mod.url,
       name: secondDefinition.name,
     },
     mod,
-    words,
   })
 }

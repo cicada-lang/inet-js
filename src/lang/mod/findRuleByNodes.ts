@@ -11,8 +11,9 @@ export function findRuleByNodes(
   const firstKey = nodeKeyWithoutId(firstNode)
   const secondKey = nodeKeyWithoutId(secondNode)
 
-  return (
-    mod.ruleEntries.get(`${firstKey} ${secondKey}`) ||
-    mod.ruleEntries.get(`${secondKey} ${firstKey}`)
-  )
+  throw new Error("TODO")
+  // return (
+  //   mod.ruleEntries.get(`${firstKey} ${secondKey}`) ||
+  //   mod.ruleEntries.get(`${secondKey} ${firstKey}`)
+  // )
 }

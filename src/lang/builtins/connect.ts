@@ -1,13 +1,13 @@
-import { checkPortSigns } from "../check/checkPortSigns"
-import { ComposeOptions } from "../compose/compose"
+// import { checkPortSigns } from "../check/checkPortSigns"
 import { connectHalfEdges } from "../connect/connectHalfEdges"
 import { Env } from "../env"
+import { EvaluateOptions } from "../evaluate"
 import { findHalfEdgeEntryOrFail } from "../net/findHalfEdgeEntryOrFail"
 import { findHalfEdgePortOrFail } from "../net/findHalfEdgePortOrFail"
 import { unifyTypes } from "../unify/unifyTypes"
 import { formatValue } from "../value/formatValue"
 
-export function compose(env: Env, options: ComposeOptions): void {
+export function compose(env: Env, options: EvaluateOptions): void {
   const first = env.stack.pop()
 
   if (first === undefined) {
@@ -62,7 +62,8 @@ export function compose(env: Env, options: ComposeOptions): void {
   )
 
   if (options.checking) {
-    checkPortSigns(env.net, firstOtherPort, secondOtherPort)
+    // TODO
+    // checkPortSigns(env.net, firstOtherPort, secondOtherPort)
     unifyTypes(
       env,
       options.checking.substitution,
