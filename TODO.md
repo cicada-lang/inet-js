@@ -1,5 +1,7 @@
 [diary] 2023-09-20-optimization by partial evaluation
 
+
+
 # new-syntax
 
 [new-syntax] `std/` -- add `eval` to `TopLevelEvaluate`
