@@ -1,7 +1,5 @@
 # new-syntax
 
-[new-syntax] `std/` -- add `eval` to `TopLevelEvaluate`
-
 [new-syntax] `grammers/` -- `parameter`
 [new-syntax] `grammers/` -- `rule_target`
 

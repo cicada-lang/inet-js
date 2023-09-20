@@ -8,4 +8,4 @@ function sixSoles(): List(Trivial) {
   )
 }
 
-@inspect(@run(@inspect(sixSoles())))
+eval @inspect(@run(@inspect(sixSoles())))
