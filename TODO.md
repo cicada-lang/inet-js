@@ -1,13 +1,12 @@
 # execute
 
-[execute] fix `definition/`
-
-[execute] `execute` -- `DefineNode`
 [execute] `execute` -- `DefineRule`
 [execute] `execute` -- `DefineType`
 [execute] `execute` -- `DefineFunction`
 [execute] `execute` -- `TopLevelEvaluate`
 [execute] `execute` -- `TopLevelLet`
+[execute] `execute` -- `Require`
+[execute] `execute` -- `Import`
 
 fix `RuleEntry`
 fix `findRuleByNodes`
