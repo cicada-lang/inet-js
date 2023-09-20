@@ -61,7 +61,7 @@ export type TopLevelEvaluate = {
 
 export type TopLevelLet = {
   "@type": "Stmt"
-  "@kind": "TTopLevelLet"
+  "@kind": "TopLevelLet"
   names: Array<string>
   exp: Exp
   span: Span

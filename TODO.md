@@ -1,7 +1,5 @@
 # new-syntax
 
-[new-syntax] `matchers/` -- `stmt_matcher`
-
 [new-syntax] test parse by `inet.js parse`
 
 `formatExp`
