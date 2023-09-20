@@ -8,7 +8,7 @@ export function formatBlockStmt(stmt: BlockStmt): string {
     }
 
     case "Evaluate": {
-      return `eval ${formatExp(stmt.exp)}`
+      return `${formatExp(stmt.exp)}`
     }
 
     case "Return": {

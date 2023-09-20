@@ -3,5 +3,9 @@ import { ParameterWithoutType } from "./Parameter"
 export function formatParameterWithoutType(
   parameter: ParameterWithoutType,
 ): string {
-  return ""
+  if (parameter.isPrincipal) {
+    return `${parameter.name}!`
+  } else {
+    return `${parameter.name}`
+  }
 }

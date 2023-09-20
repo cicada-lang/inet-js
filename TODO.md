@@ -1,9 +1,5 @@
 # new-syntax
 
-`formatParameter`
-`formatRuleTarget`
-`formatParameterWithoutType`
-
 [new-syntax] `definition-next/`
 
 [new-syntax] `execute` -- `DefineNode`
