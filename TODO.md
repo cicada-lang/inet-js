@@ -2,8 +2,8 @@
 
 `formatStmt`
 `formatParameter`
-`formatParameterWithoutType`
 `formatRuleTarget`
+`formatParameterWithoutType`
 
 [new-syntax] test parse by `inet.js format`
 
