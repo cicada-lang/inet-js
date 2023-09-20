@@ -1,6 +1,6 @@
-// require "Nat.i"
-// require "Nat.i"
-// require "Nat.i" // Multiple `require` is fine.
+require "Nat.i"
+require "Nat.i"
+require "Nat.i" // Multiple `require` is fine.
 
 eval @inspect(@run(@inspect(add(zero(), zero()))))
 eval @inspect(@run(@inspect(two())))

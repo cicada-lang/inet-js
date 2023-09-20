@@ -1,7 +1,5 @@
 # new-syntax
 
-[new-syntax] `stmt-next` -- syntax for `require` and `import`
-
 `formatExp`
 
 `formatStmt` -- fix `execute` error report

@@ -8,6 +8,7 @@ export const dashline = pt.grammars.dashline
 export * from "./arg"
 export * from "./block_stmt"
 export * from "./exp"
+export * from "./import_binding"
 export * from "./name"
 export * from "./parameter"
 export * from "./rule_target"
