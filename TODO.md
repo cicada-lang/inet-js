@@ -1,11 +1,10 @@
 # new-syntax
 
-`formatStmt`
+[new-syntax] test parse by `inet.js format`
+
 `formatParameter`
 `formatRuleTarget`
 `formatParameterWithoutType`
-
-[new-syntax] test parse by `inet.js format`
 
 [new-syntax] `definition-next/`
 
