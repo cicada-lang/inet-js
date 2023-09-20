@@ -1,26 +1,34 @@
 # new-syntax
 
-[new-syntax] `Exp` -- `syntax-next/`
-[new-syntax] `Stmt` -- `syntax-next/`
 
-[new-syntax] `execute`
+[new-syntax] `grammars/` -- `arg`
+[new-syntax] `grammers/` -- `block_stmt`
+[new-syntax] `grammers/` -- `stmt`
+
+[new-syntax] `matchers/` -- `exp`
+[new-syntax] `matchers/` -- `arg`
+[new-syntax] `matchers/` -- `block_stmt`
+[new-syntax] `matchers/` -- `stmt`
 
 [new-syntax] test parse by `inet.js parse`
 
 `formatExp`
+
 `formatStmt` -- fix `execute` error report
 
 [new-syntax] test parse by `inet.js format`
 
 [new-syntax] `definition-next/`
 
-[new-syntax] `stmts-next/` -- `DefineNode` -- `execute`
-[new-syntax] `stmts-next/` -- `DefineRule` -- `execute`
-[new-syntax] `stmts-next/` -- `DefineType` -- `execute`
-[new-syntax] `stmts-next/` -- `DefineFunction` -- `execute`
-[new-syntax] `stmts-next/` -- `TopLevelEvaluate` -- `execute`
-[new-syntax] `stmts-next/` -- `TopLevelLet` -- `execute`
+[new-syntax] `execute` -- `DefineNode`
+[new-syntax] `execute` -- `DefineRule`
+[new-syntax] `execute` -- `DefineType`
+[new-syntax] `execute` -- `DefineFunction`
+[new-syntax] `execute` -- `TopLevelEvaluate`
+[new-syntax] `execute` -- `TopLevelLet`
+
 [new-syntax] `evaluate/`
+
 [new-syntax] use `Exp` instead of `Word`
 
 # test new syntax
