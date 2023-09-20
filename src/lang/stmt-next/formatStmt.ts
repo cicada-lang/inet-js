@@ -9,13 +9,13 @@ import { formatRuleTarget } from "./formatRuleTarget"
 export function formatStmt(stmt: Stmt): string {
   switch (stmt["@kind"]) {
     case "DefineNode": {
-      const input = stmt.input.map(formatParameter)
-      const output = stmt.output.map(formatParameter)
+      const input = stmt.input.map(formatParameter).join(", ")
+      const output = stmt.output.map(formatParameter).join(", ")
       return `node ${stmt.name}(${input} -- ${output})`
     }
 
     case "DefineType": {
-      const input = stmt.input.map(formatParameter)
+      const input = stmt.input.map(formatParameter).join(", ")
       return `type ${stmt.name}(${input})`
     }
 
@@ -27,7 +27,7 @@ export function formatStmt(stmt: Stmt): string {
     }
 
     case "DefineFunction": {
-      const input = stmt.input.map(formatParameter)
+      const input = stmt.input.map(formatParameter).join(", ")
       const retType = formatExp(stmt.retType)
       const body = stmt.body.map(formatBlockStmt).join("\n")
       return `function ${stmt.name}(${input}): ${retType} {\n${indent(body)}\n}`
@@ -49,7 +49,7 @@ export function formatStmt(stmt: Stmt): string {
     }
 
     case "Import": {
-      const bindings = stmt.bindings.map(formatImportBinding)
+      const bindings = stmt.bindings.map(formatImportBinding).join(", ")
       return `import { ${bindings} } "${stmt.path}"`
     }
   }

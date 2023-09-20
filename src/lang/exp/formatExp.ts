@@ -11,7 +11,7 @@ export function formatExp(exp: Exp): string {
     case "Ap": {
       const target = formatExp(exp.target)
       const args = exp.args.map(formatExp)
-      return `${target}(args.join(", "))`
+      return `${target}(${args.join(", ")})`
     }
 
     case "Symbol": {

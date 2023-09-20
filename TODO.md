@@ -1,7 +1,5 @@
 # new-syntax
 
-[new-syntax] test parse by `inet.js format`
-
 `formatParameter`
 `formatRuleTarget`
 `formatParameterWithoutType`
