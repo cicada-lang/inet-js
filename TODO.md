@@ -1,28 +1,34 @@
-# new-syntax
+# execute
 
-[new-syntax] `mod/`
+[execute] fix `definition/`
 
-[new-syntax] `definition/`
-
-[new-syntax] `execute` -- `DefineNode`
-[new-syntax] `execute` -- `DefineRule`
-[new-syntax] `execute` -- `DefineType`
-[new-syntax] `execute` -- `DefineFunction`
-[new-syntax] `execute` -- `TopLevelEvaluate`
-[new-syntax] `execute` -- `TopLevelLet`
-
-fix `createNodeFromDefinition`
+[execute] `execute` -- `DefineNode`
+[execute] `execute` -- `DefineRule`
+[execute] `execute` -- `DefineType`
+[execute] `execute` -- `DefineFunction`
+[execute] `execute` -- `TopLevelEvaluate`
+[execute] `execute` -- `TopLevelLet`
 
 fix `RuleEntry`
 fix `findRuleByNodes`
 
-[new-syntax] `evaluate/` -- `Var`
-[new-syntax] `evaluate/` -- `Ap`
-[new-syntax] `evaluate/` -- `Symbol`
-[new-syntax] `evaluate/` -- `Builtin`
-[new-syntax] `evaluate/` -- `Block`
+# later
 
-[new-syntax] `evaluateBlockStmt/`
+fix `createNodeFromDefinition`
+
+# evaluate
+
+[evaluate] `evaluate/` -- `Var`
+[evaluate] `evaluate/` -- `Ap`
+[evaluate] `evaluate/` -- `Symbol`
+[evaluate] `evaluate/` -- `Builtin`
+[evaluate] `evaluate/` -- `Block`
+
+[evaluate] `evaluateBlockStmt/`
+
+# check
+
+restore `check/`
 
 # present
 

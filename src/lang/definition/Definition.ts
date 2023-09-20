@@ -5,7 +5,7 @@ import { Span } from "../span"
 
 export type Definition =
   | NodeDefinition
-  | WordDefinition
+  | FunctionDefinition
   | OperatorDefinition
   | TypeDefinition
 
@@ -17,9 +17,9 @@ export type NodeDefinition = {
   name: string
 }
 
-export type WordDefinition = {
+export type FunctionDefinition = {
   "@type": "Definition"
-  "@kind": "WordDefinition"
+  "@kind": "FunctionDefinition"
   mod: Mod
   span: Span
   name: string
