@@ -25,7 +25,6 @@ export type DefineType = {
   "@kind": "DefineType"
   name: string
   input: Array<Parameter>
-  output: Array<Parameter>
   span: Span
 }
 
@@ -48,7 +47,8 @@ export type DefineFunction = {
   "@kind": "DefineFunction"
   name: string
   input: Array<Parameter>
-  ret: Parameter
+  retType: Exp
+  body: Array<BlockStmt>
   span: Span
 }
 
