@@ -20,11 +20,21 @@ export async function execute(mod: Mod, stmt: Stmt): Promise<null> {
         return null
       }
 
-      case "DefineRule": {
+      case "DefineType": {
+        define(mod, stmt.name, {
+          "@type": "Definition",
+          "@kind": "TypeDefinition",
+          mod,
+          name: stmt.name,
+          input: stmt.input,
+          retType: stmt.retType,
+          span: stmt.span,
+        })
+
         return null
       }
 
-      case "DefineType": {
+      case "DefineRule": {
         return null
       }
 

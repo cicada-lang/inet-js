@@ -28,6 +28,7 @@ export type DefineType = {
   "@kind": "DefineType"
   name: string
   input: Array<Parameter>
+  retType: Exp
   span: Span
 }
 

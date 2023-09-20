@@ -1,14 +1,15 @@
 import { Env } from "../env"
 import { EvaluateOptions } from "../evaluate"
+import { Exp } from "../exp"
 import { Mod } from "../mod"
 import { Span } from "../span"
 import { Parameter } from "../stmt/Parameter"
 
 export type Definition =
   | NodeDefinition
+  | TypeDefinition
   | FunctionDefinition
   | OperatorDefinition
-  | TypeDefinition
 
 export type NodeDefinition = {
   "@type": "Definition"
@@ -17,6 +18,16 @@ export type NodeDefinition = {
   name: string
   input: Array<Parameter>
   output: Array<Parameter>
+  span: Span
+}
+
+export type TypeDefinition = {
+  "@type": "Definition"
+  "@kind": "TypeDefinition"
+  mod: Mod
+  name: string
+  input: Array<Parameter>
+  retType: Exp
   span: Span
 }
 
@@ -34,12 +45,4 @@ export type OperatorDefinition = {
   mod: Mod
   name: string
   compose: (env: Env, options: EvaluateOptions) => void
-}
-
-export type TypeDefinition = {
-  "@type": "Definition"
-  "@kind": "TypeDefinition"
-  mod: Mod
-  span: Span
-  name: string
 }

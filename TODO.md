@@ -1,8 +1,7 @@
 # execute
 
-[execute] `execute` -- `DefineRule`
-[execute] `execute` -- `DefineType`
 [execute] `execute` -- `DefineFunction`
+[execute] `execute` -- `DefineRule`
 [execute] `execute` -- `TopLevelEvaluate`
 [execute] `execute` -- `TopLevelLet`
 [execute] `execute` -- `Require`
