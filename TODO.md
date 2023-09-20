@@ -1,5 +1,3 @@
-[diary] 2023-09-20-concatenative-vs-applicative
-
 [diary] 2023-09-20-optimization by partial evaluation
 
 # new-syntax
