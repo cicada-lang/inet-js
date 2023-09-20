@@ -1,6 +1,6 @@
 # new-syntax
 
-[new-syntax] test parse by `inet.js parse`
+[new-syntax] `stmt-next` `require` and `import`
 
 `formatExp`
 

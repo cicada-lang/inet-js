@@ -35,6 +35,13 @@ export function operand_matcher(tree: pt.Tree): Exp {
       args: matchers.args_matcher(args),
       span,
     }),
+    "operand:ap_nullary": ({ target }, { span }) => ({
+      "@type": "Exp",
+      "@kind": "Ap",
+      target: operator_matcher(target),
+      args: [],
+      span,
+    }),
     "operand:symbol": ({ name }, { span }) => ({
       "@type": "Exp",
       "@kind": "Symbol",

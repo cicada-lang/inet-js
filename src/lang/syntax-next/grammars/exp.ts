@@ -14,7 +14,8 @@ export const operator = {
 
 export const operand = {
   $grammar: {
-    "operand:ap": [{ target: "operator", args: "args" }],
+    "operand:ap": [{ target: "operator" }, '"("', { args: "args" }, '")"'],
+    "operand:ap_nullary": [{ target: "operator" }, '"("', '")"'],
     "operand:symbol": ['"\'"', { name: "variable_name" }],
     "operand:block": ['"{"', { body: "block_stmts" }, '"}"'],
   },
