@@ -28,14 +28,14 @@ export function stmt_matcher(tree: pt.Tree): Stmt {
       output: [],
       span,
     }),
-    "stmt:type": ({ name, input, retType }, { span }) => ({
+    "stmt:type": ({ name, input }, { span }) => ({
       "@type": "Stmt",
       "@kind": "DefineType",
       name: pt.str(name),
       input: matchers.parameters_matcher(input),
       span,
     }),
-    "stmt:type_no_input": ({ name, retType }, { span }) => ({
+    "stmt:type_no_input": ({ name }, { span }) => ({
       "@type": "Stmt",
       "@kind": "DefineType",
       name: pt.str(name),
