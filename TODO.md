@@ -1,15 +1,12 @@
 # execute
 
-[execute] `execute` -- `TopLevelEvaluate`
 [execute] `execute` -- `TopLevelLet`
 [execute] `execute` -- `Require`
 [execute] `execute` -- `Import`
 
-`Node` -- rename `url` to `modId`
+`Node` -- has `modId` instead of `url`
 
 `OperatorDefinition` rename `compose` to `apply`
-
-
 
 # later
 

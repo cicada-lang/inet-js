@@ -1,4 +1,5 @@
 import { appendReport } from "../errors"
+import { evaluate } from "../evaluate"
 import { Mod, define, defineRule } from "../mod"
 import { Stmt } from "../stmt"
 import { formatStmt } from "../stmt/formatStmt"
@@ -16,7 +17,6 @@ export async function execute(mod: Mod, stmt: Stmt): Promise<null> {
           output: stmt.output,
           span: stmt.span,
         })
-
         return null
       }
 
@@ -29,7 +29,6 @@ export async function execute(mod: Mod, stmt: Stmt): Promise<null> {
           input: stmt.input,
           span: stmt.span,
         })
-
         return null
       }
 
@@ -44,7 +43,6 @@ export async function execute(mod: Mod, stmt: Stmt): Promise<null> {
           body: stmt.body,
           span: stmt.span,
         })
-
         return null
       }
 
@@ -54,6 +52,10 @@ export async function execute(mod: Mod, stmt: Stmt): Promise<null> {
       }
 
       case "TopLevelEvaluate": {
+        const value = evaluate(mod, mod.env, stmt.exp, {
+          checking: mod.checking,
+        })
+        mod.env.stack.push(value)
         return null
       }
 
