@@ -1,11 +1,12 @@
 # execute
 
-[execute] `execute` -- `DefineFunction`
 [execute] `execute` -- `DefineRule`
 [execute] `execute` -- `TopLevelEvaluate`
 [execute] `execute` -- `TopLevelLet`
 [execute] `execute` -- `Require`
 [execute] `execute` -- `Import`
+
+`OperatorDefinition` rename `compose` to `apply`
 
 fix `RuleEntry`
 fix `findRuleByNodes`

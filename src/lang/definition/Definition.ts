@@ -1,5 +1,7 @@
 import { Env } from "../env"
 import { EvaluateOptions } from "../evaluate"
+import { Exp } from "../exp"
+import { BlockStmt } from "../exp/BlockStmt"
 import { Mod } from "../mod"
 import { Span } from "../span"
 import { Parameter } from "../stmt/Parameter"
@@ -33,8 +35,11 @@ export type FunctionDefinition = {
   "@type": "Definition"
   "@kind": "FunctionDefinition"
   mod: Mod
-  span: Span
+  input: Array<Parameter>
+  retType: Exp
+  body: Array<BlockStmt>
   name: string
+  span: Span
 }
 
 export type OperatorDefinition = {

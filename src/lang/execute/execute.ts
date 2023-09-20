@@ -34,6 +34,17 @@ export async function execute(mod: Mod, stmt: Stmt): Promise<null> {
       }
 
       case "DefineFunction": {
+        define(mod, stmt.name, {
+          "@type": "Definition",
+          "@kind": "FunctionDefinition",
+          mod,
+          name: stmt.name,
+          input: stmt.input,
+          retType: stmt.retType,
+          body: stmt.body,
+          span: stmt.span,
+        })
+
         return null
       }
 
