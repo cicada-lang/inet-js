@@ -1,14 +1,17 @@
+import { BlockStmt } from "../exp/BlockStmt"
 import { nodeKeyWithoutId } from "../node/nodeKeyWithoutId"
+import { RuleTarget } from "../stmt"
 import { Mod } from "./Mod"
 import { findDefinitionOrFail } from "./findDefinitionOrFail"
 
 export function defineRule(
   mod: Mod,
-  firstName: string,
-  secondName: string,
+  first: RuleTarget,
+  second: RuleTarget,
+  body: Array<BlockStmt>,
 ): void {
-  const firstDefinition = findDefinitionOrFail(mod, firstName)
-  const secondDefinition = findDefinitionOrFail(mod, secondName)
+  const firstDefinition = findDefinitionOrFail(mod, first.name)
+  const secondDefinition = findDefinitionOrFail(mod, second.name)
 
   const firstKey = nodeKeyWithoutId({
     url: firstDefinition.mod.url,
@@ -21,18 +24,21 @@ export function defineRule(
   })
 
   const key = `${firstKey} ${secondKey}`
-  const name = `${firstName} ${secondName}`
+  const name = `${first.name} ${second.name}`
 
   mod.ruleEntries.set(key, {
     name,
-    firstNode: {
-      url: firstDefinition.mod.url,
-      name: firstDefinition.name,
-    },
-    secondNode: {
-      url: secondDefinition.mod.url,
-      name: secondDefinition.name,
-    },
     mod,
+    first: {
+      url: firstDefinition.mod.url,
+      name: first.name,
+      parameters: first.parameters,
+    },
+    second: {
+      url: secondDefinition.mod.url,
+      name: second.name,
+      parameters: second.parameters,
+    },
+    body,
   })
 }

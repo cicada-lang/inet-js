@@ -31,11 +31,6 @@ export type DefineType = {
   span: Span
 }
 
-export type RuleTarget = {
-  name: string
-  parameters: Array<ParameterWithoutType>
-}
-
 export type DefineFunction = {
   "@type": "Stmt"
   "@kind": "DefineFunction"
@@ -44,6 +39,11 @@ export type DefineFunction = {
   retType: Exp
   body: Array<BlockStmt>
   span: Span
+}
+
+export type RuleTarget = {
+  name: string
+  parameters: Array<ParameterWithoutType>
 }
 
 export type DefineRule = {

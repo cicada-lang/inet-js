@@ -1,9 +1,15 @@
-import { NodeWithoutId } from "../node"
+import { BlockStmt } from "../exp/BlockStmt"
+import { RuleTarget } from "../stmt"
 import { Mod } from "./Mod"
+
+export type RuleTargetWithURL = RuleTarget & {
+  url: URL
+}
 
 export type RuleEntry = {
   name: string
-  firstNode: NodeWithoutId
-  secondNode: NodeWithoutId
   mod: Mod
+  first: RuleTargetWithURL
+  second: RuleTargetWithURL
+  body: Array<BlockStmt>
 }

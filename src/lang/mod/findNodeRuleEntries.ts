@@ -15,8 +15,8 @@ export function findNodeRuleEntries(
 
     if (
       (firstKey === nodeKey || secondKey === nodeKey) &&
-      hasNodeDefinition(mod, entry.secondNode) &&
-      hasNodeDefinition(mod, entry.firstNode)
+      hasNodeDefinition(mod, entry.second) &&
+      hasNodeDefinition(mod, entry.first)
     ) {
       if (!entries.find(({ name }) => name === entry.name)) {
         entries.push(entry)

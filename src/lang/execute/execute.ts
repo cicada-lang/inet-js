@@ -1,5 +1,5 @@
 import { appendReport } from "../errors"
-import { Mod, define } from "../mod"
+import { Mod, define, defineRule } from "../mod"
 import { Stmt } from "../stmt"
 import { formatStmt } from "../stmt/formatStmt"
 
@@ -49,6 +49,7 @@ export async function execute(mod: Mod, stmt: Stmt): Promise<null> {
       }
 
       case "DefineRule": {
+        defineRule(mod, stmt.first, stmt.second, stmt.body)
         return null
       }
 
