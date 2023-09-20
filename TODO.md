@@ -1,7 +1,6 @@
 # new-syntax
 
-`formatStmt` -- fix `execute` error report
-
+`formatStmt`
 `formatParameter`
 `formatParameterWithoutType`
 `formatRuleTarget`
