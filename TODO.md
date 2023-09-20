@@ -1,7 +1,5 @@
 # new-syntax
 
-
-[new-syntax] `grammars/` -- `arg`
 [new-syntax] `grammers/` -- `block_stmt`
 [new-syntax] `grammers/` -- `stmt`
 
