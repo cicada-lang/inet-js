@@ -1,6 +1,6 @@
 # new-syntax
 
-[new-syntax] `grammers/` -- `parameter`
+`parameter_without_type` & `parameters_without_type`
 [new-syntax] `grammers/` -- `rule_target`
 
 [new-syntax] `grammers/` -- `rule_target`
