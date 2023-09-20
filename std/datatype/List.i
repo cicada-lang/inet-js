@@ -13,7 +13,7 @@ node cons(
 )
 
 node append(
-  target!: List('A)
+  target!: List('A),
   rest: List('A)
   --------
   result: List('A)
