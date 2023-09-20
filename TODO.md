@@ -1,7 +1,5 @@
 # new-syntax
 
-`formatExp`
-
 `formatStmt` -- fix `execute` error report
 
 [new-syntax] test parse by `inet.js format`
