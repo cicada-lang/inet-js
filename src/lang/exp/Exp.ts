@@ -20,14 +20,14 @@ export type Ap = {
 
 export type Symbol = {
   "@type": "Exp"
-  "@kind": "Ap"
+  "@kind": "Symbol"
   name: string
   span: Span
 }
 
 export type Builtin = {
   "@type": "Exp"
-  "@kind": "Ap"
+  "@kind": "Builtin"
   name: string
   span: Span
 }

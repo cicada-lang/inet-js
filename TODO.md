@@ -1,7 +1,5 @@
 # new-syntax
 
-[new-syntax] `matchers/` -- `exp`
-
 [new-syntax] `grammers/` -- `stmt`
 
 [new-syntax] `matchers/` -- `stmt`
