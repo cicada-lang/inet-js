@@ -1,6 +1,6 @@
 # new-syntax
 
-[new-syntax] `stmt-next` `require` and `import`
+[new-syntax] `stmt-next` -- syntax for `require` and `import`
 
 `formatExp`
 

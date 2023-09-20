@@ -1,5 +1,6 @@
 import { Exp } from "../exp"
 import { BlockStmt } from "../exp/BlockStmt"
+import { ImportBinding } from "../import/ImportBinding"
 import { Span } from "../span"
 import { Parameter, ParameterWithoutType } from "./Parameter"
 
@@ -10,6 +11,8 @@ export type Stmt =
   | DefineFunction
   | TopLevelEvaluate
   | TopLevelLet
+  | Require
+  | Import
 
 export type DefineNode = {
   "@type": "Stmt"
@@ -64,5 +67,20 @@ export type TopLevelLet = {
   "@kind": "TopLevelLet"
   names: Array<string>
   exp: Exp
+  span: Span
+}
+
+export type Require = {
+  "@type": "Stmt"
+  "@kind": "Require"
+  path: string
+  span: Span
+}
+
+export type Import = {
+  "@type": "Stmt"
+  "@kind": "Import"
+  bindings: Array<ImportBinding>
+  path: string
   span: Span
 }
