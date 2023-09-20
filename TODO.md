@@ -1,6 +1,10 @@
+[diary] 2023-09-20-concatenative-vs-applicative
+
+[diary] 2023-09-20-optimization by partial evaluation
+
 # new-syntax
 
-[new-syntax] add `eval` to `TopLevelEvaluate`
+[new-syntax] `std/` -- add `eval` to `TopLevelEvaluate`
 
 [new-syntax] `grammers/` -- `parameter`
 [new-syntax] `grammers/` -- `rule_target`
