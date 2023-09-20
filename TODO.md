@@ -2,6 +2,10 @@
 
 `formatStmt` -- fix `execute` error report
 
+`formatParameter`
+`formatParameterWithoutType`
+`formatRuleTarget`
+
 [new-syntax] test parse by `inet.js format`
 
 [new-syntax] `definition-next/`
