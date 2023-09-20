@@ -1,8 +1,15 @@
+import { variable_names } from "./name"
+
 export const block_stmt = {
   $grammar: {
-    "block_stmt:let": [],
-    "block_stmt:evaluate": [],
-    "block_stmt:return": [],
+    "block_stmt:let": [
+      '"let"',
+      { names: variable_names },
+      '"="',
+      { exp: "exp" },
+    ],
+    "block_stmt:evaluate": [{ exp: "exp" }],
+    "block_stmt:return": ['"return"', { exp: "exp" }],
   },
 }
 

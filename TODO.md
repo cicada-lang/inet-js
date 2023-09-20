@@ -1,11 +1,11 @@
 # new-syntax
 
-[new-syntax] `grammers/` -- `block_stmt`
-[new-syntax] `grammers/` -- `stmt`
-
 [new-syntax] `matchers/` -- `exp`
 [new-syntax] `matchers/` -- `arg`
 [new-syntax] `matchers/` -- `block_stmt`
+
+[new-syntax] `grammers/` -- `stmt`
+
 [new-syntax] `matchers/` -- `stmt`
 
 [new-syntax] test parse by `inet.js parse`
