@@ -7,8 +7,8 @@ import { Parameter, ParameterWithoutType } from "./Parameter"
 export type Stmt =
   | DefineNode
   | DefineType
-  | DefineRule
   | DefineFunction
+  | DefineRule
   | TopLevelEvaluate
   | TopLevelLet
   | Require
@@ -28,7 +28,6 @@ export type DefineType = {
   "@kind": "DefineType"
   name: string
   input: Array<Parameter>
-  retType: Exp
   span: Span
 }
 
@@ -37,21 +36,21 @@ export type RuleTarget = {
   parameters: Array<ParameterWithoutType>
 }
 
-export type DefineRule = {
-  "@type": "Stmt"
-  "@kind": "DefineRule"
-  first: RuleTarget
-  second: RuleTarget
-  body: Array<BlockStmt>
-  span: Span
-}
-
 export type DefineFunction = {
   "@type": "Stmt"
   "@kind": "DefineFunction"
   name: string
   input: Array<Parameter>
   retType: Exp
+  body: Array<BlockStmt>
+  span: Span
+}
+
+export type DefineRule = {
+  "@type": "Stmt"
+  "@kind": "DefineRule"
+  first: RuleTarget
+  second: RuleTarget
   body: Array<BlockStmt>
   span: Span
 }

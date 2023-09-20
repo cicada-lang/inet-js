@@ -27,18 +27,17 @@ export async function execute(mod: Mod, stmt: Stmt): Promise<null> {
           mod,
           name: stmt.name,
           input: stmt.input,
-          retType: stmt.retType,
           span: stmt.span,
         })
 
         return null
       }
 
-      case "DefineRule": {
+      case "DefineFunction": {
         return null
       }
 
-      case "DefineFunction": {
+      case "DefineRule": {
         return null
       }
 

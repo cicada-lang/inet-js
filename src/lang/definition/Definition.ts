@@ -1,6 +1,5 @@
 import { Env } from "../env"
 import { EvaluateOptions } from "../evaluate"
-import { Exp } from "../exp"
 import { Mod } from "../mod"
 import { Span } from "../span"
 import { Parameter } from "../stmt/Parameter"
@@ -27,7 +26,6 @@ export type TypeDefinition = {
   mod: Mod
   name: string
   input: Array<Parameter>
-  retType: Exp
   span: Span
 }
 
