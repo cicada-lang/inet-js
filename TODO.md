@@ -1,8 +1,7 @@
 # new-syntax
 
-[new-syntax] `matchers/` -- `exp`
-[new-syntax] `matchers/` -- `arg`
 [new-syntax] `matchers/` -- `block_stmt`
+[new-syntax] `matchers/` -- `exp`
 
 [new-syntax] `grammers/` -- `stmt`
 
