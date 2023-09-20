@@ -11,7 +11,15 @@ export function formatStmt(stmt: Stmt): string {
     case "DefineNode": {
       const input = stmt.input.map(formatParameter).join(", ")
       const output = stmt.output.map(formatParameter).join(", ")
-      return `node ${stmt.name}(${input} -- ${output})`
+      if (input && output) {
+        return `node ${stmt.name}(${input} -- ${output})`
+      } else if (input && !output) {
+        return `node ${stmt.name}(${input} --)`
+      } else if (!input && output) {
+        return `node ${stmt.name}(-- ${output})`
+      } else if (!input && !output) {
+        return `node ${stmt.name}(--)`
+      }
     }
 
     case "DefineType": {
@@ -23,14 +31,24 @@ export function formatStmt(stmt: Stmt): string {
       const first = formatRuleTarget(stmt.first)
       const second = formatRuleTarget(stmt.second)
       const body = stmt.body.map(formatBlockStmt).join("\n")
-      return `rule ${first} ${second} {\n${indent(body)}\n}`
+      if (body) {
+        return `rule ${first} ${second} {\n${indent(body)}\n}`
+      } else {
+        return `rule ${first} ${second} {}`
+      }
     }
 
     case "DefineFunction": {
       const input = stmt.input.map(formatParameter).join(", ")
       const retType = formatExp(stmt.retType)
       const body = stmt.body.map(formatBlockStmt).join("\n")
-      return `function ${stmt.name}(${input}): ${retType} {\n${indent(body)}\n}`
+      if (body) {
+        return `function ${stmt.name}(${input}): ${retType} {\n${indent(
+          body,
+        )}\n}`
+      } else {
+        return `function ${stmt.name}(${input}): ${retType} {}`
+      }
     }
 
     case "TopLevelEvaluate": {

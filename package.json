@@ -16,7 +16,8 @@
     "test:inet": "test-runner snapshot 'node ./bin/inet.js run --no-color' 'tests/**/*.i' --exclude 'tests/**/*.error.i'",
     "test:inet-error": "test-runner snapshot-error 'node ./bin/inet.js run --no-color' 'tests/**/*.error.i'",
     "test:inet-parse": "test-runner test 'node ./bin/inet.js parse --no-color' 'std/**/*.i'",
-    "test": "npm run test:ts && npm run test:inet && npm run test:inet-error && npm run test:inet-parse",
+    "test:inet-format": "test-runner test 'node ./bin/inet.js format --no-color' 'std/**/*.i'",
+    "test": "npm run test:ts && npm run test:inet && npm run test:inet-error && npm run test:inet-parse && npm run test:inet-format",
     "format": "prettier src docs --write"
   },
   "devDependencies": {
