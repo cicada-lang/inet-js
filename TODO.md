@@ -1,9 +1,17 @@
 # new-syntax
 
-[new-syntax] use `Exp` instead of `Word`
+[new-syntax] use `Exp` instead of `Word` -- disable tests for now
+
+[new-syntax] `evaluateBlockStmt/`
+
+[new-syntax] `evaluate/` -- `Var`
+[new-syntax] `evaluate/` -- `Ap`
+[new-syntax] `evaluate/` -- `Symbol`
+[new-syntax] `evaluate/` -- `Builtin`
+[new-syntax] `evaluate/` -- `Block`
 
 [new-syntax] `mod/`
-[new-syntax] `evaluate/`
+
 [new-syntax] `definition/`
 
 [new-syntax] `execute` -- `DefineNode`
