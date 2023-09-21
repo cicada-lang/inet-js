@@ -1,6 +1,8 @@
 import { Env } from "../env"
 import { EvaluateOptions } from "../evaluate"
+import { formatParameters } from "../stmt/formatParameters"
 import { Value, formatValue } from "../value"
+import { formatValues } from "../value/formatValues"
 import { applyNode } from "./applyNode"
 
 export function apply(
@@ -20,12 +22,23 @@ export function apply(
           `[apply / TypeCtor] I expect the number of args`,
           `  to be the same as the length of input parameters.`,
           ``,
-          // `  args: [${formatValues(env, args)}]`
+          `  args: [${formatValues(env, args)}]`,
+          `  input parameters: { ${formatParameters(
+            env,
+            target.definition.input,
+          )} }`,
         ].join("\n"),
       )
     }
 
-    // TODO
+    return [
+      {
+        "@type": "Value",
+        "@kind": "TypeTerm",
+        name: target.definition.name,
+        args,
+      },
+    ]
   }
 
   throw new Error(

@@ -1,8 +1,5 @@
 # evaluate
 
-`formatValues` & `formatParameters`
-
-[evaluate] `apply` -- `TypeCtor`
 [evaluate] `apply` -- `Function`
 [evaluate] `apply` -- `BuiltinFunction`
 
@@ -10,7 +7,7 @@
 
 # check
 
-restore `check/`
+[check] `apply` -- `TypeCtor` -- check `args` by `input` parameters
 
 # present
 
