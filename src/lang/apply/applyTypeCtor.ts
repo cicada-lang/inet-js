@@ -1,10 +1,12 @@
 import { Env } from "../env"
 import { EvaluateOptions } from "../evaluate"
+import { Mod } from "../mod"
 import { formatParameters } from "../stmt/formatParameters"
 import { TypeCtor, Value } from "../value"
 import { formatValues } from "../value/formatValues"
 
 export function applyTypeCtor(
+  mod: Mod,
   env: Env,
   target: TypeCtor,
   args: Array<Value>,

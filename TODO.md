@@ -1,20 +1,12 @@
 # evaluate
 
+extract `evaluateBlock`
+
 [evaluate] `apply` -- `Function` -- `applyFunction`
 
 [evaluate] `apply` -- `BuiltinFunction`
 
 - fix `BuiltinFunctionDefinition` -- use `apply` instead of `compose`
-
-# check
-
-[check] `apply` -- `TypeCtor` -- check `args` by `input` parameters
-
-# present
-
-restore `present/`
-
-restore `npm run test:ts`
 
 # test new syntax
 
@@ -24,6 +16,23 @@ restore `npm run test:ts`
 [new-syntax] `statement/`
 [new-syntax] `value/`
 [new-syntax] Bin.i
+
+# apply
+
+[apply] `applyFunction` -- handle extra one argument
+[apply] `applyFunction` -- handle not enough arguments
+
+# check
+
+[check] `applyFunction` -- check all locals are used
+
+[check] `apply` -- `TypeCtor` -- check `args` by `input` parameters
+
+# present
+
+restore `present/`
+
+restore `npm run test:ts`
 
 # half-edge
 
