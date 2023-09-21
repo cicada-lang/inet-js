@@ -16,5 +16,31 @@ export function evaluate(
   exp: Exp,
   options: EvaluateOptions,
 ): Array<Value> {
-  throw new Error("TODO")
+  switch (exp["@kind"]) {
+    case "Var": {
+      return []
+    }
+
+    case "Ap": {
+      return []
+    }
+
+    case "Symbol": {
+      return [
+        {
+          "@type": "Value",
+          "@kind": "Symbol",
+          name: exp.name,
+        },
+      ]
+    }
+
+    case "Builtin": {
+      return []
+    }
+
+    case "Block": {
+      return []
+    }
+  }
 }
