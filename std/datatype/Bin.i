@@ -1,4 +1,5 @@
-// Code taken from: https://gist.github.com/bojidar-bg/85026fa70e6ba7b1862bf8226ba9feca
+// Code taken from:
+//   https://gist.github.com/bojidar-bg/85026fa70e6ba7b1862bf8226ba9feca
 
 type Bin
 

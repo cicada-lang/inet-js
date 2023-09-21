@@ -33,7 +33,7 @@
     "@xieyuheng/command-line": "^0.0.11",
     "@xieyuheng/ty": "^0.1.23",
     "picocolors": "^1.0.0",
-    "vitest": "^0.34.4"
+    "vitest": "^0.34.5"
   },
   "license": "GPL-3.0-or-later"
 }
