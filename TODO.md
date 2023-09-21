@@ -1,4 +1,4 @@
-`interact` and `checkRule` -- `exposeRuleTarget` before call `evaluateBlock`
+`exposeRuleTarget` -- handle pattern matching
 
 # test new syntax
 
@@ -18,6 +18,8 @@
 # check
 
 [check] `applyFunction` -- check all locals are used
+
+[check] `interact` and `checkRule` -- check all locals are used -- after `exposeRuleTarget`
 
 [check] `apply` -- `TypeCtor` -- check `args` by `input` parameters
 

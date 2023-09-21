@@ -7,6 +7,7 @@ import { deleteHalfEdgeEntry } from "../net/deleteHalfEdgeEntry"
 import { deleteNodeEntry } from "../net/deleteNodeEntry"
 import { findHalfEdgeEntryOrFail } from "../net/findHalfEdgeEntryOrFail"
 import { findPortEntryOrFail } from "../net/findPortEntryOrFail"
+import { exposeRuleTarget } from "../rule"
 
 export type InteractOptions = {
   checking?: Checking
@@ -38,11 +39,8 @@ export function interact(
 
   if (rule === undefined) return
 
-  rule.first
-  firstPort.node
-
-  rule.second
-  secondPort.node
+  exposeRuleTarget(env, rule.first, firstPort.node)
+  exposeRuleTarget(env, rule.second, secondPort.node)
 
   evaluateBlock(rule.mod, env, rule.body, options)
 

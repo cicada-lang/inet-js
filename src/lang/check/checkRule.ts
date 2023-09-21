@@ -7,7 +7,7 @@ import { refreshNode } from "../freshen/refreshNode"
 import { Mod } from "../mod"
 import { findDefinitionOrFail } from "../mod/findDefinitionOrFail"
 import { createNodeFromDefinition } from "../node/createNodeFromDefinition"
-import { RuleTarget } from "../rule"
+import { RuleTarget, exposeRuleTarget } from "../rule"
 import { checkAllLocalsAreUsed } from "./checkAllLocalsAreUsed"
 
 export function checkRule(
@@ -37,11 +37,8 @@ export function checkRule(
   capNodeNonPrinciplePorts(mod, env.net, firstNode)
   capNodeNonPrinciplePorts(mod, env.net, secondNode)
 
-  first
-  firstNode
-
-  second
-  secondNode
+  exposeRuleTarget(env, first, firstNode)
+  exposeRuleTarget(env, second, secondNode)
 
   evaluateBlock(mod, env, body, { checking })
 
