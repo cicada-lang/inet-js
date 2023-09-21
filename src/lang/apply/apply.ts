@@ -13,6 +13,21 @@ export function apply(
     return applyNode(env, target, args, options)
   }
 
+  if (target["@kind"] === "TypeCtor") {
+    if (target.definition.input.length !== args.length) {
+      throw new Error(
+        [
+          `[apply / TypeCtor] I expect the number of args`,
+          `  to be the same as the length of input parameters.`,
+          ``,
+          // `  args: [${formatValues(env, args)}]`
+        ].join("\n"),
+      )
+    }
+
+    // TODO
+  }
+
   throw new Error(
     [
       `[apply] I can not apply target.`,

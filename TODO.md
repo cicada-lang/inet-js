@@ -1,7 +1,9 @@
 # evaluate
 
-[evaluate] `apply` -- `Function`
+`formatValues` & `formatParameters`
+
 [evaluate] `apply` -- `TypeCtor`
+[evaluate] `apply` -- `Function`
 [evaluate] `apply` -- `BuiltinFunction`
 
 - fix `BuiltinFunctionDefinition` -- use `apply` instead of `compose`
