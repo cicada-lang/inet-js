@@ -38,6 +38,7 @@ export function evaluate(
         env,
         evaluateOne(mod, env, exp.target, options),
         exp.args.map((arg) => evaluateOne(mod, env, arg, options)),
+        options,
       )
     }
 

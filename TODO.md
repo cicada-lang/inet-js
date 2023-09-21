@@ -1,6 +1,5 @@
 # evaluate
 
-[evaluate] `apply` -- `Node`
 [evaluate] `apply` -- `Function`
 [evaluate] `apply` -- `TypeCtor`
 [evaluate] `apply` -- `BuiltinFunction`
