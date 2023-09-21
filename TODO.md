@@ -1,5 +1,3 @@
-[test] std/datatype/Bin.i
-
 # apply
 
 [apply] `applyFunction` -- handle extra one argument
