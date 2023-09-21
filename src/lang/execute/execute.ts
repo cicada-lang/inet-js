@@ -1,3 +1,4 @@
+import { defineLocals } from "../env/defineLocals"
 import { appendReport } from "../errors"
 import { evaluate } from "../evaluate"
 import { Mod, define, defineRule } from "../mod"
@@ -60,6 +61,10 @@ export async function execute(mod: Mod, stmt: Stmt): Promise<null> {
       }
 
       case "TopLevelLet": {
+        const values = evaluate(mod, mod.env, stmt.exp, {
+          checking: mod.checking,
+        })
+        defineLocals(mod.env, stmt.names, values)
         return null
       }
 

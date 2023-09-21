@@ -1,6 +1,5 @@
 # execute
 
-[execute] `execute` -- `TopLevelLet`
 [execute] `execute` -- `Require`
 [execute] `execute` -- `Import`
 
