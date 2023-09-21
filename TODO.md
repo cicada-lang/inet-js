@@ -1,13 +1,14 @@
 # evaluate
 
-[evaluate] `evaluate/` -- `Var`
-[evaluate] `evaluate/` -- `Ap`
 [evaluate] `evaluate/` -- `Symbol`
+[evaluate] `evaluate/` -- `Var`
+[evaluate] `evaluate/` -- `Block`
+
+[evaluate] `evaluate/` -- `Ap`
+
 [evaluate] `evaluate/` -- `Builtin`
 
 - `OperatorDefinition` rename `compose` to `apply`
-
-[evaluate] `evaluate/` -- `Block`
 
 [evaluate] `evaluateBlockStmt/`
 

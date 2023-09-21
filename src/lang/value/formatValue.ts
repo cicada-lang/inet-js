@@ -33,13 +33,5 @@ export function formatValue(env: Env, value: Value): string {
         return `${args} ${value.name}`
       }
     }
-
-    case "Labeled": {
-      if (value.isImportant) {
-        return `${formatValue(env, value.value)} :${value.label}`
-      } else {
-        return `${formatValue(env, value.value)} :${value.label}!`
-      }
-    }
   }
 }
