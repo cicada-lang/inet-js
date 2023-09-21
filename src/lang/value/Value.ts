@@ -1,11 +1,42 @@
+import {
+  FunctionDefinition,
+  OperatorDefinition,
+  TypeDefinition,
+} from "../definition"
 import { HalfEdge } from "../half-edge"
 import { Node } from "../node"
 
-export type Value = HalfEdge | Node | Type | Symbol | TypeTerm
+export type Value =
+  | HalfEdge
+  | Node
+  | Function
+  | BuiltinFunction
+  | TypeCtor
+  | Type
+  | Symbol
+  | TypeTerm
 
 export type Type = {
   "@type": "Value"
   "@kind": "Type"
+}
+
+export type Function = {
+  "@type": "Value"
+  "@kind": "Function"
+  definition: FunctionDefinition
+}
+
+export type BuiltinFunction = {
+  "@type": "Value"
+  "@kind": "BuiltinFunction"
+  definition: OperatorDefinition
+}
+
+export type TypeCtor = {
+  "@type": "Value"
+  "@kind": "TypeCtor"
+  definition: TypeDefinition
 }
 
 export type Symbol = {

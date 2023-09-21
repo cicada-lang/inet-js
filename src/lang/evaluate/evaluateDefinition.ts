@@ -1,5 +1,6 @@
 import { Definition } from "../definition"
 import { Env } from "../env"
+import { createNodeFromDefinition } from "../node/createNodeFromDefinition"
 import { Value } from "../value"
 import { EvaluateOptions } from "./evaluate"
 
@@ -8,5 +9,33 @@ export function evaluateDefinition(
   definition: Definition,
   options: EvaluateOptions,
 ): Value {
-  throw new Error("TODO")
+  switch (definition["@kind"]) {
+    case "NodeDefinition": {
+      return createNodeFromDefinition(env.net, definition)
+    }
+
+    case "TypeDefinition": {
+      return {
+        "@type": "Value",
+        "@kind": "TypeCtor",
+        definition,
+      }
+    }
+
+    case "FunctionDefinition": {
+      return {
+        "@type": "Value",
+        "@kind": "Function",
+        definition,
+      }
+    }
+
+    case "OperatorDefinition": {
+      return {
+        "@type": "Value",
+        "@kind": "BuiltinFunction",
+        definition,
+      }
+    }
+  }
 }

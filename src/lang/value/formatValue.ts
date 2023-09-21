@@ -13,6 +13,14 @@ export function formatValue(env: Env, value: Value): string {
       return `(${formatNode(env.net, value)})`
     }
 
+    case "Function": {
+      return `@Function(${value.definition.name})`
+    }
+
+    case "TypeCtor": {
+      return `@TypeCtor(${value.definition.name})`
+    }
+
     case "Type": {
       return "Type"
     }

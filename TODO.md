@@ -1,6 +1,6 @@
 # evaluate
 
-[evaluate] `evaluateDefinition`
+ambr OperatorDefinition BuiltinFunctionDefinition
 
 [evaluate] `evaluate` -- `Block`
 [evaluate] `evaluate` -- `Ap`
