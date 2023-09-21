@@ -1,3 +1,0 @@
-netFromPort (add₀)-target! end
-netFromPort (add₀)-addend end
-netFromPort (add₀)-result end
