@@ -7,6 +7,7 @@ export function parameter_matcher(tree: pt.Tree): ParameterExp {
     "parameter:normal": ({ name, t }) => ({
       name: pt.str(name),
       t: matchers.exp_matcher(t),
+      isPrincipal: false,
     }),
     "parameter:is_principal": ({ name, t }) => ({
       name: pt.str(name),
@@ -31,6 +32,7 @@ export function parameter_without_type_matcher(
   return pt.matcher<ParameterWithoutType>({
     "parameter_without_type:normal": ({ name, t }) => ({
       name: pt.str(name),
+      isPrincipal: false,
     }),
     "parameter_without_type:is_principal": ({ name, t }) => ({
       name: pt.str(name),

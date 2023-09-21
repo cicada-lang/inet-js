@@ -5,17 +5,15 @@ import { addNode } from "../net/addNode"
 import { findNodeEntryOrFail } from "../net/findNodeEntryOrFail"
 import { findOutputPorts } from "../net/findOutputPorts"
 import { Port } from "../port"
-import { PortExp } from "../port/PortExp"
 
 export function capInputPort(mod: Mod, net: Net, port: Port): Port {
-  const portExp: PortExp = {
-    "@type": "PortExp",
+  const parameter = {
     name: "covering",
     t: port.t,
     isPrincipal: false,
   }
 
-  const node = addNode(net, mod, "@inputPortCap", [], [portExp])
+  const node = addNode(net, mod, "@inputPortCap", [], [parameter])
   const nodeEntry = findNodeEntryOrFail(net, node)
   nodeEntry.asPortCap = {
     nodeName: port.node.name,

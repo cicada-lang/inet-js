@@ -1,13 +1,13 @@
 import { Node } from "../node"
-import { PortExp } from "../port/PortExp"
+import { Parameter } from "../stmt/Parameter"
 import { Port } from "./Port"
 
-export function createOutputPort(node: Node, portExp: PortExp): Port {
+export function createOutputPort(node: Node, parameter: Parameter): Port {
   return {
     sign: 1,
     node,
-    name: portExp.name,
-    t: portExp.t,
-    isPrincipal: portExp.isPrincipal,
+    name: parameter.name,
+    t: parameter.t,
+    isPrincipal: parameter.isPrincipal,
   }
 }

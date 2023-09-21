@@ -1,5 +1,6 @@
 import { Definition } from "../definition"
 import { Net } from "../net"
+import { addNode } from "../net/addNode"
 import { Node } from "../node"
 
 export function createNodeFromDefinition(
@@ -16,13 +17,11 @@ export function createNodeFromDefinition(
     )
   }
 
-  throw new Error("TODO")
-
-  // return addNode(
-  //   net,
-  //   definition.mod,
-  //   definition.name,
-  //   definition.input,
-  //   definition.output,
-  // )
+  return addNode(
+    net,
+    definition.mod,
+    definition.name,
+    definition.input,
+    definition.output,
+  )
 }

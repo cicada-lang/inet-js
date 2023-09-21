@@ -3,14 +3,14 @@ import { Net, PortRecord } from "../net"
 import { Node } from "../node"
 import { createNodeId } from "../node/createNodeId"
 import { nodeKey } from "../node/nodeKey"
-import { PortExp } from "../port/PortExp"
+import { Parameter } from "../stmt/Parameter"
 
 export function addNode(
   net: Net,
   mod: Mod,
   name: string,
-  input: Array<PortExp>,
-  output: Array<PortExp>,
+  input: Array<Parameter>,
+  output: Array<Parameter>,
 ): Node {
   const id = createNodeId(name)
 
@@ -25,21 +25,21 @@ export function addNode(
   const ports: PortRecord = {}
   net.nodeEntries.set(nodeKey(node), { id, url: mod.url, name, ports })
 
-  input.map((portExp) => {
-    ports[portExp.name] = {
+  input.map((parameter) => {
+    ports[parameter.name] = {
       sign: -1,
-      name: portExp.name,
-      t: portExp.t,
-      isPrincipal: portExp.isPrincipal,
+      name: parameter.name,
+      t: parameter.t,
+      isPrincipal: parameter.isPrincipal,
     }
   })
 
-  output.map((portExp) => {
-    ports[portExp.name] = {
+  output.map((parameter) => {
+    ports[parameter.name] = {
       sign: 1,
-      name: portExp.name,
-      t: portExp.t,
-      isPrincipal: portExp.isPrincipal,
+      name: parameter.name,
+      t: parameter.t,
+      isPrincipal: parameter.isPrincipal,
     }
   })
 
