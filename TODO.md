@@ -1,7 +1,5 @@
 # evaluate
 
-[evaluate] `apply` -- `Function` -- `applyFunction`
-
 [evaluate] `apply` -- `BuiltinFunction`
 
 - fix `BuiltinFunctionDefinition` -- use `apply` instead of `compose`

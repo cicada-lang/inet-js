@@ -1,8 +1,8 @@
 import { Env } from "../env"
 import { defineLocals } from "../env/defineLocals"
 import { EvaluateOptions } from "../evaluate"
+import { evaluateBlock } from "../evaluate/evaluateBlock"
 import { Mod } from "../mod"
-// import { evaluateBlock } from "../evaluate/evaluateBlock"
 import { Function, Value, formatValue } from "../value"
 import { formatValues } from "../value/formatValues"
 
@@ -18,8 +18,18 @@ export function applyFunction(
       (parameter) => parameter.name,
     )
     defineLocals(env, inputParameterNames, args)
+    const values = evaluateBlock(mod, env, target.definition.body, options)
+    if (values.length !== 1) {
+      throw new Error(
+        [
+          `[applyFunction] I expect a function to return one value.`,
+          ``,
+          `  values: [${formatValues(env, values)}]`,
+        ].join("\n"),
+      )
+    }
 
-    //  evaluateBlock(env, target.definition.body, options)
+    return values
   }
 
   throw new Error(
