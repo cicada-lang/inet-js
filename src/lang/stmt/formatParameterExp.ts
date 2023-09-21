@@ -1,7 +1,7 @@
 import { formatExp } from "../exp"
-import { Parameter } from "./Parameter"
+import { ParameterExp } from "./Parameter"
 
-export function formatParameter(parameter: Parameter): string {
+export function formatParameterExp(parameter: ParameterExp): string {
   const t = formatExp(parameter.t)
   if (parameter.isPrincipal) {
     return `${parameter.name}!: ${t}`

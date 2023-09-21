@@ -1,8 +1,4 @@
-# execute
-
-`OperatorDefinition` rename `compose` to `apply`
-
-# later
+`Definition` should have `Exp`
 
 fix `createNodeFromDefinition`
 
@@ -12,6 +8,9 @@ fix `createNodeFromDefinition`
 [evaluate] `evaluate/` -- `Ap`
 [evaluate] `evaluate/` -- `Symbol`
 [evaluate] `evaluate/` -- `Builtin`
+
+- `OperatorDefinition` rename `compose` to `apply`
+
 [evaluate] `evaluate/` -- `Block`
 
 [evaluate] `evaluateBlockStmt/`

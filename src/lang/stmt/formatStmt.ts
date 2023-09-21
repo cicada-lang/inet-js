@@ -3,14 +3,14 @@ import { formatExp } from "../exp"
 import { formatBlockStmt } from "../exp/formatBlockStmt"
 import { formatImportBinding } from "../import/formatImportBinding"
 import { Stmt } from "./Stmt"
-import { formatParameter } from "./formatParameter"
+import { formatParameterExp } from "./formatParameterExp"
 import { formatRuleTarget } from "./formatRuleTarget"
 
 export function formatStmt(stmt: Stmt): string {
   switch (stmt["@kind"]) {
     case "DefineNode": {
-      const input = stmt.input.map(formatParameter).join(", ")
-      const output = stmt.output.map(formatParameter).join(", ")
+      const input = stmt.input.map(formatParameterExp).join(", ")
+      const output = stmt.output.map(formatParameterExp).join(", ")
       if (input && output) {
         return `node ${stmt.name}(${input} -- ${output})`
       } else if (input && !output) {
@@ -23,7 +23,7 @@ export function formatStmt(stmt: Stmt): string {
     }
 
     case "DefineType": {
-      const input = stmt.input.map(formatParameter).join(", ")
+      const input = stmt.input.map(formatParameterExp).join(", ")
       return `type ${stmt.name}(${input})`
     }
 
@@ -39,7 +39,7 @@ export function formatStmt(stmt: Stmt): string {
     }
 
     case "DefineFunction": {
-      const input = stmt.input.map(formatParameter).join(", ")
+      const input = stmt.input.map(formatParameterExp).join(", ")
       const retType = formatExp(stmt.retType)
       const body = stmt.body.map(formatBlockStmt).join("\n")
       if (body) {

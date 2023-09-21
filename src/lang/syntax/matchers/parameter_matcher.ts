@@ -1,9 +1,9 @@
 import * as pt from "@cicada-lang/partech"
-import { Parameter, ParameterWithoutType } from "../../stmt/Parameter"
+import { ParameterExp, ParameterWithoutType } from "../../stmt/Parameter"
 import * as matchers from "../matchers"
 
-export function parameter_matcher(tree: pt.Tree): Parameter {
-  return pt.matcher<Parameter>({
+export function parameter_matcher(tree: pt.Tree): ParameterExp {
+  return pt.matcher<ParameterExp>({
     "parameter:normal": ({ name, t }) => ({
       name: pt.str(name),
       t: matchers.exp_matcher(t),
@@ -16,7 +16,7 @@ export function parameter_matcher(tree: pt.Tree): Parameter {
   })(tree)
 }
 
-export function parameters_matcher(tree: pt.Tree): Array<Parameter> {
+export function parameters_matcher(tree: pt.Tree): Array<ParameterExp> {
   return pt.matcher({
     "parameters:parameters": ({ entries, last_entry }) => [
       ...pt.matchers.zero_or_more_matcher(entries).map(parameter_matcher),

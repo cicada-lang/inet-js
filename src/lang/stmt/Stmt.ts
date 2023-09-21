@@ -2,7 +2,7 @@ import { Exp } from "../exp"
 import { BlockStmt } from "../exp/BlockStmt"
 import { ImportBinding } from "../import/ImportBinding"
 import { Span } from "../span"
-import { Parameter, ParameterWithoutType } from "./Parameter"
+import { ParameterExp, ParameterWithoutType } from "./Parameter"
 
 export type Stmt =
   | DefineNode
@@ -18,8 +18,8 @@ export type DefineNode = {
   "@type": "Stmt"
   "@kind": "DefineNode"
   name: string
-  input: Array<Parameter>
-  output: Array<Parameter>
+  input: Array<ParameterExp>
+  output: Array<ParameterExp>
   span: Span
 }
 
@@ -27,7 +27,7 @@ export type DefineType = {
   "@type": "Stmt"
   "@kind": "DefineType"
   name: string
-  input: Array<Parameter>
+  input: Array<ParameterExp>
   span: Span
 }
 
@@ -35,7 +35,7 @@ export type DefineFunction = {
   "@type": "Stmt"
   "@kind": "DefineFunction"
   name: string
-  input: Array<Parameter>
+  input: Array<ParameterExp>
   retType: Exp
   body: Array<BlockStmt>
   span: Span

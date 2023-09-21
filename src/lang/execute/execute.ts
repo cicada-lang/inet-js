@@ -84,9 +84,7 @@ export async function execute(mod: Mod, stmt: Stmt): Promise<null> {
           )
         }
 
-        if (mod.requiredMods.get(url.href)) {
-          return null
-        }
+        if (mod.requiredMods.get(url.href)) return null
 
         const loadedMod = await mod.loader.load(url)
         importAll(mod, loadedMod)
@@ -108,7 +106,7 @@ export async function execute(mod: Mod, stmt: Stmt): Promise<null> {
               `[execute / Import] I can not do circular import.`,
               ``,
               `  loading module url: ${fetcher.formatURL(mod.url)}`,
-              `  requiring module url: ${fetcher.formatURL(url)}`,
+              `  importing module url: ${fetcher.formatURL(url)}`,
             ].join("\n"),
           )
         }

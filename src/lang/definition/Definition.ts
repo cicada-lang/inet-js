@@ -4,7 +4,7 @@ import { Exp } from "../exp"
 import { BlockStmt } from "../exp/BlockStmt"
 import { Mod } from "../mod"
 import { Span } from "../span"
-import { Parameter } from "../stmt/Parameter"
+import { ParameterExp } from "../stmt/Parameter"
 
 export type Definition =
   | NodeDefinition
@@ -17,8 +17,8 @@ export type NodeDefinition = {
   "@kind": "NodeDefinition"
   mod: Mod
   name: string
-  input: Array<Parameter>
-  output: Array<Parameter>
+  input: Array<ParameterExp>
+  output: Array<ParameterExp>
   span: Span
 }
 
@@ -27,7 +27,7 @@ export type TypeDefinition = {
   "@kind": "TypeDefinition"
   mod: Mod
   name: string
-  input: Array<Parameter>
+  input: Array<ParameterExp>
   span: Span
 }
 
@@ -35,7 +35,7 @@ export type FunctionDefinition = {
   "@type": "Definition"
   "@kind": "FunctionDefinition"
   mod: Mod
-  input: Array<Parameter>
+  input: Array<ParameterExp>
   retType: Exp
   body: Array<BlockStmt>
   name: string
