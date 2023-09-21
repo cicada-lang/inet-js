@@ -1,6 +1,7 @@
 # evaluate
 
-[evaluate] `evaluate` -- `Var`
+[evaluate] `evaluateDefinition`
+
 [evaluate] `evaluate` -- `Block`
 [evaluate] `evaluate` -- `Ap`
 

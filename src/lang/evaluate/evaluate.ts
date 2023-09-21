@@ -1,9 +1,10 @@
 import { Checking } from "../checking"
 import { Env } from "../env"
 import { Exp } from "../exp"
-import { Mod } from "../mod"
+import { Mod, findDefinitionOrFail } from "../mod"
 import { Node } from "../node"
 import { Value } from "../value"
+import { evaluateDefinition } from "./evaluateDefinition"
 
 export interface EvaluateOptions {
   current?: { first: Node; second: Node }
@@ -18,7 +19,15 @@ export function evaluate(
 ): Array<Value> {
   switch (exp["@kind"]) {
     case "Var": {
-      return []
+      const found = env.locals.get(exp.name)
+      if (found !== undefined) {
+        env.locals.delete(exp.name)
+        return [found]
+      } else {
+        const definition = findDefinitionOrFail(mod, exp.name)
+        const value = evaluateDefinition(env, definition, options)
+        return [value]
+      }
     }
 
     case "Ap": {
