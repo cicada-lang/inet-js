@@ -4,8 +4,6 @@
 [execute] `execute` -- `Require`
 [execute] `execute` -- `Import`
 
-`Node` -- has `modId` instead of `url`
-
 `OperatorDefinition` rename `compose` to `apply`
 
 # later
@@ -53,3 +51,5 @@ restore `npm run test:ts`
 - `@connect` -- should not call `checkPortSigns`
 
 [refactor] check during `connect*` instead of before `connect*`
+
+`Node` -- has `modId` instead of `url`

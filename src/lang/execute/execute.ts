@@ -52,10 +52,10 @@ export async function execute(mod: Mod, stmt: Stmt): Promise<null> {
       }
 
       case "TopLevelEvaluate": {
-        const value = evaluate(mod, mod.env, stmt.exp, {
+        const values = evaluate(mod, mod.env, stmt.exp, {
           checking: mod.checking,
         })
-        mod.env.stack.push(value)
+        mod.env.stack.push(...values)
         return null
       }
 

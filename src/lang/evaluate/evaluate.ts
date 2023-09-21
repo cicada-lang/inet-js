@@ -15,6 +15,6 @@ export function evaluate(
   env: Env,
   exp: Exp,
   options: EvaluateOptions,
-): Value {
+): Array<Value> {
   throw new Error("TODO")
 }

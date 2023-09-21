@@ -1,7 +1,6 @@
 import { Env } from "../env"
 import { BlockStmt } from "../exp/BlockStmt"
 import { Mod } from "../mod"
-import { Value } from "../value"
 import { EvaluateOptions } from "./evaluate"
 
 export function evaluateBlockStmt(
@@ -9,6 +8,6 @@ export function evaluateBlockStmt(
   env: Env,
   stmt: BlockStmt,
   options: EvaluateOptions,
-): Value {
+): void {
   throw new Error("TODO")
 }
