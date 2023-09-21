@@ -25,6 +25,10 @@ export function apply(
     return applyFunction(mod, env, target, args, options)
   }
 
+  if (target["@kind"] === "BuiltinFunction") {
+    //
+  }
+
   throw new Error(
     [
       `[apply] I can not apply target.`,

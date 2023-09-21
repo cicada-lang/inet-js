@@ -1,5 +1,5 @@
 import { Loader } from "../../loader"
-import { defineBuiltinOperators } from "../builtins/defineBuiltinOperators"
+import { defineBuiltins } from "../builtins/defineBuiltins"
 import { createChecking } from "../checking/createChecking"
 import { createEnv } from "../env/createEnv"
 import { Stmt } from "../stmt"
@@ -25,7 +25,7 @@ export function createMod(options: {
   mod.env = createEnv(mod)
   mod.checking = createChecking()
 
-  defineBuiltinOperators(mod)
+  defineBuiltins(mod)
 
   return mod
 }

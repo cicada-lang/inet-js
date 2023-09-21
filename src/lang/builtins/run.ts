@@ -2,7 +2,7 @@ import { Env } from "../env"
 import { runHalfEdge } from "../run/runHalfEdge"
 import { formatValue } from "../value/formatValue"
 
-export function compose(env: Env): void {
+export function apply(env: Env): void {
   const value = env.stack[env.stack.length - 1]
   if (value === undefined) {
     throw new Error(`[@run] I expect a top value on the stack.`)

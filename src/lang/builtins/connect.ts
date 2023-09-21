@@ -7,7 +7,7 @@ import { findHalfEdgePortOrFail } from "../net/findHalfEdgePortOrFail"
 import { unifyTypes } from "../unify/unifyTypes"
 import { formatValue } from "../value/formatValue"
 
-export function compose(env: Env, options: EvaluateOptions): void {
+export function apply(env: Env, options: EvaluateOptions): void {
   const first = env.stack.pop()
 
   if (first === undefined) {

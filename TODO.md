@@ -1,8 +1,7 @@
 # evaluate
 
 [evaluate] `apply` -- `BuiltinFunction`
-
-- fix `BuiltinFunctionDefinition` -- use `apply` instead of `compose`
+[evaluate] fix `defineBuiltins`
 
 # test new syntax
 

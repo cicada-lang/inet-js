@@ -42,10 +42,16 @@ export type FunctionDefinition = {
   span: Span
 }
 
+export type BuiltinApply = (
+  env: Env,
+  args: Array<Value>,
+  options: EvaluateOptions,
+) => void
+
 export type BuiltinFunctionDefinition = {
   "@type": "Definition"
   "@kind": "BuiltinFunctionDefinition"
   mod: Mod
   name: string
-  compose: (env: Env, options: EvaluateOptions) => void
+  apply: BuiltinApply
 }
