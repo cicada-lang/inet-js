@@ -1,8 +1,0 @@
-netFromPort (add1₃)-value!
-  (add1₃)-prev value-(add1₂)
-  (add1₂)-prev value-(zero₁)
-end
-netFromPort (add1₃)-value!
-  (add1₃)-prev value-(add1₂)
-  (add1₂)-prev value-(zero₁)
-end

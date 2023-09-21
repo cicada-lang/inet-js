@@ -1,12 +1,7 @@
-# test new syntax
+# test
 
-[new-syntax] `checking/`
-[new-syntax] `statement/`
-[new-syntax] `value/`
-
-[new-syntax] `module/` -- define-rule-for-non-own-node.error.i.err
-
-[new-syntax] Bin.i
+[test] `value/`
+[test] `module/` -- define-rule-for-non-own-node.error.i.err
 
 # apply
 
@@ -18,6 +13,9 @@
 [check] `applyFunction` -- check all locals are used
 [check] `interact` and `checkRule` -- check all locals are used -- after `exposeRuleTargets`
 [check] `apply` -- `TypeCtor` -- check `args` by `input` parameters
+
+[test] `checking/`
+[test] Bin.i
 
 # present
 

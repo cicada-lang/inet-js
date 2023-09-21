@@ -10,7 +10,6 @@ import { importAll } from "../import/importAll"
 import { importMany } from "../import/importMany"
 import { Mod, define, defineRule } from "../mod"
 import { Stmt } from "../stmt"
-import { formatStmt } from "../stmt/formatStmt"
 
 export async function execute(mod: Mod, stmt: Stmt): Promise<null> {
   try {
@@ -121,11 +120,7 @@ export async function execute(mod: Mod, stmt: Stmt): Promise<null> {
     }
   } catch (error) {
     throw appendReport(error, {
-      message: [
-        `[execute] I fail to execute a statement.`,
-        ``,
-        `  stmt: ${formatStmt(stmt)}`,
-      ].join("\n"),
+      message: [`[execute] I fail to execute a statement.`].join("\n"),
       context: {
         span: stmt.span,
         text: mod.text,
