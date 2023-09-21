@@ -9,24 +9,24 @@ import { EvaluateOptions, evaluate } from "./evaluate"
 export function evaluateBlockStmt(
   mod: Mod,
   env: Env,
-  blockStmt: BlockStmt,
+  stmt: BlockStmt,
   options: EvaluateOptions,
 ): Array<Value> | null {
-  switch (blockStmt["@kind"]) {
+  switch (stmt["@kind"]) {
     case "Let": {
-      const values = evaluate(mod, env, blockStmt.exp, options)
-      defineLocals(env, blockStmt.names, values)
+      const values = evaluate(mod, env, stmt.exp, options)
+      defineLocals(env, stmt.names, values)
       return null
     }
 
     case "Evaluate": {
-      const values = evaluate(mod, env, blockStmt.exp, options)
+      const values = evaluate(mod, env, stmt.exp, options)
       if (values.length !== 0) {
         throw new Error(
           [
             `[evaluateBlockStmt / Evaluate] I expect the result of the evalutaion to have zero values.`,
             ``,
-            `  block stmt: ${formatBlockStmt(blockStmt)}`,
+            `  block stmt: ${formatBlockStmt(stmt)}`,
             `  values: [${values
               .map((value) => formatValue(env, value))
               .join(", ")}]`,
@@ -38,7 +38,7 @@ export function evaluateBlockStmt(
     }
 
     case "Return": {
-      return evaluate(mod, env, blockStmt.exp, options)
+      return evaluate(mod, env, stmt.exp, options)
     }
   }
 }
