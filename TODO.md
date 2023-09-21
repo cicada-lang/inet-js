@@ -1,5 +1,3 @@
-`Definition` should have `Exp`
-
 fix `createNodeFromDefinition`
 
 # evaluate

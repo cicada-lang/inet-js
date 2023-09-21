@@ -1,6 +1,11 @@
 import { defineLocals } from "../env/defineLocals"
 import { appendReport } from "../errors"
-import { evaluate } from "../evaluate"
+import {
+  EvaluateOptions,
+  evaluate,
+  evaluateOne,
+  evaluateParameters,
+} from "../evaluate"
 import { importAll } from "../import/importAll"
 import { importMany } from "../import/importMany"
 import { Mod, define, defineRule } from "../mod"
@@ -9,6 +14,8 @@ import { formatStmt } from "../stmt/formatStmt"
 
 export async function execute(mod: Mod, stmt: Stmt): Promise<null> {
   try {
+    const options: EvaluateOptions = { checking: mod.checking }
+
     switch (stmt["@kind"]) {
       case "DefineNode": {
         define(mod, stmt.name, {
@@ -16,8 +23,8 @@ export async function execute(mod: Mod, stmt: Stmt): Promise<null> {
           "@kind": "NodeDefinition",
           mod,
           name: stmt.name,
-          input: stmt.input,
-          output: stmt.output,
+          input: evaluateParameters(mod, mod.env, stmt.input, options),
+          output: evaluateParameters(mod, mod.env, stmt.output, options),
           span: stmt.span,
         })
         return null
@@ -29,7 +36,7 @@ export async function execute(mod: Mod, stmt: Stmt): Promise<null> {
           "@kind": "TypeDefinition",
           mod,
           name: stmt.name,
-          input: stmt.input,
+          input: evaluateParameters(mod, mod.env, stmt.input, options),
           span: stmt.span,
         })
         return null
@@ -41,8 +48,8 @@ export async function execute(mod: Mod, stmt: Stmt): Promise<null> {
           "@kind": "FunctionDefinition",
           mod,
           name: stmt.name,
-          input: stmt.input,
-          retType: stmt.retType,
+          input: evaluateParameters(mod, mod.env, stmt.input, options),
+          retType: evaluateOne(mod, mod.env, stmt.retType, options),
           body: stmt.body,
           span: stmt.span,
         })
@@ -55,17 +62,13 @@ export async function execute(mod: Mod, stmt: Stmt): Promise<null> {
       }
 
       case "TopLevelEvaluate": {
-        const values = evaluate(mod, mod.env, stmt.exp, {
-          checking: mod.checking,
-        })
+        const values = evaluate(mod, mod.env, stmt.exp, options)
         mod.env.stack.push(...values)
         return null
       }
 
       case "TopLevelLet": {
-        const values = evaluate(mod, mod.env, stmt.exp, {
-          checking: mod.checking,
-        })
+        const values = evaluate(mod, mod.env, stmt.exp, options)
         defineLocals(mod.env, stmt.names, values)
         return null
       }
