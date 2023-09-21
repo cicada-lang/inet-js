@@ -1,8 +1,3 @@
-# apply
-
-[apply] `applyFunction` -- handle extra one argument
-[apply] `applyFunction` -- handle not enough arguments
-
 # check
 
 [check] `applyFunction` -- check all locals are used
@@ -10,6 +5,11 @@
 [check] `apply` -- `TypeCtor` -- check `args` by `input` parameters
 
 [test] `checking/`
+
+# apply
+
+[apply] `applyFunction` -- handle extra one argument
+[apply] `applyFunction` -- handle not enough arguments
 
 # present
 

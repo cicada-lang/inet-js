@@ -61,25 +61,21 @@ rule binErase(target!) b0(higherbits, value!) {
 
 rule binErase(target!) bend(value!) {}
 
-// b0q -- b0 when in the middle of a number,
-// replaced by bend elsewhere
-// -- used to avoid unnecessary leading zeroes.
-
-node b0q(
+node binDouble(
   target!: Bin
   ------------
   result: Bin
 )
 
-rule b0q(target!, result) b0(higherbits, value!) {
+rule binDouble(target!, result) b0(higherbits, value!) {
   @connect(b0(b0(higherbits)), result)
 }
 
-rule b0q(target!, result) b1(higherbits, value!) {
+rule binDouble(target!, result) b1(higherbits, value!) {
   @connect(b0(b1(higherbits)), result)
 }
 
-rule b0q(target!, result) bend(value!) {
+rule binDouble(target!, result) bend(value!) {
   @connect(bend(), result)
 }
 
@@ -140,7 +136,7 @@ rule baddAdvance(left!, right, result) b1(higherbits, value!) {
 }
 
 rule baddAdvance(left!, right, result) bend(value!) {
-  @connect(b0q(right), result)
+  @connect(binDouble(right), result)
 }
 
 // Basic arithmetic - multiplication built on top of addition
@@ -158,7 +154,7 @@ rule bmul(left, right!, result) b0(higherbits, value!) {
 
 rule bmul(left, right!, result) b1(higherbits, value!) {
   let b, d = binDup(left)
-  @connect(badd(d, b0q(bmul(b, higherbits))), result)
+  @connect(badd(d, binDouble(bmul(b, higherbits))), result)
 }
 
 rule bmul(left, right!, result) bend(value!) {
