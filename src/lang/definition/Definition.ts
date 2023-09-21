@@ -42,7 +42,7 @@ export type FunctionDefinition = {
   span: Span
 }
 
-export type BuiltinApply = (
+export type PrimitiveApply = (
   mod: Mod,
   env: Env,
   args: Array<Value>,
@@ -54,5 +54,5 @@ export type PrimitiveFunctionDefinition = {
   "@kind": "PrimitiveFunctionDefinition"
   mod: Mod
   name: string
-  apply: BuiltinApply
+  apply: PrimitiveApply
 }

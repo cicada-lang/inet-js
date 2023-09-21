@@ -1,11 +1,11 @@
-import { BuiltinApply } from "../definition"
+import { PrimitiveApply } from "../definition"
 import { Mod } from "../mod"
 
 export function defineBuiltinPrimitiveFunction(
   mod: Mod,
   name: string,
   options: {
-    apply: BuiltinApply
+    apply: PrimitiveApply
   },
 ): void {
   mod.builtins.set(name, {

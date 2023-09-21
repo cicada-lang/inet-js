@@ -1,8 +1,8 @@
 # evaluate
 
-[evaluate] `defineBuiltinValue` -- for `@Type`
-
-[evaluate] fix `defineBuiltins`
+`ValueDefinition` -- for `@Type`
+`defineBuiltinValue` -- for `@Type`
+fix `defineBuiltins`
 
 # test new syntax
 
@@ -11,6 +11,7 @@
 [new-syntax] `module/`
 [new-syntax] `statement/`
 [new-syntax] `value/`
+
 [new-syntax] Bin.i
 
 # apply
