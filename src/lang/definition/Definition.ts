@@ -10,7 +10,7 @@ export type Definition =
   | NodeDefinition
   | TypeDefinition
   | FunctionDefinition
-  | OperatorDefinition
+  | BuiltinFunctionDefinition
 
 export type NodeDefinition = {
   "@type": "Definition"
@@ -42,9 +42,9 @@ export type FunctionDefinition = {
   span: Span
 }
 
-export type OperatorDefinition = {
+export type BuiltinFunctionDefinition = {
   "@type": "Definition"
-  "@kind": "OperatorDefinition"
+  "@kind": "BuiltinFunctionDefinition"
   mod: Mod
   name: string
   compose: (env: Env, options: EvaluateOptions) => void

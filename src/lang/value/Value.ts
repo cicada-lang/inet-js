@@ -1,6 +1,6 @@
 import {
+  BuiltinFunctionDefinition,
   FunctionDefinition,
-  OperatorDefinition,
   TypeDefinition,
 } from "../definition"
 import { HalfEdge } from "../half-edge"
@@ -30,7 +30,7 @@ export type Function = {
 export type BuiltinFunction = {
   "@type": "Value"
   "@kind": "BuiltinFunction"
-  definition: OperatorDefinition
+  definition: BuiltinFunctionDefinition
 }
 
 export type TypeCtor = {

@@ -11,7 +11,7 @@ export function defineBuiltinOperator(
 ): void {
   mod.builtins.set(name, {
     "@type": "Definition",
-    "@kind": "OperatorDefinition",
+    "@kind": "BuiltinFunctionDefinition",
     mod,
     name,
     compose: options.compose,

@@ -1,13 +1,11 @@
 # evaluate
 
-ambr OperatorDefinition BuiltinFunctionDefinition
-
 [evaluate] `evaluate` -- `Block`
 [evaluate] `evaluate` -- `Ap`
 
 [evaluate] `evaluate` -- `Builtin`
 
-- `OperatorDefinition` rename `compose` to `apply`
+- `BuiltinFunctionDefinition` rename `compose` to `apply`
 
 [evaluate] `evaluateBlockStmt/`
 

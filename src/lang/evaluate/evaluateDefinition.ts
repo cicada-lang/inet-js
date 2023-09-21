@@ -30,7 +30,7 @@ export function evaluateDefinition(
       }
     }
 
-    case "OperatorDefinition": {
+    case "BuiltinFunctionDefinition": {
       return {
         "@type": "Value",
         "@kind": "BuiltinFunction",
