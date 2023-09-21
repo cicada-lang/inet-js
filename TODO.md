@@ -1,6 +1,5 @@
-# evaluate
-
-fix `defineBuiltins`
+`defineBuiltins` -- `run`
+`defineBuiltins` -- `inspect`
 
 # test new syntax
 

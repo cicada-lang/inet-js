@@ -1,39 +1,26 @@
 // import { checkPortSigns } from "../check/checkPortSigns"
+import { checkPortSigns } from "../check/checkPortSigns"
 import { connectHalfEdges } from "../connect/connectHalfEdges"
-import { Env } from "../env"
-import { EvaluateOptions } from "../evaluate"
+import { PrimitiveApply } from "../definition"
 import { findHalfEdgeEntryOrFail } from "../net/findHalfEdgeEntryOrFail"
 import { findHalfEdgePortOrFail } from "../net/findHalfEdgePortOrFail"
 import { unifyTypes } from "../unify/unifyTypes"
 import { formatValue } from "../value/formatValue"
 
-export function apply(env: Env, options: EvaluateOptions): void {
-  const first = env.stack.pop()
+export const apply: PrimitiveApply = (mod, env, args, options) => {
+  const [first, second] = args
 
-  if (first === undefined) {
-    throw new Error(
-      [`[@connect] I expect first value on the stack.`].join("\n"),
-    )
+  if (first === undefined || second === undefined) {
+    throw new Error([`[@connect] I expect two arguments.`].join("\n"))
   }
 
   if (first["@kind"] !== "HalfEdge") {
     throw new Error(
       [
-        `[@connect] I expect the first value on the stack to be a HalfEdge.`,
+        `[@connect] I expect the first arg to be a HalfEdge.`,
         ``,
         `  first: ${formatValue(env, first)}`,
-      ].join("\n"),
-    )
-  }
-
-  const second = env.stack.pop()
-
-  if (second === undefined) {
-    throw new Error(
-      [
-        `[@connect] I expect a second value on the stack.`,
-        ``,
-        `  first: ${formatValue(env, first)}`,
+        `  second: ${formatValue(env, first)}`,
       ].join("\n"),
     )
   }
@@ -41,7 +28,7 @@ export function apply(env: Env, options: EvaluateOptions): void {
   if (second["@kind"] !== "HalfEdge") {
     throw new Error(
       [
-        `[@connect] I expect the second value on the stack to be a HalfEdge.`,
+        `[@connect] I expect the second arg to be a HalfEdge.`,
         ``,
         `  first: ${formatValue(env, first)}`,
         `  second: ${formatValue(env, first)}`,
@@ -62,8 +49,7 @@ export function apply(env: Env, options: EvaluateOptions): void {
   )
 
   if (options.checking) {
-    // TODO
-    // checkPortSigns(env.net, firstOtherPort, secondOtherPort)
+    checkPortSigns(env.net, firstOtherPort, secondOtherPort)
     unifyTypes(
       env,
       options.checking.substitution,
@@ -73,4 +59,6 @@ export function apply(env: Env, options: EvaluateOptions): void {
   }
 
   connectHalfEdges(env.net, first, second)
+
+  return []
 }
