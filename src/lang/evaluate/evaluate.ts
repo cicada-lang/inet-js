@@ -1,3 +1,4 @@
+import { apply } from "../apply"
 import { Checking } from "../checking"
 import { Env } from "../env"
 import { Exp } from "../exp"
@@ -6,6 +7,7 @@ import { Node } from "../node"
 import { Value } from "../value"
 import { evaluateBlockStmt } from "./evaluateBlockStmt"
 import { evaluateDefinition } from "./evaluateDefinition"
+import { evaluateOne } from "./evaluateOne"
 
 export interface EvaluateOptions {
   current?: { first: Node; second: Node }
@@ -32,7 +34,11 @@ export function evaluate(
     }
 
     case "Ap": {
-      return []
+      return apply(
+        env,
+        evaluateOne(mod, env, exp.target, options),
+        exp.args.map((arg) => evaluateOne(mod, env, arg, options)),
+      )
     }
 
     case "Symbol": {

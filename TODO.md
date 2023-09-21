@@ -1,7 +1,5 @@
 # evaluate
 
-[evaluate] `evaluate` -- `Ap` -- call `apply`
-
 [evaluate] `apply` -- `Node`
 [evaluate] `apply` -- `Function`
 [evaluate] `apply` -- `TypeCtor`
