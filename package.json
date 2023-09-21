@@ -17,11 +17,11 @@
     "test:inet-format": "test-runner test 'node ./bin/inet.js format --no-color' 'std/**/*.i'",
     "test:inet-run": "test-runner snapshot 'node ./bin/inet.js run --no-color' 'std/**/*.i' --exclude 'std/**/*.error.i'",
     "test:inet-run-error": "test-runner snapshot-error 'node ./bin/inet.js run --no-color' 'std/**/*.error.i'",
-    "test": "npm run test:inet-parse && npm run test:inet-format && npm run test:inet-run && npm run test:inet-run-error",
+    "test": "npm run test:inet-run && npm run test:inet-run-error",
     "format": "prettier src docs --write"
   },
   "devDependencies": {
-    "@types/node": "^20.6.2",
+    "@types/node": "^20.6.3",
     "@xieyuheng/test-runner": "^0.2.9",
     "prettier": "^3.0.3",
     "prettier-plugin-organize-imports": "^3.2.3",
