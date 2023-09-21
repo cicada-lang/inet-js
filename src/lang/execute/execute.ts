@@ -1,6 +1,8 @@
 import { defineLocals } from "../env/defineLocals"
 import { appendReport } from "../errors"
 import { evaluate } from "../evaluate"
+import { importAll } from "../import/importAll"
+import { importMany } from "../import/importMany"
 import { Mod, define, defineRule } from "../mod"
 import { Stmt } from "../stmt"
 import { formatStmt } from "../stmt/formatStmt"
@@ -69,10 +71,50 @@ export async function execute(mod: Mod, stmt: Stmt): Promise<null> {
       }
 
       case "Require": {
+        const url = new URL(stmt.path, mod.url)
+        const fetcher = mod.loader.fetcher
+        if (mod.loader.loading.has(url.href)) {
+          throw new Error(
+            [
+              `[execute / Require] I can not do circular require.`,
+              ``,
+              `  loading module url: ${fetcher.formatURL(mod.url)}`,
+              `  requiring module url: ${fetcher.formatURL(url)}`,
+            ].join("\n"),
+          )
+        }
+
+        if (mod.requiredMods.get(url.href)) {
+          return null
+        }
+
+        const loadedMod = await mod.loader.load(url)
+        importAll(mod, loadedMod)
+
+        for (const [key, requiredMod] of loadedMod.requiredMods) {
+          mod.requiredMods.set(key, requiredMod)
+        }
+
+        mod.requiredMods.set(url.href, loadedMod)
         return null
       }
 
       case "Import": {
+        const url = new URL(stmt.path, mod.url)
+        const fetcher = mod.loader.fetcher
+        if (mod.loader.loading.has(url.href)) {
+          throw new Error(
+            [
+              `[execute / Import] I can not do circular import.`,
+              ``,
+              `  loading module url: ${fetcher.formatURL(mod.url)}`,
+              `  requiring module url: ${fetcher.formatURL(url)}`,
+            ].join("\n"),
+          )
+        }
+
+        const loadedMod = await mod.loader.load(url)
+        importMany(mod, loadedMod, stmt.bindings)
         return null
       }
     }

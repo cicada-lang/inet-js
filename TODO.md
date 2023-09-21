@@ -1,8 +1,5 @@
 # execute
 
-[execute] `execute` -- `Require`
-[execute] `execute` -- `Import`
-
 `OperatorDefinition` rename `compose` to `apply`
 
 # later
