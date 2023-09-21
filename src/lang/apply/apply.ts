@@ -26,7 +26,7 @@ export function apply(
   }
 
   if (target["@kind"] === "BuiltinFunction") {
-    //
+    return target.definition.apply(mod, env, args, options)
   }
 
   throw new Error(

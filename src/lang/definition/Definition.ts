@@ -43,10 +43,11 @@ export type FunctionDefinition = {
 }
 
 export type BuiltinApply = (
+  mod: Mod,
   env: Env,
   args: Array<Value>,
   options: EvaluateOptions,
-) => void
+) => Array<Value>
 
 export type BuiltinFunctionDefinition = {
   "@type": "Definition"

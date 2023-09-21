@@ -1,6 +1,5 @@
 # evaluate
 
-[evaluate] `apply` -- `BuiltinFunction`
 [evaluate] fix `defineBuiltins`
 
 # test new syntax
