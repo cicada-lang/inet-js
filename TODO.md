@@ -1,7 +1,3 @@
-# test
-
-[test] `module/` -- define-rule-for-non-own-node.error.i.err
-
 # apply
 
 [apply] `applyFunction` -- handle extra one argument

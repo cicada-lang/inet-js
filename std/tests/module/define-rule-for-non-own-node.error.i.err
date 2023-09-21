@@ -1,0 +1,15 @@
+[checkRuleIsAboutOwnNode] To define a rule, one of the node must be owned by this module.
+
+  loading module url: std/tests/module/define-rule-for-non-own-node.error.i
+  first node module url: std/datatype/Nat.i
+  second node module url: std/datatype/Nat.i
+
+[execute] I fail to execute a statement.
+
+  1 |import { Nat, zero, add1, add } from "../../datatype/Nat.i"
+  2 |
+  3 |rule add(target!, addend, result) zero(value!) {
+  4 |  @connect(addend, result)
+  5 |}
+  6 |
+  7 |rule add(target!, addend, result) add1(prev, value!) {

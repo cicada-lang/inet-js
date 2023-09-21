@@ -1,3 +1,4 @@
+import { checkRuleIsAboutOwnNode } from "../check/checkRuleIsAboutOwnNode"
 import { BlockStmt } from "../exp/BlockStmt"
 import { nodeKeyWithoutId } from "../node/nodeKeyWithoutId"
 import { RuleTarget } from "../rule"
@@ -10,6 +11,9 @@ export function defineRule(
   second: RuleTarget,
   body: Array<BlockStmt>,
 ): void {
+  checkRuleIsAboutOwnNode(mod, first.name, second.name)
+  // checkRuleNodeOrder(mod, this.first, this.second)
+
   const firstDefinition = findDefinitionOrFail(mod, first.name)
   const secondDefinition = findDefinitionOrFail(mod, second.name)
 
