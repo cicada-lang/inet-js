@@ -18,6 +18,7 @@ export function deepWalkType(
       return {
         "@type": "Value",
         "@kind": "TypeTerm",
+        mod: t.mod,
         name: t.name,
         args: t.args.map((arg) => deepWalkType(substitution, arg)),
       }

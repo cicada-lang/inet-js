@@ -11,6 +11,7 @@ export type Definition =
   | TypeDefinition
   | FunctionDefinition
   | PrimitiveFunctionDefinition
+  | ValueDefinition
 
 export type NodeDefinition = {
   "@type": "Definition"
@@ -55,4 +56,12 @@ export type PrimitiveFunctionDefinition = {
   mod: Mod
   name: string
   apply: PrimitiveApply
+}
+
+export type ValueDefinition = {
+  "@type": "Definition"
+  "@kind": "ValueDefinition"
+  mod: Mod
+  name: string
+  value: Value
 }

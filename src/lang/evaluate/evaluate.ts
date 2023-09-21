@@ -28,7 +28,7 @@ export function evaluate(
         return [found]
       } else {
         const definition = findDefinitionOrFail(mod, exp.name)
-        const value = evaluateDefinition(env, definition, options)
+        const value = evaluateDefinition(mod, env, definition, options)
         return [value]
       }
     }
@@ -65,7 +65,7 @@ export function evaluate(
         )
       }
 
-      const value = evaluateDefinition(env, definition, options)
+      const value = evaluateDefinition(mod, env, definition, options)
       return [value]
     }
 

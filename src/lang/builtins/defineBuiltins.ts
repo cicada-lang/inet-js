@@ -1,5 +1,5 @@
 import { Mod } from "../mod"
-// import * as Type from "./Type"
+import { defineBuiltinValue } from "./defineBuiltinValue"
 // import * as connect from "./connect"
 // import { defineBuiltinPrimitiveFunction } from "./defineBuiltinPrimitiveFunction"
 // import * as inspect from "./inspect"
@@ -9,5 +9,9 @@ export function defineBuiltins(mod: Mod): void {
   // defineBuiltinPrimitiveFunction(mod, "connect", connect)
   // defineBuiltinPrimitiveFunction(mod, "inspect", inspect)
   // defineBuiltinPrimitiveFunction(mod, "run", run)
-  // defineBuiltinPrimitiveFunction(mod, "Type", Type)
+
+  defineBuiltinValue(mod, "Type", {
+    "@type": "Value",
+    "@kind": "Type",
+  })
 }

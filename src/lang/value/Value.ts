@@ -4,6 +4,7 @@ import {
   TypeDefinition,
 } from "../definition"
 import { HalfEdge } from "../half-edge"
+import { Mod } from "../mod"
 import { Node } from "../node"
 
 export type Value =
@@ -49,5 +50,6 @@ export type TypeTerm = {
   "@type": "Value"
   "@kind": "TypeTerm"
   name: string
+  mod: Mod
   args: Array<Value>
 }

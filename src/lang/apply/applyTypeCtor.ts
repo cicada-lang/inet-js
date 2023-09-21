@@ -32,6 +32,7 @@ export function applyTypeCtor(
       "@type": "Value",
       "@kind": "TypeTerm",
       name: target.definition.name,
+      mod,
       args,
     },
   ]
