@@ -1,6 +1,5 @@
 # test new syntax
 
-[new-syntax] `builtin/`
 [new-syntax] `checking/`
 [new-syntax] `statement/`
 [new-syntax] `value/`

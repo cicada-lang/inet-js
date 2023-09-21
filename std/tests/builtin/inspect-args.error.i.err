@@ -1,0 +1,15 @@
+[@inspect] I expect one argument.
+
+[evaluate] I fail to evaluate an exp.
+
+  exp: @inspect()
+
+ 1 |eval @inspect()
+ 2 |
+
+[execute] I fail to execute a statement.
+
+  stmt: eval @inspect()
+
+ 1 |eval @inspect()
+ 2 |
