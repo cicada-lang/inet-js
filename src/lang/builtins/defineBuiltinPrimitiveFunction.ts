@@ -1,7 +1,7 @@
 import { BuiltinApply } from "../definition"
 import { Mod } from "../mod"
 
-export function defineBuiltinFunction(
+export function defineBuiltinPrimitiveFunction(
   mod: Mod,
   name: string,
   options: {
@@ -10,7 +10,7 @@ export function defineBuiltinFunction(
 ): void {
   mod.builtins.set(name, {
     "@type": "Definition",
-    "@kind": "BuiltinFunctionDefinition",
+    "@kind": "PrimitiveFunctionDefinition",
     mod,
     name,
     apply: options.apply,

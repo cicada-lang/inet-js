@@ -30,10 +30,10 @@ export function evaluateDefinition(
       }
     }
 
-    case "BuiltinFunctionDefinition": {
+    case "PrimitiveFunctionDefinition": {
       return {
         "@type": "Value",
-        "@kind": "BuiltinFunction",
+        "@kind": "PrimitiveFunction",
         definition,
       }
     }

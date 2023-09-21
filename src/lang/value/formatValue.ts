@@ -17,8 +17,8 @@ export function formatValue(env: Env, value: Value): string {
       return `@Function(${value.definition.name})`
     }
 
-    case "BuiltinFunction": {
-      return `@BuiltinFunction(${value.definition.name})`
+    case "PrimitiveFunction": {
+      return `@PrimitiveFunction(${value.definition.name})`
     }
 
     case "TypeCtor": {

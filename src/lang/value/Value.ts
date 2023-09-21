@@ -1,6 +1,6 @@
 import {
-  BuiltinFunctionDefinition,
   FunctionDefinition,
+  PrimitiveFunctionDefinition,
   TypeDefinition,
 } from "../definition"
 import { HalfEdge } from "../half-edge"
@@ -10,7 +10,7 @@ export type Value =
   | HalfEdge
   | Node
   | Function
-  | BuiltinFunction
+  | PrimitiveFunction
   | TypeCtor
   | Type
   | Symbol
@@ -27,10 +27,10 @@ export type Function = {
   definition: FunctionDefinition
 }
 
-export type BuiltinFunction = {
+export type PrimitiveFunction = {
   "@type": "Value"
-  "@kind": "BuiltinFunction"
-  definition: BuiltinFunctionDefinition
+  "@kind": "PrimitiveFunction"
+  definition: PrimitiveFunctionDefinition
 }
 
 export type TypeCtor = {

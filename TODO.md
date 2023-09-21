@@ -1,8 +1,8 @@
 # evaluate
 
-[evaluate] fix `defineBuiltins`
+[evaluate] `defineBuiltinValue` -- for `@Type`
 
-- `@Type` is builtin value not builtin function
+[evaluate] fix `defineBuiltins`
 
 # test new syntax
 

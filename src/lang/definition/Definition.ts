@@ -10,7 +10,7 @@ export type Definition =
   | NodeDefinition
   | TypeDefinition
   | FunctionDefinition
-  | BuiltinFunctionDefinition
+  | PrimitiveFunctionDefinition
 
 export type NodeDefinition = {
   "@type": "Definition"
@@ -49,9 +49,9 @@ export type BuiltinApply = (
   options: EvaluateOptions,
 ) => Array<Value>
 
-export type BuiltinFunctionDefinition = {
+export type PrimitiveFunctionDefinition = {
   "@type": "Definition"
-  "@kind": "BuiltinFunctionDefinition"
+  "@kind": "PrimitiveFunctionDefinition"
   mod: Mod
   name: string
   apply: BuiltinApply

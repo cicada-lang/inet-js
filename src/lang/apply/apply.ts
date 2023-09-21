@@ -25,7 +25,7 @@ export function apply(
     return applyFunction(mod, env, target, args, options)
   }
 
-  if (target["@kind"] === "BuiltinFunction") {
+  if (target["@kind"] === "PrimitiveFunction") {
     return target.definition.apply(mod, env, args, options)
   }
 
