@@ -1,9 +1,9 @@
 import { Env } from "../env"
 import { EvaluateOptions } from "../evaluate"
-import { formatParameters } from "../stmt/formatParameters"
 import { Value, formatValue } from "../value"
-import { formatValues } from "../value/formatValues"
+import { applyFunction } from "./applyFunction"
 import { applyNode } from "./applyNode"
+import { applyTypeCtor } from "./applyTypeCtor"
 
 export function apply(
   env: Env,
@@ -16,29 +16,11 @@ export function apply(
   }
 
   if (target["@kind"] === "TypeCtor") {
-    if (target.definition.input.length !== args.length) {
-      throw new Error(
-        [
-          `[apply / TypeCtor] I expect the number of args`,
-          `  to be the same as the length of input parameters.`,
-          ``,
-          `  args: [${formatValues(env, args)}]`,
-          `  input parameters: { ${formatParameters(
-            env,
-            target.definition.input,
-          )} }`,
-        ].join("\n"),
-      )
-    }
+    return applyTypeCtor(env, target, args, options)
+  }
 
-    return [
-      {
-        "@type": "Value",
-        "@kind": "TypeTerm",
-        name: target.definition.name,
-        args,
-      },
-    ]
+  if (target["@kind"] === "Function") {
+    return applyFunction(env, target, args, options)
   }
 
   throw new Error(
