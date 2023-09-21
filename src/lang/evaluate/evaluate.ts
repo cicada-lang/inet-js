@@ -5,7 +5,7 @@ import { Exp } from "../exp"
 import { Mod, findDefinitionOrFail } from "../mod"
 import { Node } from "../node"
 import { Value } from "../value"
-import { evaluateBlockStmt } from "./evaluateBlockStmt"
+import { evaluateBlock } from "./evaluateBlock"
 import { evaluateDefinition } from "./evaluateDefinition"
 import { evaluateOne } from "./evaluateOne"
 
@@ -70,25 +70,7 @@ export function evaluate(
     }
 
     case "Block": {
-      for (const [index, stmt] of exp.body.entries()) {
-        const values = evaluateBlockStmt(mod, env, stmt, options)
-        if (values !== null) {
-          if (index !== exp.body.length - 1) {
-            throw new Error(
-              [
-                `[evaluate / Block] I expect the return stmt to be at the end of the block.`,
-                ``,
-                `  return stmt index: ${index}`,
-                `  lenght of block: ${exp.body.length}`,
-              ].join("\n"),
-            )
-          }
-
-          return values
-        }
-      }
-
-      return []
+      return evaluateBlock(mod, env, exp.body, options)
     }
   }
 }

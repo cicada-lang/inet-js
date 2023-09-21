@@ -1,7 +1,5 @@
 # evaluate
 
-extract `evaluateBlock`
-
 [evaluate] `apply` -- `Function` -- `applyFunction`
 
 [evaluate] `apply` -- `BuiltinFunction`
