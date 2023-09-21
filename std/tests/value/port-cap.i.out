@@ -1,0 +1,6 @@
+netFromPort (add₀)-result
+  (add₀)-target!value-(add1₀)
+  (add₀)-addend value-(add1₁)
+  (add1₀)-prev value-(zero₀)
+  (add1₁)-prev value-(zero₁)
+end

@@ -1,6 +1,5 @@
 # test
 
-[test] `value/`
 [test] `module/` -- define-rule-for-non-own-node.error.i.err
 
 # apply

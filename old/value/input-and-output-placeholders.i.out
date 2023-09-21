@@ -1,8 +1,0 @@
-netFromPort (@inputPortCap₂)-covering end
-netFromPort (@ouputPortCap₁)-covering end
-netFromPort (add₃)-result
-  (add₃)-target!value-(add1₃)
-  (add₃)-addend value-(add1₂)
-  (add1₃)-prev value-(zero₂)
-  (add1₂)-prev value-(zero₁)
-end
