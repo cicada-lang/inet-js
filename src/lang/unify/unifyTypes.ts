@@ -66,7 +66,8 @@ export function unifyTypes(
     if (
       left["@kind"] === "TypeTerm" &&
       right["@kind"] === "TypeTerm" &&
-      left.name === right.name
+      left.name === right.name &&
+      left.mod.url.href === right.mod.url.href
     ) {
       for (const [index, leftArg] of left.args.entries()) {
         const rightArg = right.args[index]

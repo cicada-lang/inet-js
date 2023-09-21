@@ -2,8 +2,6 @@
 
 fix `defineBuiltins`
 
-`unifyTypes` -- take `TypeTerm`'s `mod` in to account
-
 # test new syntax
 
 [new-syntax] `builtin/`
