@@ -1,5 +1,3 @@
-`exposeRuleTarget` -- handle pattern matching
-
 # test new syntax
 
 [new-syntax] `builtin/`
@@ -19,7 +17,7 @@
 
 [check] `applyFunction` -- check all locals are used
 
-[check] `interact` and `checkRule` -- check all locals are used -- after `exposeRuleTarget`
+[check] `interact` and `checkRule` -- check all locals are used -- after `exposeRuleTargets`
 
 [check] `apply` -- `TypeCtor` -- check `args` by `input` parameters
 

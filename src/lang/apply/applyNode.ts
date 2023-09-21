@@ -5,7 +5,7 @@ import { refreshNode } from "../freshen/refreshNode"
 import { halfEdgeFromPort } from "../half-edge/halfEdgeFromPort"
 import { Mod } from "../mod"
 import { findHalfEdgeEntryOrFail } from "../net/findHalfEdgeEntryOrFail"
-import { findHalfEdgePortOrFail } from "../net/findHalfEdgePortOrFail"
+import { findHalfEdgePort } from "../net/findHalfEdgePort"
 import { findInputPorts } from "../net/findInputPorts"
 import { findOutputPorts } from "../net/findOutputPorts"
 import { Node, formatNode } from "../node"
@@ -58,11 +58,14 @@ export function applyNode(
       )
     }
 
-    const argHalfEdgeEntry = findHalfEdgeEntryOrFail(env.net, arg)
-    const otherHalfEdge = argHalfEdgeEntry.otherHalfEdge
-    const otherPort = findHalfEdgePortOrFail(env.net, otherHalfEdge)
     if (options.checking) {
-      unifyTypes(env, options.checking.substitution, otherPort.t, port.t)
+      const argHalfEdgeEntry = findHalfEdgeEntryOrFail(env.net, arg)
+      const otherHalfEdge = argHalfEdgeEntry.otherHalfEdge
+      const otherPort = findHalfEdgePort(env.net, otherHalfEdge)
+
+      if (otherPort !== undefined) {
+        unifyTypes(env, options.checking.substitution, otherPort.t, port.t)
+      }
     }
 
     connectHalfEdges(env.net, halfEdge, arg)

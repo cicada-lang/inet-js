@@ -2,7 +2,7 @@ import { checkPortSigns } from "../check/checkPortSigns"
 import { connectHalfEdges } from "../connect/connectHalfEdges"
 import { PrimitiveApply } from "../definition"
 import { findHalfEdgeEntryOrFail } from "../net/findHalfEdgeEntryOrFail"
-import { findHalfEdgePortOrFail } from "../net/findHalfEdgePortOrFail"
+import { findHalfEdgePort } from "../net/findHalfEdgePort"
 import { unifyTypes } from "../unify/unifyTypes"
 import { formatValue } from "../value/formatValue"
 
@@ -35,26 +35,28 @@ export const apply: PrimitiveApply = (mod, env, args, options) => {
     )
   }
 
-  const firstHalfEdgeEntry = findHalfEdgeEntryOrFail(env.net, first)
-  const secondHalfEdgeEntry = findHalfEdgeEntryOrFail(env.net, second)
-
-  const firstOtherPort = findHalfEdgePortOrFail(
-    env.net,
-    firstHalfEdgeEntry.otherHalfEdge,
-  )
-  const secondOtherPort = findHalfEdgePortOrFail(
-    env.net,
-    secondHalfEdgeEntry.otherHalfEdge,
-  )
-
   if (options.checking) {
-    checkPortSigns(env.net, firstOtherPort, secondOtherPort)
-    unifyTypes(
-      env,
-      options.checking.substitution,
-      firstOtherPort.t,
-      secondOtherPort.t,
+    const firstHalfEdgeEntry = findHalfEdgeEntryOrFail(env.net, first)
+    const secondHalfEdgeEntry = findHalfEdgeEntryOrFail(env.net, second)
+
+    const firstOtherPort = findHalfEdgePort(
+      env.net,
+      firstHalfEdgeEntry.otherHalfEdge,
     )
+    const secondOtherPort = findHalfEdgePort(
+      env.net,
+      secondHalfEdgeEntry.otherHalfEdge,
+    )
+
+    if (firstOtherPort !== undefined && secondOtherPort !== undefined) {
+      checkPortSigns(env.net, firstOtherPort, secondOtherPort)
+      unifyTypes(
+        env,
+        options.checking.substitution,
+        firstOtherPort.t,
+        secondOtherPort.t,
+      )
+    }
   }
 
   connectHalfEdges(env.net, first, second)

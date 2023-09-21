@@ -14,15 +14,15 @@ export function formatValue(env: Env, value: Value): string {
     }
 
     case "Function": {
-      return `@Function(${value.definition.name})`
+      return `#Function(${value.definition.name})`
     }
 
     case "PrimitiveFunction": {
-      return `@PrimitiveFunction(${value.definition.name})`
+      return `#PrimitiveFunction(${value.definition.name})`
     }
 
     case "TypeCtor": {
-      return `@TypeCtor(${value.definition.name})`
+      return `#TypeCtor(${value.definition.name})`
     }
 
     case "Type": {

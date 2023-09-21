@@ -21,7 +21,7 @@ export function evaluateDefinition(
         return {
           "@type": "Value",
           "@kind": "TypeTerm",
-          mod,
+          mod: definition.mod,
           name: definition.name,
           args: [],
         }

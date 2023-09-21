@@ -26,7 +26,7 @@ export function defineLocals(
     if (found !== undefined) {
       throw new Error(
         [
-          `[defineLocals] I find the local name is already defined.`,
+          `[defineLocals] The local name is already defined.`,
           ``,
           `  found value: ${formatValue(env, found)}`,
           `  name: ${name}`,

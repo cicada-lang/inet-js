@@ -54,7 +54,7 @@ node natErase(
 
 rule natErase(target!) zero(value!) {}
 
-rule natErase(target!) add1(prev, value!)  {
+rule natErase(target!) add1(prev, value!) {
   natErase(prev)
 }
 
@@ -74,7 +74,7 @@ rule natDup(target!, second, first) zero(value!) {
   // @connect(zero(), second)
 }
 
-rule natDup(target!, second, first) add1(prev, value1) {
+rule natDup(target!, second, first) add1(prev, value!) {
   let prevFirst, prevSecond = natDup(prev)
   @connect(add1(prevFirst), first)
   @connect(add1(prevSecond), second)

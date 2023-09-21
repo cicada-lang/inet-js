@@ -1,2 +1,3 @@
 export * from "./Rule"
-export * from "./exposeRuleTarget"
+export * from "./disconnectNodeAndMatchParameters"
+export * from "./formatRuleTarget"

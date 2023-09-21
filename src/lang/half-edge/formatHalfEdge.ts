@@ -1,18 +1,23 @@
 import { Net } from "../net"
 import { findHalfEdgeEntryOrFail } from "../net/findHalfEdgeEntryOrFail"
-import { formatNode } from "../node"
+import { Port } from "../port"
+import { formatPort } from "../port/formatPort"
 import { HalfEdge } from "./HalfEdge"
 
 export function formatHalfEdge(net: Net, halfEdge: HalfEdge): string {
   const halfEdgeEntry = findHalfEdgeEntryOrFail(net, halfEdge)
   const port = halfEdgeEntry.port
-  if (port === undefined) {
-    return "-- "
-  }
 
-  if (port.isPrincipal) {
-    return `(${formatNode(net, port.node)})-${port.name}!`
-  } else {
-    return `(${formatNode(net, port.node)})-${port.name}`
-  }
+  const otherHalfEdge = halfEdgeEntry.otherHalfEdge
+  const otherHalfEdgeEntry = findHalfEdgeEntryOrFail(net, otherHalfEdge)
+  const otherPort = otherHalfEdgeEntry.port
+
+  const portText = maybeFormatPort(net, port)
+  const otherPortText = maybeFormatPort(net, otherPort)
+
+  return `#HalfEdge(${portText}, ${otherPortText})`
+}
+
+function maybeFormatPort(net: Net, port: Port | undefined): string {
+  return port === undefined ? `#unconnected` : formatPort(net, port)
 }

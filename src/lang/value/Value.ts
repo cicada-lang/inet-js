@@ -49,7 +49,7 @@ export type Symbol = {
 export type TypeTerm = {
   "@type": "Value"
   "@kind": "TypeTerm"
-  name: string
   mod: Mod
+  name: string
   args: Array<Value>
 }
