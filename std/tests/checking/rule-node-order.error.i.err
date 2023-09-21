@@ -1,0 +1,16 @@
+[checkRuleNodeOrder] The first node of a rule must have its principal port in the input.
+
+ first node: zero
+ second node: add
+
+[execute] I fail to execute a statement.
+
+ 17 |  --------
+ 18 |  result: Nat
+ 19 |)
+ 20 |
+ 21 |rule zero(value!) add(target!, addend, result) {
+ 22 |  @connect(addend, result)
+ 23 |}
+ 24 |
+ 25 |// The correct definition is:

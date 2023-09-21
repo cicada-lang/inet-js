@@ -1,3 +1,5 @@
+[test] std/datatype/Bin.i
+
 # apply
 
 [apply] `applyFunction` -- handle extra one argument
@@ -10,7 +12,6 @@
 [check] `apply` -- `TypeCtor` -- check `args` by `input` parameters
 
 [test] `checking/`
-[test] Bin.i
 
 # present
 
@@ -20,6 +21,9 @@ restore `npm run test:ts`
 # half-edge
 
 [half-edge] `@edge` as a builtin to create two `HalfEdge`s
+
+- std/tests/builtin/edge.i
+
 [half-edge] refactor
 
 # later
