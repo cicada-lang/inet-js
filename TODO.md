@@ -1,10 +1,13 @@
 # evaluate
 
-[evaluate] `evaluate` -- `Block`
+[evaluate] `evaluate` -- `Ap` -- call `apply`
 
-[evaluate] `evaluate` -- `Ap`
+[evaluate] `apply` -- `Node`
+[evaluate] `apply` -- `Function`
+[evaluate] `apply` -- `TypeCtor`
+[evaluate] `apply` -- `BuiltinFunction`
 
-- `BuiltinFunctionDefinition` rename `compose` to `apply`
+- fix `BuiltinFunctionDefinition` -- use `apply` instead of `compose`
 
 # check
 
