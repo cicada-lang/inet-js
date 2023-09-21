@@ -9,7 +9,5 @@
 
 [execute] I fail to execute a statement.
 
-  stmt: eval @inspect()
-
  1 |eval @inspect()
  2 |

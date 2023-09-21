@@ -5,8 +5,6 @@
 
 [execute] I fail to execute a statement.
 
-  stmt: require "./self-require.error.i"
-
  1 |type Trivial
  2 |
  3 |require "./self-require.error.i"

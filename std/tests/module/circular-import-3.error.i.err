@@ -5,14 +5,10 @@
 
 [execute] I fail to execute a statement.
 
-  stmt: import { Trivial } "./circular-import-3.error.i"
-
  1 |import { Trivial } from "./circular-import-3.error.i"
  2 |
 
 [execute] I fail to execute a statement.
-
-  stmt: import { Trivial } "./circular-import-2.error.i"
 
  1 |type Trivial
  2 |
@@ -20,8 +16,6 @@
  4 |
 
 [execute] I fail to execute a statement.
-
-  stmt: import { Trivial } "./circular-import-1.error.i"
 
  1 |import { Trivial } from "./circular-import-1.error.i"
  2 |

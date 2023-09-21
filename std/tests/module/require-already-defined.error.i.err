@@ -4,8 +4,6 @@
 
 [execute] I fail to execute a statement.
 
-  stmt: require "../../datatype/Nat.i"
-
  1 |type Nat
  2 |
  3 |require "../../datatype/Nat.i"

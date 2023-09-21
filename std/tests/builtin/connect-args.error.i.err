@@ -12,8 +12,6 @@
 
 [execute] I fail to execute a statement.
 
-  stmt: eval @connect(sole())
-
   4 |  --------
   5 |  value!: Trivial
   6 |)

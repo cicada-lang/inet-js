@@ -1,17 +1,12 @@
-[Define.execute] I already defined word.
+[define] Can not redefine name: trivialId
 
-  word: swapswap
+[execute] I fail to execute a statement.
 
- 1 |claim swapswap 'A 'B -- 'B 'A end
- 2 |define swapswap @swap @swap end
- 3 |define swapswap @swap @swap end
- 4 |
-
-[Define.execute] I fail to define word.
-
-  word: swapswap
-
- 1 |claim swapswap 'A 'B -- 'B 'A end
- 2 |define swapswap @swap @swap end
- 3 |define swapswap @swap @swap end
- 4 |
+  4 |function trivialId(x: Trivial): Trivial {
+  5 |  return x
+  6 |}
+  7 |
+  8 |function trivialId(x: Trivial): Trivial {
+  9 |  return x
+ 10 |}
+ 11 |

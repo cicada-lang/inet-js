@@ -5,21 +5,15 @@
 
 [execute] I fail to execute a statement.
 
-  stmt: require "./circular-require-1.error.i"
-
  1 |require "./circular-require-1.error.i"
  2 |
 
 [execute] I fail to execute a statement.
 
-  stmt: require "./circular-require-3.error.i"
-
  1 |require "./circular-require-3.error.i"
  2 |
 
 [execute] I fail to execute a statement.
-
-  stmt: require "./circular-require-2.error.i"
 
  1 |type Trivial
  2 |
