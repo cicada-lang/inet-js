@@ -1,6 +1,6 @@
 import { BlockStmt } from "../exp/BlockStmt"
 import { nodeKeyWithoutId } from "../node/nodeKeyWithoutId"
-import { RuleTarget } from "../stmt"
+import { RuleTarget } from "../rule"
 import { Mod } from "./Mod"
 import { findDefinitionOrFail } from "./findDefinitionOrFail"
 

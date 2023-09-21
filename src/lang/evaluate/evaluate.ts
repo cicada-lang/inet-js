@@ -3,14 +3,12 @@ import { Checking } from "../checking"
 import { Env } from "../env"
 import { Exp } from "../exp"
 import { Mod, findDefinitionOrFail } from "../mod"
-import { Node } from "../node"
 import { Value } from "../value"
 import { evaluateBlock } from "./evaluateBlock"
 import { evaluateDefinition } from "./evaluateDefinition"
 import { evaluateOne } from "./evaluateOne"
 
 export interface EvaluateOptions {
-  current?: { first: Node; second: Node }
   checking?: Checking
 }
 

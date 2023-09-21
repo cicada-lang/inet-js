@@ -1,3 +1,5 @@
+`interact` and `checkRule` -- `exposeRuleTarget` before call `evaluateBlock`
+
 # test new syntax
 
 [new-syntax] `builtin/`

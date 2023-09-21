@@ -1,7 +1,7 @@
 import { Checking } from "../checking"
 import { Edge } from "../edge"
 import { Env } from "../env"
-import { evaluateBlockStmt } from "../evaluate"
+import { evaluateBlock } from "../evaluate/evaluateBlock"
 import { findRuleByPorts } from "../mod/findRuleByPorts"
 import { deleteHalfEdgeEntry } from "../net/deleteHalfEdgeEntry"
 import { deleteNodeEntry } from "../net/deleteNodeEntry"
@@ -38,15 +38,13 @@ export function interact(
 
   if (rule === undefined) return
 
-  for (const stmt of rule.body) {
-    evaluateBlockStmt(rule.mod, env, stmt, {
-      current: {
-        first: firstPort.node,
-        second: secondPort.node,
-      },
-      checking: options.checking,
-    })
-  }
+  rule.first
+  firstPort.node
+
+  rule.second
+  secondPort.node
+
+  evaluateBlock(rule.mod, env, rule.body, options)
 
   const firstPortEntry = findPortEntryOrFail(env.net, firstPort)
   const secondPortEntry = findPortEntryOrFail(env.net, secondPort)

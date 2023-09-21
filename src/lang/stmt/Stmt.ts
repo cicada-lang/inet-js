@@ -1,8 +1,9 @@
 import { Exp } from "../exp"
 import { BlockStmt } from "../exp/BlockStmt"
 import { ImportBinding } from "../import/ImportBinding"
+import { RuleTarget } from "../rule"
 import { Span } from "../span"
-import { ParameterExp, ParameterWithoutType } from "./Parameter"
+import { ParameterExp } from "./Parameter"
 
 export type Stmt =
   | DefineNode
@@ -39,11 +40,6 @@ export type DefineFunction = {
   retType: Exp
   body: Array<BlockStmt>
   span: Span
-}
-
-export type RuleTarget = {
-  name: string
-  parameters: Array<ParameterWithoutType>
 }
 
 export type DefineRule = {

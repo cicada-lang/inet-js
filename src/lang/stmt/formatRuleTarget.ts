@@ -1,4 +1,4 @@
-import { RuleTarget } from "./Stmt"
+import { RuleTarget } from "../rule"
 import { formatParameterWithoutType } from "./formatParameterWithoutType"
 
 export function formatRuleTarget(target: RuleTarget): string {

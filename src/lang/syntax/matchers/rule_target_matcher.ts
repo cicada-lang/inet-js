@@ -1,5 +1,5 @@
 import * as pt from "@cicada-lang/partech"
-import { RuleTarget } from "../../stmt"
+import { RuleTarget } from "../../rule"
 import * as matchers from "../matchers"
 
 export function rule_target_matcher(tree: pt.Tree): RuleTarget {

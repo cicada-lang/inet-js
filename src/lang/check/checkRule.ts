@@ -1,13 +1,13 @@
 import { capNodeNonPrinciplePorts } from "../cap/capNodeNonPrinciplePorts"
 import { createChecking } from "../checking/createChecking"
 import { createEnv } from "../env/createEnv"
-import { evaluateBlockStmt } from "../evaluate"
+import { evaluateBlock } from "../evaluate/evaluateBlock"
 import { BlockStmt } from "../exp/BlockStmt"
 import { refreshNode } from "../freshen/refreshNode"
 import { Mod } from "../mod"
 import { findDefinitionOrFail } from "../mod/findDefinitionOrFail"
 import { createNodeFromDefinition } from "../node/createNodeFromDefinition"
-import { RuleTarget } from "../stmt"
+import { RuleTarget } from "../rule"
 import { checkAllLocalsAreUsed } from "./checkAllLocalsAreUsed"
 
 export function checkRule(
@@ -37,12 +37,13 @@ export function checkRule(
   capNodeNonPrinciplePorts(mod, env.net, firstNode)
   capNodeNonPrinciplePorts(mod, env.net, secondNode)
 
-  for (const stmt of body) {
-    evaluateBlockStmt(mod, env, stmt, {
-      current: { first: firstNode, second: secondNode },
-      checking,
-    })
-  }
+  first
+  firstNode
+
+  second
+  secondNode
+
+  evaluateBlock(mod, env, body, { checking })
 
   checkAllLocalsAreUsed(env.locals)
 }

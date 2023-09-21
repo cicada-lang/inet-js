@@ -1,5 +1,5 @@
 import { BlockStmt } from "../exp/BlockStmt"
-import { RuleTarget } from "../stmt"
+import { RuleTarget } from "../rule"
 import { Mod } from "./Mod"
 
 export type RuleTargetWithURL = RuleTarget & {
