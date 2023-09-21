@@ -2,8 +2,6 @@
 
 [evaluate] `evaluate` -- `Block`
 
-[evaluate] `evaluateBlockStmt`
-
 [evaluate] `evaluate` -- `Ap`
 
 - `BuiltinFunctionDefinition` rename `compose` to `apply`
