@@ -1,4 +1,3 @@
-// import { checkPortSigns } from "../check/checkPortSigns"
 import { checkPortSigns } from "../check/checkPortSigns"
 import { connectHalfEdges } from "../connect/connectHalfEdges"
 import { PrimitiveApply } from "../definition"
@@ -8,11 +7,11 @@ import { unifyTypes } from "../unify/unifyTypes"
 import { formatValue } from "../value/formatValue"
 
 export const apply: PrimitiveApply = (mod, env, args, options) => {
-  const [first, second] = args
-
-  if (first === undefined || second === undefined) {
+  if (args.length !== 2) {
     throw new Error([`[@connect] I expect two arguments.`].join("\n"))
   }
+
+  const [first, second] = args
 
   if (first["@kind"] !== "HalfEdge") {
     throw new Error(
