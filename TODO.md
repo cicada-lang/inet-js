@@ -1,5 +1,3 @@
-`defineBuiltins` -- `run`
-
 # test new syntax
 
 [new-syntax] `builtin/`

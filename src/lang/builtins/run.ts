@@ -1,12 +1,13 @@
-import { Env } from "../env"
+import { PrimitiveApply } from "../definition"
 import { runHalfEdge } from "../run/runHalfEdge"
 import { formatValue } from "../value/formatValue"
 
-export function apply(env: Env): void {
-  const value = env.stack[env.stack.length - 1]
-  if (value === undefined) {
-    throw new Error(`[@run] I expect a top value on the stack.`)
+export const apply: PrimitiveApply = (mod, env, args, options) => {
+  if (args.length !== 1) {
+    throw new Error([`[@run] I expect one argument.`].join("\n"))
   }
+
+  const [value] = args
 
   if (value["@kind"] !== "HalfEdge") {
     throw new Error(
@@ -19,4 +20,6 @@ export function apply(env: Env): void {
   }
 
   runHalfEdge(env.mod, env.net, value)
+
+  return [value]
 }
