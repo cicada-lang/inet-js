@@ -3,7 +3,6 @@ import { Env } from "../env"
 import { EvaluateOptions } from "../evaluate"
 import { refreshNode } from "../freshen/refreshNode"
 import { halfEdgeFromPort } from "../half-edge/halfEdgeFromPort"
-import { Mod } from "../mod"
 import { findHalfEdgeEntryOrFail } from "../net/findHalfEdgeEntryOrFail"
 import { findHalfEdgePort } from "../net/findHalfEdgePort"
 import { findInputPorts } from "../net/findInputPorts"
@@ -14,7 +13,6 @@ import { unifyTypes } from "../unify/unifyTypes"
 import { Value, formatValue } from "../value"
 
 export function applyNode(
-  mod: Mod,
   env: Env,
   node: Node,
   args: Array<Value>,

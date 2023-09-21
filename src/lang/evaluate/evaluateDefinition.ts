@@ -1,12 +1,10 @@
 import { Definition } from "../definition"
 import { Env } from "../env"
-import { Mod } from "../mod"
 import { createNodeFromDefinition } from "../node/createNodeFromDefinition"
 import { Value } from "../value"
 import { EvaluateOptions } from "./evaluate"
 
 export function evaluateDefinition(
-  mod: Mod,
   env: Env,
   definition: Definition,
   options: EvaluateOptions,

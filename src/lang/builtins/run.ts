@@ -2,7 +2,7 @@ import { PrimitiveApply } from "../definition"
 import { runHalfEdge } from "../run/runHalfEdge"
 import { formatValue } from "../value/formatValue"
 
-export const apply: PrimitiveApply = (mod, env, args, options) => {
+export const apply: PrimitiveApply = (env, args) => {
   if (args.length !== 1) {
     throw new Error([`[@run] I expect one argument.`].join("\n"))
   }

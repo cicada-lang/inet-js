@@ -1,3 +1,3 @@
-type Trivial -- @Type end
+type Trivial
 
 require "./circular-require-2.error.i"

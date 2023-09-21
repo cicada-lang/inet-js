@@ -2,12 +2,10 @@ import { Env } from "../env"
 import { defineLocals } from "../env/defineLocals"
 import { EvaluateOptions } from "../evaluate"
 import { evaluateBlock } from "../evaluate/evaluateBlock"
-import { Mod } from "../mod"
 import { Function, Value, formatValue } from "../value"
 import { formatValues } from "../value/formatValues"
 
 export function applyFunction(
-  mod: Mod,
   env: Env,
   target: Function,
   args: Array<Value>,
@@ -18,7 +16,12 @@ export function applyFunction(
       (parameter) => parameter.name,
     )
     defineLocals(env, inputParameterNames, args)
-    const values = evaluateBlock(mod, env, target.definition.body, options)
+    const values = evaluateBlock(
+      target.definition.mod,
+      env,
+      target.definition.body,
+      options,
+    )
     if (values.length !== 1) {
       throw new Error(
         [

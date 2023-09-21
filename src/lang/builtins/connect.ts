@@ -6,7 +6,7 @@ import { findHalfEdgePort } from "../net/findHalfEdgePort"
 import { unifyTypes } from "../unify/unifyTypes"
 import { formatValue } from "../value/formatValue"
 
-export const apply: PrimitiveApply = (mod, env, args, options) => {
+export const apply: PrimitiveApply = (env, args, options) => {
   if (args.length !== 2) {
     throw new Error([`[@connect] I expect two arguments.`].join("\n"))
   }

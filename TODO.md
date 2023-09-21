@@ -2,9 +2,10 @@
 
 [new-syntax] `builtin/`
 [new-syntax] `checking/`
-[new-syntax] `module/`
 [new-syntax] `statement/`
 [new-syntax] `value/`
+
+[new-syntax] `module/` -- define-rule-for-non-own-node.error.i.err
 
 [new-syntax] Bin.i
 

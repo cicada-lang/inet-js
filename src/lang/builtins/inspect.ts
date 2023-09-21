@@ -7,7 +7,7 @@ import { formatNet } from "../net/formatNet"
 import { formatPort } from "../port/formatPort"
 import { formatValue } from "../value/formatValue"
 
-export const apply: PrimitiveApply = (mod, env, args, options) => {
+export const apply: PrimitiveApply = (env, args) => {
   if (args.length !== 1) {
     throw new Error([`[@inspect] I expect one argument.`].join("\n"))
   }

@@ -44,7 +44,6 @@ export type FunctionDefinition = {
 }
 
 export type PrimitiveApply = (
-  mod: Mod,
   env: Env,
   args: Array<Value>,
   options: EvaluateOptions,

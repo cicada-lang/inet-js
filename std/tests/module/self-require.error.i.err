@@ -1,0 +1,13 @@
+[execute / Require] I can not do circular require.
+
+  loading module url: std/tests/module/self-require.error.i
+  requiring module url: std/tests/module/self-require.error.i
+
+[execute] I fail to execute a statement.
+
+  stmt: require "./self-require.error.i"
+
+ 1 |type Trivial
+ 2 |
+ 3 |require "./self-require.error.i"
+ 4 |

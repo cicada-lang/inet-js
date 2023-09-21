@@ -46,7 +46,7 @@ export function evaluateBlockStmt(
   } catch (error) {
     throw appendReport(error, {
       message: [
-        `[evaluateBlockStmt] I fail to evaluate block stmt.`,
+        `[evaluateBlockStmt] I fail to evaluate a block stmt.`,
         ``,
         `  block stmt: ${formatBlockStmt(stmt)}`,
       ].join("\n"),

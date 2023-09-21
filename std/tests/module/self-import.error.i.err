@@ -1,0 +1,13 @@
+[execute / Import] I can not do circular import.
+
+  loading module url: std/tests/module/self-import.error.i
+  importing module url: std/tests/module/self-import.error.i
+
+[execute] I fail to execute a statement.
+
+  stmt: import { Trivial } "./self-import.error.i"
+
+ 1 |type Trivial
+ 2 |
+ 3 |import { Trivial } from "./self-import.error.i"
+ 4 |

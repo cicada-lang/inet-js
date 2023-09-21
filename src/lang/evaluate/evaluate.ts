@@ -28,14 +28,13 @@ export function evaluate(
           return [found]
         } else {
           const definition = findDefinitionOrFail(mod, exp.name)
-          const value = evaluateDefinition(mod, env, definition, options)
+          const value = evaluateDefinition(env, definition, options)
           return [value]
         }
       }
 
       case "Ap": {
         return apply(
-          mod,
           env,
           evaluateOne(mod, env, exp.target, options),
           exp.args.map((arg) => evaluateOne(mod, env, arg, options)),
@@ -65,7 +64,7 @@ export function evaluate(
           )
         }
 
-        const value = evaluateDefinition(mod, env, definition, options)
+        const value = evaluateDefinition(env, definition, options)
         return [value]
       }
 
@@ -76,7 +75,7 @@ export function evaluate(
   } catch (error) {
     throw appendReport(error, {
       message: [
-        `[evaluate] I fail to evaluate exp.`,
+        `[evaluate] I fail to evaluate an exp.`,
         ``,
         `  exp: ${formatExp(exp)}`,
       ].join("\n"),

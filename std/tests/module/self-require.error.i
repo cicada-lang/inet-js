@@ -1,3 +1,3 @@
-type Trivial -- @Type end
+type Trivial
 
 require "./self-require.error.i"
