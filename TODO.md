@@ -2,6 +2,8 @@
 
 [evaluate] fix `defineBuiltins`
 
+- `@Type` is builtin value not builtin function
+
 # test new syntax
 
 [new-syntax] `builtin/`
