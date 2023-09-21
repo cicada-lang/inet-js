@@ -1,13 +1,12 @@
 # evaluate
 
 [evaluate] `evaluate` -- `Block`
+
+[evaluate] `evaluateBlockStmt`
+
 [evaluate] `evaluate` -- `Ap`
 
-[evaluate] `evaluate` -- `Builtin`
-
 - `BuiltinFunctionDefinition` rename `compose` to `apply`
-
-[evaluate] `evaluateBlockStmt/`
 
 # check
 
