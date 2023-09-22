@@ -1,0 +1,15 @@
+[unifyTypes] I fail to unify types.
+
+  left: Nat
+  right: Trivial
+
+[execute] I fail to execute a statement.
+
+  4 |
+  5 |type Trivial
+  6 |node sole(-- value!: Trivial)
+  7 |
+  8 |function add2(n: Nat): Trivial {
+  9 |  return add1(add1(n))
+ 10 |}
+ 11 |

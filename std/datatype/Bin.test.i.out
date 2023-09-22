@@ -1,14 +1,14 @@
-netFromPort (b1₆)-value!
-  (b1₆)-higherbits value-(b0₅)
-  (b0₅)-higherbits value-(b1₁₂)
-  (b1₁₂)-higherbits value-(b1₁₃)
-  (b1₁₃)-higherbits value-(bend₇)
+netFromPort (b1₈)-value!
+  (b1₈)-higherbits value-(b0₆)
+  (b0₆)-higherbits value-(b1₁₄)
+  (b1₁₄)-higherbits value-(b1₁₅)
+  (b1₁₅)-higherbits value-(bend₈)
 end
-netFromPort (b0₈)-value!
-  (b0₈)-higherbits value-(b1₂₆)
-  (b1₂₆)-higherbits value-(b0₁₄)
-  (b0₁₄)-higherbits value-(b1₃₉)
-  (b1₃₉)-higherbits value-(b0₁₆)
-  (b0₁₆)-higherbits value-(b1₄₄)
-  (b1₄₄)-higherbits value-(bend₂₆)
+netFromPort (b0₉)-value!
+  (b0₉)-higherbits value-(b1₂₈)
+  (b1₂₈)-higherbits value-(b0₁₅)
+  (b0₁₅)-higherbits value-(b1₄₁)
+  (b1₄₁)-higherbits value-(b0₁₇)
+  (b0₁₇)-higherbits value-(b1₄₆)
+  (b1₄₆)-higherbits value-(bend₂₇)
 end

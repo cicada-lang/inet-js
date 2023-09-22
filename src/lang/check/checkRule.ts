@@ -18,7 +18,6 @@ export function checkRule(
   body: Array<BlockStmt>,
 ): void {
   const checking = createChecking()
-
   const env = createEnv(mod)
 
   const firstNode = createNodeFromDefinition(

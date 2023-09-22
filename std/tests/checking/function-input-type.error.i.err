@@ -1,0 +1,48 @@
+[unifyTypes] I fail to unify types.
+
+  left: Trivial
+  right: Nat
+
+[evaluate] I fail to evaluate an exp.
+
+  exp: add1(n)
+
+  6 |node sole(-- value!: Trivial)
+  7 |
+  8 |function add2(n: Trivial): Nat {
+  9 |  return add1(add1(n))
+ 10 |}
+ 11 |
+
+[evaluate] I fail to evaluate an exp.
+
+  exp: add1(add1(n))
+
+  6 |node sole(-- value!: Trivial)
+  7 |
+  8 |function add2(n: Trivial): Nat {
+  9 |  return add1(add1(n))
+ 10 |}
+ 11 |
+
+[evaluateBlockStmt] I fail to evaluate a block stmt.
+
+  block stmt: return add1(add1(n))
+
+  6 |node sole(-- value!: Trivial)
+  7 |
+  8 |function add2(n: Trivial): Nat {
+  9 |  return add1(add1(n))
+ 10 |}
+ 11 |
+
+[execute] I fail to execute a statement.
+
+  4 |
+  5 |type Trivial
+  6 |node sole(-- value!: Trivial)
+  7 |
+  8 |function add2(n: Trivial): Nat {
+  9 |  return add1(add1(n))
+ 10 |}
+ 11 |

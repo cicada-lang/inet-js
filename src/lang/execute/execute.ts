@@ -1,3 +1,4 @@
+import { checkFunction } from "../check/checkFunction"
 import { checkNodeParameters } from "../check/checkNodeParameters"
 import { checkTypeParameters } from "../check/checkTypeParameters"
 import { defineLocals } from "../env/defineLocals"
@@ -49,13 +50,16 @@ export async function execute(mod: Mod, stmt: Stmt): Promise<null> {
       }
 
       case "DefineFunction": {
+        const input = evaluateParameters(mod, mod.env, stmt.input, options)
+        const retType = evaluateOne(mod, mod.env, stmt.retType, options)
+        checkFunction(mod, input, retType, stmt.body)
         define(mod, stmt.name, {
           "@type": "Definition",
           "@kind": "FunctionDefinition",
           mod,
           name: stmt.name,
-          input: evaluateParameters(mod, mod.env, stmt.input, options),
-          retType: evaluateOne(mod, mod.env, stmt.retType, options),
+          input,
+          retType,
           body: stmt.body,
           span: stmt.span,
         })
