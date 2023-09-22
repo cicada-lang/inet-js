@@ -1,0 +1,47 @@
+[findDefinitionOrFail] I meet undefined name.
+
+  name: n
+
+[evaluate] I fail to evaluate an exp.
+
+  exp: n
+
+ 18 |}
+ 19 |
+ 20 |function double(n: Nat): Nat {
+ 21 |  return add(n, n)
+ 22 |}
+ 23 |
+
+[evaluate] I fail to evaluate an exp.
+
+  exp: add(n, n)
+
+ 18 |}
+ 19 |
+ 20 |function double(n: Nat): Nat {
+ 21 |  return add(n, n)
+ 22 |}
+ 23 |
+
+[evaluateBlockStmt] I fail to evaluate a block stmt.
+
+  block stmt: return add(n, n)
+
+ 18 |}
+ 19 |
+ 20 |function double(n: Nat): Nat {
+ 21 |  return add(n, n)
+ 22 |}
+ 23 |
+
+[execute] I fail to execute a statement.
+
+ 16 |rule add(target!, addend, result) add1(prev, value!) {
+ 17 |  add1(add(prev, addend), result)
+ 18 |}
+ 19 |
+ 20 |function double(n: Nat): Nat {
+ 21 |  return add(n, n)
+ 22 |}
+ 23 |

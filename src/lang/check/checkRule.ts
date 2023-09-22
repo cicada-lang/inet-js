@@ -38,7 +38,6 @@ export function checkRule(
   capNodeAllPorts(mod, env.net, secondNode)
 
   exposeRuleTargets(env, { first, second }, [firstNode, secondNode])
-
   evaluateBlock(mod, env, body, { checking })
 
   checkAllLocalsAreUsed(env.locals)

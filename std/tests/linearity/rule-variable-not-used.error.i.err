@@ -1,0 +1,15 @@
+[checkAllLocalsAreUsed] I expect all locals are used.
+
+  unused local names: abc
+
+[execute] I fail to execute a statement.
+
+ 21 |rule add(target!, addend, result) zero(value!) {
+ 22 |  @connect(addend, result)
+ 23 |}
+ 24 |
+ 25 |rule add(target!, addend, result) add1(prev, value!) {
+ 26 |  let abc = 'abc
+ 27 |  add1(add(prev, addend), result)
+ 28 |}
+ 29 |

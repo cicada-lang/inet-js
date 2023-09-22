@@ -1,0 +1,14 @@
+[checkAllLocalsAreUsed] I expect all locals are used.
+
+  unused local names: n
+
+[execute] I fail to execute a statement.
+
+ 1 |type Nat
+ 2 |node zero(-- value!: Nat)
+ 3 |node add1(prev: Nat -- value!: Nat)
+ 4 |
+ 5 |function add2(n: Nat): Nat {
+ 6 |  return add1(add1(zero()))
+ 7 |}
+ 8 |

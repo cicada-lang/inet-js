@@ -14,6 +14,7 @@ import { Parameter } from "../stmt/Parameter"
 import { unifyTypes } from "../unify/unifyTypes"
 import { Value } from "../value"
 import { formatValues } from "../value/formatValues"
+import { checkAllLocalsAreUsed } from "./checkAllLocalsAreUsed"
 
 export function checkFunction(
   mod: Mod,
@@ -72,4 +73,6 @@ export function checkFunction(
     valueHalfEdgeEntry.otherHalfEdge,
   )
   unifyTypes(env, checking.substitution, otherPort.t, retType)
+
+  checkAllLocalsAreUsed(env.locals)
 }
