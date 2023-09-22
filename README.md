@@ -30,7 +30,7 @@ inet.js help [name]  # Display help for a command
 
 TODO Playground
 
-```js
+```inet
 type Nat
 
 node zero(
@@ -85,7 +85,7 @@ eval @inspect(@run(add(two(), two())))
 
 TODO Playground
 
-```js
+```inet
 type List(Element: @Type)
 
 node null(
@@ -128,14 +128,15 @@ function sixSoles(): List(Trivial) {
   )
 }
 
-eval @inspect(@run(@inspect(sixSoles())))
+eval @inspect(sixSoles())
+eval @inspect(@run(sixSoles()))
 ```
 
 ### DiffList
 
 TODO Playground
 
-```js
+```inet
 import { List } from "https://code-of-inet-js.fidb.app/std/datatype/List.i"
 
 // Concatenation of lists is performed in linear time
@@ -197,7 +198,8 @@ function twoTwoSoles(): DiffList(Trivial) {
   return diffAppend(value1, value2)
 }
 
-eval @inspect(@run(@inspect(twoTwoSoles())))
+eval @inspect(twoTwoSoles())
+eval @inspect(@run(twoTwoSoles()))
 ```
 
 ## Development
