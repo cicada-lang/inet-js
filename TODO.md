@@ -1,7 +1,7 @@
+add examples to README
+
 # currying
 
-[test] `currying/node-extra-one-arg.i`
-[test] `currying/node-not-enough-args.i`
 [currying] `applyFunction` -- handle extra one arg
 [test] `currying/function-extra-one-arg.i`
 [currying] `applyFunction` -- handle not enough args
