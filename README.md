@@ -26,7 +26,7 @@ inet.js help [name]  # Display help for a command
 
 ## Examples
 
-#### Nat
+### Nat
 
 TODO Playground
 
@@ -81,7 +81,7 @@ eval @inspect(add(two(), two()))
 eval @inspect(@run(add(two(), two())))
 ```
 
-#### List
+### List
 
 TODO Playground
 
@@ -131,7 +131,7 @@ function sixSoles(): List(Trivial) {
 eval @inspect(@run(@inspect(sixSoles())))
 ```
 
-#### DiffList
+### DiffList
 
 TODO Playground
 
@@ -182,6 +182,8 @@ rule diffOpen(target!, newBack, oldBack)
 }
 
 // TEST
+
+import { cons } from "https://code-of-inet-js.fidb.app/std/datatype/List.i"
 
 type Trivial
 
