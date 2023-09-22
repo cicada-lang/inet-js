@@ -1,0 +1,40 @@
+[unifyTypes] I fail to unify types.
+
+  left: Trivial
+  right: Nat
+
+[evaluate] I fail to evaluate an exp.
+
+  exp: @connect(sole(), result)
+
+ 13 |)
+ 14 |
+ 15 |rule add(target!, addend, result) zero(value!) {
+ 16 |  @connect(sole(), result)
+ 17 |
+ 18 |  // The correct definition is:
+
+[evaluateBlockStmt] I fail to evaluate a block stmt.
+
+  block stmt: @connect(sole(), result)
+
+ 13 |)
+ 14 |
+ 15 |rule add(target!, addend, result) zero(value!) {
+ 16 |  @connect(sole(), result)
+ 17 |
+ 18 |  // The correct definition is:
+
+[execute] I fail to execute a statement.
+
+ 11 |  --------
+ 12 |  result: Nat
+ 13 |)
+ 14 |
+ 15 |rule add(target!, addend, result) zero(value!) {
+ 16 |  @connect(sole(), result)
+ 17 |
+ 18 |  // The correct definition is:
+ 19 |  // @connect(addend, result)
+ 20 |}
+ 21 |
