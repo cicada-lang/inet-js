@@ -1,6 +1,3 @@
 type Trivial
 
-node sole(
-  --------
-  value!: Trivial
-)
+node sole(-- value!: Trivial)

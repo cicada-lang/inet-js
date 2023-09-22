@@ -28,15 +28,175 @@ inet.js help [name]  # Display help for a command
 
 #### Nat
 
-TODO
+TODO Playground
+
+```js
+type Nat
+
+node zero(
+  ------
+  value!: Nat
+)
+
+node add1(
+  prev: Nat
+  ----------
+  value!: Nat
+)
+
+node add(
+  target!: Nat,
+  addend: Nat
+  --------
+  result: Nat
+)
+
+rule add(target!, addend, result) zero(value!) {
+  @connect(addend, result)
+}
+
+rule add(target!, addend, result) add1(prev, value!) {
+  add1(add(prev, addend), result)
+}
+
+function one(): Nat {
+  return add1(zero())
+}
+
+function two(): Nat {
+  return add(one(), one())
+}
+
+function three(): Nat {
+  return add(two(), one())
+}
+
+function four(): Nat {
+  return add(two(), two())
+}
+
+// TEST
+
+eval @inspect(add(two(), two()))
+eval @inspect(@run(add(two(), two())))
+```
 
 #### List
 
-TODO
+TODO Playground
+
+```js
+type List(Element: @Type)
+
+node null(
+  --------
+  value!: List('A)
+)
+
+node cons(
+  head: 'A,
+  tail: List('A)
+  --------
+  value!: List('A)
+)
+
+node append(
+  target!: List('A),
+  rest: List('A)
+  --------
+  result: List('A)
+)
+
+rule append(target!, rest, result) null(value!) {
+  @connect(rest, result)
+}
+
+rule append(target!, rest, result) cons(head, tail, value!) {
+  cons(head, append(tail, rest), result)
+}
+
+// TEST
+
+type Trivial
+
+node sole(-- value!: Trivial)
+
+function sixSoles(): List(Trivial) {
+  return append(
+    cons(sole(), cons(sole(), cons(sole(), null()))),
+    cons(sole(), cons(sole(), cons(sole(), null()))),
+  )
+}
+
+eval @inspect(@run(@inspect(sixSoles())))
+```
 
 #### DiffList
 
-TODO
+TODO Playground
+
+```js
+import { List } from "https://code-of-inet-js.fidb.app/std/datatype/List.i"
+
+// Concatenation of lists is performed in linear time
+// with respect to its first argument.
+// Constant time concatenation is possible
+// with difference-lists: the idea consists in
+// plugging the front of the second argument
+// at the back of the first one.
+
+type DiffList(Element: @Type)
+
+node diff(
+  front: List('A),
+  -------
+  back: List('A),
+  value!: DiffList('A),
+)
+
+node diffAppend(
+  target!: DiffList('A),
+  rest: DiffList('A)
+  --------
+  result: DiffList('A)
+)
+
+node diffOpen(
+  target!: DiffList('A),
+  newBack: List('A)
+  ----------
+  oldBack: List('A)
+)
+
+rule diffAppend(target!, rest, result)
+     diff(front, back, value!) {
+  let newBack, value = diff(front)
+  @connect(value, result)
+  diffOpen(rest, newBack, back)
+}
+
+rule diffOpen(target!, newBack, oldBack)
+     diff(front, back, value!) {
+  @connect(back, newBack)
+  @connect(front, oldBack)
+}
+
+// TEST
+
+type Trivial
+
+node sole(-- value!: Trivial)
+
+function twoTwoSoles(): DiffList(Trivial) {
+  let front, back, value1 = diff()
+  @connect(front, cons(sole(), cons(sole(), back)))
+  let front, back, value2 = diff()
+  @connect(front, cons(sole(), cons(sole(), back)))
+  return diffAppend(value1, value2)
+}
+
+eval @inspect(@run(@inspect(twoTwoSoles())))
+```
 
 ## Development
 

@@ -1,5 +1,3 @@
-add examples to README
-
 # currying
 
 [currying] `applyFunction` -- handle extra one arg
