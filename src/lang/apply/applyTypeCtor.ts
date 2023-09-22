@@ -1,3 +1,4 @@
+import { checkTypeTermArgs } from "../check/checkTypeTermArgs"
 import { Env } from "../env"
 import { EvaluateOptions } from "../evaluate"
 import { formatParameters } from "../stmt/formatParameters"
@@ -24,6 +25,8 @@ export function applyTypeCtor(
       ].join("\n"),
     )
   }
+
+  checkTypeTermArgs(env, args)
 
   return [
     {

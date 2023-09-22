@@ -1,4 +1,5 @@
-import { checkNode } from "../check/checkNode"
+import { checkNodeParameters } from "../check/checkNodeParameters"
+import { checkTypeParameters } from "../check/checkTypeParameters"
 import { defineLocals } from "../env/defineLocals"
 import { appendReport } from "../errors"
 import {
@@ -20,7 +21,7 @@ export async function execute(mod: Mod, stmt: Stmt): Promise<null> {
       case "DefineNode": {
         const input = evaluateParameters(mod, mod.env, stmt.input, options)
         const output = evaluateParameters(mod, mod.env, stmt.output, options)
-        checkNode(mod, input, output)
+        checkNodeParameters(mod, input, output)
         define(mod, stmt.name, {
           "@type": "Definition",
           "@kind": "NodeDefinition",
@@ -34,12 +35,14 @@ export async function execute(mod: Mod, stmt: Stmt): Promise<null> {
       }
 
       case "DefineType": {
+        const input = evaluateParameters(mod, mod.env, stmt.input, options)
+        checkTypeParameters(mod, input)
         define(mod, stmt.name, {
           "@type": "Definition",
           "@kind": "TypeDefinition",
           mod,
           name: stmt.name,
-          input: evaluateParameters(mod, mod.env, stmt.input, options),
+          input,
           span: stmt.span,
         })
         return null

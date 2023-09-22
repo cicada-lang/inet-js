@@ -1,4 +1,4 @@
-[checkNode] I expect a node to have one and only one principal port.
+[checkNodeParameters] I expect a node to have one and only one principal port.
 
   declared principal ports: [prev!: Nat, value!: Nat]
 

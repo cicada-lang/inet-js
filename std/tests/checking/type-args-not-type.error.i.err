@@ -1,0 +1,22 @@
+[checkTypeTermArgs] I expect all args of a TypeTerm to be Symbol or TypeTerm.
+
+  args: [(sole₀)]
+
+[evaluate] I fail to evaluate an exp.
+
+  exp: List(sole)
+
+ 3 |
+ 4 |type List(Element: @Type)
+ 5 |
+ 6 |eval List(sole)
+ 7 |
+
+[execute] I fail to execute a statement.
+
+ 2 |node sole(-- value!: Trivial)
+ 3 |
+ 4 |type List(Element: @Type)
+ 5 |
+ 6 |eval List(sole)
+ 7 |

@@ -1,0 +1,12 @@
+[checkTypeParameters] I expect the claimed input parameters
+  of a type definition to be Type.
+
+  input parameters: [Element: Trivial]
+
+[execute] I fail to execute a statement.
+
+ 1 |type Trivial
+ 2 |node sole(-- value!: Trivial)
+ 3 |
+ 4 |type List(Element: Trivial)
+ 5 |

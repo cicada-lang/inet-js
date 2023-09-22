@@ -1,0 +1,9 @@
+[checkNodeParameters] I expect all parameters of a node to be Symbol or TypeTerm.
+
+  parameters: [value!: #TypeCtor(List)]
+
+[execute] I fail to execute a statement.
+
+ 1 |type List(Element: @Type)
+ 2 |node null(-- value!: List)
+ 3 |
