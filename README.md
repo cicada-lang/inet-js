@@ -13,7 +13,7 @@ using a familiar JavaScript-like syntax :)
 Install it by the following command:
 
 ```sh
-npm install --global @cicada-lang/inet
+npm install --global @cicada-lang/inet.js
 ```
 
 The command line program is called `inet.js`.
