@@ -1,7 +1,5 @@
 # check
 
-[test] `checking/` -- `rule-sign` `rule-type` `rule-type-occur-check`
-
 [test] `checking/` --
 
 [check] `applyFunction` -- check all locals are used

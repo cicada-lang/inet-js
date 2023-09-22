@@ -1,11 +1,11 @@
-netFromPort (zero₁)-value! end
-netFromPort (add1₂)-value!
-  (add1₂)-prev value-(add1₁)
-  (add1₁)-prev value-(zero₃)
+netFromPort (zero₂)-value! end
+netFromPort (add1₄)-value!
+  (add1₄)-prev value-(add1₃)
+  (add1₃)-prev value-(zero₄)
 end
-netFromPort (add1₇)-value!
+netFromPort (add1₉)-value!
+  (add1₉)-prev value-(add1₁₀)
+  (add1₁₀)-prev value-(add1₇)
   (add1₇)-prev value-(add1₈)
-  (add1₈)-prev value-(add1₅)
-  (add1₅)-prev value-(add1₆)
-  (add1₆)-prev value-(zero₅)
+  (add1₈)-prev value-(zero₆)
 end

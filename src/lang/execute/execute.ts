@@ -1,5 +1,6 @@
 import { checkFunction } from "../check/checkFunction"
 import { checkNodeParameters } from "../check/checkNodeParameters"
+import { checkRule } from "../check/checkRule"
 import { checkTypeParameters } from "../check/checkTypeParameters"
 import { defineLocals } from "../env/defineLocals"
 import { appendReport } from "../errors"
@@ -67,6 +68,7 @@ export async function execute(mod: Mod, stmt: Stmt): Promise<null> {
       }
 
       case "DefineRule": {
+        checkRule(mod, stmt.first, stmt.second, stmt.body)
         defineRule(mod, stmt.first, stmt.second, stmt.body)
         return null
       }

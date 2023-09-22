@@ -1,8 +1,8 @@
-netFromPort (add₆)-result
-  (add₆)-target!value-(add1₁₀)
-  (add₆)-addend value-(zero₁₁)
-  (add1₁₀)-prev value-(zero₁₀)
+netFromPort (add₁₀)-result
+  (add₁₀)-target!value-(add1₂₁)
+  (add₁₀)-addend value-(zero₂₀)
+  (add1₂₁)-prev value-(zero₁₉)
 end
-netFromPort (add1₁₁)-value!
-  (add1₁₁)-prev value-(zero₁₁)
+netFromPort (add1₂₂)-value!
+  (add1₂₂)-prev value-(zero₂₀)
 end

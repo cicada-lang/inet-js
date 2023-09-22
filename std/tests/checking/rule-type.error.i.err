@@ -1,0 +1,38 @@
+[unifyTypes] I fail to unify types.
+
+  left: Trivial
+  right: Nat
+
+[evaluate] I fail to evaluate an exp.
+
+  exp: add1(sole())
+
+ 17 |}
+ 18 |
+ 19 |rule add(target!, addend, result) add1(prev, value!) {
+ 20 |  add1(sole()) // Apply node to value of wrong type.
+ 21 |  add1(add(prev, addend), result)
+ 22 |}
+
+[evaluateBlockStmt] I fail to evaluate a block stmt.
+
+  block stmt: add1(sole())
+
+ 17 |}
+ 18 |
+ 19 |rule add(target!, addend, result) add1(prev, value!) {
+ 20 |  add1(sole()) // Apply node to value of wrong type.
+ 21 |  add1(add(prev, addend), result)
+ 22 |}
+
+[execute] I fail to execute a statement.
+
+ 15 |rule add(target!, addend, result) zero(value!) {
+ 16 |  @connect(addend, result)
+ 17 |}
+ 18 |
+ 19 |rule add(target!, addend, result) add1(prev, value!) {
+ 20 |  add1(sole()) // Apply node to value of wrong type.
+ 21 |  add1(add(prev, addend), result)
+ 22 |}
+ 23 |

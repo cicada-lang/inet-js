@@ -1,0 +1,45 @@
+[unifyTypes] I find the left type variable occurs in the right type.
+
+  left type variable: 'A₂
+  right type: 'A₂ List List
+
+[unifyTypes] I fail to unify types.
+
+  left: 'A₂
+  right: 'A₂ List List
+
+[evaluate] I fail to evaluate an exp.
+
+  exp: cons(append(tail, rest), head, result)
+
+ 24 |}
+ 25 |
+ 26 |rule append(target!, rest, result) cons(head, tail, value!) {
+ 27 |  cons(append(tail, rest), head, result)
+ 28 |
+ 29 |  // The correct definition is:
+
+[evaluateBlockStmt] I fail to evaluate a block stmt.
+
+  block stmt: cons(append(tail, rest), head, result)
+
+ 24 |}
+ 25 |
+ 26 |rule append(target!, rest, result) cons(head, tail, value!) {
+ 27 |  cons(append(tail, rest), head, result)
+ 28 |
+ 29 |  // The correct definition is:
+
+[execute] I fail to execute a statement.
+
+ 22 |rule append(target!, rest, result) null(value!) {
+ 23 |  @connect(rest, result)
+ 24 |}
+ 25 |
+ 26 |rule append(target!, rest, result) cons(head, tail, value!) {
+ 27 |  cons(append(tail, rest), head, result)
+ 28 |
+ 29 |  // The correct definition is:
+ 30 |  // cons(head, append(tail, rest), result)
+ 31 |}
+ 32 |

@@ -180,7 +180,7 @@ rule natDouble(target!, result) zero(value!) {
   @connect(zero(), result)
 }
 
-rule natDouble(target!, result) add1(prev, value1) {
+rule natDouble(target!, result) add1(prev, value!) {
   @connect(add1(add1(natDouble(prev))), result)
 }
 
@@ -204,11 +204,11 @@ node bton(
   result: Nat
 )
 
-rule bton(target!, result) b0(higherbits, value) {
+rule bton(target!, result) b0(higherbits, value!) {
   @connect(natDouble(bton(higherbits)), result)
 }
 
-rule bton(target!, result) b1(higherbits, value) {
+rule bton(target!, result) b1(higherbits, value!) {
   @connect(add1(natDouble(bton(higherbits))), result)
 }
 
