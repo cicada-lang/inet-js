@@ -1,0 +1,23 @@
+[unifyTypes] I fail to unify types.
+
+  left: Trivial
+  right: Trivial List
+
+[evaluate] I fail to evaluate an exp.
+
+  exp: cons(sole(), sole())
+
+ 15 |  value!: List('A)
+ 16 |)
+ 17 |
+ 18 |eval cons(sole(), sole())
+ 19 |
+
+[execute] I fail to execute a statement.
+
+ 14 |  --------
+ 15 |  value!: List('A)
+ 16 |)
+ 17 |
+ 18 |eval cons(sole(), sole())
+ 19 |

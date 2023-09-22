@@ -1,7 +1,5 @@
 # check
 
-[test] `checking/` -- `eval-sign` & `eval-type-nested` & `eval-type`
-
 [test] `checking/` --
 
 [check] `applyFunction` -- check all locals are used
