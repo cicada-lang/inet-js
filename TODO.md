@@ -1,6 +1,8 @@
 # check
 
-[test] `checking/`
+[test] `checking/` -- `rule-sign` `rule-type` `rule-type-occur-check`
+
+[test] `checking/` --
 
 [check] `applyFunction` -- check all locals are used
 [check] `interact` and `checkRule` -- check all locals are used -- after `exposeRuleTargets`
