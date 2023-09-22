@@ -1,0 +1,10 @@
+[checkNode] I expect a node to have one and only one principal port.
+
+  declared principal ports: [prev!: Nat, value!: Nat]
+
+[execute] I fail to execute a statement.
+
+ 1 |type Nat
+ 2 |node zero(-- value!: Nat)
+ 3 |node add1(prev!: Nat -- value!: Nat)
+ 4 |

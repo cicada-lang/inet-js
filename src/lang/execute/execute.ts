@@ -1,3 +1,4 @@
+import { checkNode } from "../check/checkNode"
 import { defineLocals } from "../env/defineLocals"
 import { appendReport } from "../errors"
 import {
@@ -17,13 +18,16 @@ export async function execute(mod: Mod, stmt: Stmt): Promise<null> {
 
     switch (stmt["@kind"]) {
       case "DefineNode": {
+        const input = evaluateParameters(mod, mod.env, stmt.input, options)
+        const output = evaluateParameters(mod, mod.env, stmt.output, options)
+        checkNode(mod, input, output)
         define(mod, stmt.name, {
           "@type": "Definition",
           "@kind": "NodeDefinition",
           mod,
           name: stmt.name,
-          input: evaluateParameters(mod, mod.env, stmt.input, options),
-          output: evaluateParameters(mod, mod.env, stmt.output, options),
+          input,
+          output,
           span: stmt.span,
         })
         return null

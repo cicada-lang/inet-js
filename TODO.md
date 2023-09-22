@@ -1,6 +1,6 @@
 # check
 
-[test] `checking/` -- `node-principal-ports-two` & `node-principal-ports-zero`
+[test] `checking/`
 
 [check] `applyFunction` -- check all locals are used
 [check] `interact` and `checkRule` -- check all locals are used -- after `exposeRuleTargets`
