@@ -8,6 +8,10 @@ export function formatExp(exp: Exp): string {
       return exp.name
     }
 
+    case "Builtin": {
+      return `@${exp.name}`
+    }
+
     case "Ap": {
       const target = formatExp(exp.target)
       const args = exp.args.map(formatExp)
@@ -16,10 +20,6 @@ export function formatExp(exp: Exp): string {
 
     case "QuoteSymbol": {
       return `'${exp.name}`
-    }
-
-    case "Builtin": {
-      return `@${exp.name}`
     }
 
     case "Block": {

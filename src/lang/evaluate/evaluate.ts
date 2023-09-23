@@ -33,6 +33,22 @@ export function evaluate(
         }
       }
 
+      case "Builtin": {
+        const definition = mod.builtins.get(exp.name)
+        if (definition === undefined) {
+          throw new Error(
+            [
+              `[evaluate / Builtin] I meet undefined builtin.`,
+              ``,
+              `  name: ${exp.name}`,
+            ].join("\n"),
+          )
+        }
+
+        const value = evaluateDefinition(env, definition, options)
+        return [value]
+      }
+
       case "Ap": {
         return apply(
           env,
@@ -50,22 +66,6 @@ export function evaluate(
             name: exp.name,
           },
         ]
-      }
-
-      case "Builtin": {
-        const definition = mod.builtins.get(exp.name)
-        if (definition === undefined) {
-          throw new Error(
-            [
-              `[evaluate / Builtin] I meet undefined builtin.`,
-              ``,
-              `  name: ${exp.name}`,
-            ].join("\n"),
-          )
-        }
-
-        const value = evaluateDefinition(env, definition, options)
-        return [value]
       }
 
       case "Block": {
