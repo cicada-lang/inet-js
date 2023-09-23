@@ -13,7 +13,4 @@ rule add(target!, addend, result) zero(value!) {
 
 rule add(target!, addend, result) add1(prev, value!) {
   add1(add(prev, addend), result)
-
-  // Same as:
-  // @connect(add1(add(prev, addend)), result)
 }

@@ -1,6 +1,5 @@
 # present
 
-[present] `presentRuleAsNets`
 [present] `presentFunctionAsNet`
 
 # later

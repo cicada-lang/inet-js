@@ -6,6 +6,7 @@ import { presentNodeAsNet } from "./presentNodeAsNet"
 
 test("presentNodeAsNet", async () => {
   const text = `
+
 type Nat
 
 node add(
@@ -14,6 +15,7 @@ node add(
   --------
   result: Nat
 )
+
 `
 
   const fetcher = new Fetcher()

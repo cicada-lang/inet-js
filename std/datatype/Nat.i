@@ -24,9 +24,6 @@ rule add(target!, addend, result) zero(value!) {
 
 rule add(target!, addend, result) add1(prev, value!) {
   add1(add(prev, addend), result)
-
-  // Same as:
-  // @connect(add1(add(prev, addend)), result)
 }
 
 function one(): Nat {
@@ -66,12 +63,8 @@ node natDup(
 )
 
 rule natDup(target!, second, first) zero(value!) {
-  zero(first)
-  zero(second)
-
-  // Same as:
-  // @connect(zero(), first)
-  // @connect(zero(), second)
+  @connect(zero(), first)
+  @connect(zero(), second)
 }
 
 rule natDup(target!, second, first) add1(prev, value!) {
