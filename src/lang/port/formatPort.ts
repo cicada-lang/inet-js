@@ -4,8 +4,8 @@ import { Port } from "./Port"
 
 export function formatPort(net: Net, port: Port): string {
   if (port.isPrincipal) {
-    return `(${formatNode(net, port.node)})-${port.name}!`
+    return `!${port.name}-(${formatNode(net, port.node)})`
   } else {
-    return `(${formatNode(net, port.node)})-${port.name}`
+    return `${port.name}-(${formatNode(net, port.node)})`
   }
 }

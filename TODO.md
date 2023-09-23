@@ -1,7 +1,5 @@
 # currying
 
-fix net formating `net <port> { ... }`
-
 [currying] `applyFunction` -- handle not enough args
 
 - `currying/function-not-enough-args.i`

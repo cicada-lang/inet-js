@@ -1,6 +1,6 @@
-netFromPort (add₃)-result
+net result-(add₃) {
   (add₃)-target!value-(add1₂)
   (add₃)-addend value-(add1₃)
   (add1₂)-prev value-(zero₁)
   (add1₃)-prev value-(zero₂)
-end
+}

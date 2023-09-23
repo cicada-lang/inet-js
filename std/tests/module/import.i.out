@@ -1,8 +1,8 @@
-netFromPort (add₁₀)-result
+net result-(add₁₀) {
   (add₁₀)-target!value-(add1₂₁)
   (add₁₀)-addend value-(zero₂₀)
   (add1₂₁)-prev value-(zero₁₉)
-end
-netFromPort (add1₂₂)-value!
+}
+net !value-(add1₂₂) {
   (add1₂₂)-prev value-(zero₂₀)
-end
+}

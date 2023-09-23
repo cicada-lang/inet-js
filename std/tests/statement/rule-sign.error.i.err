@@ -1,8 +1,8 @@
 [checkPortSigns] I expect the two ports to have opposite signs,
   but they all have positive sign.
 
-  first port: (@inputPortCap₄)-covering
-  second port: (@inputPortCap₃)-covering
+  first port: covering-(@inputPortCap₄)
+  second port: covering-(@inputPortCap₃)
 
 [evaluate] I fail to evaluate an exp.
 

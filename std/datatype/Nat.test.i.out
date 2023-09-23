@@ -1,19 +1,19 @@
-netFromPort (add₁₀)-result
+net result-(add₁₀) {
   (add₁₀)-target!value-(zero₁₉)
   (add₁₀)-addend value-(zero₂₀)
-end
-netFromPort (zero₂₀)-value! end
-netFromPort (add₁₁)-result
+}
+net !value-(zero₂₀) {}
+net result-(add₁₁) {
   (add₁₁)-target!value-(add1₂₁)
   (add₁₁)-addend value-(add1₂₂)
   (add1₂₁)-prev value-(zero₂₁)
   (add1₂₂)-prev value-(zero₂₂)
-end
-netFromPort (add1₂₃)-value!
+}
+net !value-(add1₂₃) {
   (add1₂₃)-prev value-(add1₂₂)
   (add1₂₂)-prev value-(zero₂₂)
-end
-netFromPort (add₁₃)-result
+}
+net result-(add₁₃) {
   (add₁₃)-target result-(add₁₄)
   (add₁₃)-addend value-(add1₂₆)
   (add₁₄)-target!value-(add1₂₄)
@@ -21,13 +21,13 @@ netFromPort (add₁₃)-result
   (add1₂₄)-prev value-(zero₂₃)
   (add1₂₅)-prev value-(zero₂₄)
   (add1₂₆)-prev value-(zero₂₅)
-end
-netFromPort (add1₂₈)-value!
+}
+net !value-(add1₂₈) {
   (add1₂₈)-prev value-(add1₂₉)
   (add1₂₉)-prev value-(add1₂₆)
   (add1₂₆)-prev value-(zero₂₅)
-end
-netFromPort (add₁₈)-result
+}
+net result-(add₁₈) {
   (add₁₈)-target result-(add₁₉)
   (add₁₈)-addend result-(add₂₀)
   (add₁₉)-target!value-(add1₃₀)
@@ -38,22 +38,22 @@ netFromPort (add₁₈)-result
   (add₂₀)-addend value-(add1₃₃)
   (add1₃₂)-prev value-(zero₂₈)
   (add1₃₃)-prev value-(zero₂₉)
-end
-netFromPort (add1₃₆)-value!
+}
+net !value-(add1₃₆) {
   (add1₃₆)-prev value-(add1₃₇)
   (add1₃₇)-prev value-(add1₃₄)
   (add1₃₄)-prev value-(add1₃₃)
   (add1₃₃)-prev value-(zero₂₉)
-end
-netFromPort (add₂₅)-result
+}
+net result-(add₂₅) {
   (add₂₅)-target!value-(add1₃₈)
   (add₂₅)-addend value-(zero₃₁)
   (add1₃₈)-prev value-(zero₃₀)
-end
-netFromPort (add1₃₉)-value!
+}
+net !value-(add1₃₉) {
   (add1₃₉)-prev value-(zero₃₁)
-end
-netFromPort (mul₃)-result
+}
+net result-(mul₃) {
   (mul₃)-target result-(add₂₇)
   (mul₃)-mulend result-(add₂₈)
   (add₂₇)-target!value-(add1₄₀)
@@ -64,14 +64,14 @@ netFromPort (mul₃)-result
   (add₂₈)-addend value-(add1₄₃)
   (add1₄₂)-prev value-(zero₃₄)
   (add1₄₃)-prev value-(zero₃₅)
-end
-netFromPort (add1₄₈)-value!
+}
+net !value-(add1₄₈) {
   (add1₄₈)-prev value-(add1₅₁)
   (add1₅₁)-prev value-(add1₅₇)
   (add1₅₇)-prev value-(add1₅₆)
   (add1₅₆)-prev value-(zero₄₄)
-end
-netFromPort (mul₈)-result
+}
+net result-(mul₈) {
   (mul₈)-target result-(add₃₉)
   (mul₈)-mulend result-(add₄₁)
   (add₃₉)-target result-(add₄₀)
@@ -88,8 +88,8 @@ netFromPort (mul₈)-result
   (add1₆₁)-prev value-(zero₄₈)
   (add1₆₂)-prev value-(zero₄₉)
   (add1₆₃)-prev value-(zero₅₀)
-end
-netFromPort (add1₇₁)-value!
+}
+net !value-(add1₇₁) {
   (add1₇₁)-prev value-(add1₇₄)
   (add1₇₄)-prev value-(add1₇₇)
   (add1₇₇)-prev value-(add1₈₇)
@@ -99,26 +99,26 @@ netFromPort (add1₇₁)-value!
   (add1₈₆)-prev value-(add1₉₆)
   (add1₉₆)-prev value-(add1₉₅)
   (add1₉₅)-prev value-(zero₆₃)
-end
-netFromPort (add1₁₀₀)-value!
+}
+net !value-(add1₁₀₀) {
   (add1₁₀₀)-prev value-(add1₉₈)
   (add1₉₈)-prev value-(zero₆₅)
-end
-netFromPort (add1₁₀₃)-value!
+}
+net !value-(add1₁₀₃) {
   (add1₁₀₃)-prev value-(add1₁₀₂)
   (add1₁₀₂)-prev value-(zero₆₉)
-end
-netFromPort (add1₁₀₈)-value!
+}
+net !value-(add1₁₀₈) {
   (add1₁₀₈)-prev value-(add1₁₀₉)
   (add1₁₀₉)-prev value-(zero₇₁)
-end
-netFromPort (add1₁₁₉)-value!
+}
+net !value-(add1₁₁₉) {
   (add1₁₁₉)-prev value-(add1₁₂₀)
   (add1₁₂₀)-prev value-(add1₁₁₄)
   (add1₁₁₄)-prev value-(zero₇₇)
-end
-netFromPort (add1₁₂₅)-value!
+}
+net !value-(add1₁₂₅) {
   (add1₁₂₅)-prev value-(add1₁₂₆)
   (add1₁₂₆)-prev value-(add1₁₂₃)
   (add1₁₂₃)-prev value-(zero₈₀)
-end
+}

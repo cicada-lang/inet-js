@@ -1,14 +1,14 @@
-netFromPort (b1₂₂)-value!
+net !value-(b1₂₂) {
   (b1₂₂)-higherbits value-(b0₂₂)
   (b0₂₂)-higherbits value-(b1₂₈)
   (b1₂₈)-higherbits value-(b1₂₉)
   (b1₂₉)-higherbits value-(bend₂₃)
-end
-netFromPort (b0₂₅)-value!
+}
+net !value-(b0₂₅) {
   (b0₂₅)-higherbits value-(b1₄₂)
   (b1₄₂)-higherbits value-(b0₃₁)
   (b0₃₁)-higherbits value-(b1₅₅)
   (b1₅₅)-higherbits value-(b0₃₃)
   (b0₃₃)-higherbits value-(b1₆₀)
   (b1₆₀)-higherbits value-(bend₄₂)
-end
+}

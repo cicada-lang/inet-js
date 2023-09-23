@@ -23,13 +23,11 @@ export const apply: PrimitiveApply = (env, args) => {
     const connectedcomponent = findConnectedComponent(env.net, otherPort.node)
     const netText = formatNet(connectedcomponent)
     if (netText.length === 0) {
-      env.mod.loader.onOutput(
-        `netFromPort ${formatPort(env.net, otherPort)} end`,
-      )
+      env.mod.loader.onOutput(`net ${formatPort(env.net, otherPort)} {}`)
     } else {
-      env.mod.loader.onOutput(`netFromPort ${formatPort(env.net, otherPort)}`)
-      env.mod.loader.onOutput(indent(netText))
-      env.mod.loader.onOutput("end")
+      env.mod.loader.onOutput(
+        `net ${formatPort(env.net, otherPort)} {\n${indent(netText)}\n}`,
+      )
     }
   } else {
     env.mod.loader.onOutput(formatValue(env, value))

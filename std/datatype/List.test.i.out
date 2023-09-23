@@ -1,4 +1,4 @@
-netFromPort (append₄)-result
+net result-(append₄) {
   (append₄)-target!value-(cons₈)
   (append₄)-rest value-(cons₁₁)
   (cons₈)-head value-(sole₆)
@@ -13,8 +13,8 @@ netFromPort (append₄)-result
   (cons₁₂)-tail value-(cons₁₃)
   (cons₁₃)-head value-(sole₁₁)
   (cons₁₃)-tail value-(null₄)
-end
-netFromPort (cons₁₄)-value!
+}
+net !value-(cons₁₄) {
   (cons₁₄)-head value-(sole₆)
   (cons₁₄)-tail value-(cons₁₅)
   (cons₁₅)-head value-(sole₇)
@@ -27,4 +27,4 @@ netFromPort (cons₁₄)-value!
   (cons₁₂)-tail value-(cons₁₃)
   (cons₁₃)-head value-(sole₁₁)
   (cons₁₃)-tail value-(null₄)
-end
+}

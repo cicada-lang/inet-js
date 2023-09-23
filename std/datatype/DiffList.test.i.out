@@ -1,4 +1,4 @@
-netFromPort (diffAppend₂)-result
+net result-(diffAppend₂) {
   (diffAppend₂)-target!value-(diff₅)
   (diffAppend₂)-rest value-(diff₆)
   (diff₅)-front value-(cons₅)
@@ -9,8 +9,8 @@ netFromPort (diffAppend₂)-result
   (cons₆)-head value-(sole₄)
   (cons₆)-tail value-(cons₇)
   (cons₇)-head value-(sole₅)
-end
-netFromPort (diff₇)-value!
+}
+net !value-(diff₇) {
   (diff₇)-front value-(cons₅)
   (diff₇)-back tail-(cons₇)
   (cons₅)-head value-(sole₃)
@@ -18,8 +18,8 @@ netFromPort (diff₇)-value!
   (cons₆)-head value-(sole₄)
   (cons₆)-tail value-(cons₇)
   (cons₇)-head value-(sole₅)
-end
-netFromPort (diffAppend₄)-result
+}
+net result-(diffAppend₄) {
   (diffAppend₄)-target!value-(diff₁₀)
   (diffAppend₄)-rest value-(diff₁₁)
   (diff₁₀)-front value-(cons₁₂)
@@ -32,8 +32,8 @@ netFromPort (diffAppend₄)-result
   (cons₁₄)-head value-(sole₁₂)
   (cons₁₄)-tail value-(cons₁₅)
   (cons₁₅)-head value-(sole₁₃)
-end
-netFromPort (diff₁₂)-value!
+}
+net !value-(diff₁₂) {
   (diff₁₂)-front value-(cons₁₂)
   (diff₁₂)-back tail-(cons₁₅)
   (cons₁₂)-head value-(sole₁₀)
@@ -43,4 +43,4 @@ netFromPort (diff₁₂)-value!
   (cons₁₄)-head value-(sole₁₂)
   (cons₁₄)-tail value-(cons₁₅)
   (cons₁₅)-head value-(sole₁₃)
-end
+}
