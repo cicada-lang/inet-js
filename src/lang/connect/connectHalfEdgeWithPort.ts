@@ -1,3 +1,4 @@
+import { checkPortSigns } from "../check/checkPortSigns"
 import { edgeEqual } from "../edge"
 import { HalfEdge } from "../half-edge"
 import { Net } from "../net"
@@ -27,6 +28,8 @@ export function connectHalfEdgeWithPort(
   const otherPort = findHalfEdgePort(net, otherHalfEdge)
 
   if (otherPort !== undefined) {
+    checkPortSigns(net, port, otherPort)
+
     if (port.isPrincipal && otherPort.isPrincipal) {
       const edge = {
         first: halfEdge,

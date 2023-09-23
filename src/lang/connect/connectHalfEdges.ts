@@ -1,3 +1,4 @@
+import { checkPortSigns } from "../check/checkPortSigns"
 import { HalfEdge } from "../half-edge"
 import { Net } from "../net"
 import { deleteHalfEdgeEntry } from "../net/deleteHalfEdgeEntry"
@@ -33,6 +34,7 @@ export function connectHalfEdges(
   const secondPort = secondOtherHalfEdgeEntry.port
 
   if (firstPort !== undefined && secondPort !== undefined) {
+    checkPortSigns(net, firstPort, secondPort)
     if (firstPort.isPrincipal && secondPort.isPrincipal) {
       net.activeEdges.push({
         first: firstOtherHalfEdge,
