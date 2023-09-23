@@ -1,5 +1,3 @@
-update articles -- zh -- ending
-
 update articles -- en -- add
 update articles -- en -- max
 update articles -- en -- mul
