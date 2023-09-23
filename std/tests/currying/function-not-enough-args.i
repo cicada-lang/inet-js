@@ -21,7 +21,27 @@ function addadd(x: Nat, y: Nat, z: Nat): Nat {
 }
 
 eval {
-  let prev, result = add1()
-  addadd(one(), one(), one(), prev)
+  let x, y, z, result = addadd()
+  @connect(x, one())
+  @connect(y, one())
+  @connect(z, one())
+  return @inspect(@run(result))
+}
+
+eval {
+  let y, z, result = addadd(one())
+  @connect(y, one())
+  @connect(z, one())
+  return @inspect(@run(result))
+}
+
+eval {
+  let z, result = addadd(one(), one())
+  @connect(z, one())
+  return @inspect(@run(result))
+}
+
+eval {
+  let result = addadd(one(), one(), one())
   return @inspect(@run(result))
 }

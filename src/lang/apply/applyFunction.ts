@@ -1,8 +1,10 @@
+import { manyTimes } from "../../utils/manyTimes"
 import { connectValues } from "../connect/connectValues"
 import { Env } from "../env"
 import { defineLocals } from "../env/defineLocals"
 import { EvaluateOptions } from "../evaluate"
 import { evaluateBlock } from "../evaluate/evaluateBlock"
+import { addEdge } from "../net/addEdge"
 import { Function, Value, formatValue } from "../value"
 import { formatValues } from "../value/formatValues"
 
@@ -28,6 +30,16 @@ export function applyFunction(
     const [value] = evaluateBlock(mod, env, body, options)
     connectValues(env, value, lastArg)
     return []
+  }
+
+  if (args.length < input.length) {
+    const edges = manyTimes(input.length - args.length, () => addEdge(env.net))
+    const inputNames = input.map((parameter) => parameter.name)
+    defineLocals(env, inputNames, [...args, ...edges.map((edge) => edge.first)])
+    return [
+      ...edges.map((edge) => edge.second),
+      ...evaluateBlock(mod, env, body, options),
+    ]
   }
 
   throw new Error(

@@ -1,9 +1,3 @@
-# currying
-
-[currying] `applyFunction` -- handle not enough args
-
-- `currying/function-not-enough-args.i`
-
 # present
 
 [present] `presentNodeAsNet`

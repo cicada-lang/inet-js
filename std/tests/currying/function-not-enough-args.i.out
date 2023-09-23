@@ -1,0 +1,20 @@
+net !value-(add1₇) {
+  (add1₇)-prev value-(add1₈)
+  (add1₈)-prev value-(add1₅)
+  (add1₅)-prev value-(zero₄)
+}
+net !value-(add1₁₃) {
+  (add1₁₃)-prev value-(add1₁₄)
+  (add1₁₄)-prev value-(add1₁₁)
+  (add1₁₁)-prev value-(zero₇)
+}
+net !value-(add1₁₉) {
+  (add1₁₉)-prev value-(add1₂₀)
+  (add1₂₀)-prev value-(add1₁₇)
+  (add1₁₇)-prev value-(zero₁₀)
+}
+net !value-(add1₂₅) {
+  (add1₂₅)-prev value-(add1₂₆)
+  (add1₂₆)-prev value-(add1₂₃)
+  (add1₂₃)-prev value-(zero₁₃)
+}
