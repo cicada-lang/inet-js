@@ -1,13 +1,13 @@
 import { capType } from "../cap"
 import { connectHalfEdgeWithPort } from "../connect/connectHalfEdgeWithPort"
+import { Env } from "../env"
 import { createEnv } from "../env/createEnv"
 import { defineLocals } from "../env/defineLocals"
 import { evaluateBlock } from "../evaluate/evaluateBlock"
 import { Mod, findDefinitionOrFail } from "../mod"
-import { Net } from "../net"
 import { addEdge } from "../net/addEdge"
 
-export function presentFunction(mod: Mod, name: string): Net {
+export function presentFunction(mod: Mod, name: string): Env {
   const definition = findDefinitionOrFail(mod, name)
 
   if (definition["@kind"] !== "FunctionDefinition") {
@@ -36,7 +36,9 @@ export function presentFunction(mod: Mod, name: string): Net {
     defineLocals(env, [parameter.name], [edge.second])
   }
 
-  evaluateBlock(mod, env, body, {})
+  const values = evaluateBlock(mod, env, body, {})
 
-  return env.net
+  env.stack.push(...values)
+
+  return env
 }
