@@ -1,3 +1,4 @@
+import { connectValues } from "../connect/connectValues"
 import { Env } from "../env"
 import { defineLocals } from "../env/defineLocals"
 import { EvaluateOptions } from "../evaluate"
@@ -13,10 +14,20 @@ export function applyFunction(
 ): Array<Value> {
   const { mod, input, body } = target.definition
 
-  if (input.length === args.length) {
-    const inputParameterNames = input.map((parameter) => parameter.name)
-    defineLocals(env, inputParameterNames, args)
+  if (args.length === input.length) {
+    const inputNames = input.map((parameter) => parameter.name)
+    defineLocals(env, inputNames, args)
     return evaluateBlock(mod, env, body, options)
+  }
+
+  if (args.length === input.length + 1) {
+    const inputNames = input.map((parameter) => parameter.name)
+    const inputArgs = args.slice(0, args.length - 1)
+    const lastArg = args[args.length - 1]
+    defineLocals(env, inputNames, inputArgs)
+    const [value] = evaluateBlock(mod, env, body, options)
+    connectValues(env, value, lastArg)
+    return []
   }
 
   throw new Error(

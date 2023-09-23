@@ -1,9 +1,10 @@
 # currying
 
-[currying] `applyFunction` -- handle extra one arg
-[test] `currying/function-extra-one-arg.i`
+fix net formating `net <port> { ... }`
+
 [currying] `applyFunction` -- handle not enough args
-[test] `currying/function-not-enough-args.i`
+
+- `currying/function-not-enough-args.i`
 
 # present
 
