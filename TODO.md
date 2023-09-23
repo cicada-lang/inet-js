@@ -1,10 +1,7 @@
 # present
 
-[present] `presentNodeAsNet`
 [present] `presentRuleAsNets`
 [present] `presentFunctionAsNet`
-
-[present] restore `npm run test:ts`
 
 # later
 

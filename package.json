@@ -17,7 +17,7 @@
     "test:inet-format": "test-runner test 'node ./bin/inet.js format --no-color' 'std/**/*.i'",
     "test:inet-run": "test-runner snapshot 'node ./bin/inet.js run --no-color' 'std/**/*.i' --exclude 'std/**/*.error.i'",
     "test:inet-run-error": "test-runner snapshot-error 'node ./bin/inet.js run --no-color' 'std/**/*.error.i'",
-    "test": "npm run test:inet-run && npm run test:inet-run-error",
+    "test": "npm run test:ts && npm run test:inet-run && npm run test:inet-run-error",
     "format": "prettier src docs --write"
   },
   "devDependencies": {
