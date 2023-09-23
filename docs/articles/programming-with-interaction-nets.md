@@ -461,12 +461,12 @@ first!   second
 Node definition:
 
 ```
-node max
-  Nat :first!
-  Nat :second
+node max(
+  first!: Nat,
+  second: Nat
   ----------
-  Nat :result
-end
+  result: Nat
+)
 ```
 
 The interaction between `(max)` and `(zero)` is simple:
@@ -482,9 +482,9 @@ The interaction between `(max)` and `(zero)` is simple:
 Rule definition:
 
 ```
-rule zero max
-  (max)-second result-(max)
-end
+rule max(first!, second, result) zero(value!) {
+  @connect(second, result)
+}
 ```
 
 For the `(max)` and `(add1)`,
@@ -518,16 +518,16 @@ first    second!
 Node definition:
 
 ```
-node maxAux
-  Nat :first
-  Nat :second!
+node maxAux(
+  first: Nat,
+  second!: Nat
   --------
-  Nat :result
-end
+  result: Nat
+)
 ```
 
 Using the auxiliary node to define
-the rule between `(add1)` and `(max)`:
+the rule between `(max)` and `(add1)`:
 
 ```
      result            result
@@ -542,14 +542,12 @@ the rule between `(add1)` and `(max)`:
 Rule definition:
 
 ```
-rule add1 max
-  (max)-second
-  (add1)-prev maxAux
-  result-(max)
-end
+rule max(first!, second, result) add1(prev, value!) {
+  maxAux(prev, second, result)
+}
 ```
 
-The rule between `(zero)` and `(maxAux)`:
+The rule between `(maxAux)` and `(zero)`:
 
 ```
      result            result
@@ -562,13 +560,12 @@ The rule between `(zero)` and `(maxAux)`:
 Rule definition:
 
 ```
-rule zero maxAux
-  (maxAux)-first add1
-  result-(maxAux)
-end
+rule maxAux(first, second!, result) zero(value!) {
+  add1(first, result)
+}
 ```
 
-The rule between `(add1)` and `(maxAux)`:
+The rule between `(maxAux)` and `(add1)`:
 
 ```
      result            result
@@ -583,77 +580,71 @@ The rule between `(add1)` and `(maxAux)`:
 Rule definition:
 
 ```
-rule add1 maxAux
-  (add1)-prev
-  (maxAux)-first max
-  add1 result-(maxAux)
-end
+rule maxAux(first, second!, result) add1(prev, value!) {
+  add1(max(first, prev), result)
+}
 ```
 
-[Goto the playground of `Nat` and `(max)`](https://inet.run/playground/dHlwZSBOYXQgLS0gQFR5cGUgZW5kCgpub2RlIHplcm8KICAtLS0tLS0KICBOYXQgOnZhbHVlIQplbmQKCm5vZGUgYWRkMQogIE5hdCA6cHJldgogIC0tLS0tLS0tLS0KICBOYXQgOnZhbHVlIQplbmQKCm5vZGUgbWF4QXV4CiAgTmF0IDpmaXJzdAogIE5hdCA6c2Vjb25kIQogIC0tLS0tLS0tCiAgTmF0IDpyZXN1bHQKZW5kCgpub2RlIG1heAogIE5hdCA6Zmlyc3QhCiAgTmF0IDpzZWNvbmQKICAtLS0tLS0tLS0tCiAgTmF0IDpyZXN1bHQKZW5kCgpydWxlIHplcm8gbWF4CiAgKG1heCktc2Vjb25kIHJlc3VsdC0obWF4KQplbmQKCnJ1bGUgYWRkMSBtYXgKICAobWF4KS1zZWNvbmQgKGFkZDEpLXByZXYgbWF4QXV4CiAgcmVzdWx0LShtYXgpCmVuZAoKcnVsZSB6ZXJvIG1heEF1eAogIChtYXhBdXgpLWZpcnN0IGFkZDEKICByZXN1bHQtKG1heEF1eCkKZW5kCgpydWxlIGFkZDEgbWF4QXV4CiAgKGFkZDEpLXByZXYgKG1heEF1eCktZmlyc3QgbWF4CiAgYWRkMSByZXN1bHQtKG1heEF1eCkKZW5kCgpjbGFpbSBvbmUgLS0gTmF0IGVuZApkZWZpbmUgb25lIHplcm8gYWRkMSBlbmQKCmNsYWltIHR3byAtLSBOYXQgZW5kCmRlZmluZSB0d28gb25lIGFkZDEgZW5kCgpjbGFpbSB0aHJlZSAtLSBOYXQgZW5kCmRlZmluZSB0aHJlZSB0d28gYWRkMSBlbmQKCmNsYWltIGZvdXIgLS0gTmF0IGVuZApkZWZpbmUgZm91ciB0aHJlZSBhZGQxIGVuZAoKemVybyB0d28gbWF4Cgp0aHJlZSB0d28gbWF4)
+[Goto the playground of `Nat` and `(max)`](https://inet.run/playground/dHlwZSBOYXQKCm5vZGUgemVybygKICAtLS0tLS0KICB2YWx1ZSE6IE5hdAopCgpub2RlIGFkZDEoCiAgcHJldjogTmF0CiAgLS0tLS0tLS0tLQogIHZhbHVlITogTmF0CikKCm5vZGUgbWF4QXV4KAogIGZpcnN0OiBOYXQsCiAgc2Vjb25kITogTmF0CiAgLS0tLS0tLS0KICByZXN1bHQ6IE5hdAopCgpub2RlIG1heCgKICBmaXJzdCE6IE5hdCwKICBzZWNvbmQ6IE5hdAogIC0tLS0tLS0tLS0KICByZXN1bHQ6IE5hdAopCgpydWxlIG1heChmaXJzdCEsIHNlY29uZCwgcmVzdWx0KSB6ZXJvKHZhbHVlISkgewogIEBjb25uZWN0KHNlY29uZCwgcmVzdWx0KQp9CgpydWxlIG1heChmaXJzdCEsIHNlY29uZCwgcmVzdWx0KSBhZGQxKHByZXYsIHZhbHVlISkgewogIG1heEF1eChwcmV2LCBzZWNvbmQsIHJlc3VsdCkKfQoKcnVsZSBtYXhBdXgoZmlyc3QsIHNlY29uZCEsIHJlc3VsdCkgemVybyh2YWx1ZSEpIHsKICBhZGQxKGZpcnN0LCByZXN1bHQpCn0KCnJ1bGUgbWF4QXV4KGZpcnN0LCBzZWNvbmQhLCByZXN1bHQpIGFkZDEocHJldiwgdmFsdWUhKSB7CiAgYWRkMShtYXgoZmlyc3QsIHByZXYpLCByZXN1bHQpCn0KCmZ1bmN0aW9uIG9uZSgpOiBOYXQgewogIHJldHVybiBhZGQxKHplcm8oKSkKfQoKZnVuY3Rpb24gdHdvKCk6IE5hdCB7CiAgcmV0dXJuIGFkZDEob25lKCkpCn0KCmZ1bmN0aW9uIHRocmVlKCk6IE5hdCB7CiAgcmV0dXJuIGFkZDEodHdvKCkpCn0KCmV2YWwgbWF4KHR3bygpLCB6ZXJvKCkpCmV2YWwgbWF4KHR3bygpLCB0aHJlZSgpKQ)
 
 ```
-type Nat -- @Type end
+type Nat
 
-node zero
+node zero(
   ------
-  Nat :value!
-end
+  value!: Nat
+)
 
-node add1
-  Nat :prev
+node add1(
+  prev: Nat
   ----------
-  Nat :value!
-end
+  value!: Nat
+)
 
-node maxAux
-  Nat :first
-  Nat :second!
+node maxAux(
+  first: Nat,
+  second!: Nat
   --------
-  Nat :result
-end
+  result: Nat
+)
 
-node max
-  Nat :first!
-  Nat :second
+node max(
+  first!: Nat,
+  second: Nat
   ----------
-  Nat :result
-end
+  result: Nat
+)
 
-rule zero max
-  (max)-second result-(max)
-end
+rule max(first!, second, result) zero(value!) {
+  @connect(second, result)
+}
 
-rule add1 max
-  (max)-second (add1)-prev maxAux
-  result-(max)
-end
+rule max(first!, second, result) add1(prev, value!) {
+  maxAux(prev, second, result)
+}
 
-rule zero maxAux
-  (maxAux)-first add1
-  result-(maxAux)
-end
+rule maxAux(first, second!, result) zero(value!) {
+  add1(first, result)
+}
 
-rule add1 maxAux
-  (add1)-prev (maxAux)-first max
-  add1 result-(maxAux)
-end
+rule maxAux(first, second!, result) add1(prev, value!) {
+  add1(max(first, prev), result)
+}
 
-claim one -- Nat end
-define one zero add1 end
+function one(): Nat {
+  return add1(zero())
+}
 
-claim two -- Nat end
-define two one add1 end
+function two(): Nat {
+  return add1(one())
+}
 
-claim three -- Nat end
-define three two add1 end
+function three(): Nat {
+  return add1(two())
+}
 
-claim four -- Nat end
-define four three add1 end
-
-zero two max
-
-three two max
+eval max(two(), zero())
+eval max(two(), three())
 ```
 
 # 10
