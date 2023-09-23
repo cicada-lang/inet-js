@@ -42,9 +42,9 @@ export function operand_matcher(tree: pt.Tree): Exp {
       args: [],
       span,
     }),
-    "operand:symbol": ({ name }, { span }) => ({
+    "operand:quote_symbol": ({ name }, { span }) => ({
       "@type": "Exp",
-      "@kind": "Symbol",
+      "@kind": "QuoteSymbol",
       name: pt.str(name),
       span,
     }),

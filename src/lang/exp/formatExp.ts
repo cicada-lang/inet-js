@@ -14,7 +14,7 @@ export function formatExp(exp: Exp): string {
       return `${target}(${args.join(", ")})`
     }
 
-    case "Symbol": {
+    case "QuoteSymbol": {
       return `'${exp.name}`
     }
 

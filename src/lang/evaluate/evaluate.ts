@@ -42,7 +42,7 @@ export function evaluate(
         )
       }
 
-      case "Symbol": {
+      case "QuoteSymbol": {
         return [
           {
             "@type": "Value",
