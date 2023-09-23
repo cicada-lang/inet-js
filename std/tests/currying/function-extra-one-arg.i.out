@@ -1,0 +1,16 @@
+netFromPort (add1₃)-value!
+  (add1₃)-prev result-(add₅)
+  (add₅)-target result-(add₆)
+  (add₅)-addend value-(add1₆)
+  (add₆)-target!value-(add1₄)
+  (add₆)-addend value-(add1₅)
+  (add1₄)-prev value-(zero₂)
+  (add1₅)-prev value-(zero₃)
+  (add1₆)-prev value-(zero₄)
+end
+netFromPort (add1₃)-value!
+  (add1₃)-prev value-(add1₈)
+  (add1₈)-prev value-(add1₉)
+  (add1₉)-prev value-(add1₆)
+  (add1₆)-prev value-(zero₄)
+end
