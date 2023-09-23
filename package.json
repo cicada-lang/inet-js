@@ -1,6 +1,6 @@
 {
   "name": "inet.js",
-  "version": "0.1.36",
+  "version": "0.2.0",
   "repository": "github:cicada-lang/inet.js",
   "main": "./lib/index.js",
   "files": [
