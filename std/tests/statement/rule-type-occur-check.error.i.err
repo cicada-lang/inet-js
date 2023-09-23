@@ -1,12 +1,12 @@
-[unifyTypes] I find the left type variable occurs in the right type.
+[unifyTypes] I find the right type variable occurs in the left type.
 
-  left type variable: 'A₂
-  right type: 'A₂ List List
+  right type variable: 'A₀
+  left type: 'A₂ List List
 
 [unifyTypes] I fail to unify types.
 
-  left: 'A₂
-  right: 'A₂ List List
+  left: 'A₂ List List
+  right: 'A₀
 
 [evaluate] I fail to evaluate an exp.
 

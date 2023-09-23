@@ -1,7 +1,7 @@
 [unifyTypes] I fail to unify types.
 
-  left: Trivial
-  right: Trivial List
+  left: Trivial List
+  right: Trivial
 
 [evaluate] I fail to evaluate an exp.
 

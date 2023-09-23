@@ -1,15 +1,13 @@
+import { checkHalfEdges } from "../check/checkHalfEdges"
 import { connectHalfEdges } from "../connect/connectHalfEdges"
 import { Env } from "../env"
 import { EvaluateOptions } from "../evaluate"
 import { refreshNode } from "../freshen/refreshNode"
 import { halfEdgeFromPort } from "../half-edge/halfEdgeFromPort"
-import { findHalfEdgeEntryOrFail } from "../net/findHalfEdgeEntryOrFail"
-import { findHalfEdgePort } from "../net/findHalfEdgePort"
 import { findInputPorts } from "../net/findInputPorts"
 import { findOutputPorts } from "../net/findOutputPorts"
 import { Node, formatNode } from "../node"
 import { formatPort } from "../port/formatPort"
-import { unifyTypes } from "../unify/unifyTypes"
 import { Value, formatValue } from "../value"
 
 export function applyNode(
@@ -45,7 +43,6 @@ export function applyNode(
 
   for (const [index, arg] of args.entries()) {
     const halfEdge = halfEdges[index]
-    const port = ports[index]
     if (arg["@kind"] !== "HalfEdge") {
       throw new Error(
         [
@@ -57,13 +54,7 @@ export function applyNode(
     }
 
     if (options.checking) {
-      const argHalfEdgeEntry = findHalfEdgeEntryOrFail(env.net, arg)
-      const otherHalfEdge = argHalfEdgeEntry.otherHalfEdge
-      const otherPort = findHalfEdgePort(env.net, otherHalfEdge)
-
-      if (otherPort !== undefined) {
-        unifyTypes(env, options.checking.substitution, otherPort.t, port.t)
-      }
+      checkHalfEdges(env, halfEdge, arg, options.checking)
     }
 
     connectHalfEdges(env.net, halfEdge, arg)
