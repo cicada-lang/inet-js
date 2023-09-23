@@ -752,7 +752,7 @@ while the `(cons)` of `List` add one node and link to an extra node.
 
 In the following code, we will use a new word `'A`.
 
-- `'A` will add the symbol of `A` to the stack.
+- `'A` is a symbol.
 - `'A` can be used as type variable.
 - Type variable can be used as type argument, for example `'A List`.
 
@@ -902,18 +902,16 @@ therefore it is very suitable for parallel computing.
 
 ## Syntax for Nonlinear Computational Models
 
-Using stack and postfix notation to build net,
-give us a simple syntax for interaction nets.
+Viewing application of node as connecting ports,
+give us a simple applicative syntax for interaction nets.
 
 In fect, for graph-based computation models like interaction nets,
 the graph itself is the syntax.
 But graph is nonlinear, how to use linear text to describe graph?
-We solve this by using stack and postfix notation to build graph.
+We solve this by using function applications to build graph.
 
 In this way, the language we used to build graph,
 becomes the lower layer language for the language of interaction nets.
-View this lower layer language as a programming language,
-it is also Turing complete.
 
 This idea can not only be used to build graph,
 and provide syntax for graph-based computation models,
@@ -921,7 +919,7 @@ it can also be used to build more complex nonlinear objects,
 such as the generalization of graph theory in high dimensions
 -- [Cell complex](https://zh.wikipedia.org/wiki/CW%E5%A4%8D%E5%BD%A2).
 If we have a new computation model based on cell complex,
-Then the idea of using stacks and postfix notation
+Then the idea of using function applications
 to provide syntax for computation model is still applicable.
 
 ## Type System
@@ -956,10 +954,17 @@ to encode natural number we need to do something like knot counting,
 in many use cases, this is obviously not practical.
 
 But fortunately, our language already has two layers,
-the upper layer is pure interaction nets,
-the lower layer is a stack-based postfix notation general programming language.
-We can make the whole language a practical programming language,
-simply by extending this lower layer language.
+the upper layer is interaction nets,
+the lower layer is general programming language for building nets.
 
-How to design such extension?
+By extending this lower layer language,
+we can introduce another computation model -- actor model,
+then we can make the whole language a practical programming language,
+by combining the pure parallel computation of interaction nets
+with async message passing of actor model.
+
+How to design such language extension?
+
+How to express the side-effect of message passing in our type system?
+
 Please see the report of my next project :)
