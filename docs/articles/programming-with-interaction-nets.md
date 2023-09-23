@@ -217,68 +217,61 @@ We design the statement to define node as follows:
 
 - The statement starts with `node`,
   follows the name of the node,
-  ends with `end`.
+  then write the parameters of the node in parentheses.
 - Use a dividing line to distinguish the input ports from the output ports.
   - Above the dividing line are the input ports.
   - Below the dividing line are the output ports.
   - The dividing can be as long as wish, at least two characters `--`.
-- The name of a port is written after the type as a label.
 - For principal port, add `!` as suffix.
 
 Suppose the type representing natural number is `Nat`,
 the aforementioned nodes are defined as follows:
 
 ```
-node zero
-  --------
-  Nat :value!
-end
+node zero(
+  ------
+  value!: Nat
+)
 
-node add1
-  Nat :prev
-  --------
-  Nat :value!
-end
+node add1(
+  prev: Nat
+  ----------
+  value!: Nat
+)
 
-node add
-  Nat :target!
-  Nat :prev
+node add(
+  target!: Nat,
+  addend: Nat
   --------
-  Nat :result
-end
+  result: Nat
+)
 ```
 
 # 5
 
-A type might have other types as arguments.
-
-For now, the only information we need is the number of input arguments,
-because the type of an argument must be a type,
-and the number of output arguments must be one.
-
-But to be consistent with the definition of node,
-we design the statement to define type as follows:
+We design the statement to define type as follows:
 
 - The statement starts with `type`,
   follows the name of the type,
-  ends with `end`.
-- Use a dividing line to distinguish the input type arguments from the output type arguments.
-  - Above the dividing line are the input type arguments (must be `Type`).
-  - Below the dividing line are the output type arguments, (must be one `Type`).
-  - The dividing can be as long as wish, at least two characters `--`.
-  - `Type` is a built-in value, we reference it by `@Type`.
-    - All built-in definitions will use `@` as prefix.
+  then write the type parameters of the type constructor in parentheses.
+- If the type does not take parameters, we do not need to write the parentheses.
+- `Type` is a built-in value, we reference it by `@Type`.
+  - All built-in definitions will use `@` as prefix.
 
-Take the type representing natural number `Nat` as an example, it has no input type arguments, thus it's definition is:
+Take the type representing natural number `Nat` as an example,
+it has no input type arguments, thus it's definition is:
 
 ```
-type Nat -- @Type end
+type Nat
 ```
 
-Take `List` as another example, it has one input type argument, i.e. the element type, thus it's definition is:
+Take `List` as another example,
+it has one input type argument,
+i.e. the element type,
+thus it's definition is:
 
 ```
-type List @Type -- @Type end
+type List(Element: @Type)
 ```
 
 # 6
@@ -307,87 +300,29 @@ We can see that, the so called interaction can be viewed as:
 We design the statement for defining rule as follows:
 
 - The statement starts with `rule`,
-  follows the name of two ports,
-  ends with `end`.
-- Use a stack for temporarily saving the ports.
-- Use the word `(node)-port`
-  to reference a exposed port caused by removing a port of a node,
-  and put the exposed port on the stack.
-- Use the word `port-(node)`
-  also to reference a exposed port caused by removing a port of a node,
-  and connect the exposed port with the port at the top of the stack.
-- Use the word `(node)` to call a node,
-  and connect the input ports of this node with the ports at the top
-  of the stack in order, each input port will use up a port in the
-  stack, and then put the output ports of this node back into the
-  stack in order.
+  follows the pattern of two nodes,
+  then write the body of the rule as a code block in curly braces.
 
-The the rule between `(add1)` and `(add)` as an example:
+The the rule between `(add)` and `(add1)` as an example:
 
 ```
-rule add1 add
-  (add)-addend
-  (add1)-prev add
-  add1 result-(add)
-end
+rule add(target!, addend, result) add1(prev, value!) {
+  add1(add(prev, addend), result)
+}
 ```
 
-Let's analyze the above definition,
-show the stack at each step,
-also show the newly generated node
-and newly generated connections at each step.
+To apply a node to arguments, is to connect it's ports with the arguments.
 
-- For the newly generated nodes by calling a node name,
-  we add subscripts to them to distinguish them from each other.
-- Note that, the `(add)-addend` without subscript
-  does not represent the `addend` port of `(add)`,
-  but represent the exposed port caused by
-  removing the `addend` port of `(add)`.
-
-```
-  stack: [ ]
-
-(add)-addend
-
-  stack: [ (add)-addend ]
-
-(add1)-prev
-
-  stack: [ (add)-addend, (add1)-prev ]
-
-add
-
-  new node: (add₂)
-
-  new connections:
-    (add1)-prev target-(add₂)
-    (add)-addend addend-(add₂)
-
-  stack: [ (add₂)-result ]
-
-add1
-
-  new node: (add1₂)
-
-  new connections:
-    (add₂)-result prev-(add1₂)
-
-  stack: [ (add1₂)-value ]
-
-result-(add)
-
-  stack: [ ]
-```
-
-The rule between `(zero)` and `(add)` is a little special,
+The rule between `(add)` and `(zero)` is a little special,
 because during reconnecting the exposed ports,
 it does not introduce any new nodes.
 
+We can use the built-in function `@connect` to connect ports.
+
 ```
-rule zero add
-  (add)-addend
-  result-(add)
-end
+rule add(target!, addend, result) zero(value!) {
+  @connect(addend, result)
+}
 ```
 
 # 7
@@ -401,61 +336,50 @@ we must use `claim` to claim the type of the word.
 
 We have an online playground, which can be used to easily share code.
 
-[Goto the playground of `Nat` and `(add)`](https://inet.run/playground/dHlwZSBOYXQgLS0gQFR5cGUgZW5kCgpub2RlIHplcm8KICAtLS0tLS0tLS0tLS0KICBOYXQgOnZhbHVlIQplbmQKCm5vZGUgYWRkMQogIE5hdCA6cHJldgogIC0tLS0tLS0tLS0tLQogIE5hdCA6dmFsdWUhCmVuZAoKbm9kZSBhZGQKICBOYXQgOnRhcmdldCEKICBOYXQgOmFkZGVuZAogIC0tLS0tLS0tLS0tLQogIE5hdCA6cmVzdWx0CmVuZAoKcnVsZSB6ZXJvIGFkZAogIChhZGQpLWFkZGVuZAogIHJlc3VsdC0oYWRkKQplbmQKCnJ1bGUgYWRkMSBhZGQKICAoYWRkKS1hZGRlbmQKICAoYWRkMSktcHJldiBhZGQKICBhZGQxIHJlc3VsdC0oYWRkKQplbmQKCmNsYWltIG9uZSAtLSBOYXQgZW5kCgpkZWZpbmUgb25lCiAgemVybyBhZGQxCmVuZAoKY2xhaW0gdHdvIC0tIE5hdCBlbmQKCmRlZmluZSB0d28KICBvbmUgYWRkMQplbmQKCmNsYWltIGFkZDIgTmF0IC0tIE5hdCBlbmQKCmRlZmluZSBhZGQyCiAgdHdvIGFkZAplbmQKCm9uZSBhZGQyCm9uZSBhZGQyCmFkZA)
+[Goto the playground of `Nat` and `(add)`](https://inet.run/playground/dHlwZSBOYXQKCm5vZGUgemVybygKICAtLS0tLS0KICB2YWx1ZSE6IE5hdAopCgpub2RlIGFkZDEoCiAgcHJldjogTmF0CiAgLS0tLS0tLS0tLQogIHZhbHVlITogTmF0CikKCm5vZGUgYWRkKAogIHRhcmdldCE6IE5hdCwKICBhZGRlbmQ6IE5hdAogIC0tLS0tLS0tCiAgcmVzdWx0OiBOYXQKKQoKcnVsZSBhZGQodGFyZ2V0ISwgYWRkZW5kLCByZXN1bHQpIHplcm8odmFsdWUhKSB7CiAgQGNvbm5lY3QoYWRkZW5kLCByZXN1bHQpCn0KCnJ1bGUgYWRkKHRhcmdldCEsIGFkZGVuZCwgcmVzdWx0KSBhZGQxKHByZXYsIHZhbHVlISkgewogIGFkZDEoYWRkKHByZXYsIGFkZGVuZCksIHJlc3VsdCkKfQoKZnVuY3Rpb24gb25lKCk6IE5hdCB7CiAgcmV0dXJuIGFkZDEoemVybygpKQp9CgpmdW5jdGlvbiB0d28oKTogTmF0IHsKICByZXR1cm4gYWRkKG9uZSgpLCBvbmUoKSkKfQoKZnVuY3Rpb24gYWRkMih4OiBOYXQpOiBOYXQgewogIHJldHVybiBhZGQodHdvKCksIHgpCn0KCmV2YWwgYWRkKGFkZDIob25lKCkpLCBhZGQyKG9uZSgpKSk)
 
 ```
-type Nat -- @Type end
+type Nat
 
-node zero
-  ------------
-  Nat :value!
-end
+node zero(
+  ------
+  value!: Nat
+)
 
-node add1
-  Nat :prev
-  ------------
-  Nat :value!
-end
+node add1(
+  prev: Nat
+  ----------
+  value!: Nat
+)
 
-node add
-  Nat :target!
-  Nat :addend
-  ------------
-  Nat :result
-end
+node add(
+  target!: Nat,
+  addend: Nat
+  --------
+  result: Nat
+)
 
-rule zero add
-  (add)-addend
-  result-(add)
-end
+rule add(target!, addend, result) zero(value!) {
+  @connect(addend, result)
+}
 
-rule add1 add
-  (add)-addend
-  (add1)-prev add
-  add1 result-(add)
-end
+rule add(target!, addend, result) add1(prev, value!) {
+  add1(add(prev, addend), result)
+}
 
-claim one -- Nat end
+function one(): Nat {
+  return add1(zero())
+}
 
-define one
-  zero add1
-end
+function two(): Nat {
+  return add(one(), one())
+}
 
-claim two -- Nat end
+function add2(x: Nat): Nat {
+  return add(two(), x)
+}
 
-define two
-  one add1
-end
-
-claim add2 Nat -- Nat end
-
-define add2
-  two add
-end
-
-one add2
-one add2
-add
+eval add(add2(one()), add2(one()))
 ```
 
 # 8
