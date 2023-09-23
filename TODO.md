@@ -1,7 +1,3 @@
-# present
-
-[present] `presentFunctionAsNet`
-
 # later
 
 [bug] `connectPortWithHalfEdge` should call `checkPortSigns`
