@@ -1,5 +1,6 @@
-[bug] `connectPortWithHalfEdge` should call `checkPortSigns`
-
-- `@connect` -- should not call `checkPortSigns`
+[refactor] extract `checkPortWithHalfEdge`
 
 [refactor] check during `connect*` instead of before `connect*`
+
+- `connectPortWithHalfEdge` should call `checkPortSigns`
+  `@connect` -- should not call `checkPortSigns`
