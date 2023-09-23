@@ -1,4 +1,3 @@
-update articles -- zh -- List
 update articles -- zh -- DiffList
 
 update articles -- en -- add
