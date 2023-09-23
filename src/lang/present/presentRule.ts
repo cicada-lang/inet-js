@@ -1,4 +1,4 @@
-import { capNodeAllPorts } from "../cap"
+import { capNodeNonPrinciplePorts } from "../cap"
 import { connectPorts } from "../connect/connectPorts"
 import { createEnv } from "../env/createEnv"
 import { evaluateBlock } from "../evaluate/evaluateBlock"
@@ -38,8 +38,8 @@ export function presentRule(mod: Mod, ruleName: string): [Net, Net] {
     findDefinitionOrFail(mod, secondName),
   )
 
-  capNodeAllPorts(mod, env.net, firstNode)
-  capNodeAllPorts(mod, env.net, secondNode)
+  capNodeNonPrinciplePorts(mod, env.net, firstNode)
+  capNodeNonPrinciplePorts(mod, env.net, secondNode)
 
   const initial = collectInitialNet(env.net, firstNode, secondNode)
 

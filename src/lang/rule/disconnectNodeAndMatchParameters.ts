@@ -4,7 +4,6 @@ import { disconnectNode } from "../net/disconnectNode"
 import { Node, formatNode } from "../node"
 import { ParameterWithoutType } from "../stmt/Parameter"
 import { formatParameterWithoutType } from "../stmt/formatParameterWithoutType"
-import { formatValues } from "../value/formatValues"
 
 export function disconnectNodeAndMatchParameters(
   env: Env,
@@ -16,7 +15,7 @@ export function disconnectNodeAndMatchParameters(
   for (const [index, parameter] of parameters.entries()) {
     if (!parameter.isPrincipal) {
       const halfEdge = halfEdges[index]
-      if (halfEdges[index] === undefined) {
+      if (halfEdge === undefined) {
         throw new Error(
           [
             `[exposeRuleTarget] I expect a halfEdge at the index.`,
@@ -24,7 +23,6 @@ export function disconnectNodeAndMatchParameters(
             `  node: ${formatNode(env.net, node)}`,
             `  index: ${index}`,
             `  paramenter: ${formatParameterWithoutType(parameter)}`,
-            `  halfEdges: [${formatValues(env, halfEdges)}]`,
           ].join("\n"),
         )
       }

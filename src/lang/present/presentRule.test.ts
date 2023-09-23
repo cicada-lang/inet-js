@@ -30,16 +30,16 @@ rule add(target!, addend, result) add1(prev, value!) {
   const [initial, final] = presentRule(mod, "add1 add")
 
   expect(formatNet(initial)).toMatchInlineSnapshot(`
-    "(add1₂)-prev covering-(@inputPortCap₅)
+    "(add1₂)-prev covering-(@inputPortCap₃)
     (add1₂)-value!target-(add₃)
-    (add₃)-addend covering-(@inputPortCap₇)
-    (add₃)-result covering-(@ouputPortCap₅)"
+    (add₃)-addend covering-(@inputPortCap₄)
+    (add₃)-result covering-(@ouputPortCap₂)"
   `)
 
   expect(formatNet(final)).toMatchInlineSnapshot(`
-    "(@inputPortCap₅)-covering target-(add₄)
-    (@inputPortCap₇)-covering addend-(add₄)
-    (@ouputPortCap₅)-covering value-(add1₃)
+    "(@inputPortCap₃)-covering target-(add₄)
+    (@inputPortCap₄)-covering addend-(add₄)
+    (@ouputPortCap₂)-covering value-(add1₃)
     (add1₃)-prev result-(add₄)"
   `)
 })

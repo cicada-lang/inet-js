@@ -1,4 +1,4 @@
-import { capNodeAllPorts } from "../cap"
+import { capNodeNonPrinciplePorts } from "../cap"
 import { createChecking } from "../checking/createChecking"
 import { createEnv } from "../env/createEnv"
 import { evaluateBlock } from "../evaluate/evaluateBlock"
@@ -34,8 +34,8 @@ export function checkRule(
 
   refreshNode(env.net, checking.typeVarCounters, secondNode)
 
-  capNodeAllPorts(mod, env.net, firstNode)
-  capNodeAllPorts(mod, env.net, secondNode)
+  capNodeNonPrinciplePorts(mod, env.net, firstNode)
+  capNodeNonPrinciplePorts(mod, env.net, secondNode)
 
   exposeRuleTargets(env, { first, second }, [firstNode, secondNode])
   evaluateBlock(mod, env, body, { checking })
