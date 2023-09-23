@@ -11,7 +11,7 @@ export function findRuleByName(mod: Mod, ruleName: string): Rule | undefined {
 
   return findRuleByNodes(
     mod,
-    { url: firstDefinition.mod.url, name: firstDefinition.name },
-    { url: secondDefinition.mod.url, name: secondDefinition.name },
+    { modId: firstDefinition.mod.url.href, name: firstDefinition.name },
+    { modId: secondDefinition.mod.url.href, name: secondDefinition.name },
   )
 }

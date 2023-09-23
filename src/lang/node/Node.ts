@@ -1,12 +1,12 @@
 export type Node = {
   "@type": "Value"
   "@kind": "Node"
+  modId: string
   id: string
-  url: URL
   name: string
 }
 
 export type NodeWithoutId = {
-  url: URL
+  modId: string
   name: string
 }

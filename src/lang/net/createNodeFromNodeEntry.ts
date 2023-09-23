@@ -7,6 +7,6 @@ export function createNodeFromNodeEntry(nodeEntry: NodeEntry): Node {
     "@kind": "Node",
     id: nodeEntry.id,
     name: nodeEntry.name,
-    url: nodeEntry.url,
+    modId: nodeEntry.url.href,
   }
 }

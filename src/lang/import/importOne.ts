@@ -39,7 +39,7 @@ export function importOne(
 
   if (definition["@kind"] === "NodeDefinition") {
     importNodeRules(mod, targetMod, {
-      url: definition.mod.url,
+      modId: definition.mod.url.href,
       name: definition.name,
     })
   }

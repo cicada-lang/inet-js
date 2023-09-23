@@ -2,14 +2,14 @@ import { BlockStmt } from "../exp/BlockStmt"
 import { RuleTarget } from "../rule"
 import { Mod } from "./Mod"
 
-export type RuleTargetWithURL = RuleTarget & {
-  url: URL
+export type RuleTargetWithModId = RuleTarget & {
+  modId: string
 }
 
 export type RuleEntry = {
   name: string
   mod: Mod
-  first: RuleTargetWithURL
-  second: RuleTargetWithURL
+  first: RuleTargetWithModId
+  second: RuleTargetWithModId
   body: Array<BlockStmt>
 }

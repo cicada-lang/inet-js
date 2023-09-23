@@ -19,12 +19,12 @@ export function defineRule(
   const secondDefinition = findDefinitionOrFail(mod, second.name)
 
   const firstKey = nodeKeyWithoutId({
-    url: firstDefinition.mod.url,
+    modId: firstDefinition.mod.url.href,
     name: firstDefinition.name,
   })
 
   const secondKey = nodeKeyWithoutId({
-    url: secondDefinition.mod.url,
+    modId: secondDefinition.mod.url.href,
     name: secondDefinition.name,
   })
 
@@ -35,12 +35,12 @@ export function defineRule(
     name,
     mod,
     first: {
-      url: firstDefinition.mod.url,
+      modId: firstDefinition.mod.url.href,
       name: first.name,
       parameters: first.parameters,
     },
     second: {
-      url: secondDefinition.mod.url,
+      modId: secondDefinition.mod.url.href,
       name: second.name,
       parameters: second.parameters,
     },

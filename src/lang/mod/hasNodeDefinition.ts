@@ -12,7 +12,7 @@ export function hasNodeDefinition(mod: Mod, node: NodeWithoutId): boolean {
     return false
   }
 
-  if (definition.mod.url.href !== node.url.href) {
+  if (definition.mod.url.href !== node.modId) {
     return false
   }
 

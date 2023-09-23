@@ -18,7 +18,7 @@ export function addNode(
     "@type": "Value",
     "@kind": "Node",
     id,
-    url: mod.url,
+    modId: mod.url.href,
     name,
   }
 
