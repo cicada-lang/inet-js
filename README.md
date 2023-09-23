@@ -1,4 +1,4 @@
-# iNet.js
+# iNet (JavaScript)
 
 [ [Website](https://inet.run) ]
 
@@ -13,15 +13,15 @@ using a familiar JavaScript-like syntax :)
 Install it by the following command:
 
 ```sh
-npm install --global inet.js
+npm install --global @cicada-lang/inet-js
 ```
 
-The command line program is called `inet.js`.
+The command line program is called `inet-js`.
 
 ```sh
-inet.js repl         # Open an interactive REPL
-inet.js run [path]   # Run an inet program
-inet.js help [name]  # Display help for a command
+inet-js repl         # Open an interactive REPL
+inet-js run [path]   # Run an inet program
+inet-js help [name]  # Display help for a command
 ```
 
 ## Examples
