@@ -11,28 +11,12 @@ export function applyFunction(
   args: Array<Value>,
   options: EvaluateOptions,
 ): Array<Value> {
-  if (target.definition.input.length === args.length) {
-    const inputParameterNames = target.definition.input.map(
-      (parameter) => parameter.name,
-    )
-    defineLocals(env, inputParameterNames, args)
-    const values = evaluateBlock(
-      target.definition.mod,
-      env,
-      target.definition.body,
-      options,
-    )
-    if (values.length !== 1) {
-      throw new Error(
-        [
-          `[applyFunction] I expect a function to return one value.`,
-          ``,
-          `  values: [${formatValues(env, values)}]`,
-        ].join("\n"),
-      )
-    }
+  const { mod, input, body } = target.definition
 
-    return values
+  if (input.length === args.length) {
+    const inputParameterNames = input.map((parameter) => parameter.name)
+    defineLocals(env, inputParameterNames, args)
+    return evaluateBlock(mod, env, body, options)
   }
 
   throw new Error(
