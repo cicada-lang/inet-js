@@ -23,7 +23,9 @@ export function addNode(
   }
 
   const ports: PortRecord = {}
-  net.nodeEntries.set(nodeKey(node), { id, url: mod.url, name, ports })
+
+  const modId = mod.url.href
+  net.nodeEntries.set(nodeKey(node), { id, modId, name, ports })
 
   input.map((parameter) => {
     ports[parameter.name] = {

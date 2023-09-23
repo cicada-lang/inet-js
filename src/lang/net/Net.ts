@@ -27,9 +27,9 @@ export type HalfEdgeEntry = {
 }
 
 export type NodeEntry = {
+  modId: string
   id: string
   name: string
-  url: URL
   ports: PortRecord
   asTypeCap?: {}
   asPortCap?: {
