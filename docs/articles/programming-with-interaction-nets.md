@@ -666,18 +666,6 @@ but:
 - `(natErase)` has zero output ports.
 - `(natDup)` has two output ports.
 
-This is the main reason why we use stack to build net.
-
-The good thing about using stack to pass arguments is that,
-it can naturally handles zero-return-value and multiple-return-values,
-we do not need to design new special syntax for these cases.
-
-After decide to use stack to build net,
-we can go one step further to use pure postfix notation as syntax.
-This give us another good thing, i.e. composition of words is associative.
-Thus when we want to factor out a subsequence from a sequence of words,
-there will be no complicated syntax preventing us from doing so.
-
 In the following examples, we will no longer using ASCII to draw graph,
 to see the rendered graph, simply follow the link to the playground.
 
@@ -689,76 +677,64 @@ to import definitions from other module.
 - We can use full URL `https//...` to specify a file.
 - We can also use relative path `./...` to specify a file.
 
-We will also use a new word `$local`
-to save the value at the top of the stack
-to a local variable named `local`.
-
-- After saving a value to `$local`,
-  we can fetch the value back to the stack
-  by calling `local`.
-- After the fetching, `$local` will be empty again,
-  and can be used to save other value.
-
-[Goto the playground of `Nat` and `(mul)`](https://inet.run/playground/aW1wb3J0CiAgTmF0LCB6ZXJvLCBhZGQxLCBhZGQsCiAgb25lLCB0d28sIHRocmVlLApmcm9tICJodHRwczovL2NvZGUtb2YtaW5ldC1jdXRlLmZpZGIuYXBwL3Rlc3RzL2RhdGF0eXBlL05hdC5pIgoKbm9kZSBuYXRFcmFzZQogIE5hdCA6dGFyZ2V0IQogIC0tLS0tLS0tCmVuZAoKcnVsZSB6ZXJvIG5hdEVyYXNlIGVuZAoKcnVsZSBhZGQxIG5hdEVyYXNlCiAgKGFkZDEpLXByZXYgbmF0RXJhc2UKZW5kCgpub2RlIG5hdER1cAogIE5hdCA6dGFyZ2V0IQogIC0tLS0tLS0tCiAgTmF0IDpzZWNvbmQKICBOYXQgOmZpcnN0CmVuZAoKcnVsZSB6ZXJvIG5hdER1cAogIHplcm8gZmlyc3QtKG5hdER1cCkKICB6ZXJvIHNlY29uZC0obmF0RHVwKQplbmQKCnJ1bGUgYWRkMSBuYXREdXAKICAoYWRkMSktcHJldiBuYXREdXAgJGZpcnN0ICRzZWNvbmQKICBmaXJzdCBhZGQxIGZpcnN0LShuYXREdXApCiAgc2Vjb25kIGFkZDEgc2Vjb25kLShuYXREdXApCmVuZAoKbm9kZSBtdWwKICBOYXQgOnRhcmdldCEKICBOYXQgOm11bGVuZAogIC0tLS0tLS0tCiAgTmF0IDpyZXN1bHQKZW5kCgpydWxlIHplcm8gbXVsCiAgKG11bCktbXVsZW5kIG5hdEVyYXNlCiAgemVybyByZXN1bHQtKG11bCkKZW5kCgpydWxlIGFkZDEgbXVsCiAgKG11bCktbXVsZW5kIG5hdER1cCAkZmlyc3QgJHNlY29uZAogIChhZGQxKS1wcmV2IGZpcnN0IG11bCBzZWNvbmQgYWRkCiAgcmVzdWx0LShtdWwpCmVuZAoKdHdvIG5hdER1cCAkZmlyc3QgJHNlY29uZAoKdHdvIHR3byBtdWwKCnRocmVlIHRocmVlIG11bA)
+[Goto the playground of `Nat` and `(mul)`](https://inet.run/playground/aW1wb3J0IHsKICBOYXQsIHplcm8sIGFkZDEsIGFkZCwKICBvbmUsIHR3bywgdGhyZWUsCn0gZnJvbSAiaHR0cHM6Ly9jb2RlLW9mLWluZXQtanMuZmlkYi5hcHAvc3RkL2RhdGF0eXBlL05hdC5pIgoKbm9kZSBuYXRFcmFzZSgKICB0YXJnZXQhOiBOYXQKICAtLS0tLS0tLQopCgpydWxlIG5hdEVyYXNlKHRhcmdldCEpIHplcm8odmFsdWUhKSB7fQoKcnVsZSBuYXRFcmFzZSh0YXJnZXQhKSBhZGQxKHByZXYsIHZhbHVlISkgewogIG5hdEVyYXNlKHByZXYpCn0KCm5vZGUgbmF0RHVwKAogIHRhcmdldCE6IE5hdAogIC0tLS0tLS0tCiAgc2Vjb25kOiBOYXQsCiAgZmlyc3Q6IE5hdAopCgpydWxlIG5hdER1cCh0YXJnZXQhLCBzZWNvbmQsIGZpcnN0KSB6ZXJvKHZhbHVlISkgewogIEBjb25uZWN0KHplcm8oKSwgZmlyc3QpCiAgQGNvbm5lY3QoemVybygpLCBzZWNvbmQpCn0KCnJ1bGUgbmF0RHVwKHRhcmdldCEsIHNlY29uZCwgZmlyc3QpIGFkZDEocHJldiwgdmFsdWUhKSB7CiAgbGV0IHByZXZGaXJzdCwgcHJldlNlY29uZCA9IG5hdER1cChwcmV2KQogIEBjb25uZWN0KGFkZDEocHJldkZpcnN0KSwgZmlyc3QpCiAgQGNvbm5lY3QoYWRkMShwcmV2U2Vjb25kKSwgc2Vjb25kKQp9Cgpub2RlIG11bCgKICB0YXJnZXQhOiBOYXQsCiAgbXVsZW5kOiBOYXQKICAtLS0tLS0tLQogIHJlc3VsdDogTmF0CikKCnJ1bGUgbXVsKHRhcmdldCEsIG11bGVuZCwgcmVzdWx0KSB6ZXJvKHZhbHVlISkgewogIG5hdEVyYXNlKG11bGVuZCkKICB6ZXJvKHJlc3VsdCkKfQoKcnVsZSBtdWwodGFyZ2V0ISwgbXVsZW5kLCByZXN1bHQpIGFkZDEocHJldiwgdmFsdWUhKSB7CiAgbGV0IGZpcnN0LCBzZWNvbmQgPSBuYXREdXAobXVsZW5kKQogIGFkZChzZWNvbmQsIG11bChmaXJzdCwgcHJldiksIHJlc3VsdCkKfQoKZXZhbCBuYXREdXAodHdvKCkpCgpldmFsIG11bCh0d28oKSwgdHdvKCkpCmV2YWwgbXVsKHRocmVlKCksIHRocmVlKCkp)
 
 ```
-import
+import {
   Nat, zero, add1, add,
   one, two, three,
-from "https://code-of-inet-js.fidb.app/std/datatype/Nat.i"
+} from "https://code-of-inet-js.fidb.app/std/datatype/Nat.i"
 
-node natErase
-  Nat :target!
+node natErase(
+  target!: Nat
   --------
-end
+)
 
-rule zero natErase end
+rule natErase(target!) zero(value!) {}
 
-rule add1 natErase
-  (add1)-prev natErase
-end
+rule natErase(target!) add1(prev, value!) {
+  natErase(prev)
+}
 
-node natDup
-  Nat :target!
+node natDup(
+  target!: Nat
   --------
-  Nat :second
-  Nat :first
-end
+  second: Nat,
+  first: Nat
+)
 
-rule zero natDup
-  zero first-(natDup)
-  zero second-(natDup)
-end
+rule natDup(target!, second, first) zero(value!) {
+  @connect(zero(), first)
+  @connect(zero(), second)
+}
 
-rule add1 natDup
-  (add1)-prev natDup $first $second
-  first add1 first-(natDup)
-  second add1 second-(natDup)
-end
+rule natDup(target!, second, first) add1(prev, value!) {
+  let prevFirst, prevSecond = natDup(prev)
+  @connect(add1(prevFirst), first)
+  @connect(add1(prevSecond), second)
+}
 
-node mul
-  Nat :target!
-  Nat :mulend
+node mul(
+  target!: Nat,
+  mulend: Nat
   --------
-  Nat :result
-end
+  result: Nat
+)
 
-rule zero mul
-  (mul)-mulend natErase
-  zero result-(mul)
-end
+rule mul(target!, mulend, result) zero(value!) {
+  natErase(mulend)
+  zero(result)
+}
 
-rule add1 mul
-  (mul)-mulend natDup $first $second
-  (add1)-prev first mul second add
-  result-(mul)
-end
+rule mul(target!, mulend, result) add1(prev, value!) {
+  let first, second = natDup(mulend)
+  add(second, mul(first, prev), result)
+}
 
-two natDup $first $second
+eval natDup(two())
 
-two two mul
-
-three three mul
+eval mul(two(), two())
+eval mul(three(), three())
 ```
 
 # 11
