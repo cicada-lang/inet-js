@@ -552,7 +552,7 @@ node max
 end
 ```
 
-The interaction between `(zero)` and `(zero)` is simple:
+The interaction between `(max)` and `(zero)` is simple:
 
 ```
      result         result
@@ -570,7 +570,7 @@ rule zero max
 end
 ```
 
-For the `(add1)` and `(zero)`,
+For the `(max)` and `(add1)`,
 if there is no single-principal-port constraint,
 we can imagine the following interaction:
 
