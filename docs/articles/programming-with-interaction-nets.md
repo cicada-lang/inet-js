@@ -762,50 +762,48 @@ to representing a type variable.
 This means when connecting the corresponding ports,
 this type variable must match the same type.
 
-[Goto the playground of `List` and `(append)`](https://inet.run/playground/dHlwZSBMaXN0IEBUeXBlIC0tIEBUeXBlIGVuZAoKbm9kZSBudWxsCiAgLS0tLS0tLS0KICAnQSBMaXN0IDp2YWx1ZSEKZW5kCgpub2RlIGNvbnMKICAnQSA6aGVhZAogICdBIExpc3QgOnRhaWwKICAtLS0tLS0tLQogICdBIExpc3QgOnZhbHVlIQplbmQKCm5vZGUgYXBwZW5kCiAgJ0EgTGlzdCA6dGFyZ2V0IQogICdBIExpc3QgOnJlc3QKICAtLS0tLS0tLQogICdBIExpc3QgOnJlc3VsdAplbmQKCnJ1bGUgbnVsbCBhcHBlbmQKICAoYXBwZW5kKS1yZXN0CiAgcmVzdWx0LShhcHBlbmQpCmVuZAoKcnVsZSBjb25zIGFwcGVuZAogIChhcHBlbmQpLXJlc3QgKGNvbnMpLXRhaWwgYXBwZW5kCiAgKGNvbnMpLWhlYWQgY29ucwogIHJlc3VsdC0oYXBwZW5kKQplbmQKCmltcG9ydCB6ZXJvIGZyb20gImh0dHBzOi8vY29kZS1vZi1pbmV0LWN1dGUuZmlkYi5hcHAvdGVzdHMvZGF0YXR5cGUvTmF0LmkiCgpudWxsIHplcm8gY29ucyB6ZXJvIGNvbnMKbnVsbCB6ZXJvIGNvbnMgemVybyBjb25zCmFwcGVuZAoKbnVsbCB6ZXJvIGNvbnMgemVybyBjb25zCm51bGwgemVybyBjb25zIHplcm8gY29ucwphcHBlbmQgQHJ1biAkcmVzdWx0)
+[Goto the playground of `List` and `(append)`](https://inet.run/playground/dHlwZSBMaXN0KEVsZW1lbnQ6IEBUeXBlKQoKbm9kZSBudWxsKAogIC0tLS0tLS0tCiAgdmFsdWUhOiBMaXN0KCdBKQopCgpub2RlIGNvbnMoCiAgaGVhZDogJ0EsCiAgdGFpbDogTGlzdCgnQSkKICAtLS0tLS0tLQogIHZhbHVlITogTGlzdCgnQSkKKQoKbm9kZSBhcHBlbmQoCiAgdGFyZ2V0ITogTGlzdCgnQSksCiAgcmVzdDogTGlzdCgnQSkKICAtLS0tLS0tLQogIHJlc3VsdDogTGlzdCgnQSkKKQoKcnVsZSBhcHBlbmQodGFyZ2V0ISwgcmVzdCwgcmVzdWx0KSBudWxsKHZhbHVlISkgewogIEBjb25uZWN0KHJlc3QsIHJlc3VsdCkKfQoKcnVsZSBhcHBlbmQodGFyZ2V0ISwgcmVzdCwgcmVzdWx0KSBjb25zKGhlYWQsIHRhaWwsIHZhbHVlISkgewogIGNvbnMoaGVhZCwgYXBwZW5kKHRhaWwsIHJlc3QpLCByZXN1bHQpCn0KCmltcG9ydCB7IE5hdCwgemVybyB9IGZyb20gImh0dHBzOi8vY29kZS1vZi1pbmV0LWpzLmZpZGIuYXBwL3N0ZC9kYXRhdHlwZS9OYXQuaSIKCmZ1bmN0aW9uIHNpeFplcm9zKCk6IExpc3QoTmF0KSB7CiAgcmV0dXJuIGFwcGVuZCgKICAgIGNvbnMoemVybygpLCBjb25zKHplcm8oKSwgY29ucyh6ZXJvKCksIG51bGwoKSkpKSwKICAgIGNvbnMoemVybygpLCBjb25zKHplcm8oKSwgY29ucyh6ZXJvKCksIG51bGwoKSkpKSwKICApCn0KCmV2YWwgc2l4WmVyb3MoKQ)
 
 ```
-type List @Type -- @Type end
+type List(Element: @Type)
 
-node null
+node null(
   --------
-  'A List :value!
-end
+  value!: List('A)
+)
 
-node cons
-  'A :head
-  'A List :tail
+node cons(
+  head: 'A,
+  tail: List('A)
   --------
-  'A List :value!
-end
+  value!: List('A)
+)
 
-node append
-  'A List :target!
-  'A List :rest
+node append(
+  target!: List('A),
+  rest: List('A)
   --------
-  'A List :result
-end
+  result: List('A)
+)
 
-rule null append
-  (append)-rest
-  result-(append)
-end
+rule append(target!, rest, result) null(value!) {
+  @connect(rest, result)
+}
 
-rule cons append
-  (append)-rest (cons)-tail append
-  (cons)-head cons
-  result-(append)
-end
+rule append(target!, rest, result) cons(head, tail, value!) {
+  cons(head, append(tail, rest), result)
+}
 
-import zero from "https://code-of-inet-js.fidb.app/std/datatype/Nat.i"
+import { Nat, zero } from "https://code-of-inet-js.fidb.app/std/datatype/Nat.i"
 
-null zero cons zero cons
-null zero cons zero cons
-append
+function sixZeros(): List(Nat) {
+  return append(
+    cons(zero(), cons(zero(), cons(zero(), null()))),
+    cons(zero(), cons(zero(), cons(zero(), null()))),
+  )
+}
 
-null zero cons zero cons
-null zero cons zero cons
-append @run $result
+eval sixZeros()
 ```
 
 # 12
