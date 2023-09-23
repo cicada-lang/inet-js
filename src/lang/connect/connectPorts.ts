@@ -4,7 +4,7 @@ import { addEdge } from "../net/addEdge"
 import { findPortEntry } from "../net/findPortEntry"
 import { Port } from "../port"
 import { formatPort } from "../port/formatPort"
-import { connectPortWithHalfEdge } from "./connectPortWithHalfEdge"
+import { connectHalfEdgeWithPort } from "./connectHalfEdgeWithPort"
 
 export function connectPorts(net: Net, first: Port, second: Port): void {
   const firstPortEntry = findPortEntry(net, first)
@@ -37,6 +37,6 @@ export function connectPorts(net: Net, first: Port, second: Port): void {
 
   const edge = addEdge(net)
 
-  connectPortWithHalfEdge(net, first, edge.first)
-  connectPortWithHalfEdge(net, second, edge.second)
+  connectHalfEdgeWithPort(net, edge.first, first)
+  connectHalfEdgeWithPort(net, edge.second, second)
 }

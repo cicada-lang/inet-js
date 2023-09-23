@@ -1,5 +1,5 @@
 import { capType } from "../cap"
-import { connectPortWithHalfEdge } from "../connect/connectPortWithHalfEdge"
+import { connectHalfEdgeWithPort } from "../connect/connectHalfEdgeWithPort"
 import { createEnv } from "../env/createEnv"
 import { defineLocals } from "../env/defineLocals"
 import { evaluateBlock } from "../evaluate/evaluateBlock"
@@ -32,7 +32,7 @@ export function presentFunction(mod: Mod, name: string): Net {
   for (const [index, port] of capOutputPorts.entries()) {
     const parameter = input[index]
     const edge = addEdge(env.net)
-    connectPortWithHalfEdge(env.net, port, edge.first)
+    connectHalfEdgeWithPort(env.net, edge.first, port)
     defineLocals(env, [parameter.name], [edge.second])
   }
 

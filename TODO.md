@@ -1,4 +1,4 @@
-[refactor] extract `checkPortWithHalfEdge`
+[refactor] extract `checkHalfEdgeWithPort`
 
 [refactor] check during `connect*` instead of before `connect*`
 

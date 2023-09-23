@@ -6,10 +6,10 @@ import { findHalfEdgePort } from "../net/findHalfEdgePort"
 import { findPortRecordOrFail } from "../net/findPortRecordOrFail"
 import { Port } from "../port"
 
-export function connectPortWithHalfEdge(
+export function connectHalfEdgeWithPort(
   net: Net,
-  port: Port,
   halfEdge: HalfEdge,
+  port: Port,
 ): void {
   const portRecord = findPortRecordOrFail(net, port.node)
   portRecord[port.name].connection = { halfEdge }
