@@ -1,3 +1,3 @@
-export * from "./presentFunctionAsNet"
-export * from "./presentNodeAsNet"
-export * from "./presentRuleAsNets"
+export * from "./presentFunction"
+export * from "./presentNode"
+export * from "./presentRule"

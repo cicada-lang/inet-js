@@ -2,9 +2,9 @@ import { expect, test } from "vitest"
 import { Fetcher } from "../../fetcher"
 import { Loader } from "../../loader"
 import { formatNet } from "../net/formatNet"
-import { presentRuleAsNets } from "./presentRuleAsNets"
+import { presentRule } from "./presentRule"
 
-test("presentRuleAsNets", async () => {
+test("presentRule", async () => {
   const text = `
 
 type Nat
@@ -25,9 +25,9 @@ rule add(target!, addend, result) add1(prev, value!) {
 
   const fetcher = new Fetcher()
   const loader = new Loader({ fetcher })
-  const url = new URL("test://presentRuleAsNets")
+  const url = new URL("test://presentRule")
   const mod = await loader.load(url, { text })
-  const [initial, final] = presentRuleAsNets(mod, "add1 add")
+  const [initial, final] = presentRule(mod, "add1 add")
 
   expect(formatNet(initial)).toMatchInlineSnapshot(`
     "(add1₂)-prev covering-(@inputPortCap₅)

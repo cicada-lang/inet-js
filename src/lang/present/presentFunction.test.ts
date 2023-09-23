@@ -2,9 +2,9 @@ import { expect, test } from "vitest"
 import { Fetcher } from "../../fetcher"
 import { Loader } from "../../loader"
 import { formatNet } from "../net/formatNet"
-import { presentFunctionAsNet } from "./presentFunctionAsNet"
+import { presentFunction } from "./presentFunction"
 
-test("presentFunctionAsNet", async () => {
+test("presentFunction", async () => {
   const text = `
 
 type Nat
@@ -29,17 +29,17 @@ function addadd(x: Nat, y: Nat, z: Nat): Nat {
 
   const fetcher = new Fetcher()
   const loader = new Loader({ fetcher })
-  const url = new URL("test://presentFunctionAsNet")
+  const url = new URL("test://presentFunction")
   const mod = await loader.load(url, { text })
 
-  expect(formatNet(presentFunctionAsNet(mod, "two"))).toMatchInlineSnapshot(`
+  expect(formatNet(presentFunction(mod, "two"))).toMatchInlineSnapshot(`
     "(add₃)-target!value-(add1₃)
     (add₃)-addend value-(add1₄)
     (add1₃)-prev value-(zero₃)
     (add1₄)-prev value-(zero₄)"
   `)
 
-  expect(formatNet(presentFunctionAsNet(mod, "addadd"))).toMatchInlineSnapshot(`
+  expect(formatNet(presentFunction(mod, "addadd"))).toMatchInlineSnapshot(`
     "(@typeCap₃)-covering addend-(add₄)
     (@typeCap₄)-covering addend-(add₅)
     (@typeCap₅)-covering target-(add₅)

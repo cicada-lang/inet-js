@@ -7,13 +7,13 @@ import { Mod, findDefinitionOrFail } from "../mod"
 import { Net } from "../net"
 import { addEdge } from "../net/addEdge"
 
-export function presentFunctionAsNet(mod: Mod, name: string): Net {
+export function presentFunction(mod: Mod, name: string): Net {
   const definition = findDefinitionOrFail(mod, name)
 
   if (definition["@kind"] !== "FunctionDefinition") {
     throw new Error(
       [
-        `[presentFunctionAsNet] I expect to find a FunctionDefinition from the name.`,
+        `[presentFunction] I expect to find a FunctionDefinition from the name.`,
         ``,
         `  name: ${name}`,
         `  definition kind: ${definition["@kind"]}`,

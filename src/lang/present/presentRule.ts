@@ -12,14 +12,14 @@ import { Node } from "../node"
 import { createNodeFromDefinition } from "../node/createNodeFromDefinition"
 import { exposeRuleTargets } from "../rule/exposeRuleTargets"
 
-export function presentRuleAsNets(mod: Mod, ruleName: string): [Net, Net] {
+export function presentRule(mod: Mod, ruleName: string): [Net, Net] {
   const env = createEnv(mod)
 
   const rule = findRuleByName(mod, ruleName)
   if (rule === undefined) {
     throw new Error(
       [
-        `[presentRuleAsNets] I meet undefined rule.`,
+        `[presentRule] I meet undefined rule.`,
         ``,
         `  ruleName: ${ruleName}`,
       ].join("\n"),

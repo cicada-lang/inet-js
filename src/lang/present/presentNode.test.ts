@@ -2,9 +2,9 @@ import { expect, test } from "vitest"
 import { Fetcher } from "../../fetcher"
 import { Loader } from "../../loader"
 import { formatNet } from "../net/formatNet"
-import { presentNodeAsNet } from "./presentNodeAsNet"
+import { presentNode } from "./presentNode"
 
-test("presentNodeAsNet", async () => {
+test("presentNode", async () => {
   const text = `
 
 type Nat
@@ -20,9 +20,9 @@ node add(
 
   const fetcher = new Fetcher()
   const loader = new Loader({ fetcher })
-  const url = new URL("test://presentNodeAsNet")
+  const url = new URL("test://presentNode")
   const mod = await loader.load(url, { text })
-  const net = presentNodeAsNet(mod, "add")
+  const net = presentNode(mod, "add")
 
   expect(formatNet(net)).toMatchInlineSnapshot(`
     "(add₀)-target covering-(@inputPortCap₀)
