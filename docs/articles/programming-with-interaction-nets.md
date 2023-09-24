@@ -957,14 +957,9 @@ But fortunately, our language already has two layers,
 the upper layer is interaction nets,
 the lower layer is general programming language for building nets.
 
-By extending this lower layer language,
-we can introduce another computation model -- actor model,
-then we can make the whole language a practical programming language,
-by combining the pure parallel computation of interaction nets
-with async message passing of actor model.
+We can make the whole language a practical programming language,
+by extending this lower layer language.
 
 How to design such language extension?
-
-How to express the side-effect of message passing in our type system?
 
 Please see the report of my next project :)
