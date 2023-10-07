@@ -1,12 +1,12 @@
 import { Command, CommandRunner } from "@xieyuheng/command-line"
-import ty from "@xieyuheng/ty"
+import { ty } from "@xieyuheng/ty"
+import * as Commands from "."
 import { app } from "../../app/index"
-import * as Commands from "../commands"
 
 type Args = { path?: string }
 type Opts = { help?: boolean; version?: boolean }
 
-export class DefaultCommand extends Command<Args, Opts> {
+export class Default extends Command<Args, Opts> {
   name = "default"
 
   description = "Run an file"
@@ -20,7 +20,7 @@ export class DefaultCommand extends Command<Args, Opts> {
 
   async execute(argv: Args & Opts, runner: CommandRunner): Promise<void> {
     if (argv["help"]) {
-      const command = new Commands.CommonHelpCommand()
+      const command = new Commands.CommonHelp()
       await command.execute({}, runner)
       return
     }
@@ -34,10 +34,10 @@ export class DefaultCommand extends Command<Args, Opts> {
 
     if (path === undefined) {
       const dir = process.cwd()
-      const command = new Commands.ReplCommand()
+      const command = new Commands.Repl()
       await command.execute({ dir })
     } else {
-      const command = new Commands.RunCommand()
+      const command = new Commands.Run()
       await command.execute({ path })
     }
   }

@@ -1,22 +1,21 @@
 import { ParsingError } from "@cicada-lang/partech/lib/errors"
 import { Command, CommandRunner } from "@xieyuheng/command-line"
-import ty from "@xieyuheng/ty"
+import { ty } from "@xieyuheng/ty"
 import fs from "node:fs"
 import { relative } from "node:path"
 import process from "node:process"
 import { Fetcher } from "../../fetcher"
 import { Report } from "../../lang/errors/Report"
-import { formatStmt } from "../../lang/stmt"
 import { parseStmts } from "../../lang/syntax"
 import { createURL } from "../../utils/createURL"
 
 type Args = { path: string }
 type Opts = {}
 
-export class FormatCommand extends Command<Args, Opts> {
-  name = "format"
+export class Parse extends Command<Args, Opts> {
+  name = "parse"
 
-  description = "Format an inet program"
+  description = "Parse an inet program"
 
   args = { path: ty.string() }
 
@@ -25,7 +24,7 @@ export class FormatCommand extends Command<Args, Opts> {
     const { blue } = this.colors
 
     return [
-      `Format a file:`,
+      `Parse a file:`,
       ``,
       blue(`  ${runner.name} ${this.name} std/datatype/Nat.test.i`),
       ``,
@@ -62,8 +61,7 @@ export class FormatCommand extends Command<Args, Opts> {
     try {
       const stmts = parseStmts(text)
       for (const stmt of stmts) {
-        console.log(formatStmt(stmt))
-        console.log()
+        console.dir(stmt, { depth: null })
       }
     } catch (error) {
       if (error instanceof ParsingError) {
