@@ -1,6 +1,7 @@
 # iNet (JavaScript)
 
-[ [Website](https://inet.run) ]
+[ [Website](https://inet.run)
+| [iNet Cute](https://github.com/cicada-lang/inet-cute) ]
 
 This is an implementation of [interaction nets](https://en.wikipedia.org/wiki/Interaction_nets).
 It introduces you to the bizarre world of graph-based computation and linear logic,
