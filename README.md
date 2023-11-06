@@ -17,7 +17,7 @@ Install it by the following command:
 npm install --global @cicada-lang/inet-js
 ```
 
-The command line program is called `inet-js`.
+The command-line program is called `inet-js`.
 
 ```sh
 inet-js repl         # Open an interactive REPL
