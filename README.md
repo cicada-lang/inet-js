@@ -1,4 +1,4 @@
-# iNet (JavaScript)
+# iNet JS
 
 [ [Website](https://inet.run)
 | [iNet Cute](https://github.com/cicada-lang/inet-cute) ]
