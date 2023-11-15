@@ -1,6 +1,6 @@
 import { Env } from "../env"
 import { Mod } from "../mod"
-import { Parameter, ParameterExp } from "../stmt/Parameter"
+import { Parameter, ParameterExp } from "../parameter"
 import { EvaluateOptions } from "./evaluate"
 import { evaluateOne } from "./evaluateOne"
 

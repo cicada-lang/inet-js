@@ -1,9 +1,9 @@
 import { Exp } from "../exp"
 import { BlockStmt } from "../exp/BlockStmt"
 import { ImportBinding } from "../import/ImportBinding"
+import { ParameterExp } from "../parameter"
 import { RuleTarget } from "../rule"
 import { Span } from "../span"
-import { ParameterExp } from "./Parameter"
 
 export type Stmt =
   | DefineNode

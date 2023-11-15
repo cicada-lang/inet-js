@@ -1,7 +1,7 @@
 import { checkTypeTermArgs } from "../check/checkTypeTermArgs"
 import { Env } from "../env"
 import { EvaluateOptions } from "../evaluate"
-import { formatParameters } from "../stmt/formatParameters"
+import { formatParameters } from "../parameter"
 import { TypeCtor, Value } from "../value"
 import { formatValues } from "../value/formatValues"
 

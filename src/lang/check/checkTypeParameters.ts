@@ -1,6 +1,5 @@
 import { Mod } from "../mod"
-import { Parameter } from "../stmt/Parameter"
-import { formatParameters } from "../stmt/formatParameters"
+import { Parameter, formatParameters } from "../parameter"
 
 export function checkTypeParameters(mod: Mod, input: Array<Parameter>): void {
   for (const parameter of input) {

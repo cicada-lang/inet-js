@@ -2,8 +2,7 @@ import { Env } from "../env"
 import { defineLocals } from "../env/defineLocals"
 import { disconnectNode } from "../net/disconnectNode"
 import { Node, formatNode } from "../node"
-import { ParameterWithoutType } from "../stmt/Parameter"
-import { formatParameterWithoutType } from "../stmt/formatParameterWithoutType"
+import { ParameterWithoutType, formatParameterWithoutType } from "../parameter"
 
 export function disconnectNodeAndMatchParameters(
   env: Env,
@@ -22,7 +21,7 @@ export function disconnectNodeAndMatchParameters(
             ``,
             `  node: ${formatNode(env.net, node)}`,
             `  index: ${index}`,
-            `  paramenter: ${formatParameterWithoutType(parameter)}`,
+            `  parameter: ${formatParameterWithoutType(parameter)}`,
           ].join("\n"),
         )
       }

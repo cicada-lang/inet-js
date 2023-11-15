@@ -3,7 +3,7 @@ import { Net, PortRecord } from "../net"
 import { Node } from "../node"
 import { createNodeId } from "../node/createNodeId"
 import { nodeKey } from "../node/nodeKey"
-import { Parameter } from "../stmt/Parameter"
+import { Parameter } from "../parameter"
 
 export function addNode(
   net: Net,

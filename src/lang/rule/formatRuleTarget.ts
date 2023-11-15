@@ -1,10 +1,10 @@
-import { formatParameterWithoutType } from "../stmt/formatParameterWithoutType"
+import { formatParameterWithoutType } from "../parameter"
 import { RuleTarget } from "./Rule"
 
 export function formatRuleTarget(target: RuleTarget): string {
-  const paramenters = target.parameters
+  const parameters = target.parameters
     .map(formatParameterWithoutType)
     .join(", ")
 
-  return `${target.name}(${paramenters})`
+  return `${target.name}(${parameters})`
 }

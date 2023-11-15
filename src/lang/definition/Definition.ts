@@ -2,8 +2,8 @@ import { Env } from "../env"
 import { EvaluateOptions } from "../evaluate"
 import { BlockStmt } from "../exp/BlockStmt"
 import { Mod } from "../mod"
+import { Parameter } from "../parameter"
 import { Span } from "../span"
-import { Parameter } from "../stmt/Parameter"
 import { Value } from "../value"
 
 export type Definition =

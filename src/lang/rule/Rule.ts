@@ -1,6 +1,6 @@
 import { BlockStmt } from "../exp/BlockStmt"
 import { Mod } from "../mod"
-import { ParameterWithoutType } from "../stmt/Parameter"
+import { ParameterWithoutType } from "../parameter"
 
 export type RuleTarget = {
   name: string

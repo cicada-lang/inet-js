@@ -2,9 +2,9 @@ import { indent } from "../../utils/indent"
 import { formatExp } from "../exp"
 import { formatBlockStmt } from "../exp/formatBlockStmt"
 import { formatImportBinding } from "../import/formatImportBinding"
+import { formatParameterExp } from "../parameter"
+import { formatRuleTarget } from "../rule"
 import { Stmt } from "./Stmt"
-import { formatParameterExp } from "./formatParameterExp"
-import { formatRuleTarget } from "./formatRuleTarget"
 
 export function formatStmt(stmt: Stmt): string {
   switch (stmt["@kind"]) {
