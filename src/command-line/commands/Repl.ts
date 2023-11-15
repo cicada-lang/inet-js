@@ -8,7 +8,7 @@ type Args = {}
 export class Repl extends Command<Args> {
   name = "repl"
 
-  description = "Open an interactive REPL"
+  description = "Start an interactive REPL"
 
   args = {}
 
