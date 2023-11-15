@@ -9,7 +9,7 @@ import { deleteNodeEntry } from "../net/deleteNodeEntry"
 import { disconnectPort } from "../net/disconnectPort"
 import { findPrincipalPort } from "../net/findPrincipalPort"
 import { Node } from "../node"
-import { createNodeFromDefinition } from "../node/createNodeFromDefinition"
+import { addNodeFromDefinition } from "../node/addNodeFromDefinition"
 import { exposeRuleTargets } from "../rule/exposeRuleTargets"
 
 export function presentRule(mod: Mod, ruleName: string): [Net, Net] {
@@ -28,12 +28,12 @@ export function presentRule(mod: Mod, ruleName: string): [Net, Net] {
 
   const [firstName, secondName] = ruleName.split(" ")
 
-  const firstNode = createNodeFromDefinition(
+  const firstNode = addNodeFromDefinition(
     env.net,
     findDefinitionOrFail(mod, firstName),
   )
 
-  const secondNode = createNodeFromDefinition(
+  const secondNode = addNodeFromDefinition(
     env.net,
     findDefinitionOrFail(mod, secondName),
   )

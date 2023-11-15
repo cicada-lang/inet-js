@@ -3,14 +3,11 @@ import { Net } from "../net"
 import { addNode } from "../net/addNode"
 import { Node } from "../node"
 
-export function createNodeFromDefinition(
-  net: Net,
-  definition: Definition,
-): Node {
+export function addNodeFromDefinition(net: Net, definition: Definition): Node {
   if (definition["@kind"] !== "NodeDefinition") {
     throw new Error(
       [
-        `[createNodeFromDefinition] I expect the definition to be NodeDefinition.`,
+        `[addNodeFromDefinition] I expect the definition to be NodeDefinition.`,
         ``,
         `  definition kind: ${definition["@kind"]}`,
       ].join("\n"),

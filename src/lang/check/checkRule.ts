@@ -6,7 +6,7 @@ import { BlockStmt } from "../exp/BlockStmt"
 import { refreshNode } from "../freshen/refreshNode"
 import { Mod } from "../mod"
 import { findDefinitionOrFail } from "../mod/findDefinitionOrFail"
-import { createNodeFromDefinition } from "../node/createNodeFromDefinition"
+import { addNodeFromDefinition } from "../node/addNodeFromDefinition"
 import { RuleTarget } from "../rule"
 import { exposeRuleTargets } from "../rule/exposeRuleTargets"
 import { checkAllLocalsAreUsed } from "./checkAllLocalsAreUsed"
@@ -20,14 +20,14 @@ export function checkRule(
   const checking = createChecking()
   const env = createEnv(mod)
 
-  const firstNode = createNodeFromDefinition(
+  const firstNode = addNodeFromDefinition(
     env.net,
     findDefinitionOrFail(mod, first.name),
   )
 
   refreshNode(env.net, checking.typeVarCounters, firstNode)
 
-  const secondNode = createNodeFromDefinition(
+  const secondNode = addNodeFromDefinition(
     env.net,
     findDefinitionOrFail(mod, second.name),
   )

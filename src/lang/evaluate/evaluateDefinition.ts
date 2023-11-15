@@ -1,6 +1,6 @@
 import { Definition } from "../definition"
 import { Env } from "../env"
-import { createNodeFromDefinition } from "../node/createNodeFromDefinition"
+import { addNodeFromDefinition } from "../node/addNodeFromDefinition"
 import { Value } from "../value"
 import { EvaluateOptions } from "./evaluate"
 
@@ -11,7 +11,7 @@ export function evaluateDefinition(
 ): Value {
   switch (definition["@kind"]) {
     case "NodeDefinition": {
-      return createNodeFromDefinition(env.net, definition)
+      return addNodeFromDefinition(env.net, definition)
     }
 
     case "TypeDefinition": {
