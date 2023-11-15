@@ -9,7 +9,7 @@ type Opts = { help?: boolean; version?: boolean }
 export class Default extends Command<Args, Opts> {
   name = "default"
 
-  description = "Start a REPL or Run a file"
+  description = "Start a REPL or run a file"
 
   args = { path: ty.optional(ty.string()) }
   opts = {
