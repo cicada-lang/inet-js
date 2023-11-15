@@ -12,19 +12,11 @@ export function addNode(
   input: Array<Parameter>,
   output: Array<Parameter>,
 ): Node {
+  const modId = mod.url.href
   const id = createNodeId(name)
 
-  const node: Node = {
-    "@type": "Value",
-    "@kind": "Node",
-    id,
-    modId: mod.url.href,
-    name,
-  }
-
+  const node: Node = { "@type": "Value", "@kind": "Node", modId, id, name }
   const ports: PortRecord = {}
-
-  const modId = mod.url.href
   net.nodeEntries.set(nodeKey(node), { id, modId, name, ports })
 
   input.map((parameter) => {
