@@ -6,7 +6,7 @@ date: 2022-05-06
 keywords: [Sequent Calculus, Linear Logic, Interaction Nets, Syntax Design]
 ---
 
-**WORD IN PROGRESS**
+**WORK IN PROGRESS**
 
 # Ordered cut rule
 
