@@ -21,19 +21,19 @@
     "format": "prettier src docs --write"
   },
   "devDependencies": {
-    "@types/node": "^20.9.0",
+    "@types/node": "^20.10.0",
     "@xieyuheng/test-runner": "^0.2.10",
     "prettier": "^3.1.0",
     "prettier-plugin-organize-imports": "^3.2.4",
-    "typescript": "^5.2.2"
+    "typescript": "^5.3.2",
+    "vitest": "^0.34.6"
   },
   "dependencies": {
     "@cicada-lang/framework": "^0.1.6",
     "@cicada-lang/partech": "^0.2.5",
     "@xieyuheng/command-line": "^0.0.13",
     "@xieyuheng/ty": "^0.1.26",
-    "picocolors": "^1.0.0",
-    "vitest": "^0.34.6"
+    "picocolors": "^1.0.0"
   },
   "license": "GPL-3.0-or-later"
 }
