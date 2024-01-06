@@ -1,7 +1,7 @@
-import { Env } from "../env"
-import { Node } from "../node"
-import { RuleTarget } from "./Rule"
-import { disconnectNodeAndMatchParameters } from "./disconnectNodeAndMatchParameters"
+import { type Env } from "../env/index.js"
+import { type Node } from "../node/index.js"
+import { type RuleTarget } from "./Rule.js"
+import { disconnectNodeAndMatchParameters } from "./disconnectNodeAndMatchParameters.js"
 
 export function exposeRuleTargets(
   env: Env,

@@ -1,5 +1,5 @@
-import { Value, formatValue } from "../value"
-import { Env } from "./Env"
+import { formatValue, type Value } from "../value/index.js"
+import { type Env } from "./Env.js"
 
 export function defineLocals(
   env: Env,

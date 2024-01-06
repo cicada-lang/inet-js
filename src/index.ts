@@ -1,3 +1,3 @@
-export * from "./fetcher"
-export * from "./lang"
-export * from "./loader"
+export * from "./fetcher/index.js"
+export * from "./lang/index.js"
+export * from "./loader/index.js"

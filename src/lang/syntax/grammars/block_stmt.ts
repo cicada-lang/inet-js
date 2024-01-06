@@ -1,4 +1,4 @@
-import { variable_names } from "./name"
+import { variable_names } from "./name.js"
 
 export const block_stmt = {
   $grammar: {

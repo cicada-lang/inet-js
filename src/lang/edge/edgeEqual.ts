@@ -1,5 +1,5 @@
-import { halfEdgeEqual } from "../half-edge/halfEdgeEqual"
-import { Edge } from "./Edge"
+import { halfEdgeEqual } from "../half-edge/halfEdgeEqual.js"
+import { type Edge } from "./Edge.js"
 
 export function edgeEqual(x: Edge, y: Edge): boolean {
   return (

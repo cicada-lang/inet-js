@@ -1,9 +1,9 @@
-import { Env } from "../env"
-import { BlockStmt } from "../exp/BlockStmt"
-import { Mod } from "../mod"
-import { Value } from "../value"
-import { EvaluateOptions } from "./evaluate"
-import { evaluateBlockStmt } from "./evaluateBlockStmt"
+import { type Env } from "../env/index.js"
+import { type BlockStmt } from "../exp/BlockStmt.js"
+import { type Mod } from "../mod/index.js"
+import { type Value } from "../value/index.js"
+import { type EvaluateOptions } from "./evaluate.js"
+import { evaluateBlockStmt } from "./evaluateBlockStmt.js"
 
 export function evaluateBlock(
   mod: Mod,

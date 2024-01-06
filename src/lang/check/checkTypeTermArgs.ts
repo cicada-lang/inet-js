@@ -1,6 +1,6 @@
-import { Env } from "../env"
-import { Value } from "../value"
-import { formatValues } from "../value/formatValues"
+import { type Env } from "../env/index.js"
+import { formatValues } from "../value/formatValues.js"
+import { type Value } from "../value/index.js"
 
 export function checkTypeTermArgs(env: Env, args: Array<Value>): void {
   for (const arg of args) {

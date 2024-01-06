@@ -1,7 +1,7 @@
-import { Edge } from "../edge"
-import { HalfEdge } from "../half-edge"
-import { createHalfEdgeId } from "../half-edge/createHalfEdgeId"
-import { HalfEdgeEntry, Net } from "../net"
+import { type Edge } from "../edge/index.js"
+import { createHalfEdgeId } from "../half-edge/createHalfEdgeId.js"
+import { type HalfEdge } from "../half-edge/index.js"
+import { type HalfEdgeEntry, type Net } from "../net/index.js"
 
 export function addEdge(net: Net): Edge {
   const firstId = createHalfEdgeId()

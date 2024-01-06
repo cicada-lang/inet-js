@@ -1,6 +1,6 @@
-import { PrimitiveApply } from "../definition"
-import { runHalfEdge } from "../run/runHalfEdge"
-import { formatValue } from "../value/formatValue"
+import { type PrimitiveApply } from "../definition/index.js"
+import { runHalfEdge } from "../run/runHalfEdge.js"
+import { formatValue } from "../value/formatValue.js"
 
 export const apply: PrimitiveApply = (env, args) => {
   if (args.length !== 1) {

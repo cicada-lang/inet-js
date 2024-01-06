@@ -1,5 +1,5 @@
-import { Mod } from "../mod"
-import { Parameter, formatParameters } from "../parameter"
+import { type Mod } from "../mod/index.js"
+import { formatParameters, type Parameter } from "../parameter/index.js"
 
 export function checkNodeParameters(
   mod: Mod,

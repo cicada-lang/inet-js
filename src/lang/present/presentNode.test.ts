@@ -1,8 +1,8 @@
 import { expect, test } from "vitest"
-import { Fetcher } from "../../fetcher"
-import { Loader } from "../../loader"
-import { formatNet } from "../net/formatNet"
-import { presentNode } from "./presentNode"
+import { Fetcher } from "../../fetcher/index.js"
+import { Loader } from "../../loader/index.js"
+import { formatNet } from "../net/formatNet.js"
+import { presentNode } from "./presentNode.js"
 
 test("presentNode", async () => {
   const text = `

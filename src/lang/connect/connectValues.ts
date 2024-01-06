@@ -1,6 +1,6 @@
-import { Env } from "../env"
-import { Value, formatValue } from "../value"
-import { connectHalfEdges } from "./connectHalfEdges"
+import { type Env } from "../env/index.js"
+import { formatValue, type Value } from "../value/index.js"
+import { connectHalfEdges } from "./connectHalfEdges.js"
 
 export function connectValues(env: Env, first: Value, second: Value): void {
   if (first["@kind"] !== "HalfEdge") {

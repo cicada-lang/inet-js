@@ -1,2 +1,2 @@
-export * from "./runHalfEdge"
-export * from "./runNet"
+export * from "./runHalfEdge.js"
+export * from "./runNet.js"

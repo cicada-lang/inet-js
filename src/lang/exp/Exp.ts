@@ -1,5 +1,5 @@
-import { Span } from "../span"
-import { BlockStmt } from "./BlockStmt"
+import { type Span } from "../span/index.js"
+import { type BlockStmt } from "./BlockStmt.js"
 
 export type Exp = Var | Builtin | Ap | QuoteSymbol | Block
 

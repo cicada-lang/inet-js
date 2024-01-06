@@ -1,3 +1,3 @@
-export * from "./HalfEdge"
-export * from "./formatHalfEdge"
-export * from "./formatHalfEdgeOtherPort"
+export * from "./HalfEdge.js"
+export * from "./formatHalfEdge.js"
+export * from "./formatHalfEdgeOtherPort.js"

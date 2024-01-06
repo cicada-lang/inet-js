@@ -1,10 +1,10 @@
-import { checkPortSigns } from "../check/checkPortSigns"
-import { Checking } from "../checking"
-import { Env } from "../env"
-import { HalfEdge } from "../half-edge"
-import { findHalfEdgeEntryOrFail } from "../net/findHalfEdgeEntryOrFail"
-import { findHalfEdgePort } from "../net/findHalfEdgePort"
-import { unifyTypes } from "../unify/unifyTypes"
+import { checkPortSigns } from "../check/checkPortSigns.js"
+import { type Checking } from "../checking/index.js"
+import { type Env } from "../env/index.js"
+import { type HalfEdge } from "../half-edge/index.js"
+import { findHalfEdgeEntryOrFail } from "../net/findHalfEdgeEntryOrFail.js"
+import { findHalfEdgePort } from "../net/findHalfEdgePort.js"
+import { unifyTypes } from "../unify/unifyTypes.js"
 
 export function checkHalfEdges(
   env: Env,

@@ -1,5 +1,5 @@
-import { Span } from "../span"
-import { Exp } from "./Exp"
+import { type Span } from "../span/index.js"
+import { type Exp } from "./Exp.js"
 
 export type BlockStmt = Let | Evaluate | Return
 

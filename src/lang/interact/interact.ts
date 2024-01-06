@@ -1,13 +1,13 @@
-import { Checking } from "../checking"
-import { Edge } from "../edge"
-import { Env } from "../env"
-import { evaluateBlock } from "../evaluate/evaluateBlock"
-import { findRuleByPorts } from "../mod/findRuleByPorts"
-import { deleteHalfEdgeEntry } from "../net/deleteHalfEdgeEntry"
-import { deleteNodeEntry } from "../net/deleteNodeEntry"
-import { findHalfEdgeEntryOrFail } from "../net/findHalfEdgeEntryOrFail"
-import { findPortEntryOrFail } from "../net/findPortEntryOrFail"
-import { exposeRuleTargets } from "../rule/exposeRuleTargets"
+import { type Checking } from "../checking/index.js"
+import { type Edge } from "../edge/index.js"
+import { type Env } from "../env/index.js"
+import { evaluateBlock } from "../evaluate/evaluateBlock.js"
+import { findRuleByPorts } from "../mod/findRuleByPorts.js"
+import { deleteHalfEdgeEntry } from "../net/deleteHalfEdgeEntry.js"
+import { deleteNodeEntry } from "../net/deleteNodeEntry.js"
+import { findHalfEdgeEntryOrFail } from "../net/findHalfEdgeEntryOrFail.js"
+import { findPortEntryOrFail } from "../net/findPortEntryOrFail.js"
+import { exposeRuleTargets } from "../rule/exposeRuleTargets.js"
 
 export type InteractOptions = {
   checking?: Checking

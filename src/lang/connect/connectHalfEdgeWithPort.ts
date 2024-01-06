@@ -1,11 +1,11 @@
-import { checkPortSigns } from "../check/checkPortSigns"
-import { edgeEqual } from "../edge"
-import { HalfEdge } from "../half-edge"
-import { Net } from "../net"
-import { findHalfEdgeEntryOrFail } from "../net/findHalfEdgeEntryOrFail"
-import { findHalfEdgePort } from "../net/findHalfEdgePort"
-import { findPortRecordOrFail } from "../net/findPortRecordOrFail"
-import { Port } from "../port"
+import { checkPortSigns } from "../check/checkPortSigns.js"
+import { edgeEqual } from "../edge/index.js"
+import { type HalfEdge } from "../half-edge/index.js"
+import { findHalfEdgeEntryOrFail } from "../net/findHalfEdgeEntryOrFail.js"
+import { findHalfEdgePort } from "../net/findHalfEdgePort.js"
+import { findPortRecordOrFail } from "../net/findPortRecordOrFail.js"
+import { type Net } from "../net/index.js"
+import { type Port } from "../port/index.js"
 
 export function connectHalfEdgeWithPort(
   net: Net,

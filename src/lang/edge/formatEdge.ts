@@ -1,7 +1,7 @@
-import { Edge } from "../edge"
-import { Net } from "../net"
-import { findHalfEdgeEntryOrFail } from "../net/findHalfEdgeEntryOrFail"
-import { formatNode } from "../node/formatNode"
+import { type Edge } from "../edge/index.js"
+import { findHalfEdgeEntryOrFail } from "../net/findHalfEdgeEntryOrFail.js"
+import { type Net } from "../net/index.js"
+import { formatNode } from "../node/formatNode.js"
 
 export function formatEdge(net: Net, edge: Edge): string {
   const firstHalfEdgeEntry = findHalfEdgeEntryOrFail(net, edge.first)

@@ -1,8 +1,11 @@
-import { Env } from "../env"
-import { defineLocals } from "../env/defineLocals"
-import { disconnectNode } from "../net/disconnectNode"
-import { Node, formatNode } from "../node"
-import { ParameterWithoutType, formatParameterWithoutType } from "../parameter"
+import { defineLocals } from "../env/defineLocals.js"
+import { type Env } from "../env/index.js"
+import { disconnectNode } from "../net/disconnectNode.js"
+import { formatNode, type Node } from "../node/index.js"
+import {
+  formatParameterWithoutType,
+  type ParameterWithoutType,
+} from "../parameter/index.js"
 
 export function disconnectNodeAndMatchParameters(
   env: Env,

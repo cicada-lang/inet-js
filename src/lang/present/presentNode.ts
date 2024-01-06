@@ -1,7 +1,7 @@
-import { capNodeAllPorts } from "../cap"
-import { Mod, findDefinitionOrFail } from "../mod"
-import { Net, createNet } from "../net"
-import { addNodeFromDefinition } from "../node/addNodeFromDefinition"
+import { capNodeAllPorts } from "../cap/index.js"
+import { findDefinitionOrFail, type Mod } from "../mod/index.js"
+import { createNet, type Net } from "../net/index.js"
+import { addNodeFromDefinition } from "../node/addNodeFromDefinition.js"
 
 export function presentNode(mod: Mod, nodeName: string): Net {
   const net = createNet()

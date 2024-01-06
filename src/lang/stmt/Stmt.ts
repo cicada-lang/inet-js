@@ -1,9 +1,9 @@
-import { Exp } from "../exp"
-import { BlockStmt } from "../exp/BlockStmt"
-import { ImportBinding } from "../import/ImportBinding"
-import { ParameterExp } from "../parameter"
-import { RuleTarget } from "../rule"
-import { Span } from "../span"
+import { type BlockStmt } from "../exp/BlockStmt.js"
+import { type Exp } from "../exp/index.js"
+import { type ImportBinding } from "../import/ImportBinding.js"
+import { type ParameterExp } from "../parameter/index.js"
+import { type RuleTarget } from "../rule/index.js"
+import { type Span } from "../span/index.js"
 
 export type Stmt =
   | DefineNode

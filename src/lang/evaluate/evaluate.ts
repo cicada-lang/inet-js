@@ -1,13 +1,13 @@
-import { apply } from "../apply"
-import { Checking } from "../checking"
-import { Env } from "../env"
-import { appendReport } from "../errors"
-import { Exp, formatExp } from "../exp"
-import { Mod, findDefinitionOrFail } from "../mod"
-import { Value } from "../value"
-import { evaluateBlock } from "./evaluateBlock"
-import { evaluateDefinition } from "./evaluateDefinition"
-import { evaluateOne } from "./evaluateOne"
+import { apply } from "../apply/index.js"
+import { type Checking } from "../checking/index.js"
+import { type Env } from "../env/index.js"
+import { appendReport } from "../errors/index.js"
+import { formatExp, type Exp } from "../exp/index.js"
+import { findDefinitionOrFail, type Mod } from "../mod/index.js"
+import { type Value } from "../value/index.js"
+import { evaluateBlock } from "./evaluateBlock.js"
+import { evaluateDefinition } from "./evaluateDefinition.js"
+import { evaluateOne } from "./evaluateOne.js"
 
 export interface EvaluateOptions {
   checking?: Checking

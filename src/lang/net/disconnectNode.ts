@@ -1,10 +1,10 @@
-import { HalfEdge } from "../half-edge"
-import { Node } from "../node"
-import { Net } from "./Net"
-import { disconnectHalfEdge } from "./disconnectHalfEdge"
-import { findInputPorts } from "./findInputPorts"
-import { findOutputPorts } from "./findOutputPorts"
-import { findPortEntryOrFail } from "./findPortEntryOrFail"
+import { type HalfEdge } from "../half-edge/index.js"
+import { type Node } from "../node/index.js"
+import { type Net } from "./Net.js"
+import { disconnectHalfEdge } from "./disconnectHalfEdge.js"
+import { findInputPorts } from "./findInputPorts.js"
+import { findOutputPorts } from "./findOutputPorts.js"
+import { findPortEntryOrFail } from "./findPortEntryOrFail.js"
 
 export function disconnectNode(
   net: Net,

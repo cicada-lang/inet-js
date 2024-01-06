@@ -1,3 +1,3 @@
-export * from "./Port"
-export * from "./formatPort"
-export * from "./portEqual"
+export * from "./Port.js"
+export * from "./formatPort.js"
+export * from "./portEqual.js"

@@ -1,8 +1,8 @@
-import { checkPortSigns } from "../check/checkPortSigns"
-import { HalfEdge } from "../half-edge"
-import { Net } from "../net"
-import { deleteHalfEdgeEntry } from "../net/deleteHalfEdgeEntry"
-import { findHalfEdgeEntryOrFail } from "../net/findHalfEdgeEntryOrFail"
+import { checkPortSigns } from "../check/checkPortSigns.js"
+import { type HalfEdge } from "../half-edge/index.js"
+import { deleteHalfEdgeEntry } from "../net/deleteHalfEdgeEntry.js"
+import { findHalfEdgeEntryOrFail } from "../net/findHalfEdgeEntryOrFail.js"
+import { type Net } from "../net/index.js"
 
 export function connectHalfEdges(
   net: Net,

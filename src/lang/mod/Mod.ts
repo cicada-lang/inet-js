@@ -1,9 +1,9 @@
-import { Loader } from "../../loader"
-import { Checking } from "../checking"
-import { Definition } from "../definition"
-import { Env } from "../env/Env"
-import { Stmt } from "../stmt"
-import { RuleEntry } from "./RuleEntry"
+import { Loader } from "../../loader/index.js"
+import { type Checking } from "../checking/index.js"
+import { type Definition } from "../definition/index.js"
+import { type Env } from "../env/index.js"
+import { type Stmt } from "../stmt/index.js"
+import { type RuleEntry } from "./RuleEntry.js"
 
 export type Mod = {
   loader: Loader

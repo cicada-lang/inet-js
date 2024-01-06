@@ -1,6 +1,6 @@
-import { Env } from "../env"
-import { Parameter } from "./Parameter"
-import { formatParameter } from "./formatParameter"
+import { type Env } from "../env/index.js"
+import { type Parameter } from "./Parameter.js"
+import { formatParameter } from "./formatParameter.js"
 
 export function formatParameters(
   env: Env,

@@ -1,6 +1,6 @@
-import { BlockStmt } from "../exp/BlockStmt"
-import { Mod } from "../mod"
-import { ParameterWithoutType } from "../parameter"
+import { type BlockStmt } from "../exp/BlockStmt.js"
+import { type Mod } from "../mod/index.js"
+import { type ParameterWithoutType } from "../parameter/index.js"
 
 export type RuleTarget = {
   name: string

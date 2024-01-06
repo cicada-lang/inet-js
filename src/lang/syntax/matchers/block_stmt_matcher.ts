@@ -1,6 +1,6 @@
 import * as pt from "@cicada-lang/partech"
-import { BlockStmt } from "../../exp/BlockStmt"
-import * as matchers from "../matchers"
+import { type BlockStmt } from "../../exp/BlockStmt.js"
+import * as matchers from "../matchers/index.js"
 
 export function block_stmt_matcher(tree: pt.Tree): BlockStmt {
   return pt.matcher<BlockStmt>({

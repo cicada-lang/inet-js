@@ -1,5 +1,5 @@
-import { Exp } from "../exp"
-import { Value } from "../value"
+import { type Exp } from "../exp/index.js"
+import { type Value } from "../value/index.js"
 
 export type ParameterExp = {
   name: string

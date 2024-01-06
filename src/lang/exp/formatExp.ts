@@ -1,6 +1,6 @@
-import { indent } from "../../utils/indent"
-import { Exp } from "./Exp"
-import { formatBlockStmt } from "./formatBlockStmt"
+import { indent } from "../../utils/indent.js"
+import { type Exp } from "./Exp.js"
+import { formatBlockStmt } from "./formatBlockStmt.js"
 
 export function formatExp(exp: Exp): string {
   switch (exp["@kind"]) {

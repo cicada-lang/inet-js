@@ -1,8 +1,8 @@
-import { Env } from "../env"
-import { Mod } from "../mod"
-import { Parameter, ParameterExp } from "../parameter"
-import { EvaluateOptions } from "./evaluate"
-import { evaluateOne } from "./evaluateOne"
+import { type Env } from "../env/index.js"
+import { type Mod } from "../mod/index.js"
+import { type Parameter, type ParameterExp } from "../parameter/index.js"
+import { type EvaluateOptions } from "./evaluate.js"
+import { evaluateOne } from "./evaluateOne.js"
 
 export function evaluateParameters(
   mod: Mod,

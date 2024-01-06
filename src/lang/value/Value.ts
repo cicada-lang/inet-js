@@ -1,11 +1,11 @@
 import {
-  FunctionDefinition,
-  PrimitiveFunctionDefinition,
-  TypeDefinition,
-} from "../definition"
-import { HalfEdge } from "../half-edge"
-import { Mod } from "../mod"
-import { Node } from "../node"
+  type FunctionDefinition,
+  type PrimitiveFunctionDefinition,
+  type TypeDefinition,
+} from "../definition/index.js"
+import { type HalfEdge } from "../half-edge/index.js"
+import { type Mod } from "../mod/index.js"
+import { type Node } from "../node/index.js"
 
 export type Value =
   | HalfEdge

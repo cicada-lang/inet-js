@@ -1,10 +1,10 @@
-import { Env } from "../env"
-import { EvaluateOptions } from "../evaluate"
-import { BlockStmt } from "../exp/BlockStmt"
-import { Mod } from "../mod"
-import { Parameter } from "../parameter"
-import { Span } from "../span"
-import { Value } from "../value"
+import { type Env } from "../env/index.js"
+import { type EvaluateOptions } from "../evaluate/index.js"
+import { type BlockStmt } from "../exp/BlockStmt.js"
+import { type Mod } from "../mod/index.js"
+import { type Parameter } from "../parameter/index.js"
+import { type Span } from "../span/index.js"
+import { type Value } from "../value/index.js"
 
 export type Definition =
   | NodeDefinition

@@ -1,7 +1,7 @@
-import { Port } from "../port"
-import { Net } from "./Net"
-import { disconnectPortEntry } from "./disconnectPortEntry"
-import { findNodeEntry } from "./findNodeEntry"
+import { type Port } from "../port/index.js"
+import { type Net } from "./Net.js"
+import { disconnectPortEntry } from "./disconnectPortEntry.js"
+import { findNodeEntry } from "./findNodeEntry.js"
 
 export function disconnectPort(net: Net, port: Port): void {
   const nodeEntry = findNodeEntry(net, port.node)

@@ -1,11 +1,11 @@
-import { Edge, edgeEqual } from "../edge"
-import { Node, nodeKey } from "../node"
-import { Net } from "./Net"
-import { findHalfEdgeEntry } from "./findHalfEdgeEntry"
-import { findHalfEdgeEntryOrFail } from "./findHalfEdgeEntryOrFail"
-import { findNodeEntryOrFail } from "./findNodeEntryOrFail"
-import { findPortRecordOrFail } from "./findPortRecordOrFail"
-import { hasNode } from "./hasNode"
+import { edgeEqual, type Edge } from "../edge/index.js"
+import { nodeKey, type Node } from "../node/index.js"
+import { type Net } from "./Net.js"
+import { findHalfEdgeEntry } from "./findHalfEdgeEntry.js"
+import { findHalfEdgeEntryOrFail } from "./findHalfEdgeEntryOrFail.js"
+import { findNodeEntryOrFail } from "./findNodeEntryOrFail.js"
+import { findPortRecordOrFail } from "./findPortRecordOrFail.js"
+import { hasNode } from "./hasNode.js"
 
 export function moveConnectedComponent(
   net: Net,

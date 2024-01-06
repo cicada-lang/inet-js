@@ -1,11 +1,11 @@
-import { capType } from "../cap"
-import { connectHalfEdgeWithPort } from "../connect/connectHalfEdgeWithPort"
-import { Env } from "../env"
-import { createEnv } from "../env/createEnv"
-import { defineLocals } from "../env/defineLocals"
-import { evaluateBlock } from "../evaluate/evaluateBlock"
-import { Mod, findDefinitionOrFail } from "../mod"
-import { addEdge } from "../net/addEdge"
+import { capType } from "../cap/index.js"
+import { connectHalfEdgeWithPort } from "../connect/connectHalfEdgeWithPort.js"
+import { createEnv } from "../env/createEnv.js"
+import { defineLocals } from "../env/defineLocals.js"
+import { type Env } from "../env/index.js"
+import { evaluateBlock } from "../evaluate/evaluateBlock.js"
+import { findDefinitionOrFail, type Mod } from "../mod/index.js"
+import { addEdge } from "../net/addEdge.js"
 
 export function presentFunction(mod: Mod, name: string): Env {
   const definition = findDefinitionOrFail(mod, name)

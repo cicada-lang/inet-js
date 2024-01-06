@@ -1,3 +1,3 @@
-export * from "./Rule"
-export * from "./disconnectNodeAndMatchParameters"
-export * from "./formatRuleTarget"
+export * from "./Rule.js"
+export * from "./disconnectNodeAndMatchParameters.js"
+export * from "./formatRuleTarget.js"

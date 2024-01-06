@@ -1,19 +1,19 @@
-import { checkFunction } from "../check/checkFunction"
-import { checkNodeParameters } from "../check/checkNodeParameters"
-import { checkRule } from "../check/checkRule"
-import { checkTypeParameters } from "../check/checkTypeParameters"
-import { defineLocals } from "../env/defineLocals"
-import { appendReport } from "../errors"
+import { checkFunction } from "../check/checkFunction.js"
+import { checkNodeParameters } from "../check/checkNodeParameters.js"
+import { checkRule } from "../check/checkRule.js"
+import { checkTypeParameters } from "../check/checkTypeParameters.js"
+import { defineLocals } from "../env/defineLocals.js"
+import { appendReport } from "../errors/index.js"
 import {
-  EvaluateOptions,
   evaluate,
   evaluateOne,
   evaluateParameters,
-} from "../evaluate"
-import { importAll } from "../import/importAll"
-import { importMany } from "../import/importMany"
-import { Mod, define, defineRule } from "../mod"
-import { Stmt } from "../stmt"
+  type EvaluateOptions,
+} from "../evaluate/index.js"
+import { importAll } from "../import/importAll.js"
+import { importMany } from "../import/importMany.js"
+import { define, defineRule, type Mod } from "../mod/index.js"
+import { type Stmt } from "../stmt/index.js"
 
 export async function execute(mod: Mod, stmt: Stmt): Promise<null> {
   try {

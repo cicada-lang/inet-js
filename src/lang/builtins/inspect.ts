@@ -1,11 +1,11 @@
-import { indent } from "../../utils/indent"
-import { PrimitiveApply } from "../definition"
-import { findConnectedComponent } from "../net/findConnectedComponent"
-import { findHalfEdgeEntryOrFail } from "../net/findHalfEdgeEntryOrFail"
-import { findHalfEdgePortOrFail } from "../net/findHalfEdgePortOrFail"
-import { formatNet } from "../net/formatNet"
-import { formatPort } from "../port/formatPort"
-import { formatValue } from "../value/formatValue"
+import { indent } from "../../utils/indent.js"
+import { type PrimitiveApply } from "../definition/index.js"
+import { findConnectedComponent } from "../net/findConnectedComponent.js"
+import { findHalfEdgeEntryOrFail } from "../net/findHalfEdgeEntryOrFail.js"
+import { findHalfEdgePortOrFail } from "../net/findHalfEdgePortOrFail.js"
+import { formatNet } from "../net/formatNet.js"
+import { formatPort } from "../port/formatPort.js"
+import { formatValue } from "../value/formatValue.js"
 
 export const apply: PrimitiveApply = (env, args) => {
   if (args.length !== 1) {
