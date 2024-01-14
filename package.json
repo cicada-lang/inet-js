@@ -24,7 +24,7 @@
   "devDependencies": {
     "@types/node": "^20.11.0",
     "@xieyuheng/test-runner": "^0.2.10",
-    "prettier": "^3.2.0",
+    "prettier": "^3.2.2",
     "prettier-plugin-organize-imports": "^3.2.4",
     "typescript": "^5.3.3",
     "vitest": "^1.2.0"
