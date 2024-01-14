@@ -206,10 +206,9 @@ eval @inspect(twoTwoSoles())
 ## Development
 
 ```sh
-npm install          # Install dependencies
-npm run build        # Compile `src/` to `lib/`
-npm run build:watch  # Watch the compilation
-npm run test         # Run test
+npm install     # Install dependencies
+npm run build   # Compile `src/` to `lib/`
+npm run test    # Run test
 ```
 
 ## References
