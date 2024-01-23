@@ -5,6 +5,7 @@
   "type": "module",
   "main": "./lib/index.js",
   "files": [
+    "src",
     "lib"
   ],
   "bin": {
@@ -22,12 +23,12 @@
     "format": "prettier src docs --write"
   },
   "devDependencies": {
-    "@types/node": "^20.11.0",
+    "@types/node": "^20.11.5",
     "@xieyuheng/test-runner": "^0.2.10",
-    "prettier": "^3.2.2",
+    "prettier": "^3.2.4",
     "prettier-plugin-organize-imports": "^3.2.4",
     "typescript": "^5.3.3",
-    "vitest": "^1.2.0"
+    "vitest": "^1.2.1"
   },
   "dependencies": {
     "@cicada-lang/framework": "^0.2.0",
