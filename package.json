@@ -23,12 +23,12 @@
     "format": "prettier src docs --write"
   },
   "devDependencies": {
-    "@types/node": "^20.11.5",
+    "@types/node": "^20.11.30",
     "@xieyuheng/test-runner": "^0.2.10",
-    "prettier": "^3.2.4",
+    "prettier": "^3.2.5",
     "prettier-plugin-organize-imports": "^3.2.4",
-    "typescript": "^5.3.3",
-    "vitest": "^1.2.1"
+    "typescript": "^5.4.3",
+    "vitest": "^1.4.0"
   },
   "dependencies": {
     "@cicada-lang/framework": "^0.2.0",
