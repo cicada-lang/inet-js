@@ -1,0 +1,5 @@
+net handle-(pair₄) {
+  (pair₄)-left first-(pairDup₄)
+  (pair₄)-right second-(pairDup₄)
+  (pair₄)-value!target-(pairDup₄)
+}
