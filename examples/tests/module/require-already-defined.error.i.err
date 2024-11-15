@@ -6,5 +6,5 @@
 
  1 |type Nat
  2 |
- 3 |require "../../datatype/Nat.i"
+ 3 |require "../../datatypes/Nat.i"
  4 |

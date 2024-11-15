@@ -683,7 +683,7 @@ to import definitions from other module.
 import {
   Nat, zero, add1, add,
   one, two, three,
-} from "https://code-of-inet-js.xieyuheng.com/examples/datatype/Nat.i"
+} from "https://code-of-inet-js.xieyuheng.com/examples/datatypes/Nat.i"
 
 node natErase(
   target!: Nat
@@ -794,7 +794,7 @@ rule append(target!, rest, result) cons(head, tail, value!) {
   cons(head, append(tail, rest), result)
 }
 
-import { Nat, zero } from "https://code-of-inet-js.xieyuheng.com/examples/datatype/Nat.i"
+import { Nat, zero } from "https://code-of-inet-js.xieyuheng.com/examples/datatypes/Nat.i"
 
 function sixZeros(): List(Nat) {
   return append(
@@ -836,7 +836,7 @@ the relationship between all nodes is symmetric.
 [Goto the playground of `DiffList` and `(diffAppend)`](https://inet.xieyuheng.com/playground/aW1wb3J0IHsgTGlzdCB9IGZyb20gImh0dHBzOi8vY29kZS1vZi1pbmV0LWpzLmZpZGIuYXBwL3N0ZC9kYXRhdHlwZS9MaXN0LmkiCgp0eXBlIERpZmZMaXN0KEVsZW1lbnQ6IEBUeXBlKQoKbm9kZSBkaWZmKAogIGZyb250OiBMaXN0KCdBKSwKICAtLS0tLS0tCiAgYmFjazogTGlzdCgnQSksCiAgdmFsdWUhOiBEaWZmTGlzdCgnQSksCikKCm5vZGUgZGlmZkFwcGVuZCgKICB0YXJnZXQhOiBEaWZmTGlzdCgnQSksCiAgcmVzdDogRGlmZkxpc3QoJ0EpCiAgLS0tLS0tLS0KICByZXN1bHQ6IERpZmZMaXN0KCdBKQopCgpub2RlIGRpZmZPcGVuKAogIHRhcmdldCE6IERpZmZMaXN0KCdBKSwKICBuZXdCYWNrOiBMaXN0KCdBKQogIC0tLS0tLS0tLS0KICBvbGRCYWNrOiBMaXN0KCdBKQopCgpydWxlIGRpZmZBcHBlbmQodGFyZ2V0ISwgcmVzdCwgcmVzdWx0KQogICAgIGRpZmYoZnJvbnQsIGJhY2ssIHZhbHVlISkgewogIGxldCBuZXdCYWNrLCB2YWx1ZSA9IGRpZmYoZnJvbnQpCiAgQGNvbm5lY3QodmFsdWUsIHJlc3VsdCkKICBkaWZmT3BlbihyZXN0LCBuZXdCYWNrLCBiYWNrKQp9CgpydWxlIGRpZmZPcGVuKHRhcmdldCEsIG5ld0JhY2ssIG9sZEJhY2spCiAgICAgZGlmZihmcm9udCwgYmFjaywgdmFsdWUhKSB7CiAgQGNvbm5lY3QoYmFjaywgbmV3QmFjaykKICBAY29ubmVjdChmcm9udCwgb2xkQmFjaykKfQoKaW1wb3J0IHsgTmF0LCB6ZXJvIH0gZnJvbSAiaHR0cHM6Ly9jb2RlLW9mLWluZXQtanMuZmlkYi5hcHAvc3RkL2RhdGF0eXBlL05hdC5pIgppbXBvcnQgeyBjb25zIH0gZnJvbSAiaHR0cHM6Ly9jb2RlLW9mLWluZXQtanMuZmlkYi5hcHAvc3RkL2RhdGF0eXBlL0xpc3QuaSIKCmZ1bmN0aW9uIHR3b1R3b1plcm9zKCk6IERpZmZMaXN0KE5hdCkgewogIGxldCBmcm9udCwgYmFjaywgdmFsdWUxID0gZGlmZigpCiAgQGNvbm5lY3QoZnJvbnQsIGNvbnMoemVybygpLCBjb25zKHplcm8oKSwgYmFjaykpKQogIGxldCBmcm9udCwgYmFjaywgdmFsdWUyID0gZGlmZigpCiAgQGNvbm5lY3QoZnJvbnQsIGNvbnMoemVybygpLCBjb25zKHplcm8oKSwgYmFjaykpKQogIHJldHVybiBkaWZmQXBwZW5kKHZhbHVlMSwgdmFsdWUyKQp9CgpldmFsIHR3b1R3b1plcm9zKCk)
 
 ```
-import { List } from "https://code-of-inet-js.xieyuheng.com/examples/datatype/List.i"
+import { List } from "https://code-of-inet-js.xieyuheng.com/examples/datatypes/List.i"
 
 type DiffList(Element: @Type)
 
@@ -874,8 +874,8 @@ rule diffOpen(target!, newBack, oldBack)
   @connect(front, oldBack)
 }
 
-import { Nat, zero } from "https://code-of-inet-js.xieyuheng.com/examples/datatype/Nat.i"
-import { cons } from "https://code-of-inet-js.xieyuheng.com/examples/datatype/List.i"
+import { Nat, zero } from "https://code-of-inet-js.xieyuheng.com/examples/datatypes/Nat.i"
+import { cons } from "https://code-of-inet-js.xieyuheng.com/examples/datatypes/List.i"
 
 function twoTwoZeros(): DiffList(Nat) {
   let front, back, value1 = diff()
