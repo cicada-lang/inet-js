@@ -1,7 +1,7 @@
 [execute / Require] I can not do circular require.
 
-  loading module url: docs/std/tests/module/self-require.error.i
-  requiring module url: docs/std/tests/module/self-require.error.i
+  loading module url: examples/tests/module/self-require.error.i
+  requiring module url: examples/tests/module/self-require.error.i
 
 [execute] I fail to execute a statement.
 

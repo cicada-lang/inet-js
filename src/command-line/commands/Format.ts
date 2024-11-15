@@ -27,7 +27,7 @@ export class Format extends Command<Args, Opts> {
     return [
       `Format a file:`,
       ``,
-      blue(`  ${runner.name} ${this.name} std/datatype/Nat.test.i`),
+      blue(`  ${runner.name} ${this.name} examples/datatype/Nat.test.i`),
       ``,
     ].join("\n")
   }

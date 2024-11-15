@@ -1,7 +1,7 @@
 [execute / Import] I can not do circular import.
 
-  loading module url: docs/std/tests/module/circular-import-2.error.i
-  importing module url: docs/std/tests/module/circular-import-3.error.i
+  loading module url: examples/tests/module/circular-import-2.error.i
+  importing module url: examples/tests/module/circular-import-3.error.i
 
 [execute] I fail to execute a statement.
 
