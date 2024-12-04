@@ -1,4 +1,4 @@
-import { type ParameterWithoutType } from "./Parameter.js"
+import { type ParameterWithoutType } from "./Parameter.ts"
 
 export function formatParameterWithoutType(
   parameter: ParameterWithoutType,

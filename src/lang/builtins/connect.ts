@@ -1,7 +1,7 @@
-import { checkHalfEdges } from "../check/checkHalfEdges.js"
-import { connectHalfEdges } from "../connect/connectHalfEdges.js"
-import { type PrimitiveApply } from "../definition/index.js"
-import { formatValue } from "../value/formatValue.js"
+import { checkHalfEdges } from "../check/checkHalfEdges.ts"
+import { connectHalfEdges } from "../connect/connectHalfEdges.ts"
+import { type PrimitiveApply } from "../definition/index.ts"
+import { formatValue } from "../value/formatValue.ts"
 
 export const apply: PrimitiveApply = (env, args, options) => {
   if (args.length !== 2) {

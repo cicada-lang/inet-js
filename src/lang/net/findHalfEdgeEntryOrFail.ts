@@ -1,6 +1,6 @@
-import { type HalfEdge } from "../half-edge/index.js"
-import { type HalfEdgeEntry, type Net } from "./Net.js"
-import { findHalfEdgeEntry } from "./findHalfEdgeEntry.js"
+import { type HalfEdge } from "../half-edge/index.ts"
+import { type HalfEdgeEntry, type Net } from "./Net.ts"
+import { findHalfEdgeEntry } from "./findHalfEdgeEntry.ts"
 
 export function findHalfEdgeEntryOrFail(
   net: Net,

@@ -1,12 +1,12 @@
-import { manyTimes } from "../../utils/manyTimes.js"
-import { connectValues } from "../connect/connectValues.js"
-import { defineLocals } from "../env/defineLocals.js"
-import { type Env } from "../env/index.js"
-import { evaluateBlock } from "../evaluate/evaluateBlock.js"
-import { type EvaluateOptions } from "../evaluate/index.js"
-import { addEdge } from "../net/addEdge.js"
-import { formatValues } from "../value/formatValues.js"
-import { formatValue, type Function, type Value } from "../value/index.js"
+import { manyTimes } from "../../utils/manyTimes.ts"
+import { connectValues } from "../connect/connectValues.ts"
+import { defineLocals } from "../env/defineLocals.ts"
+import { type Env } from "../env/index.ts"
+import { evaluateBlock } from "../evaluate/evaluateBlock.ts"
+import { type EvaluateOptions } from "../evaluate/index.ts"
+import { addEdge } from "../net/addEdge.ts"
+import { formatValues } from "../value/formatValues.ts"
+import { formatValue, type Function, type Value } from "../value/index.ts"
 
 export function applyFunction(
   env: Env,

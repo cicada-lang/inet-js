@@ -1,5 +1,5 @@
-import { type PrimitiveApply } from "../definition/index.js"
-import { type Mod } from "../mod/index.js"
+import { type PrimitiveApply } from "../definition/index.ts"
+import { type Mod } from "../mod/index.ts"
 
 export function defineBuiltinPrimitiveFunction(
   mod: Mod,

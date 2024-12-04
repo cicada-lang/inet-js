@@ -1,2 +1,2 @@
-export * from "./Exp.js"
-export * from "./formatExp.js"
+export * from "./Exp.ts"
+export * from "./formatExp.ts"

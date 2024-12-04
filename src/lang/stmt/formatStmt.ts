@@ -1,10 +1,10 @@
-import { indent } from "../../utils/indent.js"
-import { formatBlockStmt } from "../exp/formatBlockStmt.js"
-import { formatExp } from "../exp/index.js"
-import { formatImportBinding } from "../import/formatImportBinding.js"
-import { formatParameterExp } from "../parameter/index.js"
-import { formatRuleTarget } from "../rule/index.js"
-import { type Stmt } from "./Stmt.js"
+import { indent } from "../../utils/indent.ts"
+import { formatBlockStmt } from "../exp/formatBlockStmt.ts"
+import { formatExp } from "../exp/index.ts"
+import { formatImportBinding } from "../import/formatImportBinding.ts"
+import { formatParameterExp } from "../parameter/index.ts"
+import { formatRuleTarget } from "../rule/index.ts"
+import { type Stmt } from "./Stmt.ts"
 
 export function formatStmt(stmt: Stmt): string {
   switch (stmt["@kind"]) {

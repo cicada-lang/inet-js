@@ -1,6 +1,6 @@
-import { type Node } from "../node/index.js"
-import { type Parameter } from "../parameter/index.js"
-import { type Port } from "./Port.js"
+import { type Node } from "../node/index.ts"
+import { type Parameter } from "../parameter/index.ts"
+import { type Port } from "./Port.ts"
 
 export function createInputPort(node: Node, parameter: Parameter): Port {
   return {

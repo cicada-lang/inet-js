@@ -1,6 +1,6 @@
 import * as pt from "@cicada-lang/partech"
-import { type RuleTarget } from "../../rule/index.js"
-import * as matchers from "../matchers/index.js"
+import { type RuleTarget } from "../../rule/index.ts"
+import * as matchers from "../matchers/index.ts"
 
 export function rule_target_matcher(tree: pt.Tree): RuleTarget {
   return pt.matcher<RuleTarget>({

@@ -4,11 +4,11 @@ import ty from "@xieyuheng/ty"
 import fs from "node:fs"
 import { relative } from "node:path"
 import process from "node:process"
-import { Fetcher } from "../../fetcher/index.js"
-import { Report } from "../../lang/errors/Report.js"
-import { formatStmt } from "../../lang/stmt/index.js"
-import { parseStmts } from "../../lang/syntax/index.js"
-import { createURL } from "../../utils/createURL.js"
+import { Fetcher } from "../../fetcher/index.ts"
+import { Report } from "../../lang/errors/Report.ts"
+import { formatStmt } from "../../lang/stmt/index.ts"
+import { parseStmts } from "../../lang/syntax/index.ts"
+import { createURL } from "../../utils/createURL.ts"
 
 type Args = { path: string }
 type Opts = {}

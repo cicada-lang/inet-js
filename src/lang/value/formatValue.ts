@@ -1,7 +1,7 @@
-import { type Env } from "../env/index.js"
-import { formatHalfEdge } from "../half-edge/formatHalfEdge.js"
-import { formatNode } from "../node/formatNode.js"
-import { type Value } from "./Value.js"
+import { type Env } from "../env/index.ts"
+import { formatHalfEdge } from "../half-edge/formatHalfEdge.ts"
+import { formatNode } from "../node/formatNode.ts"
+import { type Value } from "./Value.ts"
 
 export function formatValue(env: Env, value: Value): string {
   switch (value["@kind"]) {

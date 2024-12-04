@@ -1,8 +1,8 @@
-import { type Env } from "../env/index.js"
-import { formatExp, type Exp } from "../exp/index.js"
-import { type Mod } from "../mod/index.js"
-import { formatValue, type Value } from "../value/index.js"
-import { evaluate, type EvaluateOptions } from "./evaluate.js"
+import { type Env } from "../env/index.ts"
+import { formatExp, type Exp } from "../exp/index.ts"
+import { type Mod } from "../mod/index.ts"
+import { formatValue, type Value } from "../value/index.ts"
+import { evaluate, type EvaluateOptions } from "./evaluate.ts"
 
 export function evaluateOne(
   mod: Mod,

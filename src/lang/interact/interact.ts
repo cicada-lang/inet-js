@@ -1,13 +1,13 @@
-import { type Checking } from "../checking/index.js"
-import { type Edge } from "../edge/index.js"
-import { type Env } from "../env/index.js"
-import { evaluateBlock } from "../evaluate/evaluateBlock.js"
-import { findRuleByPorts } from "../mod/findRuleByPorts.js"
-import { deleteHalfEdgeEntry } from "../net/deleteHalfEdgeEntry.js"
-import { deleteNodeEntry } from "../net/deleteNodeEntry.js"
-import { findHalfEdgeEntryOrFail } from "../net/findHalfEdgeEntryOrFail.js"
-import { findPortEntryOrFail } from "../net/findPortEntryOrFail.js"
-import { exposeRuleTargets } from "../rule/exposeRuleTargets.js"
+import { type Checking } from "../checking/index.ts"
+import { type Edge } from "../edge/index.ts"
+import { type Env } from "../env/index.ts"
+import { evaluateBlock } from "../evaluate/evaluateBlock.ts"
+import { findRuleByPorts } from "../mod/findRuleByPorts.ts"
+import { deleteHalfEdgeEntry } from "../net/deleteHalfEdgeEntry.ts"
+import { deleteNodeEntry } from "../net/deleteNodeEntry.ts"
+import { findHalfEdgeEntryOrFail } from "../net/findHalfEdgeEntryOrFail.ts"
+import { findPortEntryOrFail } from "../net/findPortEntryOrFail.ts"
+import { exposeRuleTargets } from "../rule/exposeRuleTargets.ts"
 
 export type InteractOptions = {
   checking?: Checking

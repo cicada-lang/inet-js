@@ -1,9 +1,9 @@
-import { type Env } from "../env/index.js"
-import { type EvaluateOptions } from "../evaluate/index.js"
-import { formatValue, type Value } from "../value/index.js"
-import { applyFunction } from "./applyFunction.js"
-import { applyNode } from "./applyNode.js"
-import { applyTypeCtor } from "./applyTypeCtor.js"
+import { type Env } from "../env/index.ts"
+import { type EvaluateOptions } from "../evaluate/index.ts"
+import { formatValue, type Value } from "../value/index.ts"
+import { applyFunction } from "./applyFunction.ts"
+import { applyNode } from "./applyNode.ts"
+import { applyTypeCtor } from "./applyTypeCtor.ts"
 
 export function apply(
   env: Env,

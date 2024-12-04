@@ -1,9 +1,9 @@
-import { type Mod } from "../mod/index.js"
-import * as connect from "./connect.js"
-import { defineBuiltinPrimitiveFunction } from "./defineBuiltinPrimitiveFunction.js"
-import { defineBuiltinValue } from "./defineBuiltinValue.js"
-import * as inspect from "./inspect.js"
-import * as run from "./run.js"
+import { type Mod } from "../mod/index.ts"
+import * as connect from "./connect.ts"
+import { defineBuiltinPrimitiveFunction } from "./defineBuiltinPrimitiveFunction.ts"
+import { defineBuiltinValue } from "./defineBuiltinValue.ts"
+import * as inspect from "./inspect.ts"
+import * as run from "./run.ts"
 
 export function defineBuiltins(mod: Mod): void {
   defineBuiltinPrimitiveFunction(mod, "connect", connect)

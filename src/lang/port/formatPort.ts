@@ -1,6 +1,6 @@
-import { type Net } from "../net/index.js"
-import { formatNode } from "../node/formatNode.js"
-import { type Port } from "./Port.js"
+import { type Net } from "../net/index.ts"
+import { formatNode } from "../node/formatNode.ts"
+import { type Port } from "./Port.ts"
 
 export function formatPort(net: Net, port: Port): string {
   if (port.isPrincipal) {

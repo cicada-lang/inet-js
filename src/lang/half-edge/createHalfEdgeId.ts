@@ -1,4 +1,4 @@
-import { globalHalfEdgeInfo } from "./globalHalfEdgeInfo.js"
+import { globalHalfEdgeInfo } from "./globalHalfEdgeInfo.ts"
 
 export function createHalfEdgeId(): string {
   const n = globalHalfEdgeInfo.counter++

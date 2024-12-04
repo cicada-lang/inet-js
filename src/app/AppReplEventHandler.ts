@@ -6,12 +6,12 @@ import { ParsingError } from "@cicada-lang/partech"
 import fs from "fs"
 import { relative } from "node:path"
 import process from "process"
-import { Fetcher } from "../fetcher/Fetcher.js"
-import { Report } from "../lang/errors/Report.js"
-import { execute } from "../lang/execute/index.js"
-import { parseStmts } from "../lang/syntax/index.js"
-import { Loader } from "../loader/index.js"
-import { version } from "../version.js"
+import { Fetcher } from "../fetcher/Fetcher.ts"
+import { Report } from "../lang/errors/Report.ts"
+import { execute } from "../lang/execute/index.ts"
+import { parseStmts } from "../lang/syntax/index.ts"
+import { Loader } from "../loader/index.ts"
+import { version } from "../version.ts"
 
 const fetcher = new Fetcher()
 

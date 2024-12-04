@@ -1,5 +1,5 @@
-import { type BlockStmt } from "./BlockStmt.js"
-import { formatExp } from "./formatExp.js"
+import { type BlockStmt } from "./BlockStmt.ts"
+import { formatExp } from "./formatExp.ts"
 
 export function formatBlockStmt(stmt: BlockStmt): string {
   switch (stmt["@kind"]) {

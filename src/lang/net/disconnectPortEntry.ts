@@ -1,5 +1,5 @@
-import { type Net, type PortEntry } from "./Net.js"
-import { findHalfEdgeEntry } from "./findHalfEdgeEntry.js"
+import { type Net, type PortEntry } from "./Net.ts"
+import { findHalfEdgeEntry } from "./findHalfEdgeEntry.ts"
 
 export function disconnectPortEntry(net: Net, portEntry: PortEntry): void {
   const halfEdge = portEntry.connection?.halfEdge

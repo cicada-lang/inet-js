@@ -2,8 +2,8 @@ import * as pt from "@cicada-lang/partech"
 import {
   type ParameterExp,
   type ParameterWithoutType,
-} from "../../parameter/index.js"
-import * as matchers from "../matchers/index.js"
+} from "../../parameter/index.ts"
+import * as matchers from "../matchers/index.ts"
 
 export function parameter_matcher(tree: pt.Tree): ParameterExp {
   return pt.matcher<ParameterExp>({

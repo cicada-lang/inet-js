@@ -1,7 +1,7 @@
 import { Command, CommandRunner } from "@xieyuheng/command-line"
 import ty from "@xieyuheng/ty"
-import { version } from "../../version.js"
-import * as Commands from "../commands/index.js"
+import { version } from "../../version.ts"
+import * as Commands from "../commands/index.ts"
 
 type Args = { path?: string }
 type Opts = { help?: boolean; version?: boolean }

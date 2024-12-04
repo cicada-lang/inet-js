@@ -1,5 +1,5 @@
-import { formatExp } from "../exp/index.js"
-import { type ParameterExp } from "./Parameter.js"
+import { formatExp } from "../exp/index.ts"
+import { type ParameterExp } from "./Parameter.ts"
 
 export function formatParameterExp(parameter: ParameterExp): string {
   const t = formatExp(parameter.t)

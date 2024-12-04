@@ -1,5 +1,5 @@
-import { formatParameterWithoutType } from "../parameter/index.js"
-import { type RuleTarget } from "./Rule.js"
+import { formatParameterWithoutType } from "../parameter/index.ts"
+import { type RuleTarget } from "./Rule.ts"
 
 export function formatRuleTarget(target: RuleTarget): string {
   const parameters = target.parameters

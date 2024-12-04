@@ -1,7 +1,7 @@
-import { type HalfEdge } from "../half-edge/index.js"
-import { type Net } from "./Net.js"
-import { findHalfEdgeEntryOrFail } from "./findHalfEdgeEntryOrFail.js"
-import { findPortEntryOrFail } from "./findPortEntryOrFail.js"
+import { type HalfEdge } from "../half-edge/index.ts"
+import { type Net } from "./Net.ts"
+import { findHalfEdgeEntryOrFail } from "./findHalfEdgeEntryOrFail.ts"
+import { findPortEntryOrFail } from "./findPortEntryOrFail.ts"
 
 export function disconnectHalfEdge(net: Net, halfEdge: HalfEdge): void {
   const halfEdgeEntry = findHalfEdgeEntryOrFail(net, halfEdge)

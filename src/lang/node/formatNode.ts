@@ -1,6 +1,6 @@
-import { stringToSubscript } from "../../utils/stringToSubscript.js"
-import { type Net } from "../net/index.js"
-import { type Node } from "../node/index.js"
+import { stringToSubscript } from "../../utils/stringToSubscript.ts"
+import { type Net } from "../net/index.ts"
+import { type Node } from "../node/index.ts"
 
 export function formatNode(net: Net, node: Node): string {
   const subscript = stringToSubscript(node.id.toString())

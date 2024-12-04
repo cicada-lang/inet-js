@@ -1,8 +1,8 @@
-import { type Edge } from "../edge/index.js"
-import { type HalfEdge } from "../half-edge/index.js"
-import { type Port } from "../port/index.js"
-import { type Sign } from "../sign/index.js"
-import { type Value } from "../value/index.js"
+import { type Edge } from "../edge/index.ts"
+import { type HalfEdge } from "../half-edge/index.ts"
+import { type Port } from "../port/index.ts"
+import { type Sign } from "../sign/index.ts"
+import { type Value } from "../value/index.ts"
 
 /*
 

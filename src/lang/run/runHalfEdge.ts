@@ -1,11 +1,11 @@
-import { type HalfEdge } from "../half-edge/index.js"
-import { type Mod } from "../mod/index.js"
-import { createNet } from "../net/createNet.js"
-import { findHalfEdgeEntryOrFail } from "../net/findHalfEdgeEntryOrFail.js"
-import { findHalfEdgePortOrFail } from "../net/findHalfEdgePortOrFail.js"
-import { type Net } from "../net/index.js"
-import { moveConnectedComponent } from "../net/moveConnectedComponent.js"
-import { runNet } from "./runNet.js"
+import { type HalfEdge } from "../half-edge/index.ts"
+import { type Mod } from "../mod/index.ts"
+import { createNet } from "../net/createNet.ts"
+import { findHalfEdgeEntryOrFail } from "../net/findHalfEdgeEntryOrFail.ts"
+import { findHalfEdgePortOrFail } from "../net/findHalfEdgePortOrFail.ts"
+import { type Net } from "../net/index.ts"
+import { moveConnectedComponent } from "../net/moveConnectedComponent.ts"
+import { runNet } from "./runNet.ts"
 
 export function runHalfEdge(mod: Mod, net: Net, halfEdge: HalfEdge): void {
   const component = createNet()

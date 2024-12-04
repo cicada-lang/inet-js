@@ -1,8 +1,8 @@
-import { connectHalfEdgeWithPort } from "../connect/connectHalfEdgeWithPort.js"
-import { addEdge } from "../net/addEdge.js"
-import { type Net } from "../net/index.js"
-import { type Port } from "../port/index.js"
-import { type HalfEdge } from "./HalfEdge.js"
+import { connectHalfEdgeWithPort } from "../connect/connectHalfEdgeWithPort.ts"
+import { addEdge } from "../net/addEdge.ts"
+import { type Net } from "../net/index.ts"
+import { type Port } from "../port/index.ts"
+import { type HalfEdge } from "./HalfEdge.ts"
 
 export function halfEdgeFromPort(net: Net, port: Port): HalfEdge {
   const edge = addEdge(net)

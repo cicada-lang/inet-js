@@ -1,8 +1,8 @@
-import { type Definition } from "../definition/index.js"
-import { type Env } from "../env/index.js"
-import { addNodeFromDefinition } from "../node/addNodeFromDefinition.js"
-import { type Value } from "../value/index.js"
-import { type EvaluateOptions } from "./evaluate.js"
+import { type Definition } from "../definition/index.ts"
+import { type Env } from "../env/index.ts"
+import { addNodeFromDefinition } from "../node/addNodeFromDefinition.ts"
+import { type Value } from "../value/index.ts"
+import { type EvaluateOptions } from "./evaluate.ts"
 
 export function evaluateDefinition(
   env: Env,

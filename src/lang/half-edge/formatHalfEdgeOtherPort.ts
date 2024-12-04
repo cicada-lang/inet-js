@@ -1,8 +1,8 @@
-import { findHalfEdgeEntryOrFail } from "../net/findHalfEdgeEntryOrFail.js"
-import { type Net } from "../net/index.js"
-import { formatPort } from "../port/formatPort.js"
-import { type Port } from "../port/index.js"
-import { type HalfEdge } from "./HalfEdge.js"
+import { findHalfEdgeEntryOrFail } from "../net/findHalfEdgeEntryOrFail.ts"
+import { type Net } from "../net/index.ts"
+import { formatPort } from "../port/formatPort.ts"
+import { type Port } from "../port/index.ts"
+import { type HalfEdge } from "./HalfEdge.ts"
 
 export function formatHalfEdgeOtherPort(net: Net, halfEdge: HalfEdge): string {
   const halfEdgeEntry = findHalfEdgeEntryOrFail(net, halfEdge)

@@ -1,3 +1,3 @@
-export * from "./presentFunction.js"
-export * from "./presentNode.js"
-export * from "./presentRule.js"
+export * from "./presentFunction.ts"
+export * from "./presentNode.ts"
+export * from "./presentRule.ts"

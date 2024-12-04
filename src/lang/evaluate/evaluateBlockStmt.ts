@@ -1,11 +1,11 @@
-import { defineLocals } from "../env/defineLocals.js"
-import { type Env } from "../env/index.js"
-import { appendReport } from "../errors/index.js"
-import { type BlockStmt } from "../exp/BlockStmt.js"
-import { formatBlockStmt } from "../exp/formatBlockStmt.js"
-import { type Mod } from "../mod/index.js"
-import { formatValue, type Value } from "../value/index.js"
-import { evaluate, type EvaluateOptions } from "./evaluate.js"
+import { defineLocals } from "../env/defineLocals.ts"
+import { type Env } from "../env/index.ts"
+import { appendReport } from "../errors/index.ts"
+import { type BlockStmt } from "../exp/BlockStmt.ts"
+import { formatBlockStmt } from "../exp/formatBlockStmt.ts"
+import { type Mod } from "../mod/index.ts"
+import { formatValue, type Value } from "../value/index.ts"
+import { evaluate, type EvaluateOptions } from "./evaluate.ts"
 
 export function evaluateBlockStmt(
   mod: Mod,

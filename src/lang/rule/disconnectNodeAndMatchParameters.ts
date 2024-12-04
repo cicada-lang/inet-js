@@ -1,11 +1,11 @@
-import { defineLocals } from "../env/defineLocals.js"
-import { type Env } from "../env/index.js"
-import { disconnectNode } from "../net/disconnectNode.js"
-import { formatNode, type Node } from "../node/index.js"
+import { defineLocals } from "../env/defineLocals.ts"
+import { type Env } from "../env/index.ts"
+import { disconnectNode } from "../net/disconnectNode.ts"
+import { formatNode, type Node } from "../node/index.ts"
 import {
   formatParameterWithoutType,
   type ParameterWithoutType,
-} from "../parameter/index.js"
+} from "../parameter/index.ts"
 
 export function disconnectNodeAndMatchParameters(
   env: Env,

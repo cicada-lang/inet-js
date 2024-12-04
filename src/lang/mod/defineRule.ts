@@ -1,10 +1,10 @@
-import { checkRuleIsAboutOwnNode } from "../check/checkRuleIsAboutOwnNode.js"
-import { checkRuleNodeOrder } from "../check/checkRuleNodeOrder.js"
-import { type BlockStmt } from "../exp/BlockStmt.js"
-import { nodeKeyWithoutId } from "../node/nodeKeyWithoutId.js"
-import { type RuleTarget } from "../rule/index.js"
-import { type Mod } from "./Mod.js"
-import { findDefinitionOrFail } from "./findDefinitionOrFail.js"
+import { checkRuleIsAboutOwnNode } from "../check/checkRuleIsAboutOwnNode.ts"
+import { checkRuleNodeOrder } from "../check/checkRuleNodeOrder.ts"
+import { type BlockStmt } from "../exp/BlockStmt.ts"
+import { nodeKeyWithoutId } from "../node/nodeKeyWithoutId.ts"
+import { type RuleTarget } from "../rule/index.ts"
+import { type Mod } from "./Mod.ts"
+import { findDefinitionOrFail } from "./findDefinitionOrFail.ts"
 
 export function defineRule(
   mod: Mod,

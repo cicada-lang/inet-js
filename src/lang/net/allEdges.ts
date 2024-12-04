@@ -1,8 +1,8 @@
-import { type Edge } from "../edge/index.js"
-import { nodeKey } from "../node/nodeKey.js"
-import { type Net } from "./Net.js"
-import { createNodeFromNodeEntry } from "./createNodeFromNodeEntry.js"
-import { findHalfEdgeEntryOrFail } from "./findHalfEdgeEntryOrFail.js"
+import { type Edge } from "../edge/index.ts"
+import { nodeKey } from "../node/nodeKey.ts"
+import { type Net } from "./Net.ts"
+import { createNodeFromNodeEntry } from "./createNodeFromNodeEntry.ts"
+import { findHalfEdgeEntryOrFail } from "./findHalfEdgeEntryOrFail.ts"
 
 export function allEdges(net: Net): Array<Edge> {
   const edges: Array<Edge> = []

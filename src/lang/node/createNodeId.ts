@@ -1,4 +1,4 @@
-import { globalNodeCounters } from "./globalNodeCounters.js"
+import { globalNodeCounters } from "./globalNodeCounters.ts"
 
 export function createNodeId(name: string): string {
   const foundCounter = globalNodeCounters.get(name)

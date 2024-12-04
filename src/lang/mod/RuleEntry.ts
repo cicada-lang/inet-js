@@ -1,6 +1,6 @@
-import { type BlockStmt } from "../exp/BlockStmt.js"
-import { type RuleTarget } from "../rule/index.js"
-import { type Mod } from "./Mod.js"
+import { type BlockStmt } from "../exp/BlockStmt.ts"
+import { type RuleTarget } from "../rule/index.ts"
+import { type Mod } from "./Mod.ts"
 
 export type RuleTargetWithModId = RuleTarget & {
   modId: string

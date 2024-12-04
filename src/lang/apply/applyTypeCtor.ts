@@ -1,9 +1,9 @@
-import { checkTypeTermArgs } from "../check/checkTypeTermArgs.js"
-import { type Env } from "../env/index.js"
-import { type EvaluateOptions } from "../evaluate/index.js"
-import { formatParameters } from "../parameter/index.js"
-import { formatValues } from "../value/formatValues.js"
-import { type TypeCtor, type Value } from "../value/index.js"
+import { checkTypeTermArgs } from "../check/checkTypeTermArgs.ts"
+import { type Env } from "../env/index.ts"
+import { type EvaluateOptions } from "../evaluate/index.ts"
+import { formatParameters } from "../parameter/index.ts"
+import { formatValues } from "../value/formatValues.ts"
+import { type TypeCtor, type Value } from "../value/index.ts"
 
 export function applyTypeCtor(
   env: Env,
