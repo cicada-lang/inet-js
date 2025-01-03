@@ -1,8 +1,8 @@
-# iNet JS
+# inet-js
 
-[ [Website](https://inet.xieyuheng.com)
-| [iNet C](https://github.com/cicada-lang/inet)
-| [iNet Cute](https://github.com/cicada-lang/inet-cute) ]
+[ [website](https://inet.xieyuheng.com)
+| [inet-forth](https://github.com/cicada-lang/inet-forth)
+| [inet-cute](https://github.com/cicada-lang/inet-cute) ]
 
 This is an implementation of [interaction nets](https://en.wikipedia.org/wiki/Interaction_nets).
 It introduces you to the bizarre world of graph-based computation and linear logic,
