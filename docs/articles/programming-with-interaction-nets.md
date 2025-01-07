@@ -505,12 +505,12 @@ But because of single-principal-port constraint,
 we have to introduce an auxiliary node and some auxiliary rules,
 to explicitly choose between two interactable edges.
 
-We call the auxiliary node `(maxAux)`.
+We call the auxiliary node `(maxAdd1)`.
 
 ```
      result
        |
-    (maxAux)
+    (maxAdd1)
      /    \
 first    second!
 ```
@@ -518,7 +518,7 @@ first    second!
 Node definition:
 
 ```
-node maxAux(
+node maxAdd1(
   first: Nat,
   second!: Nat
   --------
@@ -532,7 +532,7 @@ the rule between `(max)` and `(add1)`:
 ```
      result            result
        |                 |
-     (max)      =>    (maxAux)
+     (max)      =>    (maxAdd1)
      /    \            /   \
 (add1)   second     prev   second
    |
@@ -543,16 +543,16 @@ Rule definition:
 
 ```
 rule max(first!, second, result) add1(prev, value!) {
-  maxAux(prev, second, result)
+  maxAdd1(prev, second, result)
 }
 ```
 
-The rule between `(maxAux)` and `(zero)`:
+The rule between `(maxAdd1)` and `(zero)`:
 
 ```
      result            result
        |                 |
-    (maxAux)     =>    (add1)
+    (maxAdd1)     =>   (add1)
      /    \              |
  first   (zero)        first
 ```
@@ -560,17 +560,17 @@ The rule between `(maxAux)` and `(zero)`:
 Rule definition:
 
 ```
-rule maxAux(first, second!, result) zero(value!) {
+rule maxAdd1(first, second!, result) zero(value!) {
   add1(first, result)
 }
 ```
 
-The rule between `(maxAux)` and `(add1)`:
+The rule between `(maxAdd1)` and `(add1)`:
 
 ```
      result            result
        |                 |
-    (maxAux)     =>    (add1)
+    (maxAdd1)     =>   (add1)
      /    \              |
  first   (add1)        (max)
            |           /   \
@@ -580,7 +580,7 @@ The rule between `(maxAux)` and `(add1)`:
 Rule definition:
 
 ```
-rule maxAux(first, second!, result) add1(prev, value!) {
+rule maxAdd1(first, second!, result) add1(prev, value!) {
   add1(max(first, prev), result)
 }
 ```
@@ -601,7 +601,7 @@ node add1(
   value!: Nat
 )
 
-node maxAux(
+node maxAdd1(
   first: Nat,
   second!: Nat
   --------
@@ -620,14 +620,14 @@ rule max(first!, second, result) zero(value!) {
 }
 
 rule max(first!, second, result) add1(prev, value!) {
-  maxAux(prev, second, result)
+  maxAdd1(prev, second, result)
 }
 
-rule maxAux(first, second!, result) zero(value!) {
+rule maxAdd1(first, second!, result) zero(value!) {
   add1(first, result)
 }
 
-rule maxAux(first, second!, result) add1(prev, value!) {
+rule maxAdd1(first, second!, result) add1(prev, value!) {
   add1(max(first, prev), result)
 }
 

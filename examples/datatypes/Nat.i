@@ -90,9 +90,9 @@ rule mul(target!, mulend, result) add1(prev, value!) {
   add(second, mul(first, prev), result)
 }
 
-// To define `max`, we need `maxAux`.
+// To define `max`, we need `maxAdd1`.
 
-node maxAux(
+node maxAdd1(
   first: Nat,
   second!: Nat
   --------
@@ -111,13 +111,13 @@ rule max(first!, second, result) zero(value!) {
 }
 
 rule max(first!, second, result) add1(prev, value!) {
-  maxAux(prev, second, result)
+  maxAdd1(prev, second, result)
 }
 
-rule maxAux(first, second!, result) zero(value!) {
+rule maxAdd1(first, second!, result) zero(value!) {
   add1(first, result)
 }
 
-rule maxAux(first, second!, result) add1(prev, value!) {
+rule maxAdd1(first, second!, result) add1(prev, value!) {
   add1(max(first, prev), result)
 }
