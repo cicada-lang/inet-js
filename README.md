@@ -1,8 +1,6 @@
 # inet-js
 
-[ [website](https://inet.xieyuheng.com)
-| [inet-forth](https://github.com/cicada-lang/inet-forth)
-| [inet-cute](https://github.com/cicada-lang/inet-cute) ]
+[ [website](https://inet.xieyuheng.com) ]
 
 This is an implementation of [interaction nets](https://en.wikipedia.org/wiki/Interaction_nets).
 It introduces you to the bizarre world of graph-based computation and linear logic,
@@ -211,6 +209,13 @@ npm install     # Install dependencies
 npm run build   # Compile `src/` to `lib/`
 npm run test    # Run test
 ```
+
+## Implementations
+
+- [inet-cute](https://github.com/cicada-lang/inet-cute)
+- [inet-js](https://github.com/cicada-lang/inet-js)
+- [inet-forth](https://github.com/cicada-lang/inet-forth)
+- [inet-lisp](https://github.com/cicada-lang/inet-lisp)
 
 ## References
 
